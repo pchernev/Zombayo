@@ -16,4 +16,8 @@ public class StartForce : MonoBehaviour {
 //		Debug.Log( "Update" );
 	}
 	
+	void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log( collision.gameObject.name );	
+	}
 }
