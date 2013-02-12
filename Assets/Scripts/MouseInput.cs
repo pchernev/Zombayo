@@ -38,7 +38,7 @@ public class MouseInput : MonoBehaviour
 				{
 					if( hit.rigidbody != null )
 					{
-						var force = new Vector3( 0.0f, 20.0f + dt * 300.0f, -(50 + dt * 200.0f) );
+						var force = new Vector3( 0.0f, 100.0f + dt * 3000.0f, -(550 + dt * 3000.0f) );
 						hit.rigidbody.AddForce( force );
 					}
 				}

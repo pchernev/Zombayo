@@ -7,7 +7,7 @@ public class StartForce : MonoBehaviour {
 	void Start () {
 		Debug.Log( "Start" );
 	
-		var force = new Vector3( 0.0f, 200.0f, -600.0f );
+		var force = new Vector3( 0.0f, 1000.0f, -2000.0f );
 		this.rigidbody.AddForce( force );
 	}
 	
