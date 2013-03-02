@@ -1,0 +1,35 @@
+<map version="0.9.0">
+<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<node CREATED="1362245292573" ID="ID_960290015" MODIFIED="1362246527459" TEXT="project Zombayo" VGAP="0">
+<node CREATED="1362245307896" HGAP="96" ID="ID_198813170" MODIFIED="1362246495244" POSITION="left" TEXT="pre-production" VGAP="122" VSHIFT="-50">
+<node CREATED="1362245331356" HGAP="60" ID="ID_586271438" MODIFIED="1362246813123" TEXT="concept" VGAP="28" VSHIFT="17">
+<node CREATED="1362246499764" ID="ID_222217066" MODIFIED="1362246887690" TEXT="Gameplay" VSHIFT="26">
+<node CREATED="1362246541924" ID="ID_418166935" MODIFIED="1362246543656" TEXT="the player has control, not some random events">
+<node CREATED="1362246559236" HGAP="35" ID="ID_449631422" MODIFIED="1362246811161" TEXT="achieved by powerups like in &quot;&quot;go go goblin&quot;&quot;" VSHIFT="-21"/>
+</node>
+<node CREATED="1362246582435" ID="ID_1300708672" MODIFIED="1362246583952" TEXT="upgrades"/>
+<node CREATED="1362246874929" ID="ID_402058073" MODIFIED="1362246876397" TEXT="dr zitbag(or other character) holds Zombayo by the ears and kicks him"/>
+<node CREATED="1362246889001" ID="ID_85617149" MODIFIED="1362246890077" TEXT="close-ups when the rabbit hits something/someone in the air/ground"/>
+</node>
+<node CREATED="1362246814841" ID="ID_1412920316" MODIFIED="1362246824874" TEXT="ART">
+<node CREATED="1362246962736" ID="ID_1353685292" MODIFIED="1362246965868" TEXT="Concepts">
+<node CREATED="1362246967112" ID="ID_1964091272" MODIFIED="1362246985032" TEXT="concepts from dr. Zitbag&apos;s pet shop">
+<node CREATED="1362246976481" ID="ID_728509590" MODIFIED="1362246978053" TEXT="Zombayo"/>
+<node CREATED="1362246985032" ID="ID_1122267723" MODIFIED="1362246986109" TEXT="other creatures - many interesting to steal from"/>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1362245333572" HGAP="80" ID="ID_356673014" MODIFIED="1362247029752" TEXT="prototype" VSHIFT="-10">
+<node CREATED="1362247003712" ID="ID_1612814490" MODIFIED="1362247014566" TEXT="&quot;fake&quot; of the game"/>
+<node CREATED="1362247029752" ID="ID_860567148" MODIFIED="1362247054855" TEXT="ART">
+<node CREATED="1362247046944" ID="ID_1885434595" MODIFIED="1362247047956" TEXT="hi-poly Zombayo">
+<node CREATED="1362247065224" ID="ID_1839157087" MODIFIED="1362247082004" TEXT="more mudbox training- modeling/texturing"/>
+</node>
+<node CREATED="1362247054855" ID="ID_883272461" MODIFIED="1362247055892" TEXT="terrain"/>
+</node>
+</node>
+</node>
+<node CREATED="1362245514291" HGAP="99" ID="ID_77616875" MODIFIED="1362246396773" POSITION="left" TEXT="production"/>
+</node>
+</map>
