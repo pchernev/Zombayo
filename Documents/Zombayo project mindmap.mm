@@ -39,6 +39,7 @@
 <node COLOR="#111111" CREATED="1362402183520" ID="ID_1717479562" MODIFIED="1362402797455" TEXT="internal game clock , showing different animations for clashing into objects the longer you play - not to bore the player">
 <edge COLOR="#111111" WIDTH="thin"/>
 </node>
+<node CREATED="1363095005426" ID="ID_638402490" MODIFIED="1363095007721" TEXT="[14:41:34] hristo_dinev: hahh, ta 4isto otkam koncepciq , az taka gi vijdam ne6tata  - ili imame &quot;nerazru6im&quot; glaven geroi deto qde mnogo boi - misli si Rayman, Worms, [14:42:22 | Edited 15:03:30] hristo_dinev: ILI imame pada6ti krainici, qki na4ini na umirane, itn - Southpark, Happy tree friends"/>
 </node>
 <node COLOR="#111111" CREATED="1362246814841" ID="ID_1412920316" MODIFIED="1362402797456" TEXT="ART">
 <edge COLOR="#111111" WIDTH="thin"/>
