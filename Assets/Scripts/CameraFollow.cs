@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class scrp : MonoBehaviour {
+public class CameraFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () 
