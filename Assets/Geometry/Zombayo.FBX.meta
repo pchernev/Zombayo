@@ -129,7 +129,7 @@ ModelImporter:
     13700000: mainChar_Zombayo
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 2
   animations:
     legacyGenerateAnimations: 4
@@ -590,7 +590,7 @@ ModelImporter:
       transformModified: 1
     - name: Tail01
       position: {x: -.00826247875, y: -.0792783126, z: 9.74785763e-09}
-      rotation: {x: .708339155, y: .705872118, z: -3.09084918e-08, w: -9.94309612e-09}
+      rotation: {x: .708339214, y: .705872178, z: -3.09084953e-08, w: -9.94309701e-09}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     handles: []
