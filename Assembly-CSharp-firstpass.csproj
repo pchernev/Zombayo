@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{33E69CED-5754-7EDF-CA0C-7430DBECD289}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_GAMECENTER;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_2;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\ContinuousGestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\DiscreteGestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\FingerEventDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\GestureRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Base\GestureRecognizerDelegate.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Components\FingerClusterManager.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Components\ScreenRaycaster.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerDownDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerHoverDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerMotionDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Finger Event Detectors\FingerUpDetector.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\FingerGestures.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\DragRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\LongPressRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PinchRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PointCloudGestureTemplate.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\PointCloudRegognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\SwipeRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\TapRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Gesture Recognizers\TwistRecognizer.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGMouseInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Input Providers\FGTouchInputProvider.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBDragView.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBLookAtTap.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBOrbit.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBPan.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\Camera\TBPinchZoom.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBDragToMove.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBHoverChangeMaterial.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBHoverChangeScale.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBPinchToScale.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBQuickSetup.cs" />
+     <Compile Include="Assets\Plugins\FingerGestures\Scripts\Toolbox\TBTwistToRotate.cs" />
+     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
+     <None Include="Assets\Scripts\Tools\Developer Console Script\README.txt" />
+     <None Include="Assets\Scripts\Tools\zzRuler\readme.txt" />
+     <None Include="Assets\ExternalResources\UltimateRagdollFree\__U_r_g_README.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
