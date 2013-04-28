@@ -1,0 +1,39 @@
+Object Placement Tools
+by Curtis Williams
+
+These tools are located in Edit/Object Placement
+
+Align:
+-Assign object to be aligned. ("Align This")
+-Assign object to be aligned with. ("With This")
+-If align Multiple Copies is checked, select all the objects in the scene to align with instead.
+-Specify a new Object Name. (Optional)
+-Choose the axes to align with.
+-Specify offsetting.
+-click Align to do a simple align.
+-Click Align Copy to align a duplicate to the target object.
+-Click Replace to align then delete the target object.
+-Click Replace with Copy to align a duplicate then delete the target object.
+
+Duplicate:
+-Select object[s] to duplicate.
+-Specify desired Number of Duplicates.
+-Specify Naming. (optional)
+-Check Number Dupicates to number them.
+-If By Local Orientations is checked, Duplicates will transform relative to the previous copy.  Otherwise, they will transform Globally.
+-If As Group is checked, the entire selection will be added to a Game Object and duplicated as one.
+-Specify offsetting for duplicates.
+-Click Duplicate to apply.
+
+Random Offset:
+-Check the transform options to offset.
+-Set the minumum and maximum values for each axis of the selected transformations.
+--In Offset Scale, checking allow negative will allow Mirroring the object in the axis.
+-Click the Offset Button to apply.
+
+Move to Surface:
+-Choose the direction. (Global)
+-Check wether or not to Rotate to Surface.
+--If Checked, the object will be set to stand up from the surface.
+-Click the Move to Surface Button to apply.
+--Selected objects will move in the assigned direction to the nearest surface.  If no surface exists for the object to move to, it will remain in place.  
