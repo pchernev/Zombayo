@@ -60,40 +60,6 @@
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\MouseInput.cs" />
      <Compile Include="Assets\Scripts\StartForce.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Base\ContinuousGestureRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Base\DiscreteGestureRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Base\FingerEventDetector.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Base\GestureRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Base\GestureRecognizerDelegate.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Components\FingerClusterManager.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Components\ScreenRaycaster.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Finger Event Detectors\FingerDownDetector.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Finger Event Detectors\FingerHoverDetector.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Finger Event Detectors\FingerMotionDetector.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Finger Event Detectors\FingerUpDetector.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\FingerGestures.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\DragRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\LongPressRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\PinchRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\PointCloudGestureTemplate.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\PointCloudRegognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\SwipeRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\TapRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Gesture Recognizers\TwistRecognizer.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Input Providers\FGInputProvider.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Input Providers\FGMouseInputProvider.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Input Providers\FGTouchInputProvider.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\Camera\TBDragView.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\Camera\TBLookAtTap.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\Camera\TBOrbit.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\Camera\TBPan.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\Camera\TBPinchZoom.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBDragToMove.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBHoverChangeMaterial.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBHoverChangeScale.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBPinchToScale.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBQuickSetup.cs" />
-     <Compile Include="Assets\Scripts\Tools\FingerGestures\Scripts\Toolbox\TBTwistToRotate.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
      <Compile Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
@@ -122,7 +88,7 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
-     <None Include="Assets\Scripts\Tools\FingerGestures\Readme.txt" />
+     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
@@ -181,6 +147,10 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{33E69CED-5754-7EDF-CA0C-7430DBECD289}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

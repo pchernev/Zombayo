@@ -46,23 +46,6 @@
   <ItemGroup>
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\Editor\U_r_g_freewindow.cs" />
      <Compile Include="Assets\Scripts\Editor\CustomToolsMenu.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\DragRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerDownDetectorInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerEventDetectorInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerGesturesEditorUtils.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerGesturesInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerHoverDetectorInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerMotionDetectorInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\FingerUpDetectorInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\GestureRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\LongPressRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\PinchRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\PointCloudGestureEditor.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\PointCloudGestureTemplateInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\PointCloudRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\SwipeRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\TapRecognizerInspector.cs" />
-     <Compile Include="Assets\Scripts\Editor\FingerGestures\TwistRecognizerInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\AboutScriptInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\FGCodeWindow.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\FGConsole.cs" />
@@ -87,7 +70,7 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\NFAA.shader" />
-     <None Include="Assets\Scripts\Tools\FingerGestures\Readme.txt" />
+     <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\MotionBlur.shader" />
@@ -154,10 +137,14 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{33E69CED-5754-7EDF-CA0C-7430DBECD289}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{9C4E591D-C728-10D9-096F-138A9564AE92}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.unityproj">
       <Project>{6F2E72CA-0F4C-8022-4EDD-26EC5D7B0CD6}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{36814EED-4C41-5958-DD40-88DAE966FE7E}</Project>      <Name>Assembly-CSharp-Editor-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
