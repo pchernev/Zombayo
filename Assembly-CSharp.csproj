@@ -59,6 +59,7 @@
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgutilities.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\MouseInput.cs" />
+     <Compile Include="Assets\Scripts\SimpleUI.cs" />
      <Compile Include="Assets\Scripts\StartForce.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
