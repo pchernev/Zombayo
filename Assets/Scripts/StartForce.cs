@@ -9,6 +9,11 @@ using System.Collections.Generic;
 
 public class StartForce : MonoBehaviour
 {
+	public LineRenderer lineRendererPrefab;
+	public GameObject fingerDownMarkerPrefab;
+	public GameObject fingerMoveBeginMarkerPrefab;
+	public GameObject fingerMoveEndMarkerPrefab;
+	public GameObject fingerUpMarkerPrefab;
 	
 	class PathRenderer
 	{
@@ -79,12 +84,19 @@ public class StartForce : MonoBehaviour
 		}
 	}
 	
+	PathRenderer[] paths;
+	
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		Debug.Log( "Start" );
 	
-		var force = new Vector3( 0.0f, 1000.0f, -2000.0f );
-		this.rigidbody.AddForce( force );
+//		var force = new Vector3( 0.0f, 1000.0f, -2000.0f );
+//		this.rigidbody.AddForce( force );
+		
+		paths = new PathRenderer[FingerGestures.Instance.MaxFingers];
+		for( int i = 0; i < paths.Length; i++ )
+			paths[i] = new PathRenderer( i, lineRendererPrefab );
 	}
 	
 	// Update is called once per frame
@@ -95,5 +107,36 @@ public class StartForce : MonoBehaviour
 	void OnCollisionEnter(Collision collision)
 	{
 //		Debug.Log( collision.gameObject.name );	
+	}
+	
+	void OnFingerDown( FingerDownEvent e )
+	{
+		PathRenderer path = paths[e.Finger.Index];
+		path.Reset();
+		path.AddPoint( e.Finger.Position, fingerDownMarkerPrefab );
+	}
+	
+	void OnFingerMove( FingerMotionEvent e )
+	{
+		PathRenderer path = paths[e.Finger.Index];
+		
+		if( e.Phase == FingerMotionPhase.Started )
+		{
+			path.AddPoint( e.Position, fingerMoveBeginMarkerPrefab );
+		}
+		else if( e.Phase == FingerMotionPhase.Started )
+		{
+			path.AddPoint( e.Position );
+		}
+		else
+		{
+			path.AddPoint( e.Position, fingerMoveEndMarkerPrefab );
+		}
+	}
+	
+	void OnFingerUp( FingerUpEvent e )
+	{
+		PathRenderer path = paths[e.Finger.Index];
+		path.AddPoint( e.Finger.Position, fingerUpMarkerPrefab );
 	}
 }
