@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,6 +14,8 @@ public class StartForce : MonoBehaviour
 	public GameObject fingerMoveBeginMarkerPrefab;
 	public GameObject fingerMoveEndMarkerPrefab;
 	public GameObject fingerUpMarkerPrefab;
+	
+	public Rigidbody accelarateObject;
 	
 	class PathRenderer
 	{
@@ -82,6 +84,11 @@ public class StartForce : MonoBehaviour
 			
 			return ray.GetPoint( t );
 		}
+		
+		public float Size()
+		{
+			return (float)points.Count;
+		}
 	}
 	
 	PathRenderer[] paths;
@@ -91,9 +98,6 @@ public class StartForce : MonoBehaviour
 	{
 		Debug.Log( "Start" );
 	
-//		var force = new Vector3( 0.0f, 1000.0f, -2000.0f );
-//		this.rigidbody.AddForce( force );
-		
 		paths = new PathRenderer[FingerGestures.Instance.MaxFingers];
 		for( int i = 0; i < paths.Length; i++ )
 			paths[i] = new PathRenderer( i, lineRendererPrefab );
@@ -136,7 +140,15 @@ public class StartForce : MonoBehaviour
 	
 	void OnFingerUp( FingerUpEvent e )
 	{
+		AccelerateObject( e.Finger.Index );
 		PathRenderer path = paths[e.Finger.Index];
 		path.AddPoint( e.Finger.Position, fingerUpMarkerPrefab );
+	}
+	
+	void AccelerateObject( int index )
+	{
+		var f = paths[index].Size();
+		var force = new Vector3( f * 70.0f, f * 30.0f, 0.0f );
+		this.accelarateObject.AddForce( force );				
 	}
 }

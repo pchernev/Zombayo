@@ -7,13 +7,13 @@ public class CameraFollow : MonoBehaviour {
 	void Start () 
 	{
 		var p = transform.position;
-		Camera.main.transform.position = new Vector3( Camera.main.transform.position.x, p.y, p.z );			
+		Camera.main.transform.position = new Vector3( p.x, p.y, Camera.main.transform.position.z );			
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		var p = transform.position;
-		Camera.main.transform.position = new Vector3( Camera.main.transform.position.x, p.y, p.z );			
+		Camera.main.transform.position = new Vector3( p.x, p.y, Camera.main.transform.position.z );			
 	}
 }
