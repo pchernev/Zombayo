@@ -1,0 +1,133 @@
+fileFormatVersion: 2
+guid: 132d162def471b84ab80e6788a92b4c8
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Base Human
+    100002: Base HumanHead
+    100004: Base HumanLCalf
+    100006: Base HumanLCollarbone
+    100008: Base HumanLDigit11
+    100010: Base HumanLFoot
+    100012: Base HumanLForearm
+    100014: Base HumanLPalm
+    100016: Base HumanLPlatform
+    100018: Base HumanLThigh
+    100020: Base HumanLUpperarm
+    100022: Base HumanNeck
+    100024: Base HumanPelvis
+    100026: Base HumanRCalf
+    100028: Base HumanRCollarbone
+    100030: Base HumanRDigit11
+    100032: Base HumanRFoot
+    100034: Base HumanRForearm
+    100036: Base HumanRibcage
+    100038: Base HumanRPalm
+    100040: Base HumanRPlatform
+    100042: Base HumanRThigh
+    100044: Base HumanRUpperarm
+    100046: Base HumanSpine1
+    100048: Base HumanSpine2
+    100050: EarL01
+    100052: EarL02
+    100054: EarL03
+    100056: EarL04
+    100058: EarR01
+    100060: EarR02
+    100062: EarR03
+    100064: EarR04
+    100066: mainChar_Zombayo
+    100068: Tail01
+    100070: //RootNode
+    400000: Base Human
+    400002: Base HumanHead
+    400004: Base HumanLCalf
+    400006: Base HumanLCollarbone
+    400008: Base HumanLDigit11
+    400010: Base HumanLFoot
+    400012: Base HumanLForearm
+    400014: Base HumanLPalm
+    400016: Base HumanLPlatform
+    400018: Base HumanLThigh
+    400020: Base HumanLUpperarm
+    400022: Base HumanNeck
+    400024: Base HumanPelvis
+    400026: Base HumanRCalf
+    400028: Base HumanRCollarbone
+    400030: Base HumanRDigit11
+    400032: Base HumanRFoot
+    400034: Base HumanRForearm
+    400036: Base HumanRibcage
+    400038: Base HumanRPalm
+    400040: Base HumanRPlatform
+    400042: Base HumanRThigh
+    400044: Base HumanRUpperarm
+    400046: Base HumanSpine1
+    400048: Base HumanSpine2
+    400050: EarL01
+    400052: EarL02
+    400054: EarL03
+    400056: EarL04
+    400058: EarR01
+    400060: EarR02
+    400062: EarR03
+    400064: EarR04
+    400066: mainChar_Zombayo
+    400068: Tail01
+    400070: //RootNode
+    4300000: mainChar_Zombayo
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: mainChar_Zombayo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
