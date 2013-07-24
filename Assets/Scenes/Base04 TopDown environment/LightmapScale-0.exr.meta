@@ -30,6 +30,7 @@ TextureImporter:
   nPOTScale: 1
   lightmap: 1
   compressionQuality: 100
+  alphaIsTransparency: 0
   textureType: 6
   buildTargetSettings: []
   userData: 
