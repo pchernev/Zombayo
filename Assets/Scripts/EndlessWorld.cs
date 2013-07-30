@@ -11,6 +11,7 @@ public class EndlessWorld : MonoBehaviour
 	public GameObject[] prefabs;
 	
 	private List<GameObject> _objs;
+	private float cameraSize = 400.0f;
 	
 	// Use this for initialization
 	void Start ()
@@ -32,10 +33,24 @@ public class EndlessWorld : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if( Input.GetKeyDown( KeyCode.RightArrow ))
+		var fObj = _objs.FirstOrDefault();
+		var lObj = _objs.LastOrDefault();
+		
+		var fMesh = fObj.GetComponent<MeshRenderer>();
+		var lMesh = lObj.GetComponent<MeshRenderer>();
+		
+		var lCamX = transform.position.x - cameraSize;
+		var rCamX = transform.position.x + cameraSize;
+		
+		if( fObj.transform.position.x + 100F < lCamX )
 			MoveRight();
-		else if( Input.GetKeyDown( KeyCode.LeftArrow ))			
+		else if( lObj.transform.position.x > rCamX )
 			MoveLeft();
+			
+//		if( Input.GetKeyDown( KeyCode.RightArrow ))
+//			MoveRight();
+//		else if( Input.GetKeyDown( KeyCode.LeftArrow ))			
+//			MoveLeft();
 	}
 	
 	void MoveLeft()
