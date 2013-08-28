@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\FGTextInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\ScriptInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\TangoColors.cs" />
+     <Compile Include="Assets\Scripts\Editor\GetBBox.cs" />
      <Compile Include="Assets\Scripts\Editor\LightmapMaterialWindow.cs" />
      <Compile Include="Assets\Scripts\Editor\LightmapSettingsWindow.cs" />
      <Compile Include="Assets\Scripts\Editor\ObjectPlacementTools\AlignTool.cs" />
