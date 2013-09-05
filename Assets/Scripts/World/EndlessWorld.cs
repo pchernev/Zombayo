@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ public class EndlessWorld : MonoBehaviour
 	
 	private List<GameObject> _objs;
 	private float cameraSize = 400.0f;
-	
+			
 	// Use this for initialization
 	void Start ()
 	{
@@ -28,6 +28,8 @@ public class EndlessWorld : MonoBehaviour
 			p.x += mesh.bounds.size.x;
 			mesh.enabled = false;
 		}
+		
+		InitWorldPieces();
 	}
 	
 	// Update is called once per frame
@@ -76,4 +78,9 @@ public class EndlessWorld : MonoBehaviour
 //		foreach( var obj in _objs )
 //			obj.transform.position += new Vector3( speed * Time.deltaTime, 0F, 0F );		
 	}
+	
+	void InitWorldPieces()
+	{
+	}
+	
 }
