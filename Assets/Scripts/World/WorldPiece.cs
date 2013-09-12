@@ -3,10 +3,20 @@ using System.Collections;
 
 public class WorldPiece : MonoBehaviour {
 	
+	[HideInInspector]
+	public int index;
+	
+	private static Color[] _colors = new Color[] { Color.red, Color.green, Color.blue };
+	
+	[HideInInspector]
+	public Bounds bounds = new Bounds();
+	bool didOne = false;
+	bool found = false;
 	
 	// Use this for initialization
 	void Start () {
-	
+		
+		didOne = GetBoundWithChildren( transform, ref bounds, ref found );								
 	}
 	
 	// Update is called once per frame
@@ -16,15 +26,21 @@ public class WorldPiece : MonoBehaviour {
 	
 	void OnDrawGizmos() 
 	{
-		Bounds bound = new Bounds();
-		bool didOne = false;
-		bool found = false;
-		
-		didOne = GetBoundWithChildren( transform, ref bound, ref found );						
 		if( didOne )
 		{
-			iTween.DrawLineGizmos( new Vector3[] { bound.min, bound.max }, Color.red );
+			var p1 = bounds.min;
+			var p2 = bounds.max;
+			
+			Gizmos.color = _colors[index & 11];
+			Gizmos.DrawWireCube( (p1 + p2) / 2.0f, bounds.size );
 		}
+	}
+	
+	public Bounds getBounds()
+	{
+		didOne = GetBoundWithChildren( transform, ref bounds, ref found );	
+		
+		return bounds;
 	}
 	
 	bool GetBoundWithChildren( Transform parent, ref Bounds pBound, ref bool initBound )

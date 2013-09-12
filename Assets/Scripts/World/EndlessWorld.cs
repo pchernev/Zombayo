@@ -12,21 +12,30 @@ public class EndlessWorld : MonoBehaviour
 	
 	private List<GameObject> _objs;
 	private float cameraSize = 400.0f;
+	
+	private GameObject _player;
 			
 	// Use this for initialization
 	void Start ()
 	{
+		_player = GameObject.FindWithTag( "Player" );
+		if( _player == null )
+			Debug.Log( "Player object not found" );
+		
 		_objs = new List<GameObject>();
 		
-		var p = new Vector3( 0F, 0F, 0F );
+		var p = new Vector3( 0F, 0F, 40F );
 		foreach( var prefab in prefabs )
 		{			
 			var obj = Instantiate( prefab, p, prefab.gameObject.transform.rotation ) as GameObject;
 			_objs.Add( obj );
 			
-			var mesh = prefab.GetComponent<MeshRenderer>();
-			p.x += mesh.bounds.size.x;
-			mesh.enabled = false;
+			var piece = prefab.GetComponent<WorldPiece>();
+			p.x += piece.getBounds().size.x;//mesh.bounds.size.x;
+			
+			Debug.Log( string.Format( "pos: {0} size: {1}", p.ToString(), piece.bounds.size.ToString() ));
+			
+//			mesh.enabled = false;
 		}
 		
 		InitWorldPieces();
