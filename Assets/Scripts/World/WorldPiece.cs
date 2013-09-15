@@ -65,11 +65,11 @@ public class WorldPiece : MonoBehaviour {
 			didOne = true;
 		}
 		
-		foreach( Transform child in parent )
-		{
-			if( GetBoundWithChildren( child, ref pBound, ref initBound ))
-				didOne = true;
-		}
+//		foreach( Transform child in parent )
+//		{
+//			if( GetBoundWithChildren( child, ref pBound, ref initBound ))
+//				didOne = true;
+//		}
 		
 		return didOne;
 	}

@@ -24,7 +24,7 @@ public class EndlessWorld : MonoBehaviour
 		
 		_objs = new List<GameObject>();
 		
-		var p = new Vector3( 0F, 0F, 40F );
+		var p = new Vector3( 0F, 0F, 0F );
 		foreach( var prefab in prefabs )
 		{			
 			var obj = Instantiate( prefab, p, prefab.gameObject.transform.rotation ) as GameObject;
