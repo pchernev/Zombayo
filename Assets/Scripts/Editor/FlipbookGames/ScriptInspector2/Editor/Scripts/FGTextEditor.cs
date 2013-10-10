@@ -3554,7 +3554,12 @@ public class FGTextEditor
 	{
 		return CanEdit() && textBuffer.CanRedo();
 	}
-
+	
+	private void DeleteLine()
+	{
+		textBuffer.DeleteLine();
+	}
+	
 	private void Undo()
 	{
 		textBuffer.Undo();
@@ -3771,7 +3776,16 @@ public class FGTextEditor
 				SaveScript();
 		}
 		*/
-
+		
+		GUI.enabled = true;
+		contentSize = EditorStyles.toolbarButton.CalcSize(new GUIContent(undoIcon));
+		rc = new Rect(rc.xMax + 6f, toolbarRect.yMin, contentSize.x, contentSize.y);
+		if (GUI.Button(rc, new GUIContent(undoIcon, "DLine" + (isOSX ? " ⌃Z" : "\n(Ctrl+§)")), EditorStyles.toolbarButton))
+		{
+			focusCodeView = true;
+			DeleteLine();
+		}
+		
 		GUI.enabled = CanUndo();
 		contentSize = EditorStyles.toolbarButton.CalcSize(new GUIContent(undoIcon));
 		rc = new Rect(rc.xMax + 6f, toolbarRect.yMin, contentSize.x, contentSize.y);

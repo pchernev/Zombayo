@@ -564,7 +564,12 @@ public class FGTextBuffer : ScriptableObject
 	{
 		return undoPosition < undoBuffer.Count;
 	}
-
+	
+	public void DeleteLine()
+	{
+		Debug.Log( "Delete Line" );
+	}
+	
 	public void Undo()
 	{
 		if (!CanUndo())

@@ -64,7 +64,7 @@ public class StartForce : MonoBehaviour
 		{
 			GameObject instance = Instantiate( prefab, pos, Quaternion.identity ) as GameObject;
 			instance.name = prefab.name + "(" + markers.Count + ")";
-			markers.Add( instance );
+//			markers.Add( instance );
 			return instance;
 		}
 		
