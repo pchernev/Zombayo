@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
@@ -21,4 +21,8 @@ public class CameraFollow : MonoBehaviour {
 		Camera.main.transform.position = new Vector3( p.x + cameraOffset.x, p.y + cameraOffset.y, p.z + cameraOffset.z );			
 		Camera.main.transform.eulerAngles = cameraRotaion;
 	}
+	
+	// 0.24, 0.98, -3.07
+	// 3.37, 7.89, 0
+
 }
