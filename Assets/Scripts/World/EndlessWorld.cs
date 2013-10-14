@@ -14,6 +14,7 @@ public class EndlessWorld : MonoBehaviour
 	private float cameraSize = 150.0f;
 	
 	private GameObject _player;
+
 			
 	// Use this for initialization
 	void Start ()
@@ -122,5 +123,4 @@ public class EndlessWorld : MonoBehaviour
 	void InitWorldPieces()
 	{
 	}
-	
 }

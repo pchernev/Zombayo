@@ -61,6 +61,10 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\IdleAnimation.cs" />
      <Compile Include="Assets\Scripts\MouseInput.cs" />
+     <Compile Include="Assets\Scripts\NPC\BaseItem.cs" />
+     <Compile Include="Assets\Scripts\NPC\Coin.cs" />
+     <Compile Include="Assets\Scripts\NPC\DogHead.cs" />
+     <Compile Include="Assets\Scripts\NPC\Snail.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SimpleUI.cs" />
      <Compile Include="Assets\Scripts\StartForce.cs" />
@@ -68,6 +72,7 @@
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
      <Compile Include="Assets\Scripts\World\EndlessWorld.cs" />
+     <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
      <Compile Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
