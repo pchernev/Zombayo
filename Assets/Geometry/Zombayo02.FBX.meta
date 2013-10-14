@@ -130,10 +130,10 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -151,10 +151,10 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -204,7 +204,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: .0109999999
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -442,8 +442,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -10}
         max: {x: 0, y: 20, z: 15.000001}
         value: {x: .0799999759, y: 0, z: .0399999879}
-        preQ: {x: -.611129344, y: .47717312, z: .569977462, w: .271941602}
-        postQ: {x: -.650990486, y: .471781641, z: .591255963, w: .0636373237}
+        preQ: {x: -.611129403, y: .477173209, z: .569977403, w: .271941572}
+        postQ: {x: -.650990546, y: .47178179, z: .591255963, w: .0636372864}
         length: .100000001
         modified: 1
     - boneName: EarR02
@@ -554,7 +554,7 @@ ModelImporter:
       transformModified: 1
     - name: EarL01
       position: {x: -.238037691, y: -.0442091413, z: .0714199021}
-      rotation: {x: -.210743114, y: .595327258, z: -.769545794, w: -.0947211161}
+      rotation: {x: -.210743099, y: .595327139, z: -.769545794, w: -.0947211161}
       scale: {x: -1, y: -1, z: -1.00000036}
       transformModified: 1
     - name: EarL02
@@ -614,7 +614,7 @@ ModelImporter:
       transformModified: 1
     - name: Tail01
       position: {x: -.0222119447, y: -.0920312256, z: .0161543321}
-      rotation: {x: .708339214, y: .705872178, z: -5.96046448e-08, w: -4.76837158e-07}
+      rotation: {x: .708339155, y: .705872118, z: -5.96046412e-08, w: -4.7683713e-07}
       scale: {x: 1.00000012, y: 1.00000024, z: .999999881}
       transformModified: 1
     handles: []
