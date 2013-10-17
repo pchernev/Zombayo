@@ -44,6 +44,7 @@ ModelImporter:
     100076: Bip01Tail2
     100078: drFishead
     100080: //RootNode
+    100082: Box001
     400000: Bip01
     400002: Bip01 Head
     400004: Bip01 L Calf
@@ -85,7 +86,11 @@ ModelImporter:
     400076: Bip01Tail2
     400078: drFishead
     400080: //RootNode
+    400082: Box001
+    2300000: Box001
+    3300000: Box001
     4300000: drFishead
+    4300002: Box001
     7400000: doctorKick
     9500000: //RootNode
     13700000: drFishead
@@ -96,7 +101,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -105,20 +110,20 @@ ModelImporter:
     - name: doctorKick
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -263,10 +268,10 @@ ModelImporter:
       limit:
         min: {x: 0, y: -15.000001, z: -15.000001}
         max: {x: 0, y: 15.000001, z: 30.0000019}
-        value: {x: .0854037926, y: 0, z: .0427018963}
-        preQ: {x: -.516729295, y: -.399158329, z: -.44393909, w: .613662362}
-        postQ: {x: -1.86264543e-07, y: -.725995541, z: -.687699378, w: 1.63214295e-07}
-        length: .10675478
+        value: {x: .0854038224, y: 0, z: .0427019112}
+        preQ: {x: -.516729295, y: -.399158359, z: -.44393906, w: .613662243}
+        postQ: {x: -1.63912773e-07, y: -.725995541, z: -.687699318, w: 1.18336175e-07}
+        length: .10675481
         modified: 1
     - boneName: Bip01 R Clavicle
       humanName: RightShoulder
@@ -283,10 +288,10 @@ ModelImporter:
       limit:
         min: {x: -90, y: -100, z: -60.0000038}
         max: {x: 90, y: 100, z: 100}
-        value: {x: .164916813, y: 0, z: .0824584067}
-        preQ: {x: -.357139975, y: -.630514145, z: -.686879933, w: -.0556675047}
-        postQ: {x: 3.35276127e-08, y: -.707912266, z: -.706300259, w: -3.59960666e-08}
-        length: .206146091
+        value: {x: .164916798, y: 0, z: .0824583992}
+        preQ: {x: -.357139885, y: -.630514205, z: -.686879814, w: -.0556675196}
+        postQ: {x: 4.84287739e-08, y: -.707912326, z: -.706300259, w: -3.97095548e-08}
+        length: .206146061
         modified: 1
     - boneName: Bip01 R UpperArm
       humanName: RightUpperArm
@@ -303,10 +308,10 @@ ModelImporter:
       limit:
         min: {x: -90, y: 0, z: -80}
         max: {x: 90, y: 0, z: 80}
-        value: {x: .211830422, y: 0, z: .105915211}
-        preQ: {x: -.678010762, y: -.734006405, z: -.0391829237, w: .00081457803}
-        postQ: {x: -1.67638063e-08, y: -.999999344, z: .00110808015, w: -2.68220901e-07}
-        length: .264788091
+        value: {x: .211830303, y: 0, z: .105915152}
+        preQ: {x: -.678010762, y: -.734006405, z: -.039182879, w: .000814523548}
+        postQ: {x: -2.04890966e-08, y: -.999999344, z: .00110810995, w: -2.75671482e-07}
+        length: .264787942
         modified: 1
     - boneName: Bip01 R Forearm
       humanName: RightLowerArm
@@ -323,10 +328,10 @@ ModelImporter:
       limit:
         min: {x: 0, y: -40, z: -80}
         max: {x: 0, y: 40, z: 80}
-        value: {x: .105915211, y: 0, z: .0529576056}
-        preQ: {x: 1.80676579e-07, y: -.708799243, z: -.705410182, w: -2.0394873e-07}
-        postQ: {x: .0139542753, y: .0117834173, z: -.99631238, w: -.0838333964}
-        length: .132394046
+        value: {x: .105915152, y: 0, z: .0529575758}
+        preQ: {x: 1.82539239e-07, y: -.708799303, z: -.705410182, w: -2.11433886e-07}
+        postQ: {x: .0139542706, y: .011783421, z: -.996312439, w: -.0838334113}
+        length: .132393971
         modified: 1
     - boneName: Bip01 R Hand
       humanName: RightHand
@@ -364,8 +369,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0769681036, y: 0, z: .0384840518}
-        preQ: {x: -.18097274, y: -.0371971428, z: -.917372882, w: .352550834}
-        postQ: {x: 5.36441803e-07, y: .851230264, z: -.524792254, w: 5.37838787e-08}
+        preQ: {x: -.180972755, y: -.0371971466, z: -.917372942, w: .352550834}
+        postQ: {x: 5.21540642e-07, y: .851230264, z: -.524792254, w: 5.424954e-08}
         length: .0962101668
         modified: 1
     - boneName: Bip01 L Finger2
@@ -375,7 +380,7 @@ ModelImporter:
         max: {x: 0, y: 0, z: 45}
         value: {x: .0577260815, y: 0, z: .0288630407}
         preQ: {x: .254197717, y: .758484602, z: -.57924509, w: .156715214}
-        postQ: {x: -.0845618844, y: .850185931, z: -.515173554, w: .0680386722}
+        postQ: {x: -.0845618844, y: .85018605, z: -.515173554, w: .0680386424}
         length: .0721576214
         modified: 1
     - boneName: Bip01 LDigit21
@@ -384,8 +389,8 @@ ModelImporter:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
         value: {x: .0658892617, y: 0, z: .0329446308}
-        preQ: {x: -.125523925, y: -.0376654193, z: -.934960127, w: .329658121}
-        postQ: {x: 7.07805157e-08, y: .00519054756, z: -.99998647, w: 5.45522198e-07}
+        preQ: {x: -.125523999, y: -.0376654305, z: -.934960127, w: .329658121}
+        postQ: {x: 2.70083547e-08, y: .00519055501, z: -.99998647, w: 5.14555722e-07}
         length: .0823616162
         modified: 1
     - boneName: Bip01 LDigit22
@@ -394,8 +399,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0494169556, y: 0, z: .0247084778}
-        preQ: {x: .00157072546, y: -.0765789077, z: -.950038731, w: .302588016}
-        postQ: {x: -.0251294542, y: .00602573901, z: -.999111891, w: -.0332813896}
+        preQ: {x: .00157072139, y: -.07657893, z: -.950038791, w: .302588046}
+        postQ: {x: -.0251294486, y: .00602573762, z: -.999111831, w: -.0332813933}
         length: .061771214
         modified: 1
     - boneName: Bip01 LDigit31
@@ -404,8 +409,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0512125753, y: 0, z: .0256062876}
-        preQ: {x: -.00982635189, y: -.0590669736, z: -.954225838, w: .293031305}
-        postQ: {x: 4.37721575e-08, y: .0196518432, z: -.999806821, w: 1.13120757e-06}
+        preQ: {x: -.00982635003, y: -.0590669699, z: -.954225838, w: .293031275}
+        postQ: {x: 3.63215769e-08, y: .0196518451, z: -.999806821, w: 1.11642282e-06}
         length: .0640157387
         modified: 1
     - boneName: Bip01 LDigit32
@@ -414,8 +419,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0384094268, y: 0, z: .0192047134}
-        preQ: {x: .00596751785, y: -.0587740839, z: -.950966954, w: .303598106}
-        postQ: {x: -.0929714963, y: .0582681075, z: -.992267847, w: .0580146872}
+        preQ: {x: .00596751086, y: -.0587740727, z: -.950966954, w: .303598106}
+        postQ: {x: -.0929715112, y: .0582681112, z: -.992267847, w: .058014676}
         length: .0480118021
         modified: 1
     - boneName: Bip01 R Finger0
@@ -424,8 +429,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0769650862, y: 0, z: .0384825431}
-        preQ: {x: -.352545947, y: .917374611, z: .0371963158, w: .180973887}
-        postQ: {x: -1.78813949e-07, y: -.524792552, z: .851230025, w: 4.24683122e-07}
+        preQ: {x: -.352545947, y: .917374611, z: .037196327, w: .180973917}
+        postQ: {x: -1.49011598e-07, y: -.524792492, z: .851230085, w: 4.32133646e-07}
         length: .0962063968
         modified: 1
     - boneName: Bip01 R Finger2
@@ -434,8 +439,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0577238239, y: 0, z: .028861912}
-        preQ: {x: -.156715423, y: .579243541, z: -.758485556, w: -.254198074}
-        postQ: {x: .068035081, y: -.51517415, z: .850186229, w: -.0845581368}
+        preQ: {x: -.156715438, y: .579243541, z: -.758485556, w: -.254198015}
+        postQ: {x: .0680350959, y: -.515174091, z: .850186288, w: -.0845581442}
         length: .0721547976
         modified: 1
     - boneName: Bip01 RDigit21
@@ -626,7 +631,7 @@ ModelImporter:
       transformModified: 1
     - name: Bip01 R Finger0
       position: {x: -.0584465005, y: -.0678852797, z: -.060278967}
-      rotation: {x: .846300006, y: -.00235943333, z: .137603477, w: .514621913}
+      rotation: {x: .846300125, y: -.00235943357, z: .137603492, w: .514621973}
       scale: {x: .999992669, y: 1.00000262, z: 1.00000513}
       transformModified: 1
     - name: Bip01 R Finger2
@@ -653,6 +658,11 @@ ModelImporter:
       position: {x: -.0640143976, y: 0, z: 0}
       rotation: {x: .0387568474, y: .0918096155, z: -.0598256141, w: .993221879}
       scale: {x: .999991179, y: 1.00000691, z: 1.00000143}
+      transformModified: 1
+    - name: Box001
+      position: {x: -.14491798, y: -.437162578, z: .000727605831}
+      rotation: {x: -.66306293, y: .748559237, z: .00253452267, w: .000226855525}
+      scale: {x: .999999881, y: 1.0000006, z: 1.00000024}
       transformModified: 1
     - name: Bip01Tail1
       position: {x: .102583848, y: -.124241509, z: 4.6938613e-09}
