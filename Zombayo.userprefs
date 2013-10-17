@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/AboutScriptInspector.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGTextEditor.cs">
     <Files>
       <File FileName="../SimplePlatform/Assets/Chapter 1/Scripting/CharacterControll_2D.cs" Line="85" Column="4" />
       <File FileName="Assets/Plugins/FingerGestures/Scripts/Components/ScreenRaycaster.cs" Line="1" Column="1" />
@@ -13,8 +13,12 @@
       <File FileName="Assets/Scripts/IdleAnimation.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/World/Statistics.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/NPC/BaseItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/TangoColors.cs" Line="51" Column="1" />
-      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/AboutScriptInspector.cs" Line="74" Column="4" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/AboutScriptInspector.cs" Line="18" Column="21" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGTextEditor.cs" Line="2593" Column="6" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/ScriptInspector.cs" Line="166" Column="53" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGTextBufferManager.cs" Line="23" Column="52" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGTextBuffer.cs" Line="1397" Column="4" />
+      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGCodeWindow.cs" Line="522" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -34,6 +38,7 @@
                   </Node>
                 </Node>
                 <Node name="NPC" expanded="True" />
+                <Node name="World" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -45,7 +50,7 @@
                     <Node name="ScriptInspector2" expanded="True">
                       <Node name="Editor" expanded="True">
                         <Node name="Scripts" expanded="True">
-                          <Node name="AboutScriptInspector.cs" selected="True" />
+                          <Node name="FGTextEditor.cs" selected="True" />
                         </Node>
                       </Node>
                     </Node>

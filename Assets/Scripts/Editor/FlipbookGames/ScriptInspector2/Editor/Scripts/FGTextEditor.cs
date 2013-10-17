@@ -4370,7 +4370,7 @@ public class FGTextEditor
 			stylesText.ping.fontStyle = 0;
 		}
 	}
-
+	
 	private static void SelectFont(int fontIndex)
 	{
 		currentFont = availableFonts[fontIndex];
