@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\NPC\BaseItem.cs" />
      <Compile Include="Assets\Scripts\NPC\Coin.cs" />
      <Compile Include="Assets\Scripts\NPC\DogHead.cs" />
+     <Compile Include="Assets\Scripts\NPC\DrController.cs" />
      <Compile Include="Assets\Scripts\NPC\Snail.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SimpleUI.cs" />
