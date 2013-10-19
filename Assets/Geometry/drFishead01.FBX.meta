@@ -122,33 +122,33 @@ ModelImporter:
       loop: 0
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       transformMask: []
     - name: kick
       takeName: Take 001
-      firstFrame: 24.8999996
+      firstFrame: 25
       lastFrame: 67
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -355,7 +355,7 @@ ModelImporter:
         max: {x: 0, y: 40, z: 80}
         value: {x: .105917186, y: 0, z: .0529585928}
         preQ: {x: -7.46548176e-06, y: .708797395, z: .70541203, w: 9.5740852e-06}
-        postQ: {x: -.0139532369, y: -.0117865615, z: .996311963, w: .0838377327}
+        postQ: {x: -.013953222, y: -.0117865633, z: .996311963, w: .083837755}
         length: .132396519
         modified: 1
     - boneName: Bip01 R Hand
@@ -394,8 +394,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0769691616, y: 0, z: .0384845808}
-        preQ: {x: .18096064, y: .0371872485, z: .917379677, w: -.352540523}
-        postQ: {x: -6.12884687e-05, y: .851232409, z: -.524788797, w: -2.44982075e-05}
+        preQ: {x: .18096064, y: .0371872261, z: .917379677, w: -.352540523}
+        postQ: {x: -6.13182783e-05, y: .851232409, z: -.524788797, w: -2.45124102e-05}
         length: .0962114856
         modified: 1
     - boneName: Bip01 L Finger2
@@ -404,8 +404,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0577268749, y: 0, z: .0288634375}
-        preQ: {x: .254139513, y: .758509815, z: -.579242408, w: .156698093}
-        postQ: {x: -.084621802, y: .850181997, z: -.515173674, w: .0680127442}
+        preQ: {x: .254139483, y: .758509755, z: -.579242289, w: .156698078}
+        postQ: {x: -.0846218169, y: .850181997, z: -.515173614, w: .0680127293}
         length: .0721586123
         modified: 1
     - boneName: Bip01 LDigit21
@@ -413,20 +413,20 @@ ModelImporter:
       limit:
         min: {x: 0, y: -7.50000048, z: -50}
         max: {x: 0, y: 7.50000048, z: 50}
-        value: {x: .0658900961, y: 0, z: .0329450481}
-        preQ: {x: .125524133, y: .0376611166, z: .934962451, w: -.329651922}
-        postQ: {x: 1.1245719e-06, y: -.00519440277, z: .99998647, w: 7.07129902e-06}
-        length: .0823626518
+        value: {x: .0658900887, y: 0, z: .0329450443}
+        preQ: {x: .125524148, y: .0376611128, z: .934962571, w: -.329651922}
+        postQ: {x: 1.13900751e-06, y: -.00519440882, z: .99998647, w: 7.08550215e-06}
+        length: .0823626444
         modified: 1
     - boneName: Bip01 LDigit22
       humanName: Left Middle Intermediate
       limit:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
-        value: {x: .0494175777, y: 0, z: .0247087888}
-        preQ: {x: -.00157013722, y: .0765749291, z: .950041234, w: -.302580863}
-        postQ: {x: .0251297224, y: -.00602947874, z: .999111593, w: .0332879722}
-        length: .0617719889
+        value: {x: .0494175702, y: 0, z: .0247087851}
+        preQ: {x: -.00157013815, y: .0765749142, z: .950041234, w: -.302580833}
+        postQ: {x: .0251297224, y: -.00602948247, z: .999111593, w: .0332879722}
+        length: .0617719814
         modified: 1
     - boneName: Bip01 LDigit31
       humanName: Left Little Proximal
@@ -434,8 +434,8 @@ ModelImporter:
         min: {x: 0, y: -20, z: -50}
         max: {x: 0, y: 20, z: 50}
         value: {x: .0512133092, y: 0, z: .0256066546}
-        preQ: {x: .0098309312, y: .0590644404, z: .954227865, w: -.293025255}
-        postQ: {x: 1.43237412e-06, y: -.0196546707, z: .999806762, w: 4.28059138e-06}
+        preQ: {x: .00983090233, y: .0590644144, z: .954227865, w: -.293025255}
+        postQ: {x: 1.38720497e-06, y: -.0196546819, z: .999806762, w: 4.30899672e-06}
         length: .0640166551
         modified: 1
     - boneName: Bip01 LDigit32
@@ -444,8 +444,8 @@ ModelImporter:
         min: {x: 0, y: 0, z: -45}
         max: {x: 0, y: 0, z: 45}
         value: {x: .0384099782, y: 0, z: .0192049891}
-        preQ: {x: -.0059665381, y: .0587736815, z: .950968742, w: -.303592324}
-        postQ: {x: .0929711983, y: -.0582701676, z: .992268085, w: -.0580072291}
+        preQ: {x: -.00596658234, y: .058773648, z: .950968742, w: -.303592324}
+        postQ: {x: .0929711536, y: -.0582701787, z: .992268085, w: -.0580071844}
         length: .0480124913
         modified: 1
     - boneName: Bip01 R Finger0
@@ -591,7 +591,7 @@ ModelImporter:
       transformModified: 1
     - name: Bip01 L Hand
       position: {x: -.264792562, y: 7.75820808e-07, z: -6.41867518e-06}
-      rotation: {x: -.714498281, y: .0692594275, z: .0492404997, w: .694457114}
+      rotation: {x: -.714498281, y: .0692594275, z: .0492405295, w: .694457114}
       scale: {x: .99999398, y: .999995828, z: 1.00001025}
       transformModified: 1
     - name: Bip01 L Finger0

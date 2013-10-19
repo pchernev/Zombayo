@@ -14,15 +14,15 @@ public class DrController : MonoBehaviour {
 	
 	void Awake() 
 	{
-//		_controller = GetComponent<CharacterController>();
+		_controller = GetComponent<CharacterController>();
 	}
 	
 	// Use this for initialization
 	void Start ()
 	{
-//		_animator = GetComponent<Animator>();	
+		_animator = GetComponent<Animator>();	
 		
-//		speed = 0.2f;
+		speed = 0.2f;
 	}
 	
 	// Update is called once per frame
@@ -30,18 +30,18 @@ public class DrController : MonoBehaviour {
 	{
 		//var cameraTransform = Camera.main.transform;/
 		//var moveDirection = cameraTransform.TransformDi/rection( Vector3.forward );
-////		var moveDirection = new Vector3( 0.01f, 0.0f, 0.0f );
-////		moveDirection = moveDirection.normalized;
-////		moveDirection *= speed * Time.deltaTime;
-////		
+		var moveDirection = new Vector3( 0.01f, 0.0f, 0.0f );
+//		moveDirection = moveDirection.normalized;
+//		moveDirection *= Time.deltaTime;
+		
 ////		Debug.Log( "moveDirection: " + moveDirection.ToString() );
 //		
 		
 		//c_collis/ionFlags = controller.Move( new Vector3( 0.1f, 0F, 0F ));
-//		transform.Translate( moveDirection );
+		transform.Translate( moveDirection );
 		
 		// update animator
-//		UpdateAnimtorValues();
+    	UpdateAnimtorValues();
 	}
 	
 	void UpdateAnimtorValues()
