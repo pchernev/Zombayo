@@ -1,20 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TriggerArea.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPC/DrController.cs">
     <Files>
-      <File FileName="../SimplePlatform/Assets/Chapter 1/Scripting/CharacterControll_2D.cs" Line="85" Column="4" />
       <File FileName="Assets/Plugins/FingerGestures/Scripts/Components/ScreenRaycaster.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/World/EndlessWorld.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/World/WorldPiece.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MouseInput.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/StartForce.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MouseInput.cs" Line="41" Column="84" />
+      <File FileName="Assets/Scripts/StartForce.cs" Line="18" Column="19" />
       <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/IdleAnimation.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/World/Statistics.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/NPC/BaseItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/NPC/DrController.cs" Line="1" Column="1" />
-      <File FileName="Assets/TriggerArea.cs" Line="35" Column="22" />
+      <File FileName="Assets/Scripts/NPC/DrController.cs" Line="55" Column="45" />
+      <File FileName="Assets/TriggerArea.cs" Line="23" Column="16" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,10 +21,11 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="NPC" expanded="True" />
+                <Node name="NPC" expanded="True">
+                  <Node name="DrController.cs" selected="True" />
+                </Node>
                 <Node name="World" expanded="True" />
               </Node>
-              <Node name="TriggerArea.cs" selected="True" />
             </Node>
           </Node>
           <Node name="Assembly-CSharp-Editor" expanded="True">
@@ -44,6 +44,9 @@
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

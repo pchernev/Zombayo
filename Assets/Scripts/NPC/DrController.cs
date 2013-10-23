@@ -8,6 +8,8 @@ public class DrController : MonoBehaviour {
 	private CollisionFlags c_collisionFlags;
 	private Animator _animator;
 	
+	private GameObject _player;
+	
 	// animator values
 	public float speed;
 	public bool inKickZone = false;
@@ -28,7 +30,10 @@ public class DrController : MonoBehaviour {
 	void Start ()
 	{
 		_animator = GetComponent<Animator>();	
+		_player = GameObject.FindWithTag( "Player" );
 	}
+	
+	bool firstTime = true;
 	
 	// Update is called once per frame
 	void Update ()
@@ -45,10 +50,23 @@ public class DrController : MonoBehaviour {
 		
 		// update speed
 		if( inKickZone )
+		{
 			slowSpeed = 0.05f;		
+			GetComponent<Rigidbody>().isKinematic = true;			
+		}
 		speed -= slowSpeed;
+		
+		if( speed < 3F && firstTime )
+		{			
+			firstTime = false;
+			var force = new Vector3( 500F, 100F, 0F );			
+			var rb = _player.GetComponent<Rigidbody>();
+			rb.AddForce( force );						
+		}
 		if( speed < 0.0f )
-			speed = 0.0f;
+		{
+			speed = 0.0f;			
+		}
 		
 		// update animator
     	UpdateAnimtorValues();		
@@ -57,7 +75,7 @@ public class DrController : MonoBehaviour {
 	void UpdateAnimtorValues()
 	{
 		_animator.SetFloat( "speed", speed );
-		_animator.SetBool( "inKickZone", inKickZone );
+		_animator.SetBool( "inKickZone", inKickZone && (speed > 0.0f));
 	}
 	
 	void OnTriggerEnter( Collider collider )

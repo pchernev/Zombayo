@@ -93,6 +93,7 @@ ModelImporter:
     3300002: drFishead
     4300000: drFishead
     4300002: Box001
+    6400000: Box001
     7400000: run
     7400002: kick
     7400004: idle
@@ -613,7 +614,7 @@ ModelImporter:
       transformModified: 1
     - name: Bip01 L Hand
       position: {x: -.264792562, y: 7.75820808e-07, z: -6.41867518e-06}
-      rotation: {x: -.714498281, y: .0692594275, z: .0492405333, w: .694457114}
+      rotation: {x: -.714498281, y: .0692594275, z: .049240537, w: .694457114}
       scale: {x: .99999398, y: .999995828, z: 1.00001025}
       transformModified: 1
     - name: Bip01 L Finger0
