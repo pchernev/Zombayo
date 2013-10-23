@@ -34,7 +34,7 @@ public class EndlessWorld : MonoBehaviour
 			var piece = prefab.GetComponent<WorldPiece>();
 			p.x += piece.getBounds().size.x;//mesh.bounds.size.x;
 			
-			Debug.Log( string.Format( "pos: {0} size: {1}", p.ToString(), piece.bounds.size.ToString() ));
+//			Debug.Log( string.Format( "pos: {0} size: {1}", p.ToString(), piece.bounds.size.ToString() ));
 			
 //			mesh.enabled = false;
 			break;
@@ -77,7 +77,7 @@ public class EndlessWorld : MonoBehaviour
 			var obj = Instantiate( prefab, pos, prefab.gameObject.transform.rotation ) as GameObject;
 			_objs.Insert( 0, obj );
 			
-			Debug.Log( "backward x: " + x );
+//			Debug.Log( "backward x: " + x );
 		}
 		
 		// forward update
@@ -92,7 +92,7 @@ public class EndlessWorld : MonoBehaviour
 			var obj = Instantiate( prefab, pos, prefab.gameObject.transform.rotation ) as GameObject;
 			_objs.Add( obj );
 			
-			Debug.Log( "forward x: " + x );
+//			Debug.Log( "forward x: " + x );
 		}
 	}
 	

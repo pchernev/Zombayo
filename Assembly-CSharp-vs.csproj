@@ -93,6 +93,7 @@
      <Compile Include="Assets\Top Down Mobile\tools scripts\MovementScript.cs" />
      <Compile Include="Assets\Top Down Mobile\tools scripts\TerrainRand.cs" />
      <Compile Include="Assets\Top Down Mobile\tools scripts\desaturate\Image Based\DesaturateEffect.cs" />
+     <Compile Include="Assets\TriggerArea.cs" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />

@@ -96,8 +96,6 @@ public class StartForce : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		Debug.Log( "Start" );
-	
 		paths = new PathRenderer[FingerGestures.Instance.MaxFingers];
 		for( int i = 0; i < paths.Length; i++ )
 			paths[i] = new PathRenderer( i, lineRendererPrefab );

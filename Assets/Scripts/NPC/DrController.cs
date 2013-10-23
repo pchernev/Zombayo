@@ -9,8 +9,15 @@ public class DrController : MonoBehaviour {
 	private Animator _animator;
 	
 	// animator values
-	private float speed = 0.0f;
-	private bool inKickZone = false;
+	public float speed;
+	public bool inKickZone = false;
+	
+	private float slowSpeed = 0.0f;
+	
+	public void SetKickZone( bool flag )
+	{
+		inKickZone = flag;
+	}
 	
 	void Awake() 
 	{
@@ -21,8 +28,6 @@ public class DrController : MonoBehaviour {
 	void Start ()
 	{
 		_animator = GetComponent<Animator>();	
-		
-		speed = 0.2f;
 	}
 	
 	// Update is called once per frame
@@ -30,34 +35,46 @@ public class DrController : MonoBehaviour {
 	{
 		//var cameraTransform = Camera.main.transform;/
 		//var moveDirection = cameraTransform.TransformDi/rection( Vector3.forward );
-		var moveDirection = new Vector3( 0.01f, 0.0f, 0.0f );
-//		moveDirection = moveDirection.normalized;
-//		moveDirection *= Time.deltaTime;
+		var moveDirection = new Vector3( speed, 0.0f, 0.0f );
+		moveDirection *= Time.deltaTime;
 		
-////		Debug.Log( "moveDirection: " + moveDirection.ToString() );
-//		
+//		Debug.Log( "moveDirection: " + moveDirection.ToString() );
 		
 		//c_collis/ionFlags = controller.Move( new Vector3( 0.1f, 0F, 0F ));
 		transform.Translate( moveDirection );
 		
+		// update speed
+		if( inKickZone )
+			slowSpeed = 0.05f;		
+		speed -= slowSpeed;
+		if( speed < 0.0f )
+			speed = 0.0f;
+		
 		// update animator
-    	UpdateAnimtorValues();
+    	UpdateAnimtorValues();		
 	}
 	
 	void UpdateAnimtorValues()
 	{
-		_animator.SetFloat( "Speed", speed );
+		_animator.SetFloat( "speed", speed );
 		_animator.SetBool( "inKickZone", inKickZone );
 	}
 	
 	void OnTriggerEnter( Collider collider )
 	{
 		Debug.Log( "OnTriggerEnter" );
+		inKickZone = true;
 	}
 	
 	void OnTriggerExit( Collider collider )
 	{
 		Debug.Log( "OnTriggerExit" );
+		inKickZone = false;
+	}
+	
+	void OnCollisionEnter( Collision collision )
+	{
+		Debug.Log( "drController->CollisionEnter: " );
 	}
 	
 }

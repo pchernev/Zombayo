@@ -26,7 +26,6 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {		
 		time -= Time.deltaTime;
 		
-		Debug.Log( "deltaTime: " + Time.deltaTime );
 		if( time <= 0 )
 		{
 			if( !_animator.IsInTransition( 0 ) )
