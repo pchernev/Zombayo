@@ -14,6 +14,8 @@ public class DrController : MonoBehaviour {
 	public float speed;
 	public bool inKickZone = false;
 	
+	public Vector3 startForce;
+	
 	private float slowSpeed = 0.0f;
 	
 	public void SetKickZone( bool flag )
@@ -59,9 +61,8 @@ public class DrController : MonoBehaviour {
 		if( speed < 3F && firstTime )
 		{			
 			firstTime = false;
-			var force = new Vector3( 500F, 100F, 0F );			
 			var rb = _player.GetComponent<Rigidbody>();
-			rb.AddForce( force );						
+			rb.AddForce( startForce );						
 		}
 		if( speed < 0.0f )
 		{

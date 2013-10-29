@@ -146,7 +146,7 @@ public class StartForce : MonoBehaviour
 	void AccelerateObject( int index )
 	{
 		var f = paths[index].Size();
-		var force = new Vector3( f * 70.0f, f * 30.0f, 0.0f );
+		var force = new Vector3( f * 170.0f, f * 530.0f, 0.0f );
 		this.accelarateObject.AddForce( force );	
 		
 		Debug.Log( "AccelerateObject" );

@@ -8,9 +8,11 @@ public class EndlessWorld : MonoBehaviour
   	public float speed = 8f; 
     public float countdown = 3.0f;
 	
-	public GameObject[] prefabs;
+	public GameObject[] tiles;
+	public GameObject[] npcs;
 	
 	private List<GameObject> _objs;
+	private List<GameObject> _npcs;
 	private float cameraSize = 150.0f;
 	
 	private GameObject _player;
@@ -24,9 +26,10 @@ public class EndlessWorld : MonoBehaviour
 			Debug.Log( "Player object not found" );
 		
 		_objs = new List<GameObject>();
+		_npcs = new List<GameObject>();
 		
 		var p = new Vector3( 0F, 0F, 0F );
-		foreach( var prefab in prefabs )
+		foreach( var prefab in tiles )
 		{			
 			var obj = Instantiate( prefab, p, prefab.gameObject.transform.rotation ) as GameObject;
 			_objs.Add( obj );
@@ -68,14 +71,15 @@ public class EndlessWorld : MonoBehaviour
 		// backward update
 		if( lCamX < fX )
 		{
-			var index = Random.Range( 0, prefabs.Length - 1);
-			var prefab = prefabs[index];
+			var index = Random.Range( 0, tiles.Length - 1);
+			var prefab = tiles[index];
 			var piece = prefab.GetComponent<WorldPiece>();
 			var x = fObj.transform.position.x - piece.getBounds().size.x;
 			var pos = new Vector3( x, 0F, 0F );
 			
-			var obj = Instantiate( prefab, pos, prefab.gameObject.transform.rotation ) as GameObject;
-			_objs.Insert( 0, obj );
+			var obj = AddTile( prefab, pos );
+			if( obj != null )
+				_objs.Insert( 0, obj );
 			
 //			Debug.Log( "backward x: " + x );
 		}
@@ -83,14 +87,15 @@ public class EndlessWorld : MonoBehaviour
 		// forward update
 		if( rCamX > lX )
 		{
-			var index = Random.Range( 0, prefabs.Length - 1);
-			var prefab = prefabs[index];
+			var index = Random.Range( 0, tiles.Length - 1);
+			var prefab = tiles[index];
 			var piece = prefab.GetComponent<WorldPiece>();
 			var x = lX + fBounds.max.x + piece.getBounds().size.x * 0.5f;
 			var pos = new Vector3( x, 0F, 0F );
 			
-			var obj = Instantiate( prefab, pos, prefab.gameObject.transform.rotation ) as GameObject;
-			_objs.Add( obj );
+			var obj = AddTile( prefab, pos );
+			if( obj != null )
+				_objs.Add( obj );
 			
 //			Debug.Log( "forward x: " + x );
 		}
@@ -121,6 +126,27 @@ public class EndlessWorld : MonoBehaviour
 	}
 	
 	void InitWorldPieces()
+	{		
+	}
+	
+	GameObject AddTile( GameObject prefab, Vector3 position )
 	{
+		var obj = Instantiate( prefab, position, prefab.gameObject.transform.rotation ) as GameObject;
+				
+		// add npc to tile		
+		var maxIndex = npcs.Length - 1;
+		if( maxIndex >= 0 )
+		{
+			var prefNPC = npcs[Random.Range( 0, maxIndex )];
+			if( prefNPC != null )
+			{
+				position.x += 20F;
+				position.y = 0.5f;
+				var npc = Instantiate( prefNPC, position, prefNPC.gameObject.transform.rotation ) as GameObject;
+				_npcs.Add( npc );
+			}
+		}
+				
+		return obj;				
 	}
 }
