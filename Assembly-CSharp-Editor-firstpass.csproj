@@ -117,6 +117,7 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA2.shader" />
+     <None Include="Assets\ExternalResources\FlipbookGames\FavoritesTab\_readme.txt" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\Top Down Mobile\tools scripts\desaturate\Image Based\DesaturateEffect.shader" />
      <None Include="Assets\ExternalResources\UltimateRagdollFree\__U_r_g_README.txt" />

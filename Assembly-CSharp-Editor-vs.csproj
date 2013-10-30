@@ -44,7 +44,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ExternalResources\FlipbookGames\FavoritesTab\Editor\Scripts\AboutFavoritesTab.cs" />
+     <Compile Include="Assets\ExternalResources\FlipbookGames\FavoritesTab\Editor\Scripts\FavoritesTab.cs" />
+     <Compile Include="Assets\ExternalResources\FlipbookGames\FavoritesTab\Editor\Scripts\GameObjectGUIDsInspector.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\Editor\U_r_g_freewindow.cs" />
+     <Compile Include="Assets\Scripts\Editor\CopyTransform.cs" />
      <Compile Include="Assets\Scripts\Editor\CustomToolsMenu.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\AboutScriptInspector.cs" />
      <Compile Include="Assets\Scripts\Editor\FlipbookGames\ScriptInspector2\Editor\Scripts\FGCodeWindow.cs" />
@@ -119,6 +123,7 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Tonemapper.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA2.shader" />
+     <None Include="Assets\ExternalResources\FlipbookGames\FavoritesTab\_readme.txt" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
      <None Include="Assets\Top Down Mobile\tools scripts\desaturate\Image Based\DesaturateEffect.shader" />
      <None Include="Assets\ExternalResources\UltimateRagdollFree\__U_r_g_README.txt" />

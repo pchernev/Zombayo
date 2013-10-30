@@ -1,5 +1,5 @@
 ﻿/* SCRIPT INSPECTOR 2
- * version 2.1, March 2013
+ * version 2.1.3, May 2013
  * Copyright © 2012-2013, Flipbook Games
  * 
  * Unity's legendary custom inspector for C#, UnityScript and Boo scripts,
@@ -1000,7 +1000,12 @@ public class FGTextEditor
 
 	private bool helpButtonClicked = false;
 
-	public void OnWindowGUI(EditorWindow window, bool isTextInspector = false)
+	public void OnWindowGUI(EditorWindow window)
+	{
+		OnWindowGUI(window, false);
+	}
+
+	public void OnWindowGUI(EditorWindow window, bool isTextInspector)
 	{
 		parentWindow = window;
 		if (EditorWindow.focusedWindow == window)
@@ -3347,7 +3352,21 @@ public class FGTextEditor
 				current.Use();
 				return;
 			}
-			else if ((current.character >= ' ' || current.character == '\n') && (!EditorGUI.actionKey || current.keyCode == KeyCode.None))
+			else if ((current.keyCode == KeyCode.LeftBracket || current.keyCode == KeyCode.RightBracket) && EditorGUI.actionKey)
+			{
+				if (current.keyCode == KeyCode.LeftBracket)
+					IndentLess();
+				else
+					IndentMore();
+				
+                focusCodeView = true;
+                caretMoveTime = Time.realtimeSinceStartup;
+                needsRepaint = true;
+                current.Use();
+                return;
+			}
+			else if ((current.character >= ' ' || current.character == '\n')
+				&& (!EditorGUI.actionKey || (modifiers & EventModifiers.Command) == 0 && current.keyCode == KeyCode.None))
 			{
 				string text = current.character.ToString();
 				if (current.character == '\n')
@@ -3554,12 +3573,7 @@ public class FGTextEditor
 	{
 		return CanEdit() && textBuffer.CanRedo();
 	}
-	
-	private void DeleteLine()
-	{
-		textBuffer.DeleteLine();
-	}
-	
+
 	private void Undo()
 	{
 		textBuffer.Undo();
@@ -3776,16 +3790,7 @@ public class FGTextEditor
 				SaveScript();
 		}
 		*/
-		
-		GUI.enabled = true;
-		contentSize = EditorStyles.toolbarButton.CalcSize(new GUIContent(undoIcon));
-		rc = new Rect(rc.xMax + 6f, toolbarRect.yMin, contentSize.x, contentSize.y);
-		if (GUI.Button(rc, new GUIContent(undoIcon, "DLine" + (isOSX ? " ⌃Z" : "\n(Ctrl+§)")), EditorStyles.toolbarButton))
-		{
-			focusCodeView = true;
-			DeleteLine();
-		}
-		
+
 		GUI.enabled = CanUndo();
 		contentSize = EditorStyles.toolbarButton.CalcSize(new GUIContent(undoIcon));
 		rc = new Rect(rc.xMax + 6f, toolbarRect.yMin, contentSize.x, contentSize.y);
@@ -4370,7 +4375,7 @@ public class FGTextEditor
 			stylesText.ping.fontStyle = 0;
 		}
 	}
-	
+
 	private static void SelectFont(int fontIndex)
 	{
 		currentFont = availableFonts[fontIndex];

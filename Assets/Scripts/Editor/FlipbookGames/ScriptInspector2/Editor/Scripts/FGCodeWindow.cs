@@ -1,5 +1,5 @@
 ﻿/* SCRIPT INSPECTOR 2
- * version 2.1, March 2013
+ * version 2.1.3, May 2013
  * Copyright © 2012-2013, Flipbook Games
  * 
  * Unity's legendary custom inspector for C#, UnityScript and Boo scripts,
@@ -236,7 +236,12 @@ public class FGCodeWindow : EditorWindow
 			wnd.Repaint();
 	}
 
-	public static void OpenAssetInTab(string guid, int line = -1)
+	public static void OpenAssetInTab(string guid)
+	{
+		OpenAssetInTab(guid, -1);
+	}
+
+	public static void OpenAssetInTab(string guid, int line)
 	{
 		foreach (FGCodeWindow codeWindow in codeWindows)
 		{
@@ -274,7 +279,22 @@ public class FGCodeWindow : EditorWindow
 		EditorApplication.update += PingLineWhenLoaded;
 	}
 
-	public static FGCodeWindow OpenNewWindow(Object target = null, FGCodeWindow nextTo = null, bool reuseExisting = false)
+	public static FGCodeWindow OpenNewWindow()
+	{
+		return OpenNewWindow(null, null, false);
+	}
+
+	public static FGCodeWindow OpenNewWindow(Object target)
+	{
+		return OpenNewWindow(target, null, false);
+	}
+
+	public static FGCodeWindow OpenNewWindow(Object target, FGCodeWindow nextTo)
+	{
+		return OpenNewWindow(target, nextTo, false);
+	}
+
+	public static FGCodeWindow OpenNewWindow(Object target, FGCodeWindow nextTo, bool reuseExisting)
 	{
 		if (reuseExisting || target == null)
 		{
@@ -310,7 +330,7 @@ public class FGCodeWindow : EditorWindow
 		return window;
 	}
 
-	private bool TryDockNextToSimilarTab(FGCodeWindow nextTo = null)
+	private bool TryDockNextToSimilarTab(FGCodeWindow nextTo)
 	{
 		if (API.windowsField == null || API.mainViewField == null || API.panesField == null || API.addTabMethod == null)
 			return false;

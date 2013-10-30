@@ -1,5 +1,5 @@
 ﻿/* SCRIPT INSPECTOR 2
- * version 2.1.1, March 2013
+ * version 2.1.3, May 2013
  * Copyright © 2012-2013, Flipbook Games
  * 
  * Unity's legendary custom inspector for C#, UnityScript and Boo scripts,
@@ -18,6 +18,13 @@
  * located in Assets/FlipbookGames/ScriptInspector2/Editor/EditorResources to use
  * the Dynamic font rendering and rendering mode to be Hinted Smooth.
  * 
+ * New in v2.1.3:
+ * - Removed all default parameter values on methods to make Si2 code compatible with MonoDevelop
+ * 
+ * Bugs fixed in v2.1.2:
+ * - Alternative indent/outdent keyboard shortcuts (Ctrl+[ and Ctrl+])
+ * - Some Cmd-shortcuts on OS X were getting inserted into text after executing the command
+ *
  * Bugs fixed in v2.1.1:
  * - Exception on releasing the mouse above editor view after drag-select
  * - Exception on double-click on Project items on OS X 10.6.8 with Unity 3.5.7
@@ -137,7 +144,7 @@ public class ScriptInspector : Editor
 
 	public static string GetVersionString()
 	{
-		return "2.1.1, March 2013";
+		return "2.1.3, May 2013";
 	}
 
 	public void OnDisable()

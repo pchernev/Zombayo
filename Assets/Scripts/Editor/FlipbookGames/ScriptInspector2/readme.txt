@@ -1,5 +1,5 @@
 SCRIPT INSPECTOR 2
-version 2.1.1, March 2013
+version 2.1.3, May 2013
 Copyright © 2012-2013, Flipbook Games
 --------------------------------
 
@@ -13,6 +13,13 @@ Please remove the previous version of Script Inspector before upgrading from a p
 NOTE TO UNITY 4 USERS:
 This package has been exported from Unity 3.5.0 to allow using it in earlier versions of Unity. Unity 4 has different set of properties for Font assets and fonts imported from Unity 3 packages do not give the best results in Unity 4. In order to make the text in Script Inspector 2 crisp and more readable after importing this package you should set the import settings for all fonts located in Assets/FlipbookGames/ScriptInspector2/Editor/EditorResources to use the Dynamic font rendering and rendering mode to be Hinted Smooth.
 
+
+New in v2.1.3:
+- Removed all default parameter values on methods to make Si2 code compatible with MonoDevelop
+
+Bugs fixed in v2.1.2:
+- Alternative indent/outdent keyboard shortcuts (Ctrl+[ and Ctrl+])
+- Some Cmd-shortcuts on OS X were getting inserted into text after executing the command
 
 Bugs fixed in v2.1.1:
 - Exception on releasing the mouse above editor view after drag-select

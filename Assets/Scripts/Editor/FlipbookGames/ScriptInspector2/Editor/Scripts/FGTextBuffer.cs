@@ -1,5 +1,5 @@
 ﻿/* SCRIPT INSPECTOR 2
- * version 2.1, March 2013
+ * version 2.1.3, May 2013
  * Copyright © 2012-2013, Flipbook Games
  * 
  * Unity's legendary custom inspector for C#, UnityScript and Boo scripts,
@@ -564,12 +564,7 @@ public class FGTextBuffer : ScriptableObject
 	{
 		return undoPosition < undoBuffer.Count;
 	}
-	
-	public void DeleteLine()
-	{
-		Debug.Log( "Delete Line" );
-	}
-	
+
 	public void Undo()
 	{
 		if (!CanUndo())
@@ -1539,7 +1534,12 @@ public class FGTextBuffer : ScriptableObject
 
 	static Regex emailRegex = new Regex(@"\b([A-Z0-9._%-]+)@([A-Z0-9.-]+\.[A-Z]{2,6})\b", RegexOptions.IgnoreCase);
 
-	private void PushComment(ref List<TextBlock> blocks, string line, GUIStyle commentStyle = null)
+	private void PushComment(ref List<TextBlock> blocks, string line)
+	{
+		PushComment(ref blocks, line, null);
+	}
+
+	private void PushComment(ref List<TextBlock> blocks, string line, GUIStyle commentStyle)
 	{
 		string address;
 		int index;
