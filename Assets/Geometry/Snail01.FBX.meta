@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: 94f5c348fbbbb584ea40ecf0e174bac6
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Base HumanHead
+    100002: Base HumanLCollarbone
+    100004: Base HumanLDigit11
+    100006: Base HumanLDigit12
+    100008: Base HumanLDigit21
+    100010: Base HumanLDigit22
+    100012: Base HumanLDigit31
+    100014: Base HumanLDigit32
+    100016: Base HumanLDigit41
+    100018: Base HumanLDigit42
+    100020: Base HumanLForearm
+    100022: Base HumanLPalm
+    100024: Base HumanLUpperarm
+    100026: Base HumanNeck1
+    100028: Base HumanNeck2
+    100030: Base HumanPelvis
+    100032: Base HumanRCollarbone
+    100034: Base HumanRDigit11
+    100036: Base HumanRDigit12
+    100038: Base HumanRDigit21
+    100040: Base HumanRDigit22
+    100042: Base HumanRDigit31
+    100044: Base HumanRDigit32
+    100046: Base HumanRDigit41
+    100048: Base HumanRDigit42
+    100050: Base HumanRForearm
+    100052: Base HumanRibcage
+    100054: Base HumanRibcageBone001
+    100056: Base HumanRibcageBone001Bone001
+    100058: Base HumanRibcageBone001Bone001 1
+    100060: Base HumanRibcageBone001Bone001Bone001
+    100062: Base HumanRibcageBone001Bone001Bone001 1
+    100064: Base HumanRibcageBone002
+    100066: Base HumanRPalm
+    100068: Base HumanRUpperarm
+    100070: Base HumanSpine1
+    100072: Base HumanSpine2
+    100074: Base HumanTail1
+    100076: Base HumanTail2
+    100078: Base HumanTail3
+    100080: Plane001
+    100082: //RootNode
+    100084: NPC_Snail_01
+    400000: Base HumanHead
+    400002: Base HumanLCollarbone
+    400004: Base HumanLDigit11
+    400006: Base HumanLDigit12
+    400008: Base HumanLDigit21
+    400010: Base HumanLDigit22
+    400012: Base HumanLDigit31
+    400014: Base HumanLDigit32
+    400016: Base HumanLDigit41
+    400018: Base HumanLDigit42
+    400020: Base HumanLForearm
+    400022: Base HumanLPalm
+    400024: Base HumanLUpperarm
+    400026: Base HumanNeck1
+    400028: Base HumanNeck2
+    400030: Base HumanPelvis
+    400032: Base HumanRCollarbone
+    400034: Base HumanRDigit11
+    400036: Base HumanRDigit12
+    400038: Base HumanRDigit21
+    400040: Base HumanRDigit22
+    400042: Base HumanRDigit31
+    400044: Base HumanRDigit32
+    400046: Base HumanRDigit41
+    400048: Base HumanRDigit42
+    400050: Base HumanRForearm
+    400052: Base HumanRibcage
+    400054: Base HumanRibcageBone001
+    400056: Base HumanRibcageBone001Bone001
+    400058: Base HumanRibcageBone001Bone001 1
+    400060: Base HumanRibcageBone001Bone001Bone001
+    400062: Base HumanRibcageBone001Bone001Bone001 1
+    400064: Base HumanRibcageBone002
+    400066: Base HumanRPalm
+    400068: Base HumanRUpperarm
+    400070: Base HumanSpine1
+    400072: Base HumanSpine2
+    400074: Base HumanTail1
+    400076: Base HumanTail2
+    400078: Base HumanTail3
+    400080: Plane001
+    400082: //RootNode
+    400084: NPC_Snail_01
+    4300000: Plane001
+    4300002: NPC_Snail_01
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Plane001
+    13700002: NPC_Snail_01
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
