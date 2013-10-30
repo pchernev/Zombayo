@@ -17,7 +17,6 @@ public class EndlessWorld : MonoBehaviour
 	
 	private GameObject _player;
 
-			
 	// Use this for initialization
 	void Start ()
 	{
@@ -98,7 +97,7 @@ public class EndlessWorld : MonoBehaviour
 				_objs.Add( obj );
 			
 //			Debug.Log( "forward x: " + x );
-		}
+		}		
 	}
 	
 	void MoveBackward()

@@ -2,17 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour {
-	
+public class Player : MonoBehaviour {	
 	
 	public Vector3 bounceForce;
+	
+	[HideInInspector]
+	public float Speed;
+	
+	private GUITexture _btnRestart;
 	
 	Animator _animator;
 	
 	bool _isFlying;
+	public int hasBeenKicked = 0;
 			
 	private Statistics stat;
-	private float speed;
+
 	private List<Vector3> prevPos;
 	
 	private Rigidbody rigidbody;
@@ -24,13 +29,17 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		_animator = GetComponent<Animator>();
 		_isFlying = false;
 		
 		prevPos = new List<Vector3>();
 		prevPos.Add( transform.position );
-		speed = 0;		
+		Speed = 0;		
+		
+		_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
+		_btnRestart.enabled = false;			
 	}
 	
 	void Update()
@@ -39,14 +48,14 @@ public class Player : MonoBehaviour {
 		prevPos.Insert( 0, newPos );
 		
 		const int maxSize = 40;
-		speed = 0F;
+		Speed = 0F;
 		for( int i=0; i<prevPos.Count-1; i++ )
 		{
 			var p1 = prevPos[i];
 			var p2 = prevPos[i+1];
 			var s = Mathf.Abs( Vector3.Distance( p1, p2 ));
-			if( s > speed )
-				speed = s;
+			if( s > Speed )
+				Speed = s;
 		}
 		
 		if( prevPos.Count > maxSize )
@@ -56,6 +65,9 @@ public class Player : MonoBehaviour {
 //			if( speed < 0.1F )
 //				rigidbody.isKinematic = true;
 		}
+		
+		if( this.Speed == 0 && hasBeenKicked > 2 )
+			_btnRestart.enabled = true;		
 	}
 	
 	// Update is called once per frame
@@ -85,7 +97,7 @@ public class Player : MonoBehaviour {
 			_isFlying = false;
 			_animator.SetBool( "Fly", false );	
 						
-			if( speed > 0.1F )
+			if( Speed > 0.1F )
 				this.rigidbody.AddForce( bounceForce );
 		}
 		else 
@@ -97,6 +109,7 @@ public class Player : MonoBehaviour {
 	void OnCollisionExit( Collision collision )
 	{
 		_isFlying = true;
+		hasBeenKicked++;
 		_animator.SetBool( "Fly", true );
 	}	
 	
@@ -105,7 +118,7 @@ public class Player : MonoBehaviour {
 	{
 		GUI.Label( new Rect( 10.0f, 10.0f, 120.0f, 30.0f ), "Score: " + this.stat.Points.ToString() );
 		
-		GUI.Label( new Rect(10F, 40F, 120F, 30F), "Speed: " + speed.ToString() );
+		GUI.Label( new Rect(10F, 40F, 120F, 30F), "Speed: " + Speed.ToString() );
 //		EditorGUILayout.TextField ("File Name:", "test file name");
 //		
 //		if(GUILayout.Button(recordButton)) {

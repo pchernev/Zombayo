@@ -10,6 +10,10 @@ public class DrController : MonoBehaviour {
 	
 	private GameObject _player;
 	
+	private Vector3 startPos;
+	private Quaternion startRotation;
+	private float startSpeed;
+	
 	// animator values
 	public float speed;
 	public bool inKickZone = false;
@@ -33,6 +37,10 @@ public class DrController : MonoBehaviour {
 	{
 		_animator = GetComponent<Animator>();	
 		_player = GameObject.FindWithTag( "Player" );
+		
+		startPos = transform.position;
+		startRotation = transform.rotation;	
+		startSpeed = speed;
 	}
 	
 	bool firstTime = true;
@@ -58,7 +66,7 @@ public class DrController : MonoBehaviour {
 		}
 		speed -= slowSpeed;
 		
-		if( speed < 3F && firstTime )
+		if( speed < 2.5F && firstTime )
 		{			
 			firstTime = false;
 			var rb = _player.GetComponent<Rigidbody>();
@@ -96,4 +104,13 @@ public class DrController : MonoBehaviour {
 		Debug.Log( "drController->CollisionEnter: " );
 	}
 	
+	public void Reset()
+	{
+		inKickZone = false;
+		speed = startSpeed;
+		slowSpeed = 0.0f;
+		firstTime = true;
+		transform.position = startPos;
+		transform.rotation = startRotation;
+	}
 }

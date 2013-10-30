@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Tools\iTween\iTween.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
+     <Compile Include="Assets\Scripts\UIObjects\TextureButton.cs" />
      <Compile Include="Assets\Scripts\World\EndlessWorld.cs" />
      <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
