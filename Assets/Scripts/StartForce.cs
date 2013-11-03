@@ -14,6 +14,7 @@ public class StartForce : MonoBehaviour
 	public GameObject fingerMoveBeginMarkerPrefab;
 	public GameObject fingerMoveEndMarkerPrefab;
 	public GameObject fingerUpMarkerPrefab;
+	public GameObject trailPrefab;
 	
 	public Rigidbody accelarateObject;
 	
@@ -116,6 +117,13 @@ public class StartForce : MonoBehaviour
 		PathRenderer path = paths[e.Finger.Index];
 		path.Reset();
 		path.AddPoint( e.Finger.Position, fingerDownMarkerPrefab );
+		
+		if( trailPrefab != null )
+		{
+			var vec = new Vector3( e.Finger.Position.x, e.Finger.Position.y, trailPrefab.transform.position.z );
+			Debug.Log( "posDown: " + vec );
+			trailPrefab.transform.position = vec;
+		}
 	}
 	
 	void OnFingerMove( FingerMotionEvent e )
@@ -134,6 +142,13 @@ public class StartForce : MonoBehaviour
 		{
 			path.AddPoint( e.Position, fingerMoveEndMarkerPrefab );
 		}
+		
+		if( trailPrefab != null )
+		{
+			var vec = new Vector3( e.Position.x, e.Finger.Position.y, trailPrefab.transform.position.z );
+			Debug.Log( "pos: " + vec.ToString() );
+			trailPrefab.transform.position = vec;
+		}
 	}
 	
 	void OnFingerUp( FingerUpEvent e )
@@ -141,14 +156,21 @@ public class StartForce : MonoBehaviour
 		AccelerateObject( e.Finger.Index );
 		PathRenderer path = paths[e.Finger.Index];
 		path.AddPoint( e.Finger.Position, fingerUpMarkerPrefab );
+		
+		if( trailPrefab != null )
+		{
+			var vec = new Vector3( e.Finger.Position.x, e.Finger.Position.y, trailPrefab.transform.position.z );
+			Debug.Log( "posUp: " + vec.ToString() );
+			trailPrefab.transform.position = vec;
+		}
 	}
 	
 	void AccelerateObject( int index )
 	{
 		var f = paths[index].Size();
 		var force = new Vector3( f * 170.0f, f * 530.0f, 0.0f );
-		this.accelarateObject.AddForce( force );	
+		//this.accelarateObject.AddForce( force );	
 		
-		Debug.Log( "AccelerateObject" );
+		//Debug.Log( "AccelerateObject" );
 	}
 }

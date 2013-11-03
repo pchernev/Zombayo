@@ -1,4 +1,4 @@
-// FingerGestures v2.3b
+﻿// FingerGestures v2.3b
 // The FingerGestures library is copyright (c) of William Ravaine
 // Please send feedback or bug reports to spk@fatalfrog.com
 // More FingerGestures information at http://fingergestures.fatalfrog.com
@@ -126,7 +126,7 @@ public class FingerGestures : MonoBehaviour
             return;
         }
 
-        Debug.Log( "FingerGestures: using " + inputProviderPrefab.name );
+        //Debug.Log( "FingerGestures: using " + inputProviderPrefab.name );
 
         // remove any existing one
         if( inputProvider )

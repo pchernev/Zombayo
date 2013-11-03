@@ -70,7 +70,7 @@ public class DrController : MonoBehaviour {
 		{			
 			firstTime = false;
 			var rb = _player.GetComponent<Rigidbody>();
-			rb.AddForce( startForce );						
+//			rb.AddForce( startForce );						
 		}
 		if( speed < 0.0f )
 		{
@@ -89,13 +89,13 @@ public class DrController : MonoBehaviour {
 	
 	void OnTriggerEnter( Collider collider )
 	{
-		Debug.Log( "OnTriggerEnter" );
+		//Debug.Log( "OnTriggerEnter" );
 		inKickZone = true;
 	}
 	
 	void OnTriggerExit( Collider collider )
 	{
-		Debug.Log( "OnTriggerExit" );
+		//Debug.Log( "OnTriggerExit" );
 		inKickZone = false;
 	}
 	

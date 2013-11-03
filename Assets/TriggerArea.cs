@@ -18,7 +18,7 @@ public class TriggerArea : MonoBehaviour {
 	void OnTriggerEnter( Collider collider )
 	{
 		var obj = collider.gameObject;
-		Debug.Log( "obj.tag: " + obj.tag );
+		//Debug.Log( "obj.tag: " + obj.tag );
 		if( obj.tag == "Doctor" )
 			doctor.SetKickZone( true );
 	}

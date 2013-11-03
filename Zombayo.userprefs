@@ -2,16 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs">
     <Files>
-      <File FileName="Assets/Plugins/FingerGestures/Scripts/Components/ScreenRaycaster.cs" Line="45" Column="10" />
-      <File FileName="Assets/Scripts/World/EndlessWorld.cs" Line="20" Column="4" />
-      <File FileName="Assets/Scripts/World/WorldPiece.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MouseInput.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="69" Column="43" />
-      <File FileName="Assets/Scripts/NPC/DrController.cs" Line="112" Column="20" />
-      <File FileName="Assets/TriggerArea.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UIObjects/TextureButton.cs" Line="40" Column="3" />
-      <File FileName="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs" Line="867" Column="29" />
+      <File FileName="Assets/Scripts/StartForce.cs" Line="117" Column="24" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Base/FingerEventDetector.cs" Line="171" Column="75" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerDownDetector.cs" Line="26" Column="27" />
+      <File FileName="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs" Line="319" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -42,9 +36,7 @@
                 <Node name="Editor" expanded="True">
                   <Node name="FlipbookGames" expanded="True">
                     <Node name="ScriptInspector2" expanded="True">
-                      <Node name="Editor" expanded="True">
-                        <Node name="Scripts" expanded="True" />
-                      </Node>
+                      <Node name="Editor" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
@@ -56,7 +48,9 @@
               <Node name="Plugins" expanded="True">
                 <Node name="FingerGestures" expanded="True">
                   <Node name="Scripts" expanded="True">
+                    <Node name="Base" expanded="True" />
                     <Node name="Components" expanded="True" />
+                    <Node name="Finger Event Detectors" expanded="True" />
                   </Node>
                 </Node>
               </Node>
