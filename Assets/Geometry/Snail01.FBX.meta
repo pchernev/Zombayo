@@ -46,6 +46,9 @@ ModelImporter:
     100080: Plane001
     100082: //RootNode
     100084: NPC_Snail_01
+    100086: Base Human
+    100088: Snail01
+    100090: Box001
     400000: Base HumanHead
     400002: Base HumanLCollarbone
     400004: Base HumanLDigit11
@@ -89,12 +92,23 @@ ModelImporter:
     400080: Plane001
     400082: //RootNode
     400084: NPC_Snail_01
+    400086: Base Human
+    400088: Snail01
+    400090: Box001
+    2300000: Box001
+    3300000: Box001
     4300000: Plane001
     4300002: NPC_Snail_01
-    7400000: Take 001
+    4300004: Snail01
+    4300006: Box001
+    7400000: snailIdle
+    7400002: snailGrab
+    7400004: snailGrabThrow
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Plane001
     13700002: NPC_Snail_01
+    13700004: Snail01
   materials:
     importMaterials: 0
     materialName: 0
@@ -108,10 +122,52 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     clipAnimations:
-    - name: Take 001
+    - name: snailIdle
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: snailGrab
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      transformMask: []
+    - name: snailGrabThrow
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -163,7 +219,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Base HumanPelvis
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   additionalBone: 1
   animationType: 2
