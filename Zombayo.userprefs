@@ -1,11 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerHoverDetector.cs">
     <Files>
-      <File FileName="Assets/Scripts/StartForce.cs" Line="117" Column="24" />
-      <File FileName="Assets/Plugins/FingerGestures/Scripts/Base/FingerEventDetector.cs" Line="171" Column="75" />
-      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerDownDetector.cs" Line="26" Column="27" />
-      <File FileName="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs" Line="319" Column="34" />
+      <File FileName="Assets/Scripts/StartForce.cs" Line="123" Column="53" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Base/FingerEventDetector.cs" Line="156" Column="17" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerDownDetector.cs" Line="15" Column="29" />
+      <File FileName="Assets/Scripts/World/WorldPiece.cs" Line="14" Column="19" />
+      <File FileName="Assets/Scripts/World/EndlessWorld.cs" Line="123" Column="32" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerHoverDetector.cs" Line="38" Column="1" />
+      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerMotionDetector.cs" Line="12" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,9 +28,7 @@
                 <Node name="FlipbookGames" expanded="True">
                   <Node name="FavoritesTab" expanded="True">
                     <Node name="Editor" expanded="True">
-                      <Node name="Scripts" expanded="True">
-                        <Node name="FavoritesTab.cs" selected="True" />
-                      </Node>
+                      <Node name="Scripts" expanded="True" />
                     </Node>
                   </Node>
                 </Node>
@@ -50,7 +51,9 @@
                   <Node name="Scripts" expanded="True">
                     <Node name="Base" expanded="True" />
                     <Node name="Components" expanded="True" />
-                    <Node name="Finger Event Detectors" expanded="True" />
+                    <Node name="Finger Event Detectors" expanded="True">
+                      <Node name="FingerHoverDetector.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>

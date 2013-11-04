@@ -9,7 +9,7 @@ public class EndlessWorld : MonoBehaviour
     public float countdown = 3.0f;
 	
 	public GameObject[] tiles;
-	public GameObject[] npcs;
+	public GameObject[] npcs	;
 	
 	private List<GameObject> _objs;
 	private List<GameObject> _npcs;
