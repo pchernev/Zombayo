@@ -12,7 +12,10 @@ public class Player : MonoBehaviour {
 	private GUITexture _btnRestart;
 	
 	Animator _animator;
-	
+
+	private Vector3 startPos;
+	private Quaternion startRotation;	
+
 	bool _isFlying;
 	public int hasBeenKicked = 0;
 			
@@ -39,7 +42,10 @@ public class Player : MonoBehaviour {
 		Speed = 0;		
 		
 		_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
-		_btnRestart.enabled = false;			
+		_btnRestart.enabled = false;	
+
+		startPos = transform.position;
+		startRotation = transform.rotation;
 	}
 	
 	void Update()
@@ -62,12 +68,15 @@ public class Player : MonoBehaviour {
 		{
 			prevPos.RemoveAt( maxSize );
 			
-//			if( speed < 0.1F )
+//			if( Speed < 0.1F )
 //				rigidbody.isKinematic = true;
 		}
 		
 		if( this.Speed == 0 && hasBeenKicked > 2 )
 			_btnRestart.enabled = true;		
+
+		if( this.Speed < 0.1f && hasBeenKicked >= 2 )
+			rigidbody.isKinematic = true;
 	}
 	
 	// Update is called once per frame
@@ -134,4 +143,12 @@ public class Player : MonoBehaviour {
 //		}
 //		EditorGUILayout.LabelField ("Status: ", status);
 	}	
+
+	public void Reset()
+	{
+		transform.position = startPos;
+		transform.rotation = startRotation;
+		hasBeenKicked = 0;		
+		rigidbody.isKinematic = false;
+	}
 }

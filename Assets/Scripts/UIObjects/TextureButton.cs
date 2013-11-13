@@ -11,14 +11,10 @@ public class TextureButton : MonoBehaviour
 	public Player player;
 	public DrController doctor;
 	
-	private Vector3 startPos;
-	private Quaternion startRotation;	
-	
+
 	// Use this for initialization
 	void Start()
 	{
-		startPos = transform.position;
-		startRotation = transform.rotation;
 	}
 	
 	// Update is called once per frame
@@ -40,14 +36,9 @@ public class TextureButton : MonoBehaviour
 	{
 		audio.PlayOneShot( clickSound );
 		
-//		yield return new WaitForSeconds( 1.0f );
-		
-		player.transform.position = startPos;
-		player.transform.rotation = startRotation;
-		player.hasBeenKicked = 0;
-		
+		player.Reset();
 		doctor.Reset();
-		
+
 		guiTexture.enabled = false;
 	}
 }

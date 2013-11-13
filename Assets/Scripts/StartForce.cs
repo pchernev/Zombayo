@@ -160,7 +160,6 @@ public class StartForce : MonoBehaviour
 		if( trailPrefab != null )
 		{
 			var vec = new Vector3( e.Finger.Position.x, e.Finger.Position.y, trailPrefab.transform.position.z );
-			Debug.Log( "posUp: " + vec.ToString() );
 			trailPrefab.transform.position = vec;
 		}
 	}

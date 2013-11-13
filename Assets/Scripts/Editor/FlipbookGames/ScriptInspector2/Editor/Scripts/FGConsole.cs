@@ -15,6 +15,8 @@
 using UnityEngine;
 using UnityEditor;
 using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 
 public class FGConsole : EditorWindow
 {
@@ -67,6 +69,11 @@ public class FGConsole : EditorWindow
 	[MenuItem("Window/Script Inspector Console", false, 0x898)]
 	public static void ShowConsole()
 	{
+		var count = 1;
+		foreach( var f in (typeof(EditorWindow).GetFields( BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public )))
+        {
+			Debug.Log( "c(" + count++ +"): " + f.ToString() );
+		}
 		GetWindow(consoleWindowType);
 		GetWindow<FGConsole>(consoleWindowType).title = "SI Console";
 	}
@@ -185,88 +192,92 @@ Click the button below to open the Console window...", MessageType.Info);
 
 	private static void OpenLogEntry(EditorWindow console)
 	{
-		ListViewState listView = consoleListViewField.GetValue(console) as ListViewState;
-		if (listView != null && listView.row >= 0)
-		{
-			bool gotIt = false;
-			startGettingEntriesMethod.Invoke(null, new object[0]);
-			try {
-				gotIt = (bool) getEntryMethod.Invoke(null, new object[] { listView.row, logEntry });
-			} finally {
-				endGettingEntriesMethod.Invoke(null, new object[0]);
-			}
-			
-			if (gotIt)
-			{
-				int line = (int)logEntryLineField.GetValue(logEntry);
-				string file = (string)logEntryFileField.GetValue(logEntry);
-				string guid = AssetDatabase.AssetPathToGUID(file);
-				if (string.IsNullOrEmpty(guid))
-				{
-					int instanceID = (int)logEntryInstanceIDField.GetValue(logEntry);
-					if (instanceID != 0)
-					{
-						file = AssetDatabase.GetAssetPath(instanceID);
-						guid = AssetDatabase.AssetPathToGUID(file);
-					}
-				}
-				if (!string.IsNullOrEmpty(guid))
-					FGCodeWindow.OpenAssetInTab(guid, line);
-			}
-		}
+		System.Console.WriteLine( "OpenLogEntry" );
+		var obj = consoleListViewField.GetValue( console );
+//		ListViewState listView = consoleListViewField.GetValue(console) as ListViewState;
+//		if (listView != null && listView.row >= 0)
+//		{
+//			bool gotIt = false;
+//			startGettingEntriesMethod.Invoke(null, new object[0]);
+//			try {
+//				gotIt = (bool) getEntryMethod.Invoke(null, new object[] { listView.row, logEntry });
+//			} finally {
+//				endGettingEntriesMethod.Invoke(null, new object[0]);
+//			}
+//			
+//			if (gotIt)
+//			{
+//				int line = (int)logEntryLineField.GetValue(logEntry);
+//				string file = (string)logEntryFileField.GetValue(logEntry);
+//				string guid = AssetDatabase.AssetPathToGUID(file);
+//				if (string.IsNullOrEmpty(guid))
+//				{
+//					int instanceID = (int)logEntryInstanceIDField.GetValue(logEntry);
+//					if (instanceID != 0)
+//					{
+//						file = AssetDatabase.GetAssetPath(instanceID);
+//						guid = AssetDatabase.AssetPathToGUID(file);
+//					}
+//				}
+//				if (!string.IsNullOrEmpty(guid))
+//					FGCodeWindow.OpenAssetInTab(guid, line);
+//			}
+//		}
 	}
 
 	private void DoPopupMenu(EditorWindow console)
 	{
-		ListViewState listView = consoleListViewField.GetValue(console) as ListViewState;
-		if (listView == null || listView.row < 0)
-			return;
+		System.Console.WriteLine( "DoPopupMenu" );
+		//Debug.Log( "con1: " + console.ToString() + " obj: " + consoleListViewField.GetValue(console).ToString());
+		//var listView = consoleListViewField.GetValue(console);
+		//if (listView == null || listView.row < 0)
+		//	return;
 
-		string text = (string)consoleActiveTextField.GetValue(console);
-		if (string.IsNullOrEmpty(text))
-			return;
-		
-		GenericMenu codeViewPopupMenu = new GenericMenu();
+		//string text = (string)consoleActiveTextField.GetValue(console);
+		//if (string.IsNullOrEmpty(text))
+		//	return;
+			
+		//GenericMenu codeViewPopupMenu = new GenericMenu();
 
-		string[] lines = text.Split('\n');
-		foreach (string line in lines)
-		{
-			int atAssetsIndex = line.IndexOf("(at Assets/");
-			if (atAssetsIndex < 0)
-				continue;
+		//string[] lines = text.Split('\n');   
+		//foreach (string line in lines)
+		//{
+		//	int atAssetsIndex = line.IndexOf("(at Assets/");
+		//	if (atAssetsIndex < 0)
+		//		continue;
 
-			int functionNameEnd = line.IndexOf('(');
-			if (functionNameEnd < 0)
-				continue;
-			string functionName = line.Substring(0, functionNameEnd).TrimEnd(' ');
+		//	int functionNameEnd = line.IndexOf('(');
+		//	if (functionNameEnd < 0)
+		//		continue;
+		//	string functionName = line.Substring(0, functionNameEnd).TrimEnd(' ');
 
-			int lineIndex = line.LastIndexOf(':');
-			if (lineIndex <= atAssetsIndex)
-				continue;
-			int atLine = 0;
-			for (int i = lineIndex + 1; i < line.Length; ++i)
-			{
-				char c = line[i];
-				if (c < '0' || c > '9')
-					break;
-				atLine = atLine * 10 + (c - '0');
-			}
+		//	int lineIndex = line.LastIndexOf(':');
+		//	if (lineIndex <= atAssetsIndex)
+		//		continue;
+		//	int atLine = 0;
+		//	for (int i = lineIndex + 1; i < line.Length; ++i)
+		//	{
+		//		char c = line[i];
+		//		if (c < '0' || c > '9')
+		//			break;
+		//		atLine = atLine * 10 + (c - '0');
+		//	}
 
-			atAssetsIndex += "(at ".Length;
-			string assetPath = line.Substring(atAssetsIndex, lineIndex - atAssetsIndex);
-			string scriptName = assetPath.Substring(assetPath.LastIndexOf('/') + 1);
+		//	atAssetsIndex += "(at ".Length;
+		//	string assetPath = line.Substring(atAssetsIndex, lineIndex - atAssetsIndex);
+		//	string scriptName = assetPath.Substring(assetPath.LastIndexOf('/') + 1);
 
-			string guid = AssetDatabase.AssetPathToGUID(assetPath);
-			if (!string.IsNullOrEmpty(guid))
-			{
-				codeViewPopupMenu.AddItem(
-					new GUIContent(scriptName + " - " + functionName.Replace(':', '.') + ", line " + atLine),
-					false,
-					() => FGCodeWindow.OpenAssetInTab(guid, atLine));
-			}
-		}
+		//	string guid = AssetDatabase.AssetPathToGUID(assetPath);
+		//	if (!string.IsNullOrEmpty(guid))
+		//	{
+		//		codeViewPopupMenu.AddItem(
+		//			new GUIContent(scriptName + " - " + functionName.Replace(':', '.') + ", line " + atLine),
+		//			false,
+		//			() => FGCodeWindow.OpenAssetInTab(guid, atLine));
+		//	}
+		//}
 
-		if (codeViewPopupMenu.GetItemCount() > 0)
-			codeViewPopupMenu.ShowAsContext();
+		//if (codeViewPopupMenu.GetItemCount() > 0)
+		//	codeViewPopupMenu.ShowAsContext();
 	}
 }

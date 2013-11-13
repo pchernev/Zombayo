@@ -70,7 +70,7 @@ public class DrController : MonoBehaviour {
 		{			
 			firstTime = false;
 			var rb = _player.GetComponent<Rigidbody>();
-//			rb.AddForce( startForce );						
+			rb.AddForce( startForce );						
 		}
 		if( speed < 0.0f )
 		{
