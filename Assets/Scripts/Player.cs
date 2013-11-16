@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
 		startPos = transform.position;
 		startRotation = transform.rotation;
 	}
-	
+
 	void Update()
 	{
 		Vector3 newPos = transform.position;
@@ -151,4 +151,10 @@ public class Player : MonoBehaviour {
 		hasBeenKicked = 0;		
 		rigidbody.isKinematic = false;
 	}
+
+	#region NPC collisions
+
+	private int test;
+
+	#endregion
 }

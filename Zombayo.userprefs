@@ -1,38 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGConsole.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UnitTest/DemoTest.cs">
     <Files>
-      <File FileName="Assets/Plugins/FingerGestures/Scripts/Finger Event Detectors/FingerMotionDetector.cs" Line="109" Column="3" />
-      <File FileName="Assets/Scripts/Editor/FlipbookGames/ScriptInspector2/Editor/Scripts/FGConsole.cs" Line="55" Column="59" />
+      <File FileName="Assets/Scripts/Player.cs" Line="156" Column="2" />
+      <File FileName="Assets/Scripts/NPC/Snail.cs" Line="15" Column="32" />
+      <File FileName="Assets/Scripts/UnitTest/DemoTest.cs" Line="18" Column="11" />
+      <File FileName="Assets/Scripts/NPC/Coin.cs" Line="15" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="References" expanded="True" />
-          </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True">
-            <Node name="References" expanded="True" />
             <Node name="Scripts" expanded="True">
-              <Node name="Editor" expanded="True">
-                <Node name="FlipbookGames" expanded="True">
-                  <Node name="ScriptInspector2" expanded="True">
-                    <Node name="Editor" expanded="True">
-                      <Node name="Scripts" expanded="True">
-                        <Node name="FGConsole.cs" selected="True" />
-                      </Node>
-                    </Node>
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="Plugins" expanded="True">
-              <Node name="FingerGestures" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="Finger Event Detectors" expanded="True" />
-                </Node>
+              <Node name="NPC" expanded="True" />
+              <Node name="UnitTest" expanded="True">
+                <Node name="DemoTest.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -40,6 +23,9 @@
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

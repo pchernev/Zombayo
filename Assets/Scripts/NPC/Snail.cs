@@ -3,14 +3,17 @@ using System.Collections;
 
 public class Snail : BaseItem
 {
+	public float speed = 0.01f;
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+	{
+		var pos = transform.position;
+		pos.x -= speed;
+		transform.position = pos;
 	}
 }

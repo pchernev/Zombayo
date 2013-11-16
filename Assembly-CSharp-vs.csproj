@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
      <Compile Include="Assets\Scripts\UIObjects\TextureButton.cs" />
+     <Compile Include="Assets\Scripts\UnitTest\DemoTest.cs" />
      <Compile Include="Assets\Scripts\World\EndlessWorld.cs" />
      <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
@@ -131,6 +132,7 @@
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderYUV.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlowEffectDownsample.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\CreaseApply.shader" />
+     <None Include="Assets\test-results\Assembly-CSharp.csproj-Debug-2013-11-16.xml" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\GlobalFog.shader" />
      <None Include="Assets\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Luminance.shader" />
