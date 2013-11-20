@@ -73,10 +73,14 @@ public class Player : MonoBehaviour {
 		}
 		
 		if( this.Speed == 0 && hasBeenKicked > 2 )
-			_btnRestart.enabled = true;		
+		{
+			_btnRestart.enabled = true;
+		}
 
-		if( this.Speed < 0.1f && hasBeenKicked >= 2 )
+		if( this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic )
+		{
 			rigidbody.isKinematic = true;
+		}
 	}
 	
 	// Update is called once per frame

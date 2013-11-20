@@ -1,21 +1,45 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UnitTest/DemoTest.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player.cs" Line="156" Column="2" />
-      <File FileName="Assets/Scripts/NPC/Snail.cs" Line="15" Column="32" />
-      <File FileName="Assets/Scripts/UnitTest/DemoTest.cs" Line="18" Column="11" />
-      <File FileName="Assets/Scripts/NPC/Coin.cs" Line="15" Column="3" />
+      <File FileName="Assets/Scripts/Player.cs" Line="65" Column="4" />
+      <File FileName="Assets/Scripts/NPC/Snail.cs" Line="43" Column="40" />
+      <File FileName="Assets/Scripts/NPC/Coin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/World/EndlessWorld.cs" Line="21" Column="15" />
+      <File FileName="Assets/Scripts/NPC/DrController.cs" Line="102" Column="23" />
+      <File FileName="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/AboutFavoritesTab.cs" Line="22" Column="33" />
+      <File FileName="Assets/MixamoAnimatorEvents/AnimatorEvents.cs" Line="55" Column="1" />
+      <File FileName="Assets/MixamoAnimatorEvents/AnimEvent.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="References" expanded="True" />
+            <Node name="MixamoAnimatorEvents" expanded="True" />
             <Node name="Scripts" expanded="True">
               <Node name="NPC" expanded="True" />
-              <Node name="UnitTest" expanded="True">
-                <Node name="DemoTest.cs" selected="True" />
+              <Node name="World" expanded="True" />
+              <Node name="Player.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-Editor" expanded="True">
+            <Node name="ExternalResources" expanded="True">
+              <Node name="FlipbookGames" expanded="True">
+                <Node name="FavoritesTab" expanded="True">
+                  <Node name="Editor" expanded="True">
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="FingerGestures" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Finger Event Detectors" expanded="True" />
+                  <Node name="Gesture Recognizers" expanded="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
