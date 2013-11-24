@@ -5,9 +5,11 @@ public class Snail : BaseItem
 {
 	public float speed = 0.01f;
 	public Vector3 force;
+	public Transform throwBone;
 
 	private Animator _animator;
-
+	
+	private Transform _playerParent;
 	private GameObject _player;
 	private Rigidbody _rigidbody;
 	
@@ -33,10 +35,16 @@ public class Snail : BaseItem
 		transform.position = pos;
 	}
 
+	private bool wasHit = false;
 	void OnCollisionEnter( Collision collision )
 	{
+//		if( wasHit )
+//			return;
+
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
+			wasHit = true;
+
 			var collider = GetComponent<BoxCollider>();
 			collider.enabled = false;	
 
@@ -44,6 +52,10 @@ public class Snail : BaseItem
 
 			_rigidbody.isKinematic = true;
 //			_rigidbody.AddForce( this.force );
+
+			// catch player
+			_playerParent = _player.transform.parent;
+			_player.transform.parent = throwBone;
 		}
 	}
 
@@ -51,6 +63,7 @@ public class Snail : BaseItem
 	{
 		Debug.Log( "ApplyForce: " + this.force.ToString() );
 
+		_player.transform.parent = _playerParent;
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( this.force );
 	}
