@@ -37,6 +37,14 @@ ModelImporter:
     100062: Base HumanSpine
     100064: //RootNode
     100066: Plane001
+    100068: Base HumanLowerJaw
+    100070: Base HumanRibcageBone003Bone003
+    100072: CarrotLeaves
+    100074: CarrotMesh
+    100076: LLeaf01
+    100078: LLeaf02
+    100080: RLeaf01
+    100082: RLeaf02
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanHeadBone001
@@ -71,10 +79,25 @@ ModelImporter:
     400062: Base HumanSpine
     400064: //RootNode
     400066: Plane001
+    400068: Base HumanLowerJaw
+    400070: Base HumanRibcageBone003Bone003
+    400072: CarrotLeaves
+    400074: CarrotMesh
+    400076: LLeaf01
+    400078: LLeaf02
+    400080: RLeaf01
+    400082: RLeaf02
+    2300000: CarrotMesh
+    3300000: CarrotMesh
     4300000: Plane001
-    7400000: Take 001
+    4300002: CarrotMesh
+    4300004: CarrotLeaves
+    7400000: Carrot Idle
+    7400002: Carrot Eat
     9500000: //RootNode
     13700000: Plane001
+    13700002: CarrotLeaves
+    13700004: CarrotMesh
   materials:
     importMaterials: 0
     materialName: 0
@@ -89,7 +112,161 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Carrot Idle
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base HumanPelvis
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/Base
+          HumanRibcageBone003Bone003
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01/LLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01/RLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLowerJaw
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit31
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit31
+        weight: 1
+      - path: Base HumanPelvis/CarrotMesh
+        weight: 1
+      - path: CarrotLeaves
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Carrot Eat
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 170
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base HumanPelvis
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/Base
+          HumanRibcageBone003Bone003
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01/LLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01/RLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLowerJaw
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit31
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit31
+        weight: 1
+      - path: Base HumanPelvis/CarrotMesh
+        weight: 1
+      - path: CarrotLeaves
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
