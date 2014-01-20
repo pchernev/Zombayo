@@ -24,7 +24,8 @@ public class Player : MonoBehaviour {
 	private List<Vector3> prevPos;
 	
 	private Rigidbody rigidbody;
-	
+
+
 	void Awake() 
 	{
 		stat = new Statistics();
