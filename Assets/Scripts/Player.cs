@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody>();
 	}
 	
-	// Use this for initialization
+	// Use this for initialization 
 	void Start ()
 	{
 		_animator = GetComponent<Animator>();
