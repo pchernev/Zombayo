@@ -133,9 +133,16 @@ public class Player : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		GUI.Label( new Rect( 10.0f, 10.0f, 120.0f, 30.0f ), "Score: " + this.stat.Points.ToString() );
+
+        UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
+        scoresLabel.text = "Score: " + this.stat.Points.ToString();
+
+        UILabel distanceLabel = GameObject.Find("DistanceLabel").GetComponent<UILabel>();
+        distanceLabel.text = "Distance: " + transform.position.x.ToString("F");
+
+        //GUI.Label( new Rect( 10.0f, 10.0f, 120.0f, 30.0f ), "Score: " + this.stat.Points.ToString() );
 		
-		GUI.Label( new Rect(10F, 40F, 120F, 30F), "Speed: " + Speed.ToString() );
+        //GUI.Label( new Rect(10F, 40F, 120F, 30F), "Speed: " + Speed.ToString() );
 //		EditorGUILayout.TextField ("File Name:", "test file name");
 //		
 //		if(GUILayout.Button(recordButton)) {
