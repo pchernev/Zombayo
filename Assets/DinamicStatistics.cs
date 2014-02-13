@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-public class DinamicStatistics : MonoBehaviour {
+public class DinamicStatistics : MonoBehaviour
+{
     public UIFont font;
     private static Dictionary<string, float> dict;
-
-    private void InitStatsContainer() 
+    private bool isVisible = true;
+    private bool isMoving = false;
+    private void InitStatsContainer()
     {
         if (dict == null)
         {
             dict = new Dictionary<string, float>();
         }
     }
-
     public DinamicStatistics()
     {
         InitStatsContainer();
@@ -21,22 +22,6 @@ public class DinamicStatistics : MonoBehaviour {
     void Start()
     {
         this.InitStatsContainer();
-
-        //Debug.Log("In Start -> DinamicStatistics");
-        //var vectorOffset = new Vector3(0, 0, 0);
-        //foreach (var item in dict)
-        //{
-        //    GameObject labelObj = NGUITools.AddChild(this.gameObject);
-        //    labelObj.name = item.Key;
-        //    vectorOffset -= new Vector3(0, 20, 0);
-        //    labelObj.transform.localPosition = vectorOffset;
-        //    var label = labelObj.AddComponent<UILabel>();
-        //    label.pivot = UIWidget.Pivot.Left;
-        //    UIFont font = Resources.Load<UIFont>("SciFi/SciFi Font - Header");
-        //    label.font = font;
-        //    label.text = item.Key + item.Value.ToString("#");
-        //}
-      
     }
 
     public float this[string key]
@@ -45,7 +30,7 @@ public class DinamicStatistics : MonoBehaviour {
         {
             if (!dict.ContainsKey(key))
             {
-                dict.Add(key, 0);                
+                dict.Add(key, 0);
             }
             return dict[key];
         }
@@ -53,16 +38,46 @@ public class DinamicStatistics : MonoBehaviour {
         {
             if (!dict.ContainsKey(key))
             {
-                dict.Add(key, value);                   
+                dict.Add(key, value);
             }
             else
             {
                 dict[key] = value;
             }
         }
-    }    
+    }
     void Update()
     {
+        #region Hiding Showing Panel
+        var panel = this.gameObject.GetComponent<UIPanel>();
+        Vector3 unvisiblePosition = new Vector3(0, 100, 0);
+        Vector3 visiblePosition = new Vector3(0, 0, 0);
+
+        if (Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            isVisible = !(isVisible);
+            isMoving = true;
+        }
+        if (isMoving)
+        {
+            if (isVisible)
+            {
+                panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, visiblePosition, (Time.smoothDeltaTime));
+                if (panel.transform.position.y == visiblePosition.y)
+                {
+                    isMoving = false;
+                }
+            }
+            else
+            {
+                panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, unvisiblePosition, (Time.smoothDeltaTime));
+                if (panel.transform.position.y == unvisiblePosition.y)
+                {
+                    isMoving = false;
+                }
+            }
+        }
+        #endregion
         var vectorOffset = new Vector3(0, 30, 0);
         foreach (var item in dict)
         {
@@ -73,25 +88,18 @@ public class DinamicStatistics : MonoBehaviour {
                 label.text = item.Key + item.Value.ToString("#");
             }
             else
-	        {
+            {
                 GameObject labelObj = NGUITools.AddChild(this.gameObject);
                 labelObj.name = item.Key;
-  
+
                 labelObj.transform.localPosition -= vectorOffset;
                 vectorOffset -= new Vector3(0, 20, 0);
-               
 
                 var label = labelObj.AddComponent<UILabel>();
                 label.pivot = UIWidget.Pivot.Left;
                 label.font = font;
                 label.text = item.Key + item.Value.ToString("#");
-	        } 
-        }        
-    }
-
-    void OnClick()
-    {
-        GameObject panel = GameObject.Find("Panel");
-        NGUITools.SetActive(panel, false);
+            }
+        }
     }
 }
