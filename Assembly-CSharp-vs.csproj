@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DinamicStatistics.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimEvent.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimatorEvents.cs" />
      <Compile Include="Assets\ExternalResources\FlipbookGames\Common\Scripts\FG_GameObjectGUIDs.cs" />
@@ -235,6 +234,7 @@
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgutilities.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ColorPoint.cs" />
+     <Compile Include="Assets\Scripts\DinamicStatistics.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\IdleAnimation.cs" />
      <Compile Include="Assets\Scripts\MouseInput.cs" />

@@ -7,6 +7,7 @@ public class DinamicStatistics : MonoBehaviour
     private static Dictionary<string, float> dict;
     private bool isVisible = true;
     private bool isMoving = false;
+    float to = 1f;
     private void InitStatsContainer()
     {
         if (dict == null)
@@ -46,39 +47,64 @@ public class DinamicStatistics : MonoBehaviour
             }
         }
     }
+
+    void FixedUpdate()
+    {
+        // hide using alpha chanel change
+        var panel = this.gameObject.GetComponent<UIPanel>();
+        panel.alpha = Mathf.Lerp(panel.alpha, to, Time.smoothDeltaTime); 
+
+    }
+
     void Update()
     {
-        #region Hiding Showing Panel
-        var panel = this.gameObject.GetComponent<UIPanel>();
-        Vector3 unvisiblePosition = new Vector3(0, 100, 0);
-        Vector3 visiblePosition = new Vector3(0, 0, 0);
-
         if (Input.GetKeyDown(KeyCode.BackQuote))
-        {
-            isVisible = !(isVisible);
-            isMoving = true;
-        }
-        if (isMoving)
         {
             if (isVisible)
             {
-                panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, visiblePosition, (Time.smoothDeltaTime));
-                if (panel.transform.position.y == visiblePosition.y)
-                {
-                    isMoving = false;
-                }
+                isVisible = false;
+                to = 0f;
             }
             else
             {
-                panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, unvisiblePosition, (Time.smoothDeltaTime));
-                if (panel.transform.position.y == unvisiblePosition.y)
-                {
-                    isMoving = false;
-                }
+                isVisible = true;
+                to = 1f;
             }
         }
-        #endregion
-        var vectorOffset = new Vector3(0, 30, 0);
+
+        //#region Hide/Show Panel Using Position
+        //var panel = this.gameObject.GetComponent<UIPanel>();
+        //Vector3 unvisiblePosition = new Vector3(0, 100, 0);
+        //Vector3 visiblePosition = new Vector3(0,0,0);
+
+        //if (Input.GetKeyDown(KeyCode.BackQuote))
+        //{
+        //    isVisible = !(isVisible);
+        //    isMoving = true;            
+        //}
+        //if (isMoving)
+        //{
+        //    if (isVisible)
+        //    {
+        //        panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, visiblePosition, (Time.smoothDeltaTime));
+        //        if (panel.transform.position.y == visiblePosition.y)
+        //        {
+        //            isMoving = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        panel.transform.localPosition = Vector3.Lerp(panel.transform.localPosition, unvisiblePosition, (Time.smoothDeltaTime));
+        //        if (panel.transform.position.y == unvisiblePosition.y)
+        //        {
+        //            isMoving = false;
+        //        }
+        //    }
+        //}
+        //#endregion
+
+
+        var vectorOffset = new Vector3(0, 20, 0);
         foreach (var item in dict)
         {
             var go = GameObject.Find(item.Key);
@@ -92,8 +118,8 @@ public class DinamicStatistics : MonoBehaviour
                 GameObject labelObj = NGUITools.AddChild(this.gameObject);
                 labelObj.name = item.Key;
 
-                labelObj.transform.localPosition -= vectorOffset;
-                vectorOffset -= new Vector3(0, 20, 0);
+                labelObj.transform.localPosition += vectorOffset;
+                vectorOffset += new Vector3(0, -20, 0);
 
                 var label = labelObj.AddComponent<UILabel>();
                 label.pivot = UIWidget.Pivot.Left;
