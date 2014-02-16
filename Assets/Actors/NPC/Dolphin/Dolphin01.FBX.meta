@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: 325a40aea6f83f849ad5b7a0c3b1b9b5
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Dolphin
+    100002: DolphinLForearm
+    100004: DolphinLUpperarm
+    100006: DolphinPelvis
+    100008: DolphinPelvisBone001
+    100010: DolphinPelvisBone001Bone001
+    100012: DolphinPelvisBone001Bone001 1
+    100014: DolphinPelvisBone001Bone001Bone001
+    100016: DolphinPelvisBone001Bone001Bone001 1
+    100018: DolphinPelvisBone002
+    100020: DolphinRForearm
+    100022: DolphinRibcage
+    100024: DolphinRibcageBone001
+    100026: DolphinRibcageBone001Bone001
+    100028: DolphinRUpperarm
+    100030: DolphinSpine
+    100032: DolphinTail1
+    100034: DolphinTail1Bone001
+    100036: //RootNode
+    100038: Plane002
+    400000: Dolphin
+    400002: DolphinLForearm
+    400004: DolphinLUpperarm
+    400006: DolphinPelvis
+    400008: DolphinPelvisBone001
+    400010: DolphinPelvisBone001Bone001
+    400012: DolphinPelvisBone001Bone001 1
+    400014: DolphinPelvisBone001Bone001Bone001
+    400016: DolphinPelvisBone001Bone001Bone001 1
+    400018: DolphinPelvisBone002
+    400020: DolphinRForearm
+    400022: DolphinRibcage
+    400024: DolphinRibcageBone001
+    400026: DolphinRibcageBone001Bone001
+    400028: DolphinRUpperarm
+    400030: DolphinSpine
+    400032: DolphinTail1
+    400034: DolphinTail1Bone001
+    400036: //RootNode
+    400038: Plane002
+    2300000: Plane002
+    3300000: Plane002
+    4300000: Plane002
+    7400000: FlapLoop
+    7400002: Take 001 //// Dolphin
+    7400004: Take 001 //// DolphinPelvis
+    7400006: Take 001 //// DolphinSpine
+    7400008: Take 001 //// DolphinRibcage
+    7400010: Take 001 //// DolphinLUpperarm
+    7400012: Take 001 //// DolphinLForearm
+    7400014: Take 001 //// DolphinRUpperarm
+    7400016: Take 001 //// DolphinRForearm
+    7400018: Take 001 //// DolphinRibcageBone001
+    7400020: Take 001 //// DolphinRibcageBone001Bone001
+    7400022: Take 001 //// DolphinPelvisBone001
+    7400024: Take 001 //// DolphinPelvisBone001Bone001
+    7400026: Take 001 //// DolphinPelvisBone001Bone001Bone001
+    7400028: Take 001 //// DolphinTail1
+    7400030: Take 001 //// DolphinTail1Bone001
+    7400032: Take 001 //// DolphinPelvisBone002
+    7400034: Take 001 //// DolphinPelvisBone001Bone001 1
+    7400036: Take 001 //// DolphinPelvisBone001Bone001Bone001 1
+    7400038: Take 001 //// Plane002
+    9500000: //RootNode
+    11100000: //RootNode
+    11100002: Dolphin
+    11100004: DolphinLForearm
+    11100006: DolphinLUpperarm
+    11100008: DolphinPelvis
+    11100010: DolphinPelvisBone001
+    11100012: DolphinPelvisBone001Bone001
+    11100014: DolphinPelvisBone001Bone001 1
+    11100016: DolphinPelvisBone001Bone001Bone001
+    11100018: DolphinPelvisBone001Bone001Bone001 1
+    11100020: DolphinPelvisBone002
+    11100022: DolphinRForearm
+    11100024: DolphinRibcage
+    11100026: DolphinRibcageBone001
+    11100028: DolphinRibcageBone001Bone001
+    11100030: DolphinRUpperarm
+    11100032: DolphinSpine
+    11100034: DolphinTail1
+    11100036: DolphinTail1Bone001
+    11100038: Plane002
+    13700000: Plane002
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: FlapLoop
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dolphin
+        weight: 1
+      - path: DolphinPelvis
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001/DolphinPelvisBone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001/DolphinPelvisBone001Bone001/DolphinPelvisBone001Bone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002/DolphinPelvisBone001Bone001 1
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002/DolphinPelvisBone001Bone001 1/DolphinPelvisBone001Bone001Bone001
+          1
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinLUpperarm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinLUpperarm/DolphinLForearm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRibcageBone001
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRibcageBone001/DolphinRibcageBone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRUpperarm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRUpperarm/DolphinRForearm
+        weight: 1
+      - path: DolphinPelvis/DolphinTail1
+        weight: 1
+      - path: DolphinPelvis/DolphinTail1/DolphinTail1Bone001
+        weight: 1
+      - path: DolphinPelvis/Plane002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: 
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Dolphin
+        weight: 1
+      - path: DolphinPelvis
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001/DolphinPelvisBone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone001/DolphinPelvisBone001Bone001/DolphinPelvisBone001Bone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002/DolphinPelvisBone001Bone001 1
+        weight: 1
+      - path: DolphinPelvis/DolphinPelvisBone002/DolphinPelvisBone001Bone001 1/DolphinPelvisBone001Bone001Bone001
+          1
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinLUpperarm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinLUpperarm/DolphinLForearm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRibcageBone001
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRibcageBone001/DolphinRibcageBone001Bone001
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRUpperarm
+        weight: 1
+      - path: DolphinPelvis/DolphinSpine/DolphinRibcage/DolphinRUpperarm/DolphinRForearm
+        weight: 1
+      - path: DolphinPelvis/DolphinTail1
+        weight: 1
+      - path: DolphinPelvis/DolphinTail1/DolphinTail1Bone001
+        weight: 1
+      - path: DolphinPelvis/Plane002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: DolphinPelvis
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
