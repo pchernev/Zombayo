@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System;
 public class DinamicStatistics : MonoBehaviour
 {
-    public UIFont font;
+    public UIFont Font;
+    public float LabelsOffsetX;
+    public float LabelsOffsetY;
+    public Vector3 FirstLabelPos;
+
     private static Dictionary<string, float> dict;
     private bool isVisible = true;
     private bool isMoving = false;
@@ -22,7 +26,7 @@ public class DinamicStatistics : MonoBehaviour
 
     void Start()
     {
-        this.InitStatsContainer();
+
     }
 
     public float this[string key]
@@ -52,7 +56,7 @@ public class DinamicStatistics : MonoBehaviour
     {
         // hide using alpha chanel change
         var panel = this.gameObject.GetComponent<UIPanel>();
-        panel.alpha = Mathf.Lerp(panel.alpha, to, Time.smoothDeltaTime); 
+        panel.alpha = Mathf.Lerp(panel.alpha, to, Time.smoothDeltaTime);
 
     }
 
@@ -103,8 +107,6 @@ public class DinamicStatistics : MonoBehaviour
         //}
         //#endregion
 
-
-        var vectorOffset = new Vector3(0, 20, 0);
         foreach (var item in dict)
         {
             var go = GameObject.Find(item.Key);
@@ -118,12 +120,13 @@ public class DinamicStatistics : MonoBehaviour
                 GameObject labelObj = NGUITools.AddChild(this.gameObject);
                 labelObj.name = item.Key;
 
-                labelObj.transform.localPosition += vectorOffset;
-                vectorOffset += new Vector3(0, -20, 0);
+
+                labelObj.transform.localPosition = FirstLabelPos;
+                FirstLabelPos -= new Vector3(LabelsOffsetX, LabelsOffsetY, 0);
 
                 var label = labelObj.AddComponent<UILabel>();
+                label.font = Font;
                 label.pivot = UIWidget.Pivot.Left;
-                label.font = font;
                 label.text = item.Key + item.Value.ToString("#");
             }
         }

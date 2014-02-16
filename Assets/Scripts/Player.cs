@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
         Stat["Distance1: "] = transform.position.x;
         Stat["Score1: "] = this.stat.Points;
 
-        Stat["Score2: "] = transform.position.x;
+        Stat["Distance-2: "] = transform.position.x;
         Stat["Score3: "] = this.stat.Points;
         //UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
         //scoresLabel.text = "Score: " + this.stat.Points.ToString();
