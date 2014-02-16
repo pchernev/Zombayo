@@ -46,7 +46,7 @@ ModelImporter:
     2300000: Plane002
     3300000: Plane002
     4300000: Plane002
-    7400000: FlapLoop
+    7400000: DolphinFlapLoop
     7400002: Take 001 //// Dolphin
     7400004: Take 001 //// DolphinPelvis
     7400006: Take 001 //// DolphinSpine
@@ -66,6 +66,7 @@ ModelImporter:
     7400034: Take 001 //// DolphinPelvisBone001Bone001 1
     7400036: Take 001 //// DolphinPelvisBone001Bone001Bone001 1
     7400038: Take 001 //// Plane002
+    7400040: DolphinHit
     9500000: //RootNode
     11100000: //RootNode
     11100002: Dolphin
@@ -104,7 +105,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: FlapLoop
+      name: DolphinFlapLoop
       takeName: Take 001
       firstFrame: 10
       lastFrame: 30
@@ -171,7 +172,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: 
+      name: DolphinHit
       takeName: Take 001
       firstFrame: 35
       lastFrame: 50
