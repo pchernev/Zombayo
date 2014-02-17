@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 	public int hasBeenKicked = 0;
 			
 	private Statistics stat;
-
+    private DinamicStatistics Stat;
 	private List<Vector3> prevPos;
 	
 	private Rigidbody rigidbody;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
 	void Awake() 
 	{
 		stat = new Statistics();
+        Stat = new DinamicStatistics();
 		rigidbody = GetComponent<Rigidbody>();
 	}
 	
@@ -133,11 +134,20 @@ public class Player : MonoBehaviour {
 	
 	void OnGUI()
 	{
-        UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
-        scoresLabel.text = "Score: " + this.stat.Points.ToString();
+        
+        Stat["Distance: "] = transform.position.x;
+        Stat["Score: "] = this.stat.Points;
 
-        UILabel distanceLabel = GameObject.Find("DistanceLabel").GetComponent<UILabel>();
-        distanceLabel.text = "Distance: " + transform.position.x.ToString("F");
+        Stat["Distance1: "] = transform.position.x;
+        Stat["Score1: "] = this.stat.Points;
+
+        Stat["Score2: "] = transform.position.x;
+        Stat["Score3: "] = this.stat.Points;
+        //UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
+        //scoresLabel.text = "Score: " + this.stat.Points.ToString();
+
+        //UILabel distanceLabel = GameObject.Find("DistanceLabel").GetComponent<UILabel>();
+        //distanceLabel.text = "Distance: " + transform.position.x.ToString("F");
 
         //GUI.Label( new Rect( 10.0f, 10.0f, 120.0f, 30.0f ), "Score: " + this.stat.Points.ToString() );
 		
