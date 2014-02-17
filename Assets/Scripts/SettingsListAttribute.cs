@@ -2,4 +2,5 @@
 
 public class SettingsListAttribute : PropertyAttribute
 {
+	public bool showSize;
 }

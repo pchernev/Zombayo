@@ -133,7 +133,6 @@ public class Player : MonoBehaviour {
 	
 	void OnGUI()
 	{
-
         UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
         scoresLabel.text = "Score: " + this.stat.Points.ToString();
 

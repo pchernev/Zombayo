@@ -1,27 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/World/LevelSettings.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player.cs" Line="119" Column="26" />
-      <File FileName="Assets/Scripts/World/LevelSettings.cs" Line="34" Column="1" />
-      <File FileName="Assets/Scripts/Editor/LevelSettingsDrawer.cs" Line="43" Column="3" />
+      <File FileName="Assets/Scripts/World/LevelSettings.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Editor/ColorPointDrawer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Editor/SettingsListDrawer.cs" Line="1" Column="1" />
+      <File FileName="Assets/ExternalResources/FlipbookGames/FavoritesTab/Editor/Scripts/FavoritesTab.cs" Line="1812" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="World" expanded="True">
-                <Node name="LevelSettings.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="Editor" expanded="True" />
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
