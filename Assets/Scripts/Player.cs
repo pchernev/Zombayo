@@ -76,11 +76,11 @@ public class Player : MonoBehaviour {
 			//			if( Speed < 0.1F )
 			//				rigidbody.isKinematic = true;
 		}
-		
-		if( this.Speed == 0 && hasBeenKicked > 2 )
-		{
-			_btnRestart.enabled = true;
-		}
+
+        if (this.Speed == 0 && hasBeenKicked > 2)
+        {
+            gameObject.SendMessage("EndGame");
+        }
 		
 		if( this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic )
 		{
@@ -138,11 +138,6 @@ public class Player : MonoBehaviour {
 		Stat["Distance: "] = transform.position.x;
 		Stat["Score: "] = this.stat.Points;
 		
-		Stat["Distance1: "] = transform.position.x;
-		Stat["Score1: "] = this.stat.Points;
-		
-		Stat["Score2: "] = transform.position.x;
-		Stat["Score3: "] = this.stat.Points;
 		//UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
 		//scoresLabel.text = "Score: " + this.stat.Points.ToString();
 		
