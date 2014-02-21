@@ -107,9 +107,8 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
-	
-	void OnCollisionEnter( Collision collision )
-	{
+	void OnCollisionEnter(Collision collision){
+
 		if( collision.gameObject.tag.CompareTo( "Ground" ) == 0 )
 		{
 			_isFlying = false;
