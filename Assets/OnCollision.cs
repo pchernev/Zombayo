@@ -7,6 +7,7 @@ public class OnCollision : MonoBehaviour {
 	public int magnetPower;
 	public GameObject explosion;
 	long score = 0;
+	public float coinsSpeed;
 	
 	
 	// Use this for initialization
@@ -24,12 +25,13 @@ public class OnCollision : MonoBehaviour {
 	void OnTriggerStay (Collider collider) {
 
 		if (collider.gameObject.CompareTag ("Player")) {			
-			this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position,collider.gameObject.transform.position,Time.deltaTime*30);
+			this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position,collider.gameObject.transform.position,Time.deltaTime*coinsSpeed);
 			if(collider.gameObject.transform.position == this.gameObject.transform.position)
 			{
 				Instantiate(explosion,transform.position,transform.rotation);
 				Destroy(this.gameObject);
 				score+=1;
+
 			}
 		}
 
