@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Snail : BaseItem
+public class Dolphin : BaseItem
 {
-	public float speed = 0.01f;
+	public float speed = 0.02f;
 	public Vector3 force;
-	public Transform throwBone;
-
+	public Transform throwBon;
+	
 	private Animator _animator;
 	
 	private Transform _playerParent;
@@ -34,37 +34,39 @@ public class Snail : BaseItem
 		pos.x -= speed;
 		transform.position = pos;
 	}
-
+	
 	private bool wasHit = false;
 	void OnCollisionEnter( Collision collision )
 	{
-//		if( wasHit )
-//			return;
-
+	
+		
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
 			wasHit = true;
-
+			
 			var collider = GetComponent<BoxCollider>();
 			collider.enabled = false;	
-
-			_animator.SetTrigger( "GrabThrow" );
-
+			
+			_animator.SetTrigger( "Throw" );
+			
 			_rigidbody.isKinematic = true;
-//			_rigidbody.AddForce( this.force );
-
+			//			_rigidbody.AddForce( this.force );
+			
 			// catch player
 			_playerParent = _player.transform.parent;
-			_player.transform.parent = throwBone;
+			_player.transform.parent = throwBon;
+
 		}
 	}
-
-	public void ApplyForce()
+	
+	public void Enforce()
 	{
 		Debug.Log( "ApplyForce: " + this.force.ToString() );
+		
 
-		_player.transform.parent = _playerParent;
 		_rigidbody.isKinematic = false;
-		_rigidbody.AddRelativeForce( this.force );
+		_rigidbody.AddForce( force );
+
+	
 	}
 }
