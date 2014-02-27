@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{BC2AFBB4-1C31-2321-20F7-8679A236EB0B}") = "Zombayo1", "Assembly-CSharp-firstpass-vs.csproj", "{4AE9433B-EB23-6550-BA6A-8A459A07CF8B}"
+EndProject
 Project("{BC2AFBB4-1C31-2321-20F7-8679A236EB0B}") = "Zombayo1", "Assembly-CSharp-vs.csproj", "{1FE4C313-00B8-46BB-90BC-DCF6E09B1DB1}"
 EndProject
 Project("{BC2AFBB4-1C31-2321-20F7-8679A236EB0B}") = "Zombayo1", "Assembly-CSharp-Editor-vs.csproj", "{4E6F5B56-8FE9-0332-10BD-B5DD69B63C7C}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AE9433B-EB23-6550-BA6A-8A459A07CF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE9433B-EB23-6550-BA6A-8A459A07CF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE9433B-EB23-6550-BA6A-8A459A07CF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE9433B-EB23-6550-BA6A-8A459A07CF8B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FE4C313-00B8-46BB-90BC-DCF6E09B1DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1FE4C313-00B8-46BB-90BC-DCF6E09B1DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE4C313-00B8-46BB-90BC-DCF6E09B1DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-														GlobalSection(MonoDevelopProperties) = preSolution
+																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

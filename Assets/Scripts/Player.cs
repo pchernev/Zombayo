@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 	
 	bool _isFlying;
 	public int hasBeenKicked = 0;
+
 	
 	private Statistics stat;
 	private DinamicStatistics Stat;
@@ -108,6 +109,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter(Collision collision){
+
+	
 
 		if( collision.gameObject.tag.CompareTo( "Ground" ) == 0 )
 		{

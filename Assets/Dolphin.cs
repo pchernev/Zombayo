@@ -66,6 +66,7 @@ public class Dolphin : BaseItem
 
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
+		_player.transform.parent = _playerParent;
 
 	
 	}
