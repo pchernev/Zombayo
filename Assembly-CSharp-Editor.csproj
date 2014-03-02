@@ -129,6 +129,7 @@
      <Compile Include="Assets\ExternalResources\Plugins\Editor\FingerGestures\TwistRecognizerInspector.cs" />
      <Compile Include="Assets\ExternalResources\Top Down Mobile\tools scripts\Editor\TerrainRandEditor.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\Editor\U_r_g_freewindow.cs" />
+     <Compile Include="Assets\Scripts\Editor\BaseItemDrawer.cs" />
      <Compile Include="Assets\Scripts\Editor\ColorPointDrawer.cs" />
      <Compile Include="Assets\Scripts\Editor\CopyTransform.cs" />
      <Compile Include="Assets\Scripts\Editor\CustomToolsMenu.cs" />
