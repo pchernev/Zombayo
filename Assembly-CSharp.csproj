@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{00E21B0E-0053-DE8E-F34F-83DCB403A3BF}</ProjectGuid>
+	<ProjectGuid>{9C4E591D-C728-10D9-096F-138A9564AE92}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_3;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_4;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,10 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CountCoins.cs" />
-     <Compile Include="Assets\DestroyOnCollision.cs" />
-     <Compile Include="Assets\Dolphin.cs" />
-     <Compile Include="Assets\DolphinSpawn.cs" />
+     <Compile Include="Assets\Actors\NPC\Carrot\Carrot.cs" />
+     <Compile Include="Assets\Actors\NPC\Carrot\CarrotSpawn.cs" />
+     <Compile Include="Assets\Actors\NPC\Dolphin\Dolphin.cs" />
+     <Compile Include="Assets\Actors\NPC\Dolphin\DolphinSpawn.cs" />
+     <Compile Include="Assets\Actors\Powerups\Coin\CountCoins.cs" />
+     <Compile Include="Assets\Actors\Powerups\Coin\DestroyOnCollision.cs" />
+     <Compile Include="Assets\Actors\Powerups\Coin\IsMagnet.cs" />
+     <Compile Include="Assets\Actors\Powerups\Coin\OnCollision.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimEvent.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimatorEvents.cs" />
      <Compile Include="Assets\ExternalResources\FlipbookGames\Common\Scripts\FG_GameObjectGUIDs.cs" />
@@ -236,10 +240,8 @@
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentactuator.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentnodes.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgutilities.cs" />
-     <Compile Include="Assets\IsMagnet.cs" />
      <Compile Include="Assets\MainMenuBtnScript.cs" />
      <Compile Include="Assets\NewGameScript.cs" />
-     <Compile Include="Assets\OnCollision.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\CloseShopBtnScript.cs" />
      <Compile Include="Assets\Scripts\ColorPoint.cs" />
@@ -372,7 +374,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{2F916834-20E6-4D8D-D5F9-EA2655828C83}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{33E69CED-5754-7EDF-CA0C-7430DBECD289}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

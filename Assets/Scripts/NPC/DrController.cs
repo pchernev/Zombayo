@@ -91,17 +91,20 @@ public class DrController : MonoBehaviour {
 	{
 		//Debug.Log( "OnTriggerEnter" );
 		inKickZone = true;
+		gameObject.audio.Play ();
 	}
 	
 	void OnTriggerExit( Collider collider )
 	{
 		//Debug.Log( "OnTriggerExit" );
 		inKickZone = false;
+
 	}
 	
 	void OnCollisionEnter( Collision collision )
 	{
 		Debug.Log( "drController->CollisionEnter: " );
+
 	}
 	
 	public void Reset()
