@@ -68,7 +68,7 @@
      <Compile Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\Triangles.js" />
      <Compile Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\Vignetting.js" />
      <Compile Include="Assets\ExternalResources\Top Down Mobile\tools scripts\Misc\ShowFps.js" />
-     <Compile Include="Assets\NewBehaviourScript.js" />
+     <Compile Include="Assets\GUI\Scripts\NewBehaviourScript.js" />
      <Compile Include="Assets\Scripts\Tools\Developer Console Script\Developer console.js" />
      <None Include="Assets\ExternalResources\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />

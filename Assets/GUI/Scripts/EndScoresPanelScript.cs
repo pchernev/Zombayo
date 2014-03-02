@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EndScoresPanelScript : MonoBehaviour {
+public class EndScoresPanelScript : MonoBehaviour
+{
     private GameObject player;
+	private GameManager gameMgr;
+
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("Player");
+		gameMgr = player.GetComponent<GameManager>();
     }
 
     public void ShowShopPanel() 
     {
-        player.GetComponent<GameManager>().OpenShop();
+        gameMgr.OpenShop();
     }
 
     public void RestartGame() 
     {
-        player.GetComponent<GameManager>().RestartGame();
+		gameMgr.RestartGame();
     }
 }

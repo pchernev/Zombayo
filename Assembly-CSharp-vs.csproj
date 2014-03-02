@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{00E21B0E-0053-DE8E-F34F-83DCB403A3BF}</ProjectGuid>
+	<ProjectGuid>{9C4E591D-C728-10D9-096F-138A9564AE92}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +52,6 @@
      <Compile Include="Assets\Actors\NPC\Dolphin\DolphinSpawn.cs" />
      <Compile Include="Assets\Actors\Powerups\Coin\IsMagnet.cs" />
      <Compile Include="Assets\Actors\Powerups\Coin\OnCollision.cs" />
-     <Compile Include="Assets\EndScoresPanelScript.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimEvent.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimatorEvents.cs" />
      <Compile Include="Assets\ExternalResources\FlipbookGames\Common\Scripts\FG_GameObjectGUIDs.cs" />
@@ -239,9 +238,11 @@
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentactuator.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentnodes.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgutilities.cs" />
-     <Compile Include="Assets\InGamePanelScript.cs" />
-     <Compile Include="Assets\MainMenuPanelScript.cs" />
-     <Compile Include="Assets\PausePanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\EndScoresPanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\InGamePanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\MainMenuPanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\PausePanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\ShopPanelScript.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\ColorPoint.cs" />
      <Compile Include="Assets\Scripts\DinamicStatistics.cs" />
@@ -257,6 +258,7 @@
      <Compile Include="Assets\Scripts\SettingsListAttribute.cs" />
      <Compile Include="Assets\Scripts\SimpleUI.cs" />
      <Compile Include="Assets\Scripts\StartForce.cs" />
+     <Compile Include="Assets\Scripts\Stat_FPS.cs" />
      <Compile Include="Assets\Scripts\Tools\iTween\iTween.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
@@ -266,8 +268,6 @@
      <Compile Include="Assets\Scripts\World\LevelSettings.cs" />
      <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
-     <Compile Include="Assets\ShopPanelScript.cs" />
-     <Compile Include="Assets\Stat_FPS.cs" />
      <None Include="Assets\ExternalResources\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
@@ -372,7 +372,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{2F916834-20E6-4D8D-D5F9-EA2655828C83}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{33E69CED-5754-7EDF-CA0C-7430DBECD289}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
