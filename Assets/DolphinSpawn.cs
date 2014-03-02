@@ -12,7 +12,7 @@ public class DolphinSpawn : MonoBehaviour {
 		for (int i = 0; i<ammount; i++) {
 			Vector3 spawnLocation = new Vector3 (Random.Range (1.0f, 300.0f), Random.Range (1.0f, 10.0f), 0.0f);
 
-			GameObject SpawnLocation = (GameObject)Instantiate (dolphin, spawnLocation, dolphin.transform.rotation);
+			GameObject SpawnLocation = (GameObject)Instantiate (dolphin, spawnLocation, Quaternion.Euler(0.0f,-90.0f,0.0f));
 
 		}
 		
