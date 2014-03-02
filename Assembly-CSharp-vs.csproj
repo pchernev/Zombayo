@@ -50,8 +50,6 @@
      <Compile Include="Assets\Actors\NPC\Carrot\CarrotSpawn.cs" />
      <Compile Include="Assets\Actors\NPC\Dolphin\Dolphin.cs" />
      <Compile Include="Assets\Actors\NPC\Dolphin\DolphinSpawn.cs" />
-     <Compile Include="Assets\Actors\Powerups\Coin\CountCoins.cs" />
-     <Compile Include="Assets\Actors\Powerups\Coin\DestroyOnCollision.cs" />
      <Compile Include="Assets\Actors\Powerups\Coin\IsMagnet.cs" />
      <Compile Include="Assets\Actors\Powerups\Coin\OnCollision.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimEvent.cs" />
