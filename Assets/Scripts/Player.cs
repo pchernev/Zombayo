@@ -28,7 +28,8 @@ public class Player : MonoBehaviour {
 	
 	private Rigidbody rigidbody;
 	
-	
+	#region Base player logic 
+
 	void Awake() 
 	{
 		stat = new Statistics();
@@ -174,6 +175,8 @@ public class Player : MonoBehaviour {
 		hasBeenKicked = 0;		
 		rigidbody.isKinematic = false;
 	}
+
+	#endregion
 	
 	#region NPC collisions
 

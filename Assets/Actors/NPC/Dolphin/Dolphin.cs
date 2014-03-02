@@ -38,10 +38,11 @@ public class Dolphin : BaseItem
 	private bool wasHit = false;
 	void OnCollisionEnter( Collision collision )
 	{
-	
-		
+
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
+			Debug.Log ("The player hitting dolphin");
+
 			wasHit = true;
 			gameObject.audio.Play();
 			var collider = GetComponent<BoxCollider>();
@@ -54,7 +55,7 @@ public class Dolphin : BaseItem
 			
 			// catch player
 			_playerParent = _player.transform.parent;
-			_player.transform.parent = throwBon;
+//			_player.transform.parent = throwBon;
 
 		}
 	}
