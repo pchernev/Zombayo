@@ -9,10 +9,12 @@ public class EndlessWorld : MonoBehaviour
     public float countdown = 3.0f;
 	
 	public GameObject[] tiles;
-	public GameObject[] npcs	;
+	public GameObject[] npcs;
+	public BaseItem[] items;
 	
 	private List<GameObject> _objs;
 	private List<GameObject> _npcs;
+	private List<BaseItem> _items;
 	private float cameraSize = 150.0f;
 	
 	private GameObject _player;
@@ -26,6 +28,7 @@ public class EndlessWorld : MonoBehaviour
 		
 		_objs = new List<GameObject>();
 		_npcs = new List<GameObject>();
+		_items = new List<BaseItem>();
 		
 		var p = new Vector3( 0F, 0F, 0F );
 		foreach( var prefab in tiles )
@@ -130,22 +133,30 @@ public class EndlessWorld : MonoBehaviour
 	
 	GameObject AddTile( GameObject prefab, Vector3 position )
 	{
-		var obj = Instantiate( prefab, position, prefab.gameObject.transform.rotation ) as GameObject;
+		var piece = Instantiate( prefab, position, prefab.gameObject.transform.rotation ) as GameObject;
 				
 		// add npc to tile		
-		var maxIndex = npcs.Length - 1;
-		if( maxIndex >= 0 )
+//		var maxIndex = npcs.Length - 1;
+//		if( maxIndex >= 0 )
+//		{
+//			var prefNPC = npcs[Random.Range( 0, maxIndex )];
+//			if( prefNPC != null )
+//			{
+//				position.x += 20F;
+//				position.y = 0.5f;
+//				var npc = Instantiate( prefNPC, position, prefNPC.gameObject.transform.rotation ) as GameObject;
+//				_npcs.Add( npc );
+//			}
+//		}
+
+		for( var i = 0; i < items.Length; i++ )
 		{
-			var prefNPC = npcs[Random.Range( 0, maxIndex )];
-			if( prefNPC != null )
-			{
-				position.x += 20F;
-				position.y = 0.5f;
-				var npc = Instantiate( prefNPC, position, prefNPC.gameObject.transform.rotation ) as GameObject;
-				_npcs.Add( npc );
-			}
+			var item = items[i];
+
+			_items.AddRange( item.Spawn( piece ));
 		}
+
 				
-		return obj;				
+		return piece as GameObject;				
 	}
 }
