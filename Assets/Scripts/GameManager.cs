@@ -111,9 +111,10 @@ public class GameManager : MonoBehaviour
     public void CloseShop()
     {
         DisablePanel("Shop");
+        EnablePanel("End Scores");
         if (isGameOver)
         {
-            EnablePanel("End Scores");
+          
         }
     }
     public void EndGame()
