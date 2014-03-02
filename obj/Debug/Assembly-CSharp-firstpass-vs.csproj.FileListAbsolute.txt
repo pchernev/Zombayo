@@ -6,6 +6,5 @@ C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\Mono.Cecil.dll
 C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\nunit.framework.dll
 C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\Unity.DataContract.dll
 C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\ICSharpCode.NRefactory.dll
-C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass.pdb

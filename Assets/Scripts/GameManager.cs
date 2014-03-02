@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
     void Start()
     {
+        Time.timeScale = 1f;
         isGameOver = false;
         LoadAllPanels();
         DisablePanelsExcept("In Game");
@@ -21,13 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isGamePaused)
-                ResumeGame();
-            else
-                PauseGame();
-        }
+
     }
 
     void FixedUpdate()
@@ -71,13 +66,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if (!isGamePaused && !isGameOver)
-        {
+  
             Time.timeScale = 0f;
             isGamePaused = true;
             DisablePanelsExcept("Pause");
             EnablePanel("Pause");
-        }
+        
 
     }
 
@@ -88,27 +82,21 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             isGamePaused = false;
             DisablePanelsExcept("In Game");
-            EnablePanel("In Game");
+
+            Debug.Log("In ResumeGame -> GameManager");
         }
+        EnablePanel("In Game");
     }
 
     public void RestartGame()
     {
-        if (isGameOver || isGamePaused)
-        {
-            isGameOver = false;
-            DisablePanelsExcept("In Game");
-            EnablePanel("In Game");
-            this.gameObject.SendMessage("Reset");
-            doctorShark.SendMessage("Reset");
 
-            doctorShark.SendMessage("Start");
-            if (isGamePaused)
-            {
-                ResumeGame();
-            }
-        }
+        Time.timeScale = 1f;
+        Application.LoadLevel("IngameScene01");
 
+        isGamePaused = false;
+        isGameOver = false;
+        EnablePanel("In Game");
     }
 
     public void OpenShop()
