@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	
 	[HideInInspector]
 	public float Speed;
+	public GameObject explosion;
+	public AudioClip collectCoins;
 	
 	private GUITexture _btnRestart;
 	
@@ -177,6 +179,18 @@ public class Player : MonoBehaviour {
 	#endregion
 	
 	#region NPC collisions
+
+	void OnTriggerEnter(Collider collider)
+	{
+		if(collider.gameObject.CompareTag ("Coin"))
+		   {
+			Instantiate (explosion, transform.position, transform.rotation);
+			AudioSource.PlayClipAtPoint(collectCoins, transform.position);
+			Destroy(collider.gameObject);	
+		
+		}
+	}
+
 	
 	private int test;
 	

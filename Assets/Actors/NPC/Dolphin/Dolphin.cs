@@ -44,7 +44,7 @@ public class Dolphin : BaseItem
 			Debug.Log ("The player hitting dolphin");
 
 			wasHit = true;
-			
+			gameObject.audio.Play();
 			var collider = GetComponent<BoxCollider>();
 			collider.enabled = false;	
 			

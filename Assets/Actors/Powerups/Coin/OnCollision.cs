@@ -8,6 +8,8 @@ public class OnCollision : MonoBehaviour {
 	public GameObject explosion;
 	long score = 0;
 	public float coinsSpeed;
+
+
 	
 	
 	// Use this for initialization
@@ -28,27 +30,26 @@ public class OnCollision : MonoBehaviour {
 
 				}
 		}
-	void OnTriggerEnter (Collider collider) {
-		
-				if (collider.gameObject.CompareTag ("Player")) {
-						Destroy (this.gameObject);
-						Instantiate (explosion, transform.position, transform.rotation);
-				}
+	void OnTriggerEnter(Collider collider)
+	{
+
+
 		}
-		
-		
-
-
-		
-
-
-	
-	
-	
-	
-
-	
-
-
 	}
+		
+		
+
+
+		
+
+
+	
+	
+	
+	
+
+	
+
+
+	
 

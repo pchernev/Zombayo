@@ -45,7 +45,7 @@ public class Snail : BaseItem
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
 			wasHit = true;
-
+			gameObject.audio.Play();
 			var collider = GetComponent<BoxCollider>();
 			collider.enabled = false;	
 
