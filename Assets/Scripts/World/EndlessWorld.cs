@@ -37,12 +37,12 @@ public class EndlessWorld : MonoBehaviour
 			_objs.Add( obj );
 			
 			var piece = prefab.GetComponent<WorldPiece>();
-			p.x += piece.getBounds().size.x;//mesh.bounds.size.x;
+            p.x += 100;//piece.getBounds().size.x;//mesh.bounds.size.x;
 			
 //			Debug.Log( string.Format( "pos: {0} size: {1}", p.ToString(), piece.bounds.size.ToString() ));
 			
 //			mesh.enabled = false;
-			break;
+			//break;
 		}
 		
 		InitWorldPieces();
