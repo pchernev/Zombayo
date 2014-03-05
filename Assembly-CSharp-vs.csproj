@@ -236,10 +236,12 @@
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentactuator.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgentnodes.cs" />
      <Compile Include="Assets\ExternalResources\UltimateRagdollFree\Scripts\clsurgutilities.cs" />
-     <Compile Include="Assets\MainMenuBtnScript.cs" />
-     <Compile Include="Assets\NewGameScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\EndScoresPanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\InGamePanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\MainMenuPanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\PausePanelScript.cs" />
+     <Compile Include="Assets\GUI\Scripts\ShopPanelScript.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\CloseShopBtnScript.cs" />
      <Compile Include="Assets\Scripts\ColorPoint.cs" />
      <Compile Include="Assets\Scripts\DinamicStatistics.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -250,12 +252,11 @@
      <Compile Include="Assets\Scripts\NPC\DogHead.cs" />
      <Compile Include="Assets\Scripts\NPC\DrController.cs" />
      <Compile Include="Assets\Scripts\NPC\Snail.cs" />
-     <Compile Include="Assets\Scripts\OpenShopBtnScript.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\RestartBtnScript.cs" />
      <Compile Include="Assets\Scripts\SettingsListAttribute.cs" />
      <Compile Include="Assets\Scripts\SimpleUI.cs" />
      <Compile Include="Assets\Scripts\StartForce.cs" />
+     <Compile Include="Assets\Scripts\Stat_FPS.cs" />
      <Compile Include="Assets\Scripts\Tools\iTween\iTween.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzHorizontalRuler.cs" />
      <Compile Include="Assets\Scripts\Tools\zzRuler\zzVerticalRuler.cs" />
@@ -266,7 +267,6 @@
      <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
      <Compile Include="Assets\SpawnCoins.cs" />
-     <Compile Include="Assets\Stat_FPS.cs" />
      <None Include="Assets\ExternalResources\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
