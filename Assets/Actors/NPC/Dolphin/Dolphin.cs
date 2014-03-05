@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Dolphin : BaseItem
 {
@@ -71,4 +72,18 @@ public class Dolphin : BaseItem
 
 	
 	}
+	public override List<BaseItem> Spawn( GameObject wp)
+	{
+		var items = new List<BaseItem>();
+		
+		var positions = base.SpawnPositions( wp );
+		foreach( var pos in positions )
+		{
+			var dolphin = Instantiate( this, pos, this.gameObject.transform.rotation ) as BaseItem;
+			items.Add( dolphin );
+		}
+		
+		return items;
+	}
+
 }

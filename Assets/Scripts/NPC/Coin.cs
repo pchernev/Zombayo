@@ -9,8 +9,7 @@ public class Coin : BaseItem {
 	public GameObject explosion;
 	long score = 0;
 	public float coinsSpeed;
-	public GameObject coin;
-	public int ammount;
+
 
 
 
