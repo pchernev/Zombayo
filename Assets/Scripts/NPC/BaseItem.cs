@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+public class BaseItemAttribute : PropertyAttribute
+{
+}
+
 public class BaseItem : MonoBehaviour
 {
 	// Item specifications
+	[BaseItem]
 	public float MinSpawnHeight;
+	[BaseItem]
 	public float MaxSpawnHeight;
+	[BaseItem]
 	public float SpawnDensity;
 
 
