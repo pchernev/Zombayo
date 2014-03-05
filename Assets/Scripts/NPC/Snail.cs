@@ -68,18 +68,21 @@ public class Snail : BaseItem
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddRelativeForce( this.force );
 	}
-
-	public override List<BaseItem> Spawn( GameObject wp )
+	public override List<BaseItem> Spawn( GameObject wp)
 	{
 		var items = new List<BaseItem>();
-
+		
 		var positions = base.SpawnPositions( wp );
 		foreach( var pos in positions )
 		{
 			var snail = Instantiate( this, pos, this.gameObject.transform.rotation ) as BaseItem;
 			items.Add( snail );
 		}
-
+		
 		return items;
 	}
+
+
+
+
 }
