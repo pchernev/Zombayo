@@ -266,7 +266,6 @@
      <Compile Include="Assets\Scripts\World\LevelSettings.cs" />
      <Compile Include="Assets\Scripts\World\Statistics.cs" />
      <Compile Include="Assets\Scripts\World\WorldPiece.cs" />
-     <Compile Include="Assets\SpawnCoins.cs" />
      <None Include="Assets\ExternalResources\NGUI\Resources\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />

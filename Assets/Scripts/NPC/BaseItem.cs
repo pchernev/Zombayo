@@ -22,19 +22,17 @@ public class BaseItem : MonoBehaviour
 		var pos = wp.transform.position;
 		var positions = new List<Vector3>();
 
-		positions.Add( new Vector3( pos.x + 20f ,pos.y, pos.z ));
+		for( int i = 0; i < SpawnDensity; i++ )
+		{
+			var xOffset = Random.Range( 0f, 100f ) - 50f;
+			var yOffset = Random.Range( this.MinSpawnHeight, this.MaxSpawnHeight );
+
+			positions.Add( new Vector3( pos.x + xOffset, pos.y + yOffset, pos.z ));
+		}
+
 		return positions;
 	}
-	protected List<Vector3> SpawnPositionsCoins(GameObject wp)
-	{
-		var pos = wp.transform.position;
-		var positions = new List<Vector3> ();
 
-						positions.Add (new Vector3 (pos.x + 1f , pos.y + 1f, pos.z));
-						
-				
-		return positions;
-		}
 
 	public virtual List<BaseItem> Spawn( GameObject wp )
 	{
