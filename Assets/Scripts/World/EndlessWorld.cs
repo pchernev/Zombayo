@@ -136,19 +136,6 @@ public class EndlessWorld : MonoBehaviour
 		var piece = Instantiate( prefab, position, prefab.gameObject.transform.rotation ) as GameObject;
 				
 		// add npc to tile		
-//		var maxIndex = npcs.Length - 1;
-//		if( maxIndex >= 0 )
-//		{
-//			var prefNPC = npcs[Random.Range( 0, maxIndex )];
-//			if( prefNPC != null )
-//			{
-//				position.x += 20F;
-//				position.y = 0.5f;
-//				var npc = Instantiate( prefNPC, position, prefNPC.gameObject.transform.rotation ) as GameObject;
-//				_npcs.Add( npc );
-//			}
-//		}
-
 		for( var i = 0; i < items.Length; i++ )
 		{
 			var item = items[i];
