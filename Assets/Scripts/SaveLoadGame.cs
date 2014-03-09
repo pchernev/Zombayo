@@ -76,7 +76,11 @@ namespace Assets.Scripts
                 r.Close();
                 _data = _info;
                 Debug.Log("File Read");
-            }          
+            }
+            else
+            {
+                _data = null;
+            }   
         }            
     }
    

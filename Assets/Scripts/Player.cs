@@ -129,6 +129,10 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
+            if (this.stat == null)
+            {
+                this.stat = new Statistics(0,0);
+            }
 			this.stat.Points += 1;
 		}
 	}
