@@ -7,6 +7,7 @@ public class DinamicStatistics : MonoBehaviour
     private static Dictionary<string, float> dict;
     private bool isVisible = true;
     private bool isMoving = false;
+    private GameObject player;
     float to = 1f;
     private void InitStatsContainer()
     {
@@ -23,6 +24,11 @@ public class DinamicStatistics : MonoBehaviour
     void Start()
     {
         this.InitStatsContainer();
+        player = GameObject.Find("Player");
+        dict["Coins: "] = player.transform.position.x * 1.5f;      
+        dict["Score: "] = player.GetComponent<Player>().stat.Points;
+        dict["Distance: "] = player.transform.position.x;
+        
     }
 
     public float this[string key]
