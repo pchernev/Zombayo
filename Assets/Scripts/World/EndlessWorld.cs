@@ -30,21 +30,6 @@ public class EndlessWorld : MonoBehaviour
 		_npcs = new List<GameObject>();
 		_items = new List<BaseItem>();
 		
-		var p = new Vector3( 0F, 0F, 0F );
-		foreach( var prefab in tiles )
-		{			
-			var obj = Instantiate( prefab, p, prefab.gameObject.transform.rotation ) as GameObject;
-			_objs.Add( obj );
-			
-			var piece = prefab.GetComponent<WorldPiece>();
-            p.x += 100;//piece.getBounds().size.x;//mesh.bounds.size.x;
-			
-//			Debug.Log( string.Format( "pos: {0} size: {1}", p.ToString(), piece.bounds.size.ToString() ));
-			
-//			mesh.enabled = false;
-			//break;
-		}
-		
 		InitWorldPieces();
 	}
 	
@@ -53,7 +38,7 @@ public class EndlessWorld : MonoBehaviour
 	{
 		var fObj = _objs.FirstOrDefault() as GameObject;
 		var lObj = _objs.LastOrDefault() as GameObject;
-		
+
 		var fX = fObj.transform.position.x;
 		var lX = lObj.transform.position.x;
 		
@@ -103,32 +88,16 @@ public class EndlessWorld : MonoBehaviour
 		}		
 	}
 	
-	void MoveBackward()
-	{
-		var fObj = _objs.FirstOrDefault();
-		var lObj = _objs.LastOrDefault();
-		
-		lObj.transform.position = new Vector3( fObj.transform.position.x - lObj.GetComponent<MeshRenderer>().bounds.size.x, 0F, 0F );
-		
-		_objs.Sort( (a, b) => a.transform.position.x < b.transform.position.x ? -1 : 1 );
-//		foreach( var obj in _objs )
-//			obj.transform.position -= new Vector3( speed * Time.deltaTime, 0F, 0F );
-	}
-	
-	void MoveForward()
-	{
-		var fObj = _objs.FirstOrDefault();
-		var lObj = _objs.LastOrDefault();
-		
-		fObj.transform.position = new Vector3( lObj.transform.position.x + lObj.GetComponent<MeshRenderer>().bounds.size.x, 0F, 0F );
-		
-		_objs.Sort( (a, b) => a.transform.position.x < b.transform.position.x ? -1 : 1 );
-//		foreach( var obj in _objs )
-//			obj.transform.position += new Vector3( speed * Time.deltaTime, 0F, 0F );		
-	}
-	
 	void InitWorldPieces()
 	{		
+		var index = Random.Range( 0, tiles.Length - 1);
+		var prefab = tiles[index];
+		var piece = prefab.GetComponent<WorldPiece>();
+		var pos = new Vector3( 0f, 0f, 0f );
+
+		var obj = AddTile( prefab, pos );
+		if( obj != null )
+			_objs.Insert( 0, obj );
 	}
 	
 	GameObject AddTile( GameObject prefab, Vector3 position )

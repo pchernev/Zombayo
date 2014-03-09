@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Statistics : MonoBehaviour
+public class Statistics
 {
 	public int Points;
 	
