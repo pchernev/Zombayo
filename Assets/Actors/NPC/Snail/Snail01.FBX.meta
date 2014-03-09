@@ -49,6 +49,8 @@ ModelImporter:
     100086: Base Human
     100088: Snail01
     100090: Box001
+    100092: mainChar_Zombayo001
+    100094: Throw_Bone
     400000: Base HumanHead
     400002: Base HumanLCollarbone
     400004: Base HumanLDigit11
@@ -95,12 +97,17 @@ ModelImporter:
     400086: Base Human
     400088: Snail01
     400090: Box001
+    400092: mainChar_Zombayo001
+    400094: Throw_Bone
     2300000: Box001
+    2300002: Throw_Bone
     3300000: Box001
+    3300002: Throw_Bone
     4300000: Plane001
     4300002: NPC_Snail_01
     4300004: Snail01
     4300006: Box001
+    4300008: Throw_Bone
     7400000: idle
     7400002: snailGrab
     7400004: snailGrabThrow
@@ -117,7 +124,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 3
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -180,13 +187,13 @@ ModelImporter:
       name: snailGrabThrow
       takeName: Take 001
       firstFrame: 126
-      lastFrame: 172
+      lastFrame: 154
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
