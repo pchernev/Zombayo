@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Coin : BaseItem {
 	public bool gotMagnet;
 	public int magnetPower;
-	public GameObject explosion;
+
 	long score = 0;
 	public float coinsSpeed;
 
@@ -28,7 +28,7 @@ public class Coin : BaseItem {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.name == "Player") {
-			Destroy(other.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 
