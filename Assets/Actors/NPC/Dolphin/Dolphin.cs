@@ -6,7 +6,7 @@ public class Dolphin : BaseItem
 {
 	public float speed = 0.02f;
 	public Vector3 force;
-	public Transform throwBon;
+	public Transform throwBone;
 	
 	private Animator _animator;
 	
@@ -56,7 +56,7 @@ public class Dolphin : BaseItem
 			
 			// catch player
 			_playerParent = _player.transform.parent;
-//			_player.transform.parent = throwBon;
+			_player.transform.parent = throwBone;
 
 		}
 	}
@@ -65,7 +65,6 @@ public class Dolphin : BaseItem
 	{
 		Debug.Log( "ApplyForce: " + this.force.ToString() );
 		
-
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
 		_player.transform.parent = _playerParent;
