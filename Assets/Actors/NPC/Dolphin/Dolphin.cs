@@ -56,7 +56,7 @@ public class Dolphin : BaseItem
 			
 			// catch player
 			_playerParent = _player.transform.parent;
-//			_player.transform.parent = throwBon;
+			_player.transform.parent = throwBon;
 
 		}
 	}
