@@ -49,7 +49,6 @@
      <Compile Include="Assets\Actors\NPC\Carrot\Carrot.cs" />
      <Compile Include="Assets\Actors\NPC\Carrot\CarrotSpawn.cs" />
      <Compile Include="Assets\Actors\NPC\Dolphin\Dolphin.cs" />
-     <Compile Include="Assets\Actors\NPC\Dolphin\DolphinSpawn.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimEvent.cs" />
      <Compile Include="Assets\ExternalResources\Animator Events Mixamo\AnimatorEvents.cs" />
      <Compile Include="Assets\ExternalResources\FlipbookGames\Common\Scripts\FG_GameObjectGUIDs.cs" />
