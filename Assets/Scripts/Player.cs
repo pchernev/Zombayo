@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
 			//				rigidbody.isKinematic = true;
 		}
 
-        if (this.Speed == 0 && hasBeenKicked > 2)
+        if (this.Speed == 0 && hasBeenKicked > 2 && Time.timeScale > 0.5f)
         {
             gameObject.SendMessage("EndGame");
         }
@@ -142,7 +142,8 @@ public class Player : MonoBehaviour {
 		
 		Stat["Distance: "] = transform.position.x;
 		Stat["Score: "] = this.stat.Points;
-		
+        Stat["Coins: "] = Stat["Distance: "] * 1.5f;
+
 		//UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
 		//scoresLabel.text = "Score: " + this.stat.Points.ToString();
 		
