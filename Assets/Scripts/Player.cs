@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class Player : MonoBehaviour {	
 	
@@ -31,9 +32,14 @@ public class Player : MonoBehaviour {
 	#region Base player logic 
 
 	void Awake() 
-	{
-		stat = new Statistics();
-      
+	{		
+        SaveLoadGame sl = new SaveLoadGame();
+        sl.LoadXML();
+        stat = sl.DeserializeObject(sl._data);
+        if (stat == null)
+        {
+            stat = new Statistics(0, 0);
+        }
 		rigidbody = GetComponent<Rigidbody>();
 	}
 	
@@ -61,7 +67,7 @@ public class Player : MonoBehaviour {
 	{
 		Vector3 newPos = transform.position;
 		prevPos.Insert( 0, newPos );
-		
+
 		const int maxSize = 40;
 		Speed = 0F;
 		for( int i=0; i<prevPos.Count-1; i++ )
@@ -96,8 +102,8 @@ public class Player : MonoBehaviour {
 	float time = 3;
 	void FixedUpdate () {		
 		
-		time -= Time.deltaTime;
-		
+		time -= Time.deltaTime;        
+       
 		if( time <= 0 )
 		{
 			if( !_animator.IsInTransition( 0 ) )
@@ -113,8 +119,6 @@ public class Player : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision collision){
 
-	
-
 		if( collision.gameObject.tag.CompareTo( "Ground" ) == 0 )
 		{
 			_isFlying = false;
@@ -125,6 +129,10 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
+            if (this.stat == null)
+            {
+                this.stat = new Statistics(0,0);
+            }
 			this.stat.Points += 1;
 		}
 	}

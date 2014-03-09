@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Assets.Scripts;
 
 public class GameManager : MonoBehaviour
 {
     private bool isGameOver;
     private bool isGamePaused = false;
     private GameObject doctorShark;
+    private GameObject player;
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
     void Start()
     {
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
         DisablePanelsExcept("In Game");
         EnablePanel("In Game");
         doctorShark = GameObject.Find("Dr.Fishhead");
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -124,6 +127,17 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
             DisablePanelsExcept("End Scores");
             EnablePanel("End Scores");
+            SaveGame();
         }
+    }
+
+    private void SaveGame()
+    {
+        SaveLoadGame saveLoadGame = new SaveLoadGame();
+        var stat = player.GetComponent<Player>().stat;
+        stat.Distance = (int)player.transform.position.x;
+        stat.Coins += (int)(player.transform.position.x * 1.5f); 
+        saveLoadGame._data = saveLoadGame.SerializeObject(stat);
+        saveLoadGame.CreateXML();
     }
 }

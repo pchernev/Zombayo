@@ -8,7 +8,8 @@ public class Coin : BaseItem {
 	public int magnetPower;
 
 	long score = 0;
-	public float coinsSpeed;
+	public float timeToReach;
+	public float coinSpeed;
 
 
 
@@ -16,11 +17,14 @@ public class Coin : BaseItem {
 	
 	void Update()
 	{
+		var pos = transform.position;
+		pos.x -= coinSpeed;
+		transform.position = pos;
 		if (gotMagnet == true) {
 						GameObject _player = GameObject.FindWithTag ("Player");
 						var distance = Vector3.Distance (this.gameObject.transform.position, _player.transform.position);
 						if (distance <= magnetPower) {
-								iTween.MoveUpdate (this.gameObject, _player.transform.position, coinsSpeed);
+								iTween.MoveUpdate (this.gameObject, _player.transform.position, timeToReach);
 						}
 
 				}
