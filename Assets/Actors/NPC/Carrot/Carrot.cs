@@ -15,20 +15,28 @@ public class Carrot : BaseItem {
 	}
 	void OnCollisionEnter( Collision collision )
 	{
+
 		if (collision.gameObject.tag.CompareTo ("Player") == 0) {
 			gameObject.audio.Play();
 			collision.gameObject.rigidbody.velocity = Vector3.zero;
 				}
+
 	}
 	public override List<BaseItem> Spawn( GameObject wp )
 	{
 		var items = new List<BaseItem>();
+
 		
 		var positions = base.SpawnPositions (wp);
-		foreach( var pos in positions )
+		for(int i = 0;i<positions.Count;i++)
 		{
-			var carrot = Instantiate( this,pos, this.gameObject.transform.rotation ) as BaseItem;
+
+
+			var carrot = Instantiate( this,positions[i], this.gameObject.transform.rotation ) as BaseItem;
+			
 			items.Add( carrot );
+
+			
 		}
 		
 		return items;
