@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Actors/NPC/Dolphin/Dolphin.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NPC\BaseItem.cs">
     <Files>
-      <File FileName="Assets/Actors/NPC/Dolphin/Dolphin.cs" Line="61" Column="4" />
+      <File FileName="Assets\Scripts\NPC\Coin.cs" Line="42" Column="72" />
+      <File FileName="Assets\Scripts\NPC\BaseItem.cs" Line="30" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

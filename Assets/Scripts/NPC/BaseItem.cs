@@ -27,7 +27,7 @@ public class BaseItem : MonoBehaviour
 
 
 				for (int i = 0; i < SpawnDensity; i++) {
-						var xOffset = Random.Range (200f, 500f) - 50f;
+						var xOffset = Random.Range (0f, 100f) - 50f;
 						var yOffset = Random.Range (this.MinSpawnHeight, this.MaxSpawnHeight);
 
 

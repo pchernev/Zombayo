@@ -3,3 +3,5 @@ Temp
 
 
 *.userprefs
+*.sln
+*.csproj
