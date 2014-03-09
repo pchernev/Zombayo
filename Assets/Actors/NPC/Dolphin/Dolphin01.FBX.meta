@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 325a40aea6f83f849ad5b7a0c3b1b9b5
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: Dolphin
     100002: DolphinLForearm
@@ -186,7 +186,7 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -274,5 +274,4 @@ ModelImporter:
     rootMotionBoneName: DolphinPelvis
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 
