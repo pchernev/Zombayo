@@ -68,9 +68,8 @@ public class Dolphin : BaseItem
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
 		_player.transform.parent = _playerParent;
-
-	
 	}
+
 	public override List<BaseItem> Spawn( GameObject wp)
 	{
 		var items = new List<BaseItem>();
