@@ -49,8 +49,8 @@ public class Player : MonoBehaviour {
 		prevPos.Add( transform.position );
 		Speed = 0;
       
-		_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
-		_btnRestart.enabled = false;	
+		//_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
+        //_btnRestart.enabled = false;	
 		
 		startPos = transform.position;
 		startRotation = transform.rotation;
