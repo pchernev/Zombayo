@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
+using System.Threading;
 
 public class MainMenuPanelScript : MonoBehaviour {
 
@@ -14,6 +16,13 @@ public class MainMenuPanelScript : MonoBehaviour {
 	}
 
     public void StartGame() 
+    {
+        var stats = new Statistics();
+        SaveLoadGame.SaveStats(stats);
+        Application.LoadLevel("IngameScene01");
+    }
+
+    public void Continue() 
     {
         Application.LoadLevel("IngameScene01");
     }

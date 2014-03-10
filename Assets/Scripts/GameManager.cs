@@ -4,33 +4,29 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Assets.Scripts;
+using System.Xml.Serialization;
+using System.IO;
+using System.Xml;
+using System.Text;
 
 public class GameManager : MonoBehaviour
 {
-    private bool isGameOver;
+    private bool isGameOver = false;
     private bool isGamePaused = false;
-    private GameObject doctorShark;
+    //private GameObject doctorShark;
     private GameObject player;
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
+
     void Start()
     {
+        player = GameObject.Find("Player");
         Time.timeScale = 1f;
         isGameOver = false;
+        isGamePaused = false;
         LoadAllPanels();
         DisablePanelsExcept("In Game");
         EnablePanel("In Game");
-        doctorShark = GameObject.Find("Dr.Fishhead");
-        player = GameObject.Find("Player");
-    }
-
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-
+        //doctorShark = GameObject.Find("Dr.Fishhead");      
     }
 
     private void LoadAllPanels()
@@ -122,22 +118,15 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-        if (!isGameOver)
+        if (!isGameOver && !isGamePaused)
         {
             isGameOver = true;
             DisablePanelsExcept("End Scores");
             EnablePanel("End Scores");
-            SaveGame();
+            var stats = player.GetComponent<Player>().stat;
+            stats.Distance = (int)player.transform.position.x;
+            stats.Coins += (int)(stats.Distance * 1.5f);
+            SaveLoadGame.SaveStats(stats);
         }
-    }
-
-    private void SaveGame()
-    {
-        SaveLoadGame saveLoadGame = new SaveLoadGame();
-        var stat = player.GetComponent<Player>().stat;
-        stat.Distance = (int)player.transform.position.x;
-        stat.Coins += (int)(player.transform.position.x * 1.5f); 
-        saveLoadGame._data = saveLoadGame.SerializeObject(stat);
-        saveLoadGame.CreateXML();
-    }
+    }      
 }

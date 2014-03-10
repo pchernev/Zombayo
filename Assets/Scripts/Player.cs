@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	public int hasBeenKicked = 0;
 
 	
-	public Statistics stat;
+	public Statistics stat = new Statistics();
 	//private DinamicStatistics Stat;
 	private List<Vector3> prevPos;
 	
@@ -32,30 +32,23 @@ public class Player : MonoBehaviour {
 	#region Base player logic 
 
 	void Awake() 
-	{		
-        SaveLoadGame sl = new SaveLoadGame();
-        sl.LoadXML();
-        stat = sl.DeserializeObject(sl._data);
-        if (stat == null)
-        {
-            stat = new Statistics(0, 0);
-        }
+	{       
 		rigidbody = GetComponent<Rigidbody>();
+       _animator = GetComponent<Animator>();
+       this.stat = SaveLoadGame.LoadStats();
+       Debug.Log("Stats Loaded XMLLLLL Points: " + this.stat.Points);
 	}
-	
+
 	// Use for initialization
 	void Start ()
-	{
-		
-		
-		
+	{		
 		_animator = GetComponent<Animator>();
 		_isFlying = false;
 		
 		prevPos = new List<Vector3>();
 		prevPos.Add( transform.position );
-		Speed = 0;		
-		
+		Speed = 0;
+      
 		_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
 		_btnRestart.enabled = false;	
 		
@@ -87,7 +80,7 @@ public class Player : MonoBehaviour {
 			//				rigidbody.isKinematic = true;
 		}
 
-        if (this.Speed == 0 && hasBeenKicked > 2 && Time.timeScale > 0.5f)
+        if (this.Speed == 0 && hasBeenKicked > 2)
         {
             gameObject.SendMessage("EndGame");
         }
@@ -102,8 +95,9 @@ public class Player : MonoBehaviour {
 	float time = 3;
 	void FixedUpdate () {		
 		
-		time -= Time.deltaTime;        
-       
+		time -= Time.deltaTime;
+        //this.stat.Distance = (int)transform.position.x;
+
 		if( time <= 0 )
 		{
 			if( !_animator.IsInTransition( 0 ) )
@@ -129,11 +123,10 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
-            if (this.stat == null)
+            if (this.stat != null)
             {
-                this.stat = new Statistics(0,0);
-            }
-			this.stat.Points += 1;
+                this.stat.Points += 1;
+            }			
 		}
 	}
 	

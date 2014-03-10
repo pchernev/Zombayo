@@ -25,9 +25,10 @@ public class DinamicStatistics : MonoBehaviour
     {
         this.InitStatsContainer();
         player = GameObject.Find("Player");
-        dict["Coins: "] = player.transform.position.x * 1.5f;      
-        dict["Score: "] = player.GetComponent<Player>().stat.Points;
-        dict["Distance: "] = player.transform.position.x;
+        var stats = player.GetComponent<Player>().stat;
+        dict["Coins: "] = stats.Coins;
+        dict["Score: "] = stats.Points;
+        dict["Distance: "] = stats.Distance;
         
     }
 
