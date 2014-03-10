@@ -9,9 +9,12 @@ namespace Assets.Scripts
 {
     public static class SaveLoadGame
     {
+		private static string dataFile = "data.xml";
+
         public static void SaveStats(Statistics stats)
         {
-            FileStream fs = new FileStream(Application.dataPath + "\\data.xml", FileMode.OpenOrCreate);
+			var filePath = Path.Combine( Application.dataPath, dataFile );
+            FileStream fs = new FileStream( filePath, FileMode.OpenOrCreate );
             
             using (fs)
             {              
@@ -28,8 +31,10 @@ namespace Assets.Scripts
 
         public static Statistics LoadStats()
         {
+			var filePath = Path.Combine( Application.dataPath, dataFile );
+
             XmlSerializer xs = new XmlSerializer(typeof(Statistics));
-            using (var reader = new XmlTextReader(Application.dataPath + "\\data.xml"))
+            using (var reader = new XmlTextReader( filePath ))
             {
                 Statistics statsFromXml = (Statistics)xs.Deserialize(reader);
                 return statsFromXml;

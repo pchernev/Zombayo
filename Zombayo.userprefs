@@ -1,11 +1,29 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NPC\BaseItem.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPC/BaseItem.cs">
     <Files>
-      <File FileName="Assets\Scripts\NPC\BaseItem.cs" Line="30" Column="42" />
-      <File FileName="Assets\Scripts\NPC\Coin.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\NPC\BaseItem.cs" Line="30" Column="42" />
+      <File FileName="Assets/Scripts/SaveLoadGame.cs" Line="1" Column="17" />
+      <File FileName="Assets/Scripts/DinamicStatistics.cs" Line="34" Column="34" />
+      <File FileName="Assets/Scripts/NPC/BaseItem.cs" Line="32" Column="4" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="NPC" expanded="True">
+                <Node name="BaseItem.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True" />
+          <Node name="Assembly-UnityScript-Editor" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
