@@ -4,8 +4,26 @@ using System.Collections.Generic;
 
 public class Carrot : BaseItem {
 	private string a = "op";
-	// Use this for initialization
+
+
+	private Animator _animator;
+	public Transform throwBone;
+	private Transform _playerParent;
+	private GameObject _player;
+	private Rigidbody _rigidbody;
+
 	void Start () {
+		_animator = GetComponent<Animator>();
+		
+		_player = GameObject.FindWithTag( "Player" );
+		if( _player != null )
+		{
+			_rigidbody = _player.GetComponent<Rigidbody>();
+		}
+		else
+		{
+			Debug.Log( "Player object not found" );
+		}
 	
 	}
 	
@@ -17,8 +35,22 @@ public class Carrot : BaseItem {
 	{
 
 		if (collision.gameObject.tag.CompareTo ("Player") == 0) {
+			Debug.Log ("The player hitting a carrot");
 			gameObject.audio.Play();
 			collision.gameObject.rigidbody.velocity = Vector3.zero;
+		
+			var collider = GetComponent<CapsuleCollider>();
+			collider.enabled = false;	
+			
+			_animator.SetTrigger( "Catch" );
+			
+			_rigidbody.isKinematic = true;
+			//			_rigidbody.AddForce( this.force );
+			
+			// catch player
+			_playerParent = _player.transform.parent;
+			_player.transform.parent = throwBone;
+
 				}
 
 	}
