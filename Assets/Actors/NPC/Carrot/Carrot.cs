@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Carrot : BaseItem {
-	private string a = "op";
+
 
 
 	private Animator _animator;
-	public Transform throwBone;
+
 	private Transform _playerParent;
 	private GameObject _player;
 	private Rigidbody _rigidbody;
@@ -49,7 +49,7 @@ public class Carrot : BaseItem {
 			
 			// catch player
 			_playerParent = _player.transform.parent;
-			_player.transform.parent = throwBone;
+
 
 				}
 
