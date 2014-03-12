@@ -46,6 +46,10 @@ public class DinamicStatistics : MonoBehaviour
         {
             if (!dict.ContainsKey(key))
             {
+                if (value == null)
+                {
+                    value = 0.0f;
+                }
                 dict.Add(key, value);
             }
             else

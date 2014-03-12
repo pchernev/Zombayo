@@ -11,8 +11,8 @@ using System.Text;
 
 public class GameManager : MonoBehaviour
 {
-    private bool isGameOver = false;
-    private bool isGamePaused = false;
+    private bool isGameOver;
+    private bool isGamePaused;
     //private GameObject doctorShark;
     private GameObject player;
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.Find("Player");
         Time.timeScale = 1f;
-        isGameOver = false;
-        isGamePaused = false;
+        this.isGameOver = false;
+        this.isGamePaused = false;
         LoadAllPanels();
         DisablePanelsExcept("In Game");
         EnablePanel("In Game");
@@ -118,9 +118,9 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-        if (!isGameOver && !isGamePaused)
+        if (this.isGameOver == false && this.isGamePaused == false)
         {
-            isGameOver = true;
+            this.isGameOver = true;
             DisablePanelsExcept("End Scores");
             EnablePanel("End Scores");
             var stats = player.GetComponent<Player>().stat;

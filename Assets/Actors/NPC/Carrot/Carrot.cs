@@ -50,7 +50,7 @@ public class Carrot : BaseItem {
 			// catch player
 			_playerParent = _player.transform.parent;
 
-
+           
 				}
 
 	}

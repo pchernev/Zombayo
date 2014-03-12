@@ -36,7 +36,6 @@ public class Player : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody>();
        _animator = GetComponent<Animator>();
        this.stat = SaveLoadGame.LoadStats();
-       Debug.Log("Stats Loaded XMLLLLL Points: " + this.stat.Points);
 	}
 
 	// Use for initialization
@@ -80,7 +79,7 @@ public class Player : MonoBehaviour {
 			//				rigidbody.isKinematic = true;
 		}
 
-        if (this.Speed == 0 && hasBeenKicked > 2)
+        if (this.Speed == 0 && hasBeenKicked > 0)
         {
             gameObject.SendMessage("EndGame");
         }
@@ -93,8 +92,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	float time = 3;
-	void FixedUpdate () {		
-		
+	void FixedUpdate () {
+     
 		time -= Time.deltaTime;
         //this.stat.Distance = (int)transform.position.x;
 

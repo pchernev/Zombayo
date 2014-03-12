@@ -9,11 +9,6 @@ public class MainMenuPanelScript : MonoBehaviour {
 	void Start () {
         this.GetComponent<Animation>().Play("igm_show");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void StartGame() 
     {
