@@ -3,21 +3,29 @@ using System.Collections;
 
 public class ShopPanelScript : MonoBehaviour {
 
-    private GameObject player;
+    GameManager gm;
     // Use this for initialization
     void Start()
     {
-        player = GameObject.Find("Player");
+        gm = GameObject.Find("Player").GetComponent<GameManager>();
     }
-
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void HideShopPanel() 
     {
-        player.GetComponent<GameManager>().CloseShop();
+        gm.CloseShop();
+    }
+
+    public void UpgradeMagnet() 
+    {
+        bool isSuccess = gm.UpgradeItem("Magnet");
+        if (isSuccess)
+        {
+            // todo: change stars here to +1 upg
+            Debug.Log("Successs upgrading the magnet");
+        }
+        else
+	    {
+            // todo: alert message for the user
+	    }
     }
 }

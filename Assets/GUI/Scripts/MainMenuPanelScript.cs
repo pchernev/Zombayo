@@ -5,18 +5,13 @@ using System.Threading;
 
 public class MainMenuPanelScript : MonoBehaviour {
 
-	// Use this for initialization
+	// todo: load or destroy saved shop panel upgrades
 	void Start () {
         this.GetComponent<Animation>().Play("igm_show");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void StartGame() 
-    {
+    {        
         var stats = new Statistics();
         SaveLoadGame.SaveStats(stats);
         Application.LoadLevel("IngameScene01");
