@@ -24,15 +24,17 @@ public class Player : MonoBehaviour {
 
 	
 	public Statistics stat = new Statistics();
-	//private DinamicStatistics Stat;
-	private List<Vector3> prevPos;
-	
+    
+
+	private List<Vector3> prevPos;	
 	private Rigidbody rigidbody;
-	
+    private GameManager gm;
+
 	#region Base player logic 
 
 	void Awake() 
-	{       
+	{
+        gm = gameObject.GetComponent<GameManager>();
 		rigidbody = GetComponent<Rigidbody>();
        _animator = GetComponent<Animator>();
        this.stat = SaveLoadGame.LoadStats();
@@ -79,21 +81,28 @@ public class Player : MonoBehaviour {
 			//				rigidbody.isKinematic = true;
 		}
 
-        if (this.Speed == 0 && hasBeenKicked > 0)
+        if (!gm.isGamePaused)
         {
-            gameObject.SendMessage("EndGame");
+            StartCoroutine(WaitAndEndGame(0.7f));
         }
-		
+
 		if( this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic )
 		{
 			rigidbody.isKinematic = true;
 		}
 	}
-	
+    IEnumerator WaitAndEndGame(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (this.Speed == 0 && hasBeenKicked > 0)
+        {
+            gameObject.SendMessage("EndGame");
+        }
+    }
 	// Update is called once per frame
 	float time = 3;
 	void FixedUpdate () {
-     
+   
 		time -= Time.deltaTime;
         //this.stat.Distance = (int)transform.position.x;
 
@@ -110,6 +119,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
 	void OnCollisionEnter(Collision collision){
 
 		if( collision.gameObject.tag.CompareTo( "Ground" ) == 0 )
@@ -134,39 +144,6 @@ public class Player : MonoBehaviour {
 		_isFlying = true;
 		hasBeenKicked++;
 		_animator.SetBool( "Fly", true );
-	}	
-	
-	
-	void OnGUI()
-	{
-		
-        //Stat["Distance: "] = transform.position.x;
-        //Stat["Score: "] = this.stat.Points;
-        //Stat["Coins: "] = Stat["Distance: "] * 1.5f;
-
-		//UILabel scoresLabel = GameObject.Find("ScoreLabel").GetComponent<UILabel>();
-		//scoresLabel.text = "Score: " + this.stat.Points.ToString();
-		
-		//UILabel distanceLabel = GameObject.Find("DistanceLabel").GetComponent<UILabel>();
-		//distanceLabel.text = "Distance: " + transform.position.x.ToString("F");
-		
-		//GUI.Label( new Rect( 10.0f, 10.0f, 120.0f, 30.0f ), "Score: " + this.stat.Points.ToString() );
-		
-		//GUI.Label( new Rect(10F, 40F, 120F, 30F), "Speed: " + Speed.ToString() );
-		//		EditorGUILayout.TextField ("File Name:", "test file name");
-		//		
-		//		if(GUILayout.Button(recordButton)) {
-		//			if(recording) { //recording
-		//				status = "Idle...";
-		//				recordButton = "Record";				
-		//				recording = false;
-		//			} else { // idle
-		//				capturedFrame = 0;
-		//				recordButton = "Stop";
-		//				recording = true;
-		//			}
-		//		}
-		//		EditorGUILayout.LabelField ("Status: ", status);
 	}	
 	
 	public void Reset()
