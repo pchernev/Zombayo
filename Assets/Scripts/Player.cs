@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 
+
 public class Player : MonoBehaviour {	
-	
+	public float timeToReach;
+
 	public Vector3 bounceForce;
 	
 	[HideInInspector]
@@ -15,7 +17,10 @@ public class Player : MonoBehaviour {
 	private GUITexture _btnRestart;
 	
 	Animator _animator;
-	
+
+
+
+
 	private Vector3 startPos;
 	private Quaternion startRotation;	
 	
@@ -63,6 +68,9 @@ public class Player : MonoBehaviour {
 
 		const int maxSize = 40;
 		Speed = 0F;
+		if (explosion.transform.parent = gameObject.transform) {
+			explosion.transform.position = this.gameObject.transform.position;
+				}
 		for( int i=0; i<prevPos.Count-1; i++ )
 		{
 			var p1 = prevPos[i];
@@ -186,15 +194,27 @@ public class Player : MonoBehaviour {
 	{
 		if(collider.gameObject.CompareTag ("Coin"))
 		   {
-			Instantiate (explosion, transform.position, transform.rotation);
+
+
+
+			
+			var explosion1 = Instantiate (explosion, transform.position, transform.rotation) as GameObject ;
+			explosion1.transform.parent = gameObject.transform;
+			
+			
+			iTween.MoveTo (explosion1, gameObject.transform.position, 2.0f);
 			AudioSource.PlayClipAtPoint(collectCoins, transform.position);
-			Destroy(collider.gameObject);	
-		
+			Destroy (collider.gameObject);
+
+
 		}
 	}
+
+	
 
 	
 	private int test;
 	
 	#endregion
+
 }
