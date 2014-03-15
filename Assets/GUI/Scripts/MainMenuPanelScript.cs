@@ -7,7 +7,9 @@ public class MainMenuPanelScript : MonoBehaviour {
 
 	// todo: load or destroy saved shop panel upgrades
 	void Start () {
-        this.GetComponent<Animation>().Play("igm_show");
+        var wtf = this.GetComponent<Animation>();
+        wtf.Play("igm_show");
+        Debug.Log("WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF " + wtf.GetType());
 	}
 
     public void StartGame() 
