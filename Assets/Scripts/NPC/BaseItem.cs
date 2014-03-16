@@ -15,7 +15,7 @@ public class BaseItem : MonoBehaviour
 	[BaseItem]
 	public float SpawnDensity;
 
-	public Vector3 minDistance; //between the same objects;
+	public  Vector2 minDistance; //between the same objects;
 	public Vector2 xSpawnLimits;
 
 
@@ -36,28 +36,22 @@ public class BaseItem : MonoBehaviour
 
 						positions.Add (new Vector3 (xOffset, yOffset, pos.z));
 				}
-			for (int i = 0; i < positions.Count; i++) {
-						for (int j = 0; j < positions.Count; j++) {
-								if (Mathf.Abs(positions[i].x-positions[j].x)<= minDistance.x)
-					if (Mathf.Abs(positions[i].y-positions[j].y)<= minDistance.y)
+		for (int i = 0; i < positions.Count; i++) {
+			for (int j = 0; j < positions.Count; j++) {
+				if (Mathf.Abs (positions [i].x - positions [j].x) <= minDistance.x) 
 				{
-					positions.RemoveAt(i);
-								}
-						}
-			
-				
-
-				}
-
+					if(Mathf.Abs(positions[i].y-positions[j].y)<= minDistance.y)
+					{
 						
-		
-				
-				
+						
+						positions.RemoveAt (i);
+					}
+				}
+			}
+		}
 
 		return positions;
 	}
-
-
 
 
 		

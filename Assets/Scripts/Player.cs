@@ -69,9 +69,7 @@ public class Player : MonoBehaviour {
 
 		const int maxSize = 40;
 		Speed = 0F;
-		if (explosion.transform.parent = gameObject.transform) {
-			explosion.transform.position = this.gameObject.transform.position;
-				}
+
 		for( int i=0; i<prevPos.Count-1; i++ )
 		{
 			var p1 = prevPos[i];
@@ -176,9 +174,8 @@ public class Player : MonoBehaviour {
 			
 			var explosion1 = Instantiate (explosion, transform.position, transform.rotation) as GameObject ;
 			explosion1.transform.parent = gameObject.transform;
-			
-			
-			iTween.MoveTo (explosion1, gameObject.transform.position, 2.0f);
+
+
 			AudioSource.PlayClipAtPoint(collectCoins, transform.position);
 			Destroy (collider.gameObject);
 

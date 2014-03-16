@@ -15,12 +15,6 @@ public class Coin : BaseItem {
 	
 	void Start()
 	{
-		
-		
-		
-		
-		
-		
 	}
 	void Update()
 	{
@@ -28,14 +22,16 @@ public class Coin : BaseItem {
 		pos.x -= coinSpeed;
 		transform.position = pos;
 		GameObject _player = GameObject.FindWithTag ("Player");
+
 		var playerpos = _player.transform.position;
+		var coinPos = this.gameObject.transform.position;
 		if (gotMagnet == true) {
 
 
-			var distance = Vector3.Distance (gameObject.transform.position, playerpos);
+			float distance = Vector3.Distance (coinPos, playerpos);
 			if (distance <= magnetPower) {
 				
-				iTween.MoveTo(gameObject,iTween.Hash("position",playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
+				iTween.MoveBy(this.gameObject,iTween.Hash("position",playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
 			}
 		}
 		
