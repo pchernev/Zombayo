@@ -38,29 +38,29 @@ public class Carrot : BaseItem {
 	{
 
 		if (collision.gameObject.tag.CompareTo ("Player") == 0) {
-			wasHit = true;
-			Debug.Log ("The player hitting a carrot");
+						wasHit = true;
+						Debug.Log ("The player hitting a carrot");
 		
-			gameObject.audio.Play();
+						gameObject.audio.Play ();
 
-			var collider = GetComponent<CapsuleCollider>();
-			collider.enabled = false;	
+						var collider = GetComponent<CapsuleCollider> ();
+						collider.enabled = false;	
 			
-			_animator.SetTrigger( "Catch" );
+						_animator.SetTrigger ("Catch");
 			
-			_rigidbody.isKinematic = true;
+						_rigidbody.isKinematic = true;
 
 			
-			// catch player
-			_playerParent = _player.transform.parent;
-			_player.transform.parent = throwBone;
+						// catch player
+						_playerParent = _player.transform.parent;
+						_player.transform.parent = throwBone;
 
 
-			//_rigidbody.AddForce( this.force );
-			//_rigidbody.velocity = Vector3.zero;
+						//_rigidbody.AddForce( this.force );
+						//_rigidbody.velocity = Vector3.zero;
 
 
-				}
+				} 
 
 	}
 	public void AddForceCarrot()
