@@ -17,6 +17,18 @@ public class ShopPanelScript : MonoBehaviour {
     public void HideShopPanel() 
     {
         gm.CloseShop();
+        if (gm.isGamePaused)
+        {
+            gm.PauseGame();
+            UIPlayAnimation anim = new UIPlayAnimation() { target = GameObject.Find("Pause").GetComponent<Animation>(), clipName="igm_show" };
+            anim.Play(true);
+        }
+        else if(gm.isGameOver)
+        {
+            gm.EndGame();
+            UIPlayAnimation anim = new UIPlayAnimation() { target = GameObject.Find("End Scores").GetComponent<Animation>(), clipName = "igm_show" };
+            anim.Play(true);
+        }
     }
 
     public void UpgradeMagnet() 
