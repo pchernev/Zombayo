@@ -4,10 +4,14 @@ using System.Collections;
 public class ShopPanelScript : MonoBehaviour {
 
     GameManager gm;
-    // Use this for initialization
+    UILabel labelForCoins;
+    Statistics stats;
     void Start()
     {
         gm = GameObject.Find("Player").GetComponent<GameManager>();
+        stats = GameObject.Find("Player").GetComponent<Player>().stat;
+        labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
+        labelForCoins.text += stats.Coins;
     }
 
     public void HideShopPanel() 
