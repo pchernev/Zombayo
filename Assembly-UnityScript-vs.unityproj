@@ -171,6 +171,9 @@
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\ExternalResources\Top Down Mobile\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\GUI\Font Zombayo Fantasy 1.txt" />
+ <Reference Include="SharpUnit">
+ <HintPath>Assets\SharpUnit\SharpUnit.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
