@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
             EnablePanel("End Scores");
             var stats = gameObject.GetComponent<Player>().stat;
             stats.Distance = (int)gameObject.transform.position.x;
-            stats.Coins += (int)(stats.Distance * 1.5f);
             SaveLoadGame.SaveStats(stats);
         }
     }

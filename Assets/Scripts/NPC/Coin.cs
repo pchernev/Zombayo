@@ -9,7 +9,7 @@ public class Coin : BaseItem {
 	long score = 0;
 	public float timeToReach;
 	public float coinSpeed;
-	
+
 	
 	
 	
@@ -31,17 +31,20 @@ public class Coin : BaseItem {
 			float distance = Vector3.Distance (coinPos, playerpos);
 			if (distance <= magnetPower) {
 				
-				iTween.MoveBy(this.gameObject,iTween.Hash("position",playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
+				iTween.MoveTo(this.gameObject,iTween.Hash("position",playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
 			}
 		}
 		
-		
+
 		
 	}
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.name == "Player") {
 			Destroy (this.gameObject);
+			var playerr = GameObject.FindWithTag("Player");
+			playerr.GetComponent<Player>().stat.Coins++;
+
 			
 		}
 		

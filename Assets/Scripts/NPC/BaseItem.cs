@@ -40,10 +40,23 @@ public class BaseItem : MonoBehaviour
 			for (int j = 0; j < positions.Count; j++) {
 				if (Mathf.Abs (positions [i].x - positions [j].x) <= minDistance.x) 
 				{
-					positions.RemoveAt(i);
+					
+					
+					positions.RemoveAt (i);
 				}
+				else if(Mathf.Abs(positions[i].y-positions[j].y)<= minDistance.y)
+					{
+						
+						
+						positions.RemoveAt (i);
+					}
+				
 			}
 		}
+
+
+		
+
 
 		return positions;
 	}
