@@ -92,7 +92,8 @@ public class EndlessWorld : MonoBehaviour
 	{		
 		var index = Random.Range( 0, tiles.Length - 1);
 		var prefab = tiles[index];
-		var piece = prefab.GetComponent<WorldPiece>();
+
+		//var piece = prefab.GetComponent<WorldPiece>();
 		var pos = new Vector3( 0f, 0f, 0f );
 
 		var obj = AddTile( prefab, pos );
@@ -111,8 +112,6 @@ public class EndlessWorld : MonoBehaviour
 
 			_items.AddRange( item.Spawn( piece ));
 		}
-
-				
 		return piece as GameObject;				
 	}
 }

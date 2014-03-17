@@ -9,3 +9,4 @@ C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\ICSharpCode.NRefactory.dll
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
+C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\SharpUnit.dll

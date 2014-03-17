@@ -18,19 +18,14 @@ public class Player : MonoBehaviour {
 	
 	Animator _animator;
 
-
-
-
 	private Vector3 startPos;
 	private Quaternion startRotation;	
 	
 	bool _isFlying;
 	public int hasBeenKicked = 0;
 
-	
-	public Statistics stat = new Statistics();
+    public GameData gameData;
     
-
 	private List<Vector3> prevPos;	
 	private Rigidbody rigidbody;
     private GameManager gm;
@@ -42,7 +37,7 @@ public class Player : MonoBehaviour {
         gm = gameObject.GetComponent<GameManager>();
 		rigidbody = GetComponent<Rigidbody>();
        _animator = GetComponent<Animator>();
-       this.stat = SaveLoadGame.LoadStats();
+       this.gameData = SaveLoadGame.LoadData(); 
 	}
 
 	// Use for initialization
@@ -107,9 +102,9 @@ public class Player : MonoBehaviour {
     }
 	// Update is called once per frame
 	float time = 3;
-	void FixedUpdate () {
-   
-		time -= Time.deltaTime;
+	void FixedUpdate () 
+    {
+   		time -= Time.deltaTime;
         //this.stat.Distance = (int)transform.position.x;
 
 		if( time <= 0 )
@@ -138,9 +133,9 @@ public class Player : MonoBehaviour {
 		}
 		else 
 		{
-            if (this.stat != null)
+            if (this.gameData != null)
             {
-                this.stat.Points += 1;
+                this.gameData.PlayerStats.Points += 1;
             }			
 		}
 	}
@@ -166,27 +161,15 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
 	{
-		if(collider.gameObject.CompareTag ("Coin"))
-		   {
+        if (collider.gameObject.CompareTag("Coin"))
+        {
+            var explosion1 = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
+            explosion1.transform.parent = gameObject.transform;
 
-
-
-			
-			var explosion1 = Instantiate (explosion, transform.position, transform.rotation) as GameObject ;
-			explosion1.transform.parent = gameObject.transform;
-
-
-			AudioSource.PlayClipAtPoint(collectCoins, transform.position);
-			Destroy (collider.gameObject);
-
-
-		}
+            AudioSource.PlayClipAtPoint(collectCoins, transform.position);
+            Destroy(collider.gameObject);
+        }
 	}
-
-	
-
-	
-	private int test;
 	
 	#endregion
 

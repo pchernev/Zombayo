@@ -1,56 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Coin : BaseItem {
 	public bool gotMagnet;
-	public int magnetPower;
+	public int magnetPower; // todo: get from last saved value;
 	
 	long score = 0;
 	public float timeToReach;
 	public float coinSpeed;
-
+    GameObject _player;
 	
 	
 	
 	void Start()
 	{
+        _player = GameObject.FindWithTag("Player");
+        gotMagnet = true;
+        var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet");
+        if (item.UpgradesCount > 0)
+        {
+            magnetPower = (int)item.Values[item.UpgradesCount - 1];
+        }
 	}
-	void Update()
-	{
-		var pos = transform.position;
-		pos.x -= coinSpeed;
-		transform.position = pos;
-		GameObject _player = GameObject.FindWithTag ("Player");
 
-		var playerpos = _player.transform.position;
-		var coinPos = this.gameObject.transform.position;
-		if (gotMagnet == true) {
+    void Update()
+    {
+        var pos = transform.position;
+        //pos.x -= coinSpeed;
+        //transform.position = pos;
+        var playerpos = _player.transform.position;
+        var coinPos = this.gameObject.transform.position;
+        if (gotMagnet == true)
+        {
+            float distance = Vector3.Distance(coinPos, playerpos);
+            if (distance <= magnetPower)
+            {
+                iTween.MoveTo(this.gameObject, playerpos, timeToReach);
+            }
+        }
+    }
 
-
-			float distance = Vector3.Distance (coinPos, playerpos);
-			if (distance <= magnetPower) {
-				
-				iTween.MoveTo(this.gameObject,iTween.Hash("position",playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
-			}
-		}
-		
-
-		
-	}
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.name == "Player") {
 			Destroy (this.gameObject);
-			var playerr = GameObject.FindWithTag("Player");
-			playerr.GetComponent<Player>().stat.Coins++;
-
-			
+			_player.GetComponent<Player>().gameData.PlayerStats.Coins++;
 		}
-		
-		
-		
-		
 	}
 	
 	public override List<BaseItem> Spawn( GameObject wp )

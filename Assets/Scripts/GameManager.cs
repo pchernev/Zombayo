@@ -16,26 +16,19 @@ public class GameManager : MonoBehaviour
 
     
     //private GameObject player;
-    private Statistics playerCurrentStats;
+    private GameData gameData;
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
-    private ShopItem[] shopItems;
-
-    #region constants
-        const int MAX_NUMBER_SHOP_UPGRADE = 6;
-    #endregion
 
     void Start()
     {
+        gameData = this.gameObject.GetComponent<Player>().gameData;
 
-        playerCurrentStats = this.gameObject.GetComponent<Player>().stat;
-        shopItems = LoadShopItems();
         Time.timeScale = 1f;
         this.isGameOver = false;
         this.isGamePaused = false;
         LoadAllPanels();
         DisablePanelsExcept("In Game");
         EnablePanel("In Game");
-        //doctorShark = GameObject.Find("Dr.Fishhead");      
     }
    
     public void PauseGame()
@@ -60,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-
         Time.timeScale = 1f;
         Application.LoadLevel("IngameScene01");
 
@@ -77,9 +69,9 @@ public class GameManager : MonoBehaviour
             this.isGameOver = true;
             DisablePanelsExcept("End Scores");
             EnablePanel("End Scores");
-            var stats = gameObject.GetComponent<Player>().stat;
-            stats.Distance = (int)gameObject.transform.position.x;
-            SaveLoadGame.SaveStats(stats);
+
+            gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;
+            SaveLoadGame.SaveData(gameData);
         }
     }
 
@@ -101,43 +93,25 @@ public class GameManager : MonoBehaviour
           
         }
     }
-  
-    private ShopItem[] LoadShopItems() 
-    {
-        // todo load from saved file
-        ShopItem[] result = new ShopItem[1];
-        result[0] = new ShopItem { Name = "Magnet", Price = 200, UpgradesCount = 0, MaxUpgradesCount = 6, NextUpgradePricePercentage = 2 };
-        return result;
-    }
 
     public bool UpgradeItem(string itemName) 
     {
-        var item = shopItems.FirstOrDefault(x => x.Name == itemName);
+        var item = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
+        Debug.Log("Trying to upg the magnet");
         if (item != null && item.MaxUpgradesCount < item.UpgradesCount
-            &&  playerCurrentStats.Coins >= item.Price)
+            && gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount +1])
         {
-            this.playerCurrentStats.Coins -= item.Price;
-            switch (itemName)
-            {
-                case "Magnet": UpgradeMagnet();         // add here new upgrades 
-                    break;
-                default:
-                    break;
-            }
+            this.gameData.PlayerStats.Coins -= item.Prices[item.UpgradesCount];
+
             item.UpgradesCount++;
-            item.Price *= item.NextUpgradePricePercentage;
             Debug.Log("Upgraded item: " + item.Name);
             return true;
         }
-        
+        Debug.Log("Can't UPGRADE ITEM");
         return false;
     }
 
     #region shopfunctions
-    private void UpgradeMagnet()
-    {
-        gameObject.GetComponent<SphereCollider>().radius = 2000f; 
-    }
     #endregion
     #region helpers
     private void LoadAllPanels()
@@ -169,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         if (gamePanels.ContainsKey(key))
         {
-            Debug.Log("Contains key: " + key);
+            //Debug.Log("Contains key: " + key);
             gamePanels[key].SetActive(true);
         }
     }

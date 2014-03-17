@@ -5,17 +5,16 @@ using System.Threading;
 
 public class MainMenuPanelScript : MonoBehaviour {
 
-	// todo: load or destroy saved shop panel upgrades
-	void Start () {
-        var wtf = this.GetComponent<Animation>();
-        wtf.Play("igm_show");
-        Debug.Log("WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF " + wtf.GetType());
+
+	void Start () 
+    {
+ 
 	}
 
     public void StartGame() 
     {        
-        var stats = new Statistics();
-        SaveLoadGame.SaveStats(stats);
+        var gameData = new GameData(true);
+        SaveLoadGame.SaveData(gameData);
         Application.LoadLevel("IngameScene01");
     }
 

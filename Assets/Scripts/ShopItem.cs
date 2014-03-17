@@ -5,7 +5,20 @@ public class ShopItem
 {
     public string Name { get; set; }
     public int UpgradesCount { get; set; }
-    public int MaxUpgradesCount { get; set; }
-    public int Price { get; set; }
-    public int NextUpgradePricePercentage { get; set; }
+    public int MaxUpgradesCount 
+    {
+        get 
+        {
+            if (Prices.Length == Values.Length)
+	        {
+                return Prices.Length;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+    public int[] Prices { get; set; }
+    public float[] Values { get; set; }
 }
