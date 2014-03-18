@@ -69,8 +69,10 @@ public class GameManager : MonoBehaviour
             this.isGameOver = true;
             DisablePanelsExcept("End Scores");
             EnablePanel("End Scores");
-
-            gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;
+            if (gameData.PlayerStats.Distance < (int)gameObject.transform.position.x)
+            {
+                gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;
+            }
             SaveLoadGame.SaveData(gameData);
         }
     }
@@ -97,9 +99,16 @@ public class GameManager : MonoBehaviour
     public bool UpgradeItem(string itemName) 
     {
         var item = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
+
         Debug.Log("Trying to upg the magnet");
-        if (item != null && item.MaxUpgradesCount < item.UpgradesCount
-            && gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount +1])
+        Debug.Log("Item.MaxUpgCount: " + item.MaxUpgradesCount);
+        Debug.Log("Item.Name: " + item.Name);
+        Debug.Log("Item.UpgradesCount: " + item.UpgradesCount);
+        Debug.Log("Item.Prices.Length: " + item.Prices.Length);
+        Debug.Log("Item.Values.Length: " + item.Values.Length);
+
+        if ((item != null) && (item.MaxUpgradesCount > item.UpgradesCount)
+            && (gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount]))
         {
             this.gameData.PlayerStats.Coins -= item.Prices[item.UpgradesCount];
 
@@ -111,8 +120,6 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    #region shopfunctions
-    #endregion
     #region helpers
     private void LoadAllPanels()
     {

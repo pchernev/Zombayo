@@ -3,6 +3,7 @@
 // Copyright © 2011-2013 Tasharen Entertainment
 //----------------------------------------------
 
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -15,9 +16,10 @@ public class UIImageButton : MonoBehaviour
 	public UISprite target;
 	public string normalSprite;
 	public string hoverSprite;
+    public List<EventDelegate> onClick = new List<EventDelegate>();
 	public string pressedSprite;
 	public string disabledSprite;
-	
+    
 	public bool isEnabled
 	{
 		get
@@ -75,6 +77,7 @@ public class UIImageButton : MonoBehaviour
 		{
 			target.spriteName = pressedSprite;
 			target.MakePixelPerfect();
+            EventDelegate.Execute(onClick);
 		}
 		else UpdateImage();
 	}
