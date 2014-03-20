@@ -40,36 +40,45 @@ public class ShopPanelScript : MonoBehaviour {
     }
 
     public void UpgradeMagnet() 
-    {
-        Debug.Log("Clicked");
-       
+    {     
         var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet");
-        if (itemUpgraded.MaxUpgradesCount <= itemUpgraded.UpgradesCount)
-        {
-            DisplayErrorMsg("You Have Reached Max Upgrades");
-            return;
-        }
-        else
-        {
+        UILabel upgradeLabel = GameObject.Find(itemUpgraded.Name).transform
+            .FindChild("Label").GetComponent<UILabel>();
+        UIImageButton upgradeButton = GameObject.Find(itemUpgraded.Name).GetComponent<UIImageButton>();
+
             bool isSuccess = gm.UpgradeItem("Magnet");
             if (isSuccess)
             {
                 var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
-
-                if (itemUpgraded.MaxUpgradesCount >= itemUpgraded.UpgradesCount)
+                if (itemUpgraded.MaxUpgradesCount > itemUpgraded.UpgradesCount)
                 {
                     stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
                     stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
-                    Debug.Log("Successs upgrading the magnet");
+
                     labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
                     labelForCoins.text = "Coins: " + gm.gameData.PlayerStats.Coins;
+
+                    if (itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1] > gameData.PlayerStats.Coins)
+                    {
+                        upgradeLabel.text = "Upgrade: " + itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1];
+                        upgradeButton.isEnabled = false;
+                    }
+                    else
+                    {
+                        upgradeLabel.text = "Upgrade: " + itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1];
+                        upgradeButton.isEnabled = true;
+                    }
                 }
-            }
-            else
-            {
-                DisplayErrorMsg("Not enought coins");
-            }
-        }
+                else
+                {
+                    labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
+                    labelForCoins.text = "Coins: " + gm.gameData.PlayerStats.Coins;
+                    upgradeLabel.text = "MAX";
+                    upgradeButton.isEnabled = false;
+                    stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
+                    stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
+                }
+            }       
     }
 
     private void DisplayErrorMsg(string msg) 
