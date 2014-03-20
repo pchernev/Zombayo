@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
 {
     public bool isGameOver;
     public bool isGamePaused;
-
+    DinamicStatistics stats = new DinamicStatistics();
     
     //private GameObject player;
-    private GameData gameData;
+    public GameData gameData;
     private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
 
     void Start()
@@ -65,10 +65,17 @@ public class GameManager : MonoBehaviour
     {
         if (this.isGameOver == false)
         {
+
+            stats["Coins: "] = gameData.PlayerStats.Coins;
+            stats["Score: "] = gameData.PlayerStats.Points;
+            stats["Distance: "] = gameData.PlayerStats.Distance;
+
             Debug.Log("Game ended");
             this.isGameOver = true;
             DisablePanelsExcept("End Scores");
+
             EnablePanel("End Scores");
+           
             if (gameData.PlayerStats.Distance < (int)gameObject.transform.position.x)
             {
                 gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;

@@ -12,8 +12,8 @@ public class ShopPanelScript : MonoBehaviour {
     {
         gm = GameObject.Find("Player").GetComponent<GameManager>();
         gameData = GameObject.Find("Player").GetComponent<Player>().gameData;
-        labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
-        labelForCoins.text += gameData.PlayerStats.Coins;
+        //labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
+        //labelForCoins.text += gameData.PlayerStats.Coins;
 
         var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
         var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet").UpgradesCount;

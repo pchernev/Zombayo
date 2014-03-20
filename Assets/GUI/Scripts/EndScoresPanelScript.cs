@@ -5,7 +5,7 @@ public class EndScoresPanelScript : MonoBehaviour
 {
     private GameObject player;
 	private GameManager gameMgr;
-
+    UILabel labelForCoins;
     // Use this for initialization
     void Start()
     {
@@ -14,10 +14,14 @@ public class EndScoresPanelScript : MonoBehaviour
     }
 
     public void ShowShopPanel() 
-    {
+    {        
         gameMgr.OpenShop();
+        labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
+        labelForCoins.text = "Coins: " + player.GetComponent<Player>().gameData.PlayerStats.Coins;
     }
-
+    void Update() {
+        
+    }
     public void RestartGame() 
     {
 		gameMgr.RestartGame();

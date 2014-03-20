@@ -25,11 +25,6 @@ public class DinamicStatistics : MonoBehaviour
     {
         this.InitStatsContainer();
         player = GameObject.Find("Player");
-        var stats = player.GetComponent<Player>().gameData.PlayerStats;
-        dict["Coins: "] = stats.Coins;
-        dict["Score: "] = stats.Points;
-        dict["Distance: "] = stats.Distance;
-        
     }
 
     public float this[string key]
@@ -59,13 +54,13 @@ public class DinamicStatistics : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        // hide using alpha chanel change
-        var panel = this.gameObject.GetComponent<UIPanel>();
-        panel.alpha = Mathf.Lerp(panel.alpha, to, Time.smoothDeltaTime); 
+    //void FixedUpdate()
+    //{
+    //    // hide using alpha chanel change
+    //    var panel = this.gameObject.GetComponent<UIPanel>();
+    //    panel.alpha = Mathf.Lerp(panel.alpha, to, Time.smoothDeltaTime); 
 
-    }
+    //}
 
     void Update()
     {
