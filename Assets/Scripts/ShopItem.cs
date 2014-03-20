@@ -11,7 +11,7 @@ public class ShopItem
         {
             if (Prices.Length == Values.Length)
 	        {
-                return Prices.Length;
+                return Prices.Length - 1;
             }
             else
             {

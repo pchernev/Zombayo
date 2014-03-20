@@ -10,7 +10,7 @@ using System.Linq;
 
         public GameData()
         {
-
+            // for the xml serializer we have to add empty ctor
         }
 
         public GameData(bool initNewGameData)
@@ -64,23 +64,21 @@ using System.Linq;
             set { }
         }
 
-
-
         private static List<int[]> itemsConfigPrices;
 
         private static List<float[]> itemsConfigValues;
 
-        private static float[] WingsValues = { 200, 700, 2000, 3500, 5000 };
+        private static float[] WingsValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
 
-        private static int[] WingsPrices = { 200, 700, 2000, 3500, 5000 };
+        private static int[] WingsPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
-        private static float[] MagnetValues = { 2.5f, 5.0f, 500f, 3500, 6000 };
+        private static float[] MagnetValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
 
-        private static int[] MagnetPrices = { 1, 2, 5, 10, 6000 };
+        private static int[] MagnetPrices = {0, 250, 650, 1500, 3700, 6800 };
 
-        private static float[] ArmorValues = { 250, 650, 1500, 3700, 6800 };
+        private static float[] ArmorValues = { 0, 250, 650, 1500, 3700, 6800 };
 
-        private static int[] ArmorPrices = { 250, 650, 1500, 3700, 6800 };
+        private static int[] ArmorPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
     }
    

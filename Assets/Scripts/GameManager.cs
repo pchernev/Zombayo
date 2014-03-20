@@ -115,11 +115,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Item.Values.Length: " + item.Values.Length);
 
         if ((item != null) && (item.MaxUpgradesCount > item.UpgradesCount)
-            && (gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount]))
+            && (gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount + 1]))
         {
-            this.gameData.PlayerStats.Coins -= item.Prices[item.UpgradesCount];
-
             item.UpgradesCount++;
+            this.gameData.PlayerStats.Coins -= item.Prices[item.UpgradesCount];
             Debug.Log("Upgraded item: " + item.Name);
             return true;
         }
