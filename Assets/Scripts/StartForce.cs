@@ -121,7 +121,7 @@ public class StartForce : MonoBehaviour
 		if( trailPrefab != null )
 		{
 			var vec = new Vector3( e.Finger.Position.x, e.Finger.Position.y, trailPrefab.transform.position.z );
-			Debug.Log( "posDown: " + vec );
+            //Debug.Log( "posDown: " + vec );
 			trailPrefab.transform.position = vec;
 		}
 	}

@@ -62,6 +62,7 @@ public class Carrot : BaseItem {
 
 				} 
 
+
 	}
 	public void AddForceCarrot()
 	{

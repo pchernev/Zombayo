@@ -10,3 +10,4 @@ C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp-vs.csprojResolv
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp.dll
 C:\Users\krstan4o\Desktop\Project Game\obj\Debug\Assembly-CSharp.pdb
 C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\krstan4o\Desktop\Project Game\Temp\bin\Debug\SharpUnit.dll

@@ -1,17 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class ShopPanelScript : MonoBehaviour {
 
     GameManager gm;
+    GameData gameData;
     UILabel labelForCoins;
-    Statistics stats;
+
     void Start()
     {
         gm = GameObject.Find("Player").GetComponent<GameManager>();
-        stats = GameObject.Find("Player").GetComponent<Player>().stat;
+        gameData = GameObject.Find("Player").GetComponent<Player>().gameData;
         labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
-        labelForCoins.text += stats.Coins;
+        labelForCoins.text += gameData.PlayerStats.Coins;
+
+        var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
+        var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet").UpgradesCount;
+        for (int i = 0; i < itemUpgraded; i++)
+        {
+             stars.FindChild("StarOff " + i).GetComponent<UISprite>().enabled = false;
+             stars.FindChild("StarOn " + i).GetComponent<UISprite>().enabled = true;
+        }               
     }
 
     public void HideShopPanel() 
@@ -33,15 +43,20 @@ public class ShopPanelScript : MonoBehaviour {
 
     public void UpgradeMagnet() 
     {
+        Debug.Log("Clicked");
         bool isSuccess = gm.UpgradeItem("Magnet");
         if (isSuccess)
         {
-            // todo: change stars here to +1 upg
-            Debug.Log("Successs upgrading the magnet");
+           var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
+           var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet");
+           stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
+           stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
+           Debug.Log("Successs upgrading the magnet");
+
         }
         else
 	    {
-            // todo: alert message for the user
+            // todo: alert message for the user that no success in upg.
 	    }
     }
 }
