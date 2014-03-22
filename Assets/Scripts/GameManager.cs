@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     
     //private GameObject player;
     public GameData gameData;
-    private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
 
+    private Dictionary<string, GameObject> gamePanels = new Dictionary<string, GameObject>();
+    
     void Start()
     {
         gameData = this.gameObject.GetComponent<Player>().gameData;
-
+        
         Time.timeScale = 1f;
         this.isGameOver = false;
         this.isGamePaused = false;
@@ -105,25 +106,48 @@ public class GameManager : MonoBehaviour
 
     public bool UpgradeItem(string itemName) 
     {
+        Debug.Log("In GameManager Upgrade Item: " + itemName);
         var item = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
-
-        Debug.Log("Trying to upg the magnet");
-        Debug.Log("Item.MaxUpgCount: " + item.MaxUpgradesCount);
-        Debug.Log("Item.Name: " + item.Name);
-        Debug.Log("Item.UpgradesCount: " + item.UpgradesCount);
-        Debug.Log("Item.Prices.Length: " + item.Prices.Length);
-        Debug.Log("Item.Values.Length: " + item.Values.Length);
 
         if ((item != null) && (item.MaxUpgradesCount > item.UpgradesCount)
             && (gameData.PlayerStats.Coins >= item.Prices[item.UpgradesCount + 1]))
         {
             item.UpgradesCount++;
             this.gameData.PlayerStats.Coins -= item.Prices[item.UpgradesCount];
-            Debug.Log("Upgraded item: " + item.Name);
+            UpdateShop();
             return true;
         }
-        Debug.Log("Can't UPGRADE ITEM");
+        UpdateShop();
         return false;
+    }
+
+    public void UpdateShop() 
+    {
+       var labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
+        labelForCoins.text = "Coins: " +  this.gameObject.GetComponent<Player>().gameData.PlayerStats.Coins;
+        var gameData = this.gameObject.GetComponent<Player>().gameData;
+        for (int i = 0; i < gameData.ShopItems.Length; i++)
+        {
+            var item = gameData.ShopItems[i];
+            UILabel upgradeLabel = GameObject.Find(item.Name).transform
+                .FindChild("Label").GetComponent<UILabel>();
+            UIImageButton upgradeButton = GameObject.Find(item.Name).GetComponent<UIImageButton>();
+            if (item.MaxUpgradesCount <= item.UpgradesCount)
+            {
+                upgradeLabel.text = "MAX";
+                upgradeButton.isEnabled = false;
+            }
+            else if (item.Prices[item.UpgradesCount + 1] > gameData.PlayerStats.Coins)
+            {
+                upgradeLabel.text = "Upgrade: " + item.Prices[item.UpgradesCount + 1];
+                upgradeButton.isEnabled = false;
+            }
+            else
+            {
+                upgradeLabel.text = "Upgrade: " + item.Prices[item.UpgradesCount + 1];
+                upgradeButton.isEnabled = true;
+            }
+        }       
     }
 
     #region helpers
