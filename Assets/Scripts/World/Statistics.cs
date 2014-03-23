@@ -12,5 +12,6 @@ public class Statistics
         this.Distance = 0;
         this.Points = 0;
         this.Coins = 0;
+        this.MaxDistance = 0;
     }
 }
