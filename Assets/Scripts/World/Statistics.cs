@@ -5,8 +5,8 @@ public class Statistics
 {
 	public int Points;
     public int Coins;
-    public int Distance;
-
+    public int Distance = 0;
+    public int MaxDistance;
     public Statistics()
     {      
         this.Distance = 0;

@@ -16,7 +16,6 @@ public class EndScoresPanelScript : MonoBehaviour
     public void ShowShopPanel() 
     {        
         gameMgr.OpenShop();
-        gameMgr.UpdateShop();
     }
     public void RestartGame() 
     {

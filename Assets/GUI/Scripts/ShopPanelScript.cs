@@ -43,42 +43,6 @@ public class ShopPanelScript : MonoBehaviour {
     {
         Debug.Log("Trying to upgrade item: " + itemName);
         var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
-        UILabel upgradeLabel = GameObject.Find(itemUpgraded.Name).transform
-            .FindChild("Label").GetComponent<UILabel>();
-        UIImageButton upgradeButton = GameObject.Find(itemUpgraded.Name).GetComponent<UIImageButton>();
-
         bool isSuccess = gm.UpgradeItem(itemName);
-        if (isSuccess)
-        {
-            var stars = GameObject.Find(itemName).transform.FindChild("Stars");
-            if (itemUpgraded.MaxUpgradesCount > itemUpgraded.UpgradesCount)
-            {
-                stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
-                stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
-
-                labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
-                labelForCoins.text = "Coins: " + gm.gameData.PlayerStats.Coins;
-
-                if (itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1] > gameData.PlayerStats.Coins)
-                {
-                    upgradeLabel.text = "Upgrade: " + itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1];
-                    upgradeButton.isEnabled = false;
-                }
-                else
-                {
-                    upgradeLabel.text = "Upgrade: " + itemUpgraded.Prices[itemUpgraded.UpgradesCount + 1];
-                    upgradeButton.isEnabled = true;
-                }
-            }
-            else
-            {
-                labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
-                labelForCoins.text = "Coins: " + gm.gameData.PlayerStats.Coins;
-                upgradeLabel.text = "MAX";
-                upgradeButton.isEnabled = false;
-                stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
-                stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
-            }
-        }       
     }
 }

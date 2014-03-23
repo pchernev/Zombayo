@@ -8,12 +8,12 @@ public class MainMenuPanelScript : MonoBehaviour {
 
 	void Start () 
     {
- 
+        transform.GetComponent<UIPlayAnimation>().Play(true);
 	}
 
     public void StartGame() 
     {        
-        var gameData = new GameData(true);
+        var gameData = new GameData(true);       
         SaveLoadGame.SaveData(gameData);
         Application.LoadLevel("IngameScene01");
     }

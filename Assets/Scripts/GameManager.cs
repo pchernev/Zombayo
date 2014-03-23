@@ -60,28 +60,29 @@ public class GameManager : MonoBehaviour
         isGamePaused = false;
         isGameOver = false;
         EnablePanel("In Game");
+        gameData.PlayerStats.Distance = 0;
+        SaveLoadGame.SaveData(this.gameData);
     }
 
     public void EndGame()
     {
         if (this.isGameOver == false)
         {
-
+            gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;
             stats["Coins: "] = gameData.PlayerStats.Coins;
             stats["Score: "] = gameData.PlayerStats.Points;
             stats["Distance: "] = gameData.PlayerStats.Distance;
-
+            stats["MaxDistance: "] = gameData.PlayerStats.MaxDistance;
             Debug.Log("Game ended");
             this.isGameOver = true;
             DisablePanelsExcept("End Scores");
 
             EnablePanel("End Scores");
-           
-            if (gameData.PlayerStats.Distance < (int)gameObject.transform.position.x)
+          
+            if (gameData.PlayerStats.MaxDistance < gameData.PlayerStats.Distance)
             {
-                gameData.PlayerStats.Distance = (int)gameObject.transform.position.x;
+                gameData.PlayerStats.MaxDistance = gameData.PlayerStats.Distance;
             }
-            SaveLoadGame.SaveData(gameData);
         }
     }
 
@@ -92,11 +93,16 @@ public class GameManager : MonoBehaviour
             DisablePanel("End Scores");
         }
         EnablePanel("Shop");
+        UpdateShop();
     }
 
     public void CloseShop()
     {
         DisablePanel("Shop");
+        stats["Coins: "] = gameData.PlayerStats.Coins;
+        stats["Score: "] = gameData.PlayerStats.Points;
+        stats["Distance: "] = gameData.PlayerStats.Distance;
+        stats["MaxDistance: "] = gameData.PlayerStats.MaxDistance;
         EnablePanel("End Scores");
         if (isGameOver)
         {
@@ -117,7 +123,6 @@ public class GameManager : MonoBehaviour
             UpdateShop();
             return true;
         }
-        UpdateShop();
         return false;
     }
 
@@ -147,6 +152,16 @@ public class GameManager : MonoBehaviour
                 upgradeLabel.text = "Upgrade: " + item.Prices[item.UpgradesCount + 1];
                 upgradeButton.isEnabled = true;
             }
+            // update stars
+            var stars = GameObject.Find(item.Name).transform.FindChild("Stars");
+            for (int j = 0; j < item.UpgradesCount; j++)
+            {
+                var starOn = stars.transform.FindChild("StarOn " + j);
+                var starOff = stars.transform.FindChild("StarOff " + j);
+                starOn.GetComponentInChildren<UISprite>().enabled = true;
+                starOff.GetComponentInChildren<UISprite>().enabled = false;
+            }
+
         }       
     }
 
