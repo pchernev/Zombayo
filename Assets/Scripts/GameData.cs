@@ -34,9 +34,9 @@ using System.Linq;
 
     public static class ShopConfig
     {
-        public const int ShopItemsCount = 4;
+        public const int ShopItemsCount = 5;
  
-        public static string[] ShopItemNames = new string[ShopItemsCount] { "Bladder", "Magnet", "Armor", "Fart" };
+        public static string[] ShopItemNames = new string[ShopItemsCount] { "Bladder", "Magnet", "Armor", "Fart", "Wings" };
         public static List<float[]> ItemsConfigValues
         {
             get
@@ -46,6 +46,7 @@ using System.Linq;
                 itemsConfigValues.Add(MagnetValues);
                 itemsConfigValues.Add(ArmorValues);
                 itemsConfigValues.Add(FartValues);
+                itemsConfigValues.Add(WingValues);
                 return itemsConfigValues;
             }
             set { }
@@ -59,6 +60,7 @@ using System.Linq;
                 itemsConfigPrices.Add(MagnetPrices);
                 itemsConfigPrices.Add(ArmorPrices);
                 itemsConfigPrices.Add(FartPrices);
+                itemsConfigPrices.Add(WingPrices);
                 return itemsConfigPrices;
             }
             set { }
@@ -83,6 +85,10 @@ using System.Linq;
         private static float[] FartValues = { 0, 10, 20, 30, 40, 50 };
 
         private static int[] FartPrices = { 0, 250, 650, 1500, 3700, 6800 };
+
+        private static float[] WingValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
+
+        private static int[] WingPrices = { 0, 250, 650, 1500, 3700, 6800 };
     }
    
 
