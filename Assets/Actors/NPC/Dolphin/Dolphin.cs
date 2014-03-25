@@ -43,7 +43,7 @@ public class Dolphin : BaseItem
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
 			Debug.Log ("The player hitting dolphin");
-
+			_rigidbody.drag = 0.1f;
 			wasHit = true;
 			gameObject.audio.Play();
 			var collider = GetComponent<BoxCollider>();

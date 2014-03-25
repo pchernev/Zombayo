@@ -30,7 +30,7 @@ public class Carrot : BaseItem {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Debug.Log (_rigidbody.drag);
 	}
 
 	private bool wasHit = false;
@@ -38,9 +38,10 @@ public class Carrot : BaseItem {
 	{
 
 		if (collision.gameObject.tag.CompareTo ("Player") == 0) {
+			            
 						wasHit = true;
-						Debug.Log ("The player hitting a carrot");
-		
+						
+			_rigidbody.drag = 0.1f;
 						gameObject.audio.Play ();
 
 						var collider = GetComponent<CapsuleCollider> ();
@@ -49,11 +50,12 @@ public class Carrot : BaseItem {
 						_animator.SetTrigger ("Catch");
 			
 						_rigidbody.isKinematic = true;
-
+			           
 			
 						// catch player
 						_playerParent = _player.transform.parent;
 						_player.transform.parent = throwBone;
+
 
 
 						//_rigidbody.AddForce( this.force );
@@ -66,11 +68,15 @@ public class Carrot : BaseItem {
 	}
 	public void AddForceCarrot()
 	{
-		Debug.Log( "ApplyForce: " + this.force.ToString() );
+		//Debug.Log( "ApplyForce: " + this.force.ToString() );
 		
 		_player.transform.parent = _playerParent;
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
+
+		
+	
+		
 	}
 	public override List<BaseItem> Spawn( GameObject wp )
 	{
