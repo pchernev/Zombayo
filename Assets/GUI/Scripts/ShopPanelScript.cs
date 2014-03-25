@@ -39,41 +39,10 @@ public class ShopPanelScript : MonoBehaviour {
         }
     }
 
-    public void UpgradeMagnet() 
+    public void HandleUpgrade(string itemName) 
     {
-        Debug.Log("Clicked");
-       
-        var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet");
-        if (itemUpgraded.MaxUpgradesCount <= itemUpgraded.UpgradesCount)
-        {
-            DisplayErrorMsg("You Have Reached Max Upgrades");
-            return;
-        }
-        else
-        {
-            bool isSuccess = gm.UpgradeItem("Magnet");
-            if (isSuccess)
-            {
-                var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
-
-                if (itemUpgraded.MaxUpgradesCount >= itemUpgraded.UpgradesCount)
-                {
-                    stars.FindChild("StarOff " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = false;
-                    stars.FindChild("StarOn " + (itemUpgraded.UpgradesCount - 1)).GetComponent<UISprite>().enabled = true;
-                    Debug.Log("Successs upgrading the magnet");
-                    labelForCoins = GameObject.Find("Coins").GetComponent<UILabel>();
-                    labelForCoins.text = "Coins: " + gm.gameData.PlayerStats.Coins;
-                }
-            }
-            else
-            {
-                DisplayErrorMsg("Not enought coins");
-            }
-        }
-    }
-
-    private void DisplayErrorMsg(string msg) 
-    {
-        GameObject.Find("UsrMsg").GetComponent<UILabel>().text = msg;
+        Debug.Log("Trying to upgrade item: " + itemName);
+        var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
+        bool isSuccess = gm.UpgradeItem(itemName);
     }
 }

@@ -24,6 +24,7 @@ public class UIButtonMessage : MonoBehaviour
 
 	public GameObject target;
 	public string functionName;
+    public string parameter = null;
 	public Trigger trigger = Trigger.OnClick;
 	public bool includeChildren = false;
 
@@ -69,12 +70,12 @@ public class UIButtonMessage : MonoBehaviour
 			for (int i = 0, imax = transforms.Length; i < imax; ++i)
 			{
 				Transform t = transforms[i];
-				t.gameObject.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
+                t.gameObject.SendMessage(functionName, parameter, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 		else
 		{
-			target.SendMessage(functionName, gameObject, SendMessageOptions.DontRequireReceiver);
+            target.SendMessage(functionName, parameter, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }
