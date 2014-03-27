@@ -42,7 +42,7 @@ public class ShopPanelScript : MonoBehaviour {
     public void HandleUpgrade(string itemName) 
     {
         Debug.Log("Trying to upgrade item: " + itemName);
-        var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == itemName);
+     
         bool isSuccess = gm.UpgradeItem(itemName);
     }
 }

@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         {
             DisablePanel("End Scores");
         }
+        EnablePanel("Scroll Bar");
         EnablePanel("Shop");
         UpdateShop();
     }
@@ -134,6 +135,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < gameData.ShopItems.Length; i++)
         {
             var item = gameData.ShopItems[i];
+            Debug.Log("ItemName: " + item.Name);
             UILabel upgradeLabel = GameObject.Find(item.Name).transform
                 .FindChild("Label").GetComponent<UILabel>();
             UIImageButton upgradeButton = GameObject.Find(item.Name).GetComponent<UIImageButton>();
@@ -153,11 +155,11 @@ public class GameManager : MonoBehaviour
                 upgradeButton.isEnabled = true;
             }
             // update stars
-            var stars = GameObject.Find(item.Name).transform.FindChild("Stars");
+            var currentGO = GameObject.Find(item.Name);
             for (int j = 0; j < item.UpgradesCount; j++)
             {
-                var starOn = stars.transform.FindChild("StarOn " + j);
-                var starOff = stars.transform.FindChild("StarOff " + j);
+                var starOn = currentGO.transform.FindChild("StarOn " + j);
+                var starOff = currentGO.transform.FindChild("StarOff " + j);
                 starOn.GetComponentInChildren<UISprite>().enabled = true;
                 starOff.GetComponentInChildren<UISprite>().enabled = false;
             }
