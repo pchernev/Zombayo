@@ -165,6 +165,16 @@ public class GameManager : MonoBehaviour
         }       
     }
 
+	public void MuteDemuteSound()
+	{
+		if (AudioListener.pause == false) {
+						AudioListener.pause = true;
+				} 
+		else {
+			AudioListener.pause = false;
+				}
+		}
+
     #region helpers
     private void LoadAllPanels()
     {
