@@ -17,4 +17,5 @@ public class InGamePanelScript : MonoBehaviour {
     {
         player.GetComponent<GameManager>().PauseGame();
     }
+
 }
