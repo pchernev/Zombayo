@@ -4,6 +4,7 @@ using System.Collections;
 public class ProgressBars : MonoBehaviour {
 	private UISlider _slider;
 
+
 	void Awake()
 	{
 		_slider = GetComponent<UISlider> ();
