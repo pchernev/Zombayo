@@ -24,7 +24,7 @@ public class ProgressBarButtonWing : MonoBehaviour {
 		UIWidget widget = _slider.foreground.GetComponent<UIWidget>();
 		_player = GameObject.FindWithTag("Player");
 		
-		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wing");
+		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
 		if (item.UpgradesCount == 0) {
 						label.text = "Disabled";
 						widget.color = this.color;

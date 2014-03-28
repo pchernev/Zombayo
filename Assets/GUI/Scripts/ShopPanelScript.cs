@@ -11,15 +11,7 @@ public class ShopPanelScript : MonoBehaviour {
     void Start()
     {
         gm = GameObject.Find("Player").GetComponent<GameManager>();
-        gameData = GameObject.Find("Player").GetComponent<Player>().gameData;
-
-        var stars = GameObject.Find("Magnet").transform.FindChild("Stars");
-        var itemUpgraded = gameData.ShopItems.FirstOrDefault(x => x.Name == "Magnet" && x.UpgradesCount <= x.MaxUpgradesCount).UpgradesCount;
-        for (int i = 0; i < itemUpgraded; i++)
-        {
-             stars.FindChild("StarOff " + i).GetComponent<UISprite>().enabled = false;
-             stars.FindChild("StarOn " + i).GetComponent<UISprite>().enabled = true;
-        }               
+        gameData = GameObject.Find("Player").GetComponent<Player>().gameData;           
     }
 
     public void HideShopPanel() 
