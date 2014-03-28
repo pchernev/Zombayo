@@ -34,6 +34,7 @@ public class Squid : BaseItem
 
 				
 				
+				
 	}
 
 	
@@ -51,7 +52,7 @@ public class Squid : BaseItem
 			_animator.SetTrigger( "Hit" );
 
 			wasHit = true;
-		
+
 
 
 		}

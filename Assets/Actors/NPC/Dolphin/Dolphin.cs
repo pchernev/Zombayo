@@ -37,7 +37,7 @@ public class Dolphin : BaseItem
 	}
 	
 	private bool wasHit = false;
-	void OnCollisionEnter( Collision collision )
+	void OnTriggerEnter( Collider collision )
 	{
 
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
@@ -46,28 +46,18 @@ public class Dolphin : BaseItem
 			_rigidbody.drag = 0.1f;
 			wasHit = true;
 			gameObject.audio.Play();
-			var collider = GetComponent<BoxCollider>();
-			collider.enabled = false;	
+
 			
 			_animator.SetTrigger( "Throw" );
+			_rigidbody.AddForce( force );
+			Debug.Log( "ApplyForce: " + this.force.ToString() );
 			
-			_rigidbody.isKinematic = true;
-			//			_rigidbody.AddForce( this.force );
-			
-			// catch player
-			_playerParent = _player.transform.parent;
-			_player.transform.parent = throwBone;
+		
+
 		}
 	}
 	
-	public void Enforce()
-	{
-		Debug.Log( "ApplyForce: " + this.force.ToString() );
-		
-		_rigidbody.isKinematic = false;
-		_rigidbody.AddForce( force );
-		_player.transform.parent = _playerParent;
-	}
+
 
 	public override List<BaseItem> Spawn( GameObject wp)
 	{

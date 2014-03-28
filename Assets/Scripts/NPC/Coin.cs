@@ -11,6 +11,8 @@ public class Coin : BaseItem {
 	public float timeToReach;
 	public float coinSpeed;
     GameObject _player;
+	private bool inRange;
+
 	
 	
 	
@@ -35,12 +37,14 @@ public class Coin : BaseItem {
         if (gotMagnet == true)
         {
             float distance = Vector3.Distance(coinPos, playerpos);
-            if (distance <= magnetPower)
+            if(distance <= magnetPower)
             {
-                iTween.MoveTo(this.gameObject, playerpos, timeToReach);
+				inRange = true;
+				iTween.MoveTo(gameObject,iTween.Hash("position", playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
             }
         }
     }
+
 
 	void OnTriggerEnter(Collider other)
 	{

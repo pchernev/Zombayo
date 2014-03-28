@@ -34,7 +34,12 @@ public class Snail : BaseItem
 		var pos = transform.position;
 		pos.x -= speed;
 		transform.position = pos;
+
 	}
+	void FixedUpdate()
+	{
+
+		}
 
 	private bool wasHit = false;
 	void OnCollisionEnter( Collision collision )
@@ -44,6 +49,8 @@ public class Snail : BaseItem
 
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
+			collision.transform.position = throwBone.transform.position;
+
 			wasHit = true;
 			gameObject.audio.Play();
 			var collider = GetComponent<BoxCollider>();
@@ -66,7 +73,7 @@ public class Snail : BaseItem
 
 		_player.transform.parent = _playerParent;
 		_rigidbody.isKinematic = false;
-		_rigidbody.AddRelativeForce( this.force );
+		_rigidbody.AddForce( this.force );
 	}
 	public override List<BaseItem> Spawn( GameObject wp)
 	{
