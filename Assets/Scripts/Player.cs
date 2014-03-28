@@ -168,6 +168,8 @@ public class Player : MonoBehaviour {
 
             AudioSource.PlayClipAtPoint(collectCoins, transform.position);
             Destroy(collider.gameObject);
+			Destroy (explosion1,2.0f);
+
         }
 	}
 	
