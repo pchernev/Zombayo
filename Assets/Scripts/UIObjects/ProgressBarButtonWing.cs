@@ -40,9 +40,11 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		if (use == true) {
-			target.GetComponent<UISlider> ().value -= speedOfuse;
-		}
+		if (available == true) {
+						if (use == true) {
+								target.GetComponent<UISlider> ().value -= speedOfuse;
+						}
+				}
 		
 		
 		
