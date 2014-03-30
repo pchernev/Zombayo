@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Squid : BaseItem
 {
 
 
-	
+	public Vector3 force;
 	private Animator _animator;
 	
 	private Transform _playerParent;
@@ -45,13 +46,14 @@ public class Squid : BaseItem
 		
 		if( collision.gameObject.tag.CompareTo( "Player" ) == 0 )
 		{
-			_rigidbody.drag+=0.4f;
+
 			gameObject.audio.Play();
 
 			
 			_animator.SetTrigger( "Hit" );
 
 			wasHit = true;
+			_rigidbody.AddForce(this.force);
 
 
 

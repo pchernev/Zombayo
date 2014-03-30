@@ -41,7 +41,7 @@ public class Coin : BaseItem {
             if(distance <= magnetPower)
             {
 				inRange = true;
-				iTween.MoveTo(this.gameObject, playerpos ,timeToReach);
+				iTween.MoveUpdate(this.gameObject, playerpos ,timeToReach);
             }
         }
     }
