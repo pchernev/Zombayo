@@ -121,22 +121,22 @@ public class Player : MonoBehaviour {
 
         //Debug.Log("Times Hited the Ground: " + TimesHitGround);
 
-        if (TimesHitGround > 0)
+        if (TimesHitGround > 0 && _animator.GetInteger("VelocityDirection") != -3)
         {
             _animator.SetInteger("VelocityDirection", -3);
             Debug.Log("Not Animation");
         }
-        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0)
+        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && _animator.GetInteger("VelocityDirection") != 0)
         {
 
             _animator.SetInteger("VelocityDirection", 0);
         }
-        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0)
+        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0 && _animator.GetInteger("VelocityDirection") != 1)
         {
 
             _animator.SetInteger("VelocityDirection", 1);
         }
-        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0)
+        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0 && _animator.GetInteger("VelocityDirection") != -1)
         {
 
             _animator.SetInteger("VelocityDirection", -1);
@@ -202,12 +202,13 @@ public class Player : MonoBehaviour {
 
     public void UseWings() 
     {
-      //  _animator.SetInteger(""); // integer to play using wings animation
+         _animator.SetInteger("Idle", 3); // integer to play using wings animation
+         Debug.Log("use wingsssss"); 
     }
 
     public void UseFart() 
     {
-        
+        Debug.Log("use farttttttt"); 
     }
 
 	#endregion
