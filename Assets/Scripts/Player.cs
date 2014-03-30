@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
-
+using System.Linq;
 
 public class Player : MonoBehaviour {	
 	public float timeToReach;
 
 	public Vector3 bounceForce;
-	
+    // Upgrades
+    [HideInInspector]
+    public float ArmorCount = 0;
+
 	[HideInInspector]
 	public float Speed;
 	public GameObject explosion;
@@ -44,6 +47,9 @@ public class Player : MonoBehaviour {
 		rigidbody = GetComponent<Rigidbody>();
        _animator = GetComponent<Animator>();
        this.gameData = SaveLoadGame.LoadData(); 
+        var armorItem =  this.gameData.ShopItems.FirstOrDefault(x=>x.Name == "Armor");
+        int armorUpgCount = armorItem.UpgradesCount;
+        this.ArmorCount = armorItem.Values[armorUpgCount];
 	}
 
 	// Use for initialization
@@ -156,10 +162,9 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 
-        Debug.Log("Game Object: " + collision.gameObject.tag);
+       
         if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
         {
-            Debug.Log("Collision Enterrrrrrrr");
             _isFlying = false;
             TimesHitGround++;
             _animator.SetBool("Fly", false);
