@@ -25,7 +25,13 @@ public class Player : MonoBehaviour {
 	public int hasBeenKicked = 0;
 
     public GameData gameData;
-    
+
+    [HideInInspector]
+    public float LastHeightY;
+    [HideInInspector]
+    public int TimesHitGround = 0;
+
+
 	private List<Vector3> prevPos;	
 	private Rigidbody rigidbody;
     private GameManager gm;
@@ -105,7 +111,34 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () 
     {
    		time -= Time.deltaTime;
-        //this.stat.Distance = (int)transform.position.x;
+        //Debug.Log("Rabbit Last Local Heght: " + LastHeightY);
+
+        //Debug.Log("Times Hited the Ground: " + TimesHitGround);
+
+        if (TimesHitGround > 0)
+        {
+            _animator.SetInteger("VelocityDirection", -3);
+            Debug.Log("Not Animation");
+        }
+        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0)
+        {
+
+            _animator.SetInteger("VelocityDirection", 0);
+        }
+        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0)
+        {
+
+            _animator.SetInteger("VelocityDirection", 1);
+        }
+        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0)
+        {
+
+            _animator.SetInteger("VelocityDirection", -1);
+        }
+
+
+
+        LastHeightY = transform.localPosition.y;
 
 		if( time <= 0 )
 		{
@@ -123,14 +156,21 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 
-		if( collision.gameObject.tag.CompareTo( "Ground" ) == 0 )
-		{
-			_isFlying = false;
-			_animator.SetBool( "Fly", false );	
-			
-			if( Speed > 0.1F )
-				this.rigidbody.AddForce( bounceForce );
-		}
+        Debug.Log("Game Object: " + collision.gameObject.tag);
+        if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
+        {
+            Debug.Log("Collision Enterrrrrrrr");
+            _isFlying = false;
+            TimesHitGround++;
+            _animator.SetBool("Fly", false);
+            // here we set the animation to "hit the ground and in pain"
+
+
+            //if (Speed > 0.1F)
+            //{
+            //    this.rigidbody.AddForce(bounceForce);
+            //}
+        }
 		else 
 		{
             if (this.gameData != null)
