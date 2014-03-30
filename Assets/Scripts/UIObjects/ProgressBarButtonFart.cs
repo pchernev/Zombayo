@@ -20,6 +20,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	}
 	void Start()
 	{
+
 		var _slider = target.GetComponent<UISlider> ();
 		UIWidget widget = _slider.foreground.GetComponent<UIWidget>();
 
@@ -46,7 +47,9 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	void Update() {
 		if (available == true) {
 						if (use == true) {
+
 								target.GetComponent<UISlider> ().value -= speedOfuse;
+
 						}
 				}
 	
@@ -59,7 +62,8 @@ public class ProgressBarButtonFart : MonoBehaviour {
 			Debug.Log ("Presseed");
 						
 			use = true;
-						
+
+
 
 				} else {
 			use = false;

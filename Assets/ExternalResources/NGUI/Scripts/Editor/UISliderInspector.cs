@@ -47,7 +47,7 @@ public class UISliderInspector : UIWidgetContainerEditor
 
 		GUILayout.Space(3f);
 
-		float sliderValue = EditorGUILayout.Slider("Value", slider.value, 0f, 1f);
+		float sliderValue = EditorGUILayout.Slider("Value", slider.value, 0.0001f, 1f);
 
 		if (slider.value != sliderValue)
 		{
@@ -56,7 +56,7 @@ public class UISliderInspector : UIWidgetContainerEditor
 			UnityEditor.EditorUtility.SetDirty(slider);
 		}
 
-		int steps = EditorGUILayout.IntSlider("Steps", slider.numberOfSteps, 0, 11);
+		int steps = EditorGUILayout.IntSlider("Steps", slider.numberOfSteps, 0, 1000);
 
 		if (slider.numberOfSteps != steps)
 		{
