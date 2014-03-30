@@ -33,14 +33,15 @@ public class Coin : BaseItem {
         //pos.x -= coinSpeed;
         //transform.position = pos;
         var playerpos = _player.transform.position;
-        var coinPos = this.gameObject.transform.position;
+      
+
         if (gotMagnet == true)
         {
-            float distance = Vector3.Distance(coinPos, playerpos);
+            float distance = Vector3.Distance(pos, playerpos);
             if(distance <= magnetPower)
             {
 				inRange = true;
-				iTween.MoveTo(gameObject,iTween.Hash("position", playerpos,"easetype",iTween.EaseType.easeInOutSine,"time",timeToReach));
+				iTween.MoveTo(this.gameObject, playerpos ,timeToReach);
             }
         }
     }
