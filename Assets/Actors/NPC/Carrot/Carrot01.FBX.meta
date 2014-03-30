@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 806615d654ccfc9409e2cf72bc7e9d62
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: Base Human
     100002: Base HumanHead
@@ -94,6 +94,7 @@ ModelImporter:
     4300004: CarrotLeaves
     7400000: Carrot Idle
     7400002: Carrot Eat
+    7400004: Carrot Miss
     9500000: //RootNode
     13700000: Plane001
     13700002: CarrotLeaves
@@ -267,6 +268,83 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Carrot Miss
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base HumanPelvis
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/Base
+          HumanRibcageBone003Bone003
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/LLeaf01/LLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanHead/RLeaf01/RLeaf02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLowerJaw
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanLUpperarm/Base
+          HumanLPalm/Base HumanLDigit31
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine/Base HumanRibcage/Base HumanRUpperarm/Base
+          HumanRPalm/Base HumanRDigit31
+        weight: 1
+      - path: Base HumanPelvis/CarrotMesh
+        weight: 1
+      - path: CarrotLeaves
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -303,4 +381,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 
