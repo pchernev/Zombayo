@@ -162,10 +162,9 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 
-        Debug.Log("Game Object: " + collision.gameObject.tag);
+       
         if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
         {
-            Debug.Log("Collision Enterrrrrrrr");
             _isFlying = false;
             TimesHitGround++;
             _animator.SetBool("Fly", false);

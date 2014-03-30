@@ -26,12 +26,7 @@ public class Carrot : BaseItem {
 			Debug.Log( "Player object not found" );
 		}
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		Debug.Log (_rigidbody.drag);
-	}
+	}	
 
 	private bool wasHit = false;
 	void OnCollisionEnter( Collision collision )
@@ -60,11 +55,12 @@ public class Carrot : BaseItem {
         else if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount > 0)
         {
             _player.GetComponent<Player>().ArmorCount--;
-            collider.enabled = false;	
+            Debug.Log("ARMOR COUNT: " + _player.GetComponent<Player>().ArmorCount);
+            collider.enabled = false;
             wasHit = true;
             gameObject.audio.Play();
-            _animator.SetInteger("Catch", 1);
-            _rigidbody.isKinematic = true;
+            _animator.SetInteger("Catch", -1);
+
         }
 	}
 	public void AddForceCarrot()
