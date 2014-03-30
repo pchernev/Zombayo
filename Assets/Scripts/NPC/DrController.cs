@@ -40,8 +40,6 @@ public class DrController : MonoBehaviour
 		startSpeed = speed;
 		
 		this.state = State.Idle;	
-
-		SetStartState();
 	}
 	
 	// Update is called once per frame

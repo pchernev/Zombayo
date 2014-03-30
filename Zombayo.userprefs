@@ -1,19 +1,28 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPC/BaseItem.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ExternalResources/Plugins/FingerGestures/Scripts/FingerGestures.cs">
     <Files>
-      <File FileName="Assets/Scripts/SaveLoadGame.cs" Line="1" Column="17" />
       <File FileName="Assets/Scripts/DinamicStatistics.cs" Line="34" Column="34" />
-      <File FileName="Assets/Scripts/NPC/BaseItem.cs" Line="32" Column="4" />
+      <File FileName="Assets/ExternalResources/Plugins/FingerGestures/Scripts/FingerGestures.cs" Line="25" Column="2" />
+      <File FileName="Assets/Scripts/World/EndlessWorld.cs" Line="15" Column="33" />
+      <File FileName="Assets/Scripts/Player.cs" Line="128" Column="31" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="NPC" expanded="True">
-                <Node name="BaseItem.cs" selected="True" />
+            <Node name="ExternalResources" expanded="True">
+              <Node name="Plugins" expanded="True">
+                <Node name="FingerGestures" expanded="True">
+                  <Node name="Scripts" expanded="True">
+                    <Node name="FingerGestures.cs" selected="True" />
+                  </Node>
+                </Node>
               </Node>
+            </Node>
+            <Node name="Scripts" expanded="True">
+              <Node name="NPC" expanded="True" />
+              <Node name="World" expanded="True" />
             </Node>
           </Node>
           <Node name="Assembly-UnityScript" expanded="True" />

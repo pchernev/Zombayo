@@ -12,7 +12,7 @@ public class Gestures : MonoBehaviour
 		doctor = GameObject.Find( "Dr.Fishhead" );
 	}
 	
-	void OnTap( TapGesture gesture )
+	void OnSwipe( SwipeGesture gesture )
 	{
 		if( doctor != null )
 		{
