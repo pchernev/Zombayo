@@ -2,7 +2,11 @@
 using System.Collections;
 
 [RequireComponent (typeof(CharacterController))]
-public class DrController : MonoBehaviour {
+public class DrController : MonoBehaviour
+{
+	public float speed;
+	public float slowSpeed;	
+	public Vector3 startForce;	
 
 	private CharacterController _controller;
 	private CollisionFlags c_collisionFlags;
@@ -13,19 +17,12 @@ public class DrController : MonoBehaviour {
 	private Vector3 startPos;
 	private Quaternion startRotation;
 	private float startSpeed;
+	private Vector3 moveDirection;
+		
+	private bool inKickZone = false;
 	
-	// animator values
-	public float speed;
-	public bool inKickZone = false;
-	
-	public Vector3 startForce;
-	
-	private float slowSpeed = 0.0f;
-	
-	public void SetKickZone( bool flag )
-	{
-		inKickZone = flag;
-	}
+	private enum State { Idle, Run, Kick, AfterKick };
+	private State state;
 	
 	void Awake() 
 	{
@@ -41,70 +38,81 @@ public class DrController : MonoBehaviour {
 		startPos = transform.position;
 		startRotation = transform.rotation;	
 		startSpeed = speed;
+		
+		this.state = State.Idle;	
 	}
-	
-	bool firstTime = true;
 	
 	// Update is called once per frame
-	void Update ()
+	void SetStartState()
 	{
-		//var cameraTransform = Camera.main.transform;/
-		//var moveDirection = cameraTransform.TransformDi/rection( Vector3.forward );
-		var moveDirection = new Vector3( speed, 0.0f, 0.0f );
-		moveDirection *= Time.deltaTime;
-		
-//		Debug.Log( "moveDirection: " + moveDirection.ToString() );
-		
-		//c_collis/ionFlags = controller.Move( new Vector3( 0.1f, 0F, 0F ));
-		transform.Translate( moveDirection );
-		
-		// update speed
-		if( inKickZone )
-		{
-			slowSpeed = 0.05f;		
-			GetComponent<Rigidbody>().isKinematic = true;			
-		}
-		speed -= slowSpeed;
-		
-		if( speed < 2.5F && firstTime )
-		{			
-			firstTime = false;
-			var rb = _player.GetComponent<Rigidbody>();
-			rb.AddForce( startForce );						
-		}
-		if( speed < 0.0f )
-		{
-			speed = 0.0f;			
-		}
-		
-		// update animator
-    	UpdateAnimtorValues();		
+		this.state = State.Run;
+	}
+
+	private void UpdateIdleState()
+	{
+	
 	}
 	
-	void UpdateAnimtorValues()
+	private void UpdateRunState()
 	{
-		_animator.SetFloat( "speed", speed );
-		_animator.SetBool( "inKickZone", inKickZone && (speed > 0.0f));
+		transform.Translate( this.moveDirection );
+	}
+	
+	private void UpdateKickState()
+	{	
+		transform.Translate( this.moveDirection );
+			
+		speed -= slowSpeed;
+		if( speed < 0F )
+			speed = 0F;
+			
+		if( speed < 2.5F )
+		{			
+			var rb = _player.GetComponent<Rigidbody>();
+			rb.AddForce( startForce );	
+			this.state = State.AfterKick;
+		}
+	}
+
+	private void UpdateAfterKickState()
+	{
+		transform.Translate( this.moveDirection );
+
+		speed -= slowSpeed; 
+		if( speed < 0F )
+			speed = 0F;
+	}
+		
+	void Update ()
+	{
+		this.moveDirection = new Vector3( speed, 0.0f, 0.0f ) * Time.deltaTime;		
+	
+		switch( this.state )
+		{
+			case State.Idle: UpdateIdleState(); break;
+			case State.Run: UpdateRunState(); break;
+			case State.Kick: UpdateKickState(); break;
+			case State.AfterKick: UpdateAfterKickState(); break;
+		}
+		
+    	UpdateAnimtorValues();		
 	}
 	
 	void OnTriggerEnter( Collider collider )
 	{
-		//Debug.Log( "OnTriggerEnter" );
-		inKickZone = true;
-		gameObject.audio.Play ();
+		this.state = State.Kick;
+		GetComponent<Rigidbody>().isKinematic = true;					
+		gameObject.audio.Play();
 	}
 	
 	void OnTriggerExit( Collider collider )
 	{
-		//Debug.Log( "OnTriggerExit" );
-		inKickZone = false;
-
+		this.state = State.AfterKick;
 	}
 	
 	void OnCollisionEnter( Collision collision )
 	{
 		Debug.Log( "drController->CollisionEnter: " );
-
 	}
 	
 	public void Reset()
@@ -112,8 +120,22 @@ public class DrController : MonoBehaviour {
 		inKickZone = false;
 		speed = startSpeed;
 		slowSpeed = 0.0f;
-		firstTime = true;
 		transform.position = startPos;
 		transform.rotation = startRotation;
 	}
+	
+	public void SetKickZone( bool flag )
+	{
+		inKickZone = flag;
+	}
+	
+	#region Animator 
+	
+	void UpdateAnimtorValues()
+	{
+		_animator.SetFloat( "speed", speed );
+		_animator.SetBool( "inKickZone", inKickZone && (speed > 0.0f));
+	}
+	
+	#endregion
 }

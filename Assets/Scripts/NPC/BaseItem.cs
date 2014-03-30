@@ -32,15 +32,17 @@ public class BaseItem : MonoBehaviour
 				for (int i = 0; i < SpawnDensity; i++) {
 						var xOffset = Random.Range (this.xSpawnLimits.x,this.xSpawnLimits.y) ;
 						var yOffset = Random.Range (this.MinSpawnHeight, this.MaxSpawnHeight);
-			Vector3 poss = new Vector3(xOffset, yOffset, pos.z);
-			Collider[] inRange = Physics.OverlapSphere(poss,minDistance);
+			Vector3 poss = new Vector3(xOffset, yOffset, 0f);
+
+			var inRange = Physics.OverlapSphere(poss,minDistance);
+
 			if(inRange.Length == 0)
 			{
 				positions.Add(poss);
 			}
 
 
-					
+
 				}
 	
 

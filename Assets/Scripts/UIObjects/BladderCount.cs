@@ -23,9 +23,7 @@ public class BladderCount : MonoBehaviour {
 			label.text = "Disabled";
 			widget.color = this.color;
 		}
-		else {
-			label.text += item.UpgradesCount;
-		}
+
 		
 		
 		
@@ -33,7 +31,10 @@ public class BladderCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		_player = GameObject.FindWithTag("Player");
+		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Bladder");
+		UILabel label = GetComponent<UILabel> ();
+		label.text = item.UpgradesCount.ToString ();
 		
 	}
 }
