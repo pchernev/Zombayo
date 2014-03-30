@@ -40,9 +40,16 @@ public class DrController : MonoBehaviour
 		startSpeed = speed;
 		
 		this.state = State.Idle;	
+
+		SetStartState();
 	}
 	
 	// Update is called once per frame
+	void SetStartState()
+	{
+		this.state = State.Run;
+	}
+
 	private void UpdateIdleState()
 	{
 	
@@ -50,12 +57,12 @@ public class DrController : MonoBehaviour
 	
 	private void UpdateRunState()
 	{
-		transform.Translate( moveDirection );
+		transform.Translate( this.moveDirection );
 	}
 	
 	private void UpdateKickState()
 	{	
-		transform.Translate( moveDirection );
+		transform.Translate( this.moveDirection );
 			
 		speed -= slowSpeed;
 		if( speed < 0F )
@@ -64,13 +71,18 @@ public class DrController : MonoBehaviour
 		if( speed < 2.5F )
 		{			
 			var rb = _player.GetComponent<Rigidbody>();
-			rb.AddForce( startForce );						
+			rb.AddForce( startForce );	
+			this.state = State.AfterKick;
 		}
 	}
 
 	private void UpdateAfterKickState()
 	{
-			
+		transform.Translate( this.moveDirection );
+
+		speed -= slowSpeed; 
+		if( speed < 0F )
+			speed = 0F;
 	}
 		
 	void Update ()
