@@ -3,7 +3,7 @@ using System.Collections;
 
 public class InGamePanelScript : MonoBehaviour {
     private GameObject player;
-	// Use this for initialization
+
 	void Start () {
         player = GameObject.Find("Player");
 	}
@@ -18,4 +18,13 @@ public class InGamePanelScript : MonoBehaviour {
         player.GetComponent<GameManager>().PauseGame();
     }
 
+    public void UseWings() 
+    {
+        player.GetComponent<Player>().UseWings();
+    }
+
+    public void UseFart() 
+    {
+        player.GetComponent<Player>().UseFart();
+    }
 }

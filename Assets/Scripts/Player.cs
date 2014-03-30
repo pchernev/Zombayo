@@ -200,6 +200,16 @@ public class Player : MonoBehaviour {
 		rigidbody.isKinematic = false;
 	}
 
+    public void UseWings() 
+    {
+      //  _animator.SetInteger(""); // integer to play using wings animation
+    }
+
+    public void UseFart() 
+    {
+        
+    }
+
 	#endregion
 	
 	#region NPC collisions

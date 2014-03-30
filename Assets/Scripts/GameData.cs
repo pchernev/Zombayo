@@ -70,7 +70,7 @@ using System.Linq;
 
         private static List<float[]> itemsConfigValues;
 
-        private static float[] BladderValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
+        private static float[] BladderValues = { 0, 0.7f, 1, 2, 2.5f, 4 };
 
         private static int[] BladderPrices = { 0, 250, 650, 1500, 3700, 6800 };
 

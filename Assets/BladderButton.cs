@@ -18,17 +18,18 @@ public class BladderButton : MonoBehaviour {
 	}
 	void OnClick()
 	{
-		if (!disableButton) {
-						_player = GameObject.FindWithTag ("Player");
-						var item = _player.GetComponent<Player> ().gameData.ShopItems.FirstOrDefault (x => x.Name == "Bladder");
-						UILabel label = GetComponent<UILabel> ();
-						if (item.UpgradesCount != 0) {
-								item.UpgradesCount -= 1;
-				disableButton = true;
-				Invoke ("EnableButton",disableTime);
-		
-						}
-				}
+		if (!disableButton)
+        {
+		    _player = GameObject.FindWithTag("Player");
+		    var item = _player.GetComponent<Player> ().gameData.ShopItems.FirstOrDefault (x => x.Name == "Bladder");
+		    UILabel label = GetComponent<UILabel> ();
+		    if (item.UpgradesCount != 0)
+            {
+		    	item.UpgradesCount -= 1;
+		        disableButton = true;
+		        Invoke("EnableButton",disableTime);		    
+		    }
+		}
 	}
 	void EnableButton()
 	{
