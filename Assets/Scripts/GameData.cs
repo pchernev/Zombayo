@@ -74,7 +74,7 @@ using System.Linq;
 
         private static int[] BladderPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
-        private static float[] MagnetValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
+        private static float[] MagnetValues = { 0, 1.5f, 2.8f, 5, 7.5f, 10 };
 
         private static int[] MagnetPrices = {0, 250, 650, 1500, 3700, 6800 };
 
