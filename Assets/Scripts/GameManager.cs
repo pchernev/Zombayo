@@ -135,7 +135,6 @@ public class GameManager : MonoBehaviour
         {
             var item = gameData.ShopItems[i];
             var goToUpdate = GameObject.Find(item.Name);
-            Debug.Log("NAME: " + item.Name);
             UILabel upgradeLabel = goToUpdate.transform
                 .FindChild("Label").GetComponent<UILabel>();
             UIImageButton upgradeButton = goToUpdate.GetComponent<UIImageButton>();

@@ -32,30 +32,19 @@ public class Carrot : BaseItem {
 	private bool wasHit = false;
 	void OnTriggerEnter( Collider collision )
 	{
-
 		if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount <= 0) 
         {
 		    
-			wasHit = true;
-			
+			wasHit = true;			
 		    _rigidbody.drag = 0.1f;
 			gameObject.audio.Play ();
-
 			var collider = GetComponent<CapsuleCollider> ();
-			collider.enabled = false;	
-		
+			collider.enabled = false;			
 			_animator.SetInteger("Catch", 1);
 			_rigidbody.velocity = Vector3.zero;
 			_rigidbody.angularVelocity = Vector3.zero;
 			_rigidbody.useGravity = true;
 			_rigidbody.drag = 10f;
-			Debug.Log("ohlioo");
-
-		
-
-
-			// catch player
-
         }
         else if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount > 0)
         {
@@ -66,16 +55,11 @@ public class Carrot : BaseItem {
             gameObject.audio.Play();
             _animator.SetInteger("Catch", -1);
 			_rigidbody.AddForce(this.force);
-			var item = _player.GetComponent<Player> ().gameData.ShopItems.FirstOrDefault (x => x.Name == "Armor");
-			item.UpgradesCount-=1;
-
-
+            Destroy(transform.gameObject);
         }
 	}
 	public void AddForceCarrot()
 	{
-		//Debug.Log( "ApplyForce: " + this.force.ToString() );
-		
 		_player.transform.parent = _playerParent;
 		_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
