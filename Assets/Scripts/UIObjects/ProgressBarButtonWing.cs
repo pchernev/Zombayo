@@ -7,9 +7,9 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	public GameObject target;
 	public UILabel label;
 	//private UISlider slider = target.GetComponent<UISlider> ();
-	private bool use;
+	public bool use;
 	public float speedOfuse ;
-	private bool available = false;
+	public bool available = false;
 	GameObject _player;
 	public Color color;
 	
@@ -40,14 +40,12 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		if (available == true) {
-						if (use == true) {
-								target.GetComponent<UISlider> ().value -= speedOfuse;
-						}
-				}
-		
-		
-		
+		if (available == true)
+		if (use == true)
+			target.GetComponent<UISlider> ().value -= speedOfuse;
+
+        if (target.GetComponent<UISlider> ().value <= 0)
+            available = false;
 	}
 	
 	void OnPress(bool isDown){

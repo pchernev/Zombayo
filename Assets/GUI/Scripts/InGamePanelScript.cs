@@ -18,11 +18,6 @@ public class InGamePanelScript : MonoBehaviour {
         player.GetComponent<GameManager>().PauseGame();
     }
 
-    public void UseWings() 
-    {
-        player.GetComponent<Player>().UseWings();
-    }
-
     public void UseFart() 
     {
         player.GetComponent<Player>().UseFart();

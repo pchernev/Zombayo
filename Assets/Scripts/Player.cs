@@ -7,7 +7,7 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
     public float timeToReach;
-
+    ProgressBarButtonWing wingsBtn;
     public Vector3 bounceForce;
     // Upgrades
     [HideInInspector]
@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
         var armorItem = this.gameData.ShopItems.FirstOrDefault(x => x.Name == "Armor");
         int armorUpgCount = armorItem.UpgradesCount;
         this.ArmorCount = armorItem.Values[armorUpgCount];
+
+        wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
     }
 
     // Use for initialization
@@ -140,6 +142,19 @@ public class Player : MonoBehaviour
     float time = 3;
     void FixedUpdate()
     {
+        //Debug.Log("Gravity: " + Physics.gravity);
+        if (wingsBtn.available && wingsBtn.use && _isFlying)
+        {
+            _animator.SetInteger("Idle", 3); // integer to play using wings animation
+            Debug.Log("USING WINGS");
+            Physics.gravity = new Vector3(0, -0.01f, 0);
+        }
+        else
+        {
+            _animator.SetInteger("Idle", -1); // integer to play using wings animation
+            Debug.Log("NOT USING WINGS");
+            Physics.gravity = new Vector3(0, -9.8f, 0);
+        }
         time -= Time.deltaTime;
         //Debug.Log("Rabbit Last Local Heght: " + LastHeightY);
 
@@ -215,12 +230,6 @@ public class Player : MonoBehaviour
         transform.rotation = startRotation;
         hasBeenKicked = 0;
         rigidbody.isKinematic = false;
-    }
-
-    public void UseWings()
-    {
-        _animator.SetInteger("Idle", 3); // integer to play using wings animation
-        Debug.Log("use wingsssss");
     }
 
     public void UseFart()

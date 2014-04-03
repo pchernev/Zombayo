@@ -104,10 +104,10 @@ public class GameManager : MonoBehaviour
         stats["Distance: "] = gameData.PlayerStats.Distance;
         stats["MaxDistance: "] = gameData.PlayerStats.MaxDistance;
         EnablePanel("End Scores");
-        if (isGameOver)
-        {
+        //if (isGameOver)
+        //{
           
-        }
+        //}
     }
 
     public bool UpgradeItem(string itemName) 
@@ -162,17 +162,15 @@ public class GameManager : MonoBehaviour
                 starOff.GetComponentInChildren<UISprite>().enabled = false;
             }
         }       
-    }
+    }    
 
 	public void MuteDemuteSound()
 	{
-		if (AudioListener.pause == false) {
-						AudioListener.pause = true;
-				} 
-		else {
+		if (AudioListener.pause == false) 
+			AudioListener.pause = true;
+		else
 			AudioListener.pause = false;
-				}
-		}
+	}
 
     #region helpers
     private void LoadAllPanels()
