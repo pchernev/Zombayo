@@ -35,7 +35,7 @@ public class ArmorCount : MonoBehaviour {
 		_player = GameObject.FindWithTag("Player");
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Armor");
 		UILabel label = GetComponent<UILabel> ();
-		label.text = item.UpgradesCount.ToString ();
+		label.text = _player.GetComponent<Player> ().ArmorCount.ToString ();
 		
 
 		

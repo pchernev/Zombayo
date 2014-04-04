@@ -48,6 +48,7 @@ public class Carrot : BaseItem {
         }
         else if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount > 0)
         {
+
             _player.GetComponent<Player>().ArmorCount--;
             Debug.Log("ARMOR COUNT: " + _player.GetComponent<Player>().ArmorCount);
             collider.enabled = false;
