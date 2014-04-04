@@ -69,10 +69,12 @@ public class ProgressBarButtonWing : MonoBehaviour {
 			
 
 						}
+			if (target.GetComponent<UISlider> ().value <= 0) {
+				use = false;
+			}
 				}
 
-        if (target.GetComponent<UISlider> ().value <= 0)
-            available = false;
+      
 	}
 	
 	void OnPress(bool isDown){
