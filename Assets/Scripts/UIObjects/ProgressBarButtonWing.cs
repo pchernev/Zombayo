@@ -11,7 +11,10 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	public float speedOfuse ;
 	public bool available = false;
 	GameObject _player;
+	Animator _animator;
 	public Color color;
+	private bool lockPositionY;
+
 	
 	// Use this for initialization
 	void Awake() {
@@ -40,9 +43,33 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		if (available == true)
-		if (use == true)
-			target.GetComponent<UISlider> ().value -= speedOfuse;
+		if (available == true) {
+			_animator = _player.GetComponent<Animator>();
+						var tmp = _player.transform.position;
+						if (use == true) {
+				target.GetComponent<UISlider> ().value -= speedOfuse;
+				_player.transform.rotation = Quaternion.Euler (0, 0, 0);
+								
+				if(_animator.GetBool("Fly")==true){
+
+						
+								_animator.SetBool("Fly", false);
+					_animator.SetBool("FlyWings",true);
+
+			
+								_player.rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
+
+				}
+						} else {
+
+								_player.rigidbody.constraints = RigidbodyConstraints.None;
+				_animator.SetBool("FlyWings",false);
+			
+
+			
+
+						}
+				}
 
         if (target.GetComponent<UISlider> ().value <= 0)
             available = false;

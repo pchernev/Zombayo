@@ -144,18 +144,18 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log("Gravity: " + Physics.gravity);
-        if (wingsBtn.available && wingsBtn.use && _isFlying)
-        {
-            _animator.SetInteger("Idle", 3); // integer to play using wings animation
-            Debug.Log("USING WINGS");
-            Physics.gravity = new Vector3(0, -0.01f, 0);
-        }
-        else
-        {
-            _animator.SetInteger("Idle", -1); // integer to play using wings animation
-            Debug.Log("NOT USING WINGS");
-            Physics.gravity = new Vector3(0, -9.8f, 0);
-        }
+        //if (wingsBtn.available && wingsBtn.use && _isFlying)
+        //{
+        //    _animator.SetInteger("Idle", 3); // integer to play using wings animation
+        //    Debug.Log("USING WINGS");
+        //    Physics.gravity = new Vector3(0, -0.01f, 0);
+        //}
+        //else
+        //{
+        //    _animator.SetInteger("Idle", -1); // integer to play using wings animation
+        //    Debug.Log("NOT USING WINGS");
+        //    Physics.gravity = new Vector3(0, -9.8f, 0);
+        //}
         time -= Time.deltaTime;
         //Debug.Log("Rabbit Last Local Heght: " + LastHeightY);
 

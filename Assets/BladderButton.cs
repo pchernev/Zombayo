@@ -43,19 +43,24 @@ public class BladderButton : MonoBehaviour {
 		    UILabel label = GetComponent<UILabel> ();
 		    if (item.UpgradesCount != 0)
             {
+				Animator _animator = _player.GetComponent<Animator>();
+				if(_animator.GetBool("Fly")==true)
+				{
 		    	item.UpgradesCount -= 1;
 		        disableButton = true;
 		        Invoke("EnableButton",disableTime);
 
 				_player.collider.material = bounceMaterial;
 
-				Animator _animator = _player.GetComponent<Animator>();
+				
+
 				_animator.SetBool("Fly", false);
 				_animator.SetTrigger("BubbleGum");
 
 
 				Debug.Log ("Bubble Gum");
 				usedBubbleGum = true;
+				}
 		    }
 		}
 	}
