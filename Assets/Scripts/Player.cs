@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float Speed;
     public GameObject explosion;
     public AudioClip collectCoins;
+	public PhysicMaterial initialMaterial;
     int velocityDirection = -999;
     private GUITexture _btnRestart;
 
@@ -177,12 +178,13 @@ public class Player : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-
+			
         if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
         {
             _isFlying = false;
             TimesHitGround++;
             _animator.SetBool("Fly", false);
+
             // here we set the animation to "hit the ground and in pain"
 
 
@@ -205,6 +207,7 @@ public class Player : MonoBehaviour
         _isFlying = true;
         hasBeenKicked++;
         _animator.SetBool("Fly", true);
+		gameObject.collider.material = initialMaterial;
     }
 
     IEnumerator WaitAndEndGame(float waitTime)

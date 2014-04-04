@@ -7,13 +7,31 @@ public class BladderButton : MonoBehaviour {
 	GameObject _player;
 	bool disableButton = false;
 	public float disableTime;
+	public PhysicMaterial bounceMaterial;
+	private bool usedBubbleGum;
+	private Quaternion rot;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
+	void ResetRotation()
+	{
+		usedBubbleGum = false;
+		_player = GameObject.FindWithTag ("Player");
+		_player.transform.rotation = rot;
+	}
 	// Update is called once per frame
 	void Update () {
+		if (usedBubbleGum == true) {
+						_player = GameObject.FindWithTag ("Player");
+
+						rot = _player.transform.rotation;
+						_player.transform.rotation = Quaternion.Euler (0, 0, 0);
+			Invoke("ResetRotation",disableTime);
+
+				}
+		
 	
 	}
 	void OnClick()
@@ -27,7 +45,17 @@ public class BladderButton : MonoBehaviour {
             {
 		    	item.UpgradesCount -= 1;
 		        disableButton = true;
-		        Invoke("EnableButton",disableTime);		    
+		        Invoke("EnableButton",disableTime);
+
+				_player.collider.material = bounceMaterial;
+
+				Animator _animator = _player.GetComponent<Animator>();
+				_animator.SetBool("Fly", false);
+				_animator.SetTrigger("BubbleGum");
+
+
+				Debug.Log ("Bubble Gum");
+				usedBubbleGum = true;
 		    }
 		}
 	}
