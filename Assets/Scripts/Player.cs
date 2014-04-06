@@ -52,7 +52,6 @@ public class Player : MonoBehaviour
         var armorItem = this.gameData.ShopItems.FirstOrDefault(x => x.Name == "Armor");
         int armorUpgCount = armorItem.UpgradesCount;
         this.ArmorCount = armorItem.Values[armorUpgCount];
-
     }
 
     void Start()
@@ -128,10 +127,13 @@ public class Player : MonoBehaviour
 
     private void ExecuteAnimations() 
     {
+        Debug.Log("IN ExecuteAnimations");
         if (time <= 0)
         {
+            
             if (!_animator.IsInTransition(0) && velocityDirection != (int)RabbitAnimationState.Idle)
             {
+                Debug.Log("First IF");
                 if (_animator.GetInteger("Idle") == 0)
                     _animator.SetInteger("Idle", 2);
                 else
@@ -142,31 +144,44 @@ public class Player : MonoBehaviour
         }
 
         _animator.SetBool("Fly", _isFlying);
-        if (gm.isGameOver && velocityDirection != (int)RabbitAnimationState.Idle)
+        if (gm.isGameOver && velocityDirection != (int)RabbitAnimationState.Idle && !_animator.IsInTransition(0))
         {
+            Debug.Log("Second IF");
             velocityDirection = (int)RabbitAnimationState.Idle;
         }
 
         if (TimesHitGround > 0 && velocityDirection != (int)RabbitAnimationState.Idle)
-            velocityDirection = (int)RabbitAnimationState.Idle;
-            // for leveled fly animation
+        {
+            Debug.Log("Third IF");
+            velocityDirection = (int)RabbitAnimationState.Idle; Debug.Log("Third IF");
+        }
+        // for leveled fly animation
         //else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
         //{
         //    this.velocityDirection = 0;
         //    _animator.SetInteger("VelocityDirection", this.velocityDirection);
         //}
-        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp)
-            velocityDirection = (int)RabbitAnimationState.FlyUp;
+        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp){
+            velocityDirection = (int)RabbitAnimationState.FlyUp;Debug.Log("Fourth IF");}
         else if (_isFlying && LastHeightY > transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyDown)
-            velocityDirection = (int)RabbitAnimationState.FlyDown;
+        {
+            velocityDirection = (int)RabbitAnimationState.FlyDown; Debug.Log("Fivth IF");
+        }
 
         if (_isFlying && fartBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpFart)
-            velocityDirection = (int)RabbitAnimationState.PowerUpFart;
+        {
+            velocityDirection = (int)RabbitAnimationState.PowerUpFart; Debug.Log("Sixth IF");
+        }
 
         if (_isFlying && wingsBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpWings)
-            velocityDirection = (int)RabbitAnimationState.PowerUpWings;
+        {
+            velocityDirection = (int)RabbitAnimationState.PowerUpWings; Debug.Log("Seventh IF");
+        }
 
         _animator.SetInteger("VelocityDirection", velocityDirection);
+
+        //velocityDirection = -999;
+        //_animator.SetInteger("VelocityDirection", velocityDirection);
 
         LastHeightY = transform.localPosition.y;
     }
