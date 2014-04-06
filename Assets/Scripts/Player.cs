@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     public float ArmorCount = 0;
     public float timeToReach;
 
+    bool fooBar = true;
 
     public Vector3 bounceForce;
     public GameObject explosion;
     public AudioClip collectCoins;
-	public PhysicMaterial initialMaterial;
+    public PhysicMaterial initialMaterial;
     private Vector3 startPos;
     private Quaternion startRotation;
     private List<Vector3> prevPos;
@@ -29,8 +30,8 @@ public class Player : MonoBehaviour
 
     #region AnimationVariables
 
-    private int velocityDirection = (int)RabbitAnimationState.Idle;
-    
+    private int velocityDirection = -999;
+    // private int lastVelocityDirection = -999;
     bool _isFlying;
     public int hasBeenKicked = 0;
     [HideInInspector]
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
     {
         ExecuteAnimations();
         if ((rigidbody.isKinematic == true) || (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2))
-            StartCoroutine(WaitAndEndGame(2.0f));        
+            StartCoroutine(WaitAndEndGame(2.0f));
     }
 
     void OnCollisionEnter(Collision collision)
@@ -122,38 +123,40 @@ public class Player : MonoBehaviour
     {
         _isFlying = true;
         hasBeenKicked++;
-		gameObject.collider.material = initialMaterial;
+        gameObject.collider.material = initialMaterial;
     }
 
-    private void ExecuteAnimations() 
+    private void ExecuteAnimations()
     {
-        Debug.Log("IN ExecuteAnimations");
-        if (time <= 0)
+        if (_animator.GetBool("FooBar"))
         {
-            
-            if (!_animator.IsInTransition(0) && velocityDirection != (int)RabbitAnimationState.Idle)
-            {
-                Debug.Log("First IF");
-                if (_animator.GetInteger("Idle") == 0)
-                    _animator.SetInteger("Idle", 2);
-                else
-                    _animator.SetInteger("Idle", 0);
-
-                time = Random.Range(3, 10);
-            }
+            _animator.SetBool("FooBar", true);
+            _animator.SetInteger("VelocityDirection", velocityDirection);
+            _animator.SetBool("FooBar", false);
         }
 
         _animator.SetBool("Fly", _isFlying);
-        if (gm.isGameOver && velocityDirection != (int)RabbitAnimationState.Idle && !_animator.IsInTransition(0))
+
+        if (!gm.isGameOver && _animator.GetInteger("Idle") != 1)
         {
-            Debug.Log("Second IF");
             velocityDirection = (int)RabbitAnimationState.Idle;
+            _animator.SetBool("FooBar", true);
+            _animator.SetInteger("Idle", 1);
+            _animator.SetBool("Fly", false);
+        }
+        else if (gm.isGameOver && _animator.GetInteger("Idle") != 0)
+        {
+            velocityDirection = (int)RabbitAnimationState.Idle;
+            _animator.SetBool("FooBar", true);
+            _animator.SetInteger("Idle", 0);
+            _animator.SetBool("Fly", false);
         }
 
         if (TimesHitGround > 0 && velocityDirection != (int)RabbitAnimationState.Idle)
         {
             Debug.Log("Third IF");
             velocityDirection = (int)RabbitAnimationState.Idle; Debug.Log("Third IF");
+            _animator.SetBool("FooBar", true);
         }
         // for leveled fly animation
         //else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
@@ -161,39 +164,51 @@ public class Player : MonoBehaviour
         //    this.velocityDirection = 0;
         //    _animator.SetInteger("VelocityDirection", this.velocityDirection);
         //}
-        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp){
-            velocityDirection = (int)RabbitAnimationState.FlyUp;Debug.Log("Fourth IF");}
+        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp)
+        {
+            velocityDirection = (int)RabbitAnimationState.FlyUp; Debug.Log("Fourth IF");
+            _animator.SetBool("FooBar", true);
+        }
         else if (_isFlying && LastHeightY > transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyDown)
         {
             velocityDirection = (int)RabbitAnimationState.FlyDown; Debug.Log("Fivth IF");
+            _animator.SetBool("FooBar", true);
         }
 
         if (_isFlying && fartBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpFart)
         {
             velocityDirection = (int)RabbitAnimationState.PowerUpFart; Debug.Log("Sixth IF");
+            _animator.SetBool("FooBar", true);
         }
 
         if (_isFlying && wingsBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpWings)
         {
             velocityDirection = (int)RabbitAnimationState.PowerUpWings; Debug.Log("Seventh IF");
+            _animator.SetBool("FooBar", true);
         }
 
-        _animator.SetInteger("VelocityDirection", velocityDirection);
 
-        //velocityDirection = -999;
-        //_animator.SetInteger("VelocityDirection", velocityDirection);
+
+        //if (velocityDirection != -999)
+        //{
+        // Debug.Log("LastVelocity: " + lastVelocityDirection + " VelocityDirection: " + velocityDirection);
+
+
+
+        //}
 
         LastHeightY = transform.localPosition.y;
     }
 
     public IEnumerator WaitAndEndGame(float waitTime)
     {
+
         yield return new WaitForSeconds(waitTime);
-        
+
         if ((int)this.Speed == 0 && hasBeenKicked > 0)
         {
             rigidbody.isKinematic = true;
-           
+
             gameObject.SendMessage("EndGame");
         }
     }
@@ -208,7 +223,7 @@ public class Player : MonoBehaviour
 
     public void UseFart()
     {
-       
+
     }
 
     #endregion
@@ -225,7 +240,6 @@ public class Player : MonoBehaviour
             AudioSource.PlayClipAtPoint(collectCoins, transform.position);
             Destroy(collider.gameObject);
             Destroy(explosion1, 2.0f);
-
         }
     }
 
@@ -233,7 +247,7 @@ public class Player : MonoBehaviour
 
 }
 
-public enum RabbitAnimationState 
+public enum RabbitAnimationState
 {
     Idle = 0,
     FlyUp = -1,
