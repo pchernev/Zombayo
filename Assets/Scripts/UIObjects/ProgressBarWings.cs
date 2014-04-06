@@ -24,6 +24,7 @@ public class ProgressBarWings : MonoBehaviour {
 	}
 	void Update()
 	{
+
 		_player = GameObject.FindWithTag("Player");
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
 		if (item.UpgradesCount == 0) {

@@ -34,6 +34,15 @@ public class BladderButton : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
+
+		Animator _animator = _player.GetComponent<Animator>();
+		if (_animator.GetBool ("Fly") == false || timesToUse == 0 ) {
+			gameObject.collider.enabled = false;
+			
+		} 
+		else {gameObject.collider.enabled= true;
+			
+		}
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Bladder");
 		if (item.UpgradesCount == 0) {
 			gameObject.GetComponent<UIButton>().isEnabled = false;

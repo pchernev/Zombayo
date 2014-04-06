@@ -12,7 +12,7 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	public bool available = false;
 	GameObject _player;
 	Animator _animator;
-	public Color color;
+
 	private bool lockPositionY;
 
 	
@@ -26,11 +26,12 @@ public class ProgressBarButtonWing : MonoBehaviour {
 		var _slider = target.GetComponent<UISlider> ();
 		UIWidget widget = _slider.foreground.GetComponent<UIWidget>();
 		_player = GameObject.FindWithTag("Player");
+		_animator = _player.GetComponent<Animator>();
 		
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
 		if (item.UpgradesCount == 0) {
 						label.text = "Disabled";
-						widget.color = this.color;
+						
 				} 
 		else {
 			label.text ="";
@@ -43,19 +44,27 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
-		if (item.UpgradesCount == 0) {
-			gameObject.GetComponent<UIButton>().isEnabled = false;
-			var colorr = gameObject.GetComponent<UIButton>().disabledColor;
-			var children = gameObject.GetComponentsInChildren<UISprite>();
+		if (_animator.GetBool ("Fly") == false || target.GetComponent<UISlider> ().value <= 0) {
+			gameObject.collider.enabled = false;
 			
-			
-			foreach (UISprite child in children) {
-				var c = child.GetComponent<UIWidget>();
-				c.color = colorr;
-				
-			}
+		} 
+		else {gameObject.collider.enabled = true;
 		}
+		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
+		if (item.UpgradesCount <= 0) {
+						gameObject.GetComponent<UIButton> ().isEnabled = false;
+						var colorr = gameObject.GetComponent<UIButton> ().disabledColor;
+						var children = gameObject.GetComponentsInChildren<UISprite> ();
+			
+			
+						foreach (UISprite child in children) {
+								var c = child.GetComponent<UIWidget> ();
+								c.color = colorr;
+				
+						}
+				} 
+			
+
 
 
 		if (available == true) {
