@@ -26,6 +26,7 @@ using System.Linq;
                     ShopItems[i].Name = ShopConfig.ShopItemNames[i];
                     ShopItems[i].Prices = ShopConfig.ItemsConfigPrices[i];
                     ShopItems[i].Values = ShopConfig.ItemsConfigValues[i];
+                    ShopItems[i].TimeValues = ShopConfig.ItemsConfigValues[i];
                     ShopItems[i].UpgradesCount = 0;
                 }
             }
@@ -35,8 +36,8 @@ using System.Linq;
     public static class ShopConfig
     {
         public const int ShopItemsCount = 5;
- 
         public static string[] ShopItemNames = new string[ShopItemsCount] { "Bladder", "Magnet", "Armor", "Fart", "Wings" };
+
         public static List<float[]> ItemsConfigValues
         {
             get
@@ -65,29 +66,43 @@ using System.Linq;
             }
             set { }
         }
+        public static List<float[]> ItemsConfigTimes
+        {
+            get
+            {
+                itemsConfigTimes = new List<float[]>();
+                itemsConfigTimes.Add(BladderTimes);
+                itemsConfigTimes.Add(MagnetTimes);
+                itemsConfigTimes.Add(ArmorTimes);
+                itemsConfigTimes.Add(FartTimes);
+                itemsConfigTimes.Add(WingTimes);
+                return itemsConfigTimes;
+            }
+            set { }
+        }
 
+        private static List<float[]> itemsConfigTimes;
         private static List<int[]> itemsConfigPrices;
-
         private static List<float[]> itemsConfigValues;
 
         private static float[] BladderValues = { 0, 0.7f, 1, 2, 2.5f, 4 };
-
+        private static float[] BladderTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
         private static int[] BladderPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
         private static float[] MagnetValues = { 0, 1.5f, 2.8f, 5, 7.5f, 10 };
-
+        private static float[] MagnetTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
         private static int[] MagnetPrices = {0, 250, 650, 1500, 3700, 6800 };
 
         private static float[] ArmorValues = { 0, 1, 2, 3, 4, 5 };
-
+        private static float[] ArmorTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
         private static int[] ArmorPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
         private static float[] FartValues = { 0, 10, 20, 30, 40, 50 };
-
+        private static float[] FartTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
         private static int[] FartPrices = { 0, 250, 650, 1500, 3700, 6800 };
 
         private static float[] WingValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
-
+        private static float[] WingTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
         private static int[] WingPrices = { 0, 250, 650, 1500, 3700, 6800 };
     }
    

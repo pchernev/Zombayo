@@ -6,40 +6,40 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    public float timeToReach;
-    ProgressBarButtonWing wingsBtn;
-    public Vector3 bounceForce;
-    // Upgrades
-    [HideInInspector]
-    public float ArmorCount = 0;
-
     [HideInInspector]
     public float Speed;
+    [HideInInspector]
+    public float ArmorCount = 0;
+    public float timeToReach;
+
+
+    public Vector3 bounceForce;
     public GameObject explosion;
     public AudioClip collectCoins;
 	public PhysicMaterial initialMaterial;
-    int velocityDirection = -999;
-    private GUITexture _btnRestart;
-
-    Animator _animator;
-
     private Vector3 startPos;
     private Quaternion startRotation;
+    private List<Vector3> prevPos;
+    private Rigidbody rigidbody;
 
-    bool _isFlying;
-    public int hasBeenKicked = 0;
-
+    private Animator _animator;
+    private GameManager gm;
     public GameData gameData;
 
+
+    #region AnimationVariables
+
+    private int velocityDirection = (int)RabbitAnimationState.Idle;
+    
+    bool _isFlying;
+    public int hasBeenKicked = 0;
     [HideInInspector]
     public float LastHeightY;
     [HideInInspector]
     public int TimesHitGround = 0;
-
-
-    private List<Vector3> prevPos;
-    private Rigidbody rigidbody;
-    private GameManager gm;
+    ProgressBarButtonWing wingsBtn;
+    ProgressBarButtonFart fartBtn;
+    #endregion
 
     #region Base player logic
 
@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
         int armorUpgCount = armorItem.UpgradesCount;
         this.ArmorCount = armorItem.Values[armorUpgCount];
 
-        wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
     }
 
     void Start()
@@ -65,15 +64,15 @@ public class Player : MonoBehaviour
         Speed = 0;
         startPos = transform.position;
         startRotation = transform.rotation;
+
+        wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
+        fartBtn = GameObject.Find("Ingame Button Fart").GetComponent<ProgressBarButtonFart>();
     }
 
     void Update()
     {
-       
-
         Vector3 newPos = transform.position;
         prevPos.Insert(0, newPos);
-
         const int maxSize = 40;
         Speed = 0F;
 
@@ -87,81 +86,20 @@ public class Player : MonoBehaviour
         }
 
         if (prevPos.Count > maxSize)
-        {
             prevPos.RemoveAt(maxSize);
-
-            //			if( Speed < 0.1F )
-            //				rigidbody.isKinematic = true;
-        }
     }
 
     float time = 3;
     void FixedUpdate()
     {
-        //Debug.Log("Gravity: " + Physics.gravity);
-        //if (wingsBtn.available && wingsBtn.use && _isFlying)
-        //{
-        //    _animator.SetInteger("Idle", 3); // integer to play using wings animation
-        //    Debug.Log("USING WINGS");
-        //    Physics.gravity = new Vector3(0, -0.01f, 0);
-        //}
-        //else
-        //{
-        //    _animator.SetInteger("Idle", -1); // integer to play using wings animation
-        //    Debug.Log("NOT USING WINGS");
-        //    Physics.gravity = new Vector3(0, -9.8f, 0);
-        //}
         time -= Time.deltaTime;
-        //Debug.Log("Rabbit Last Local Heght: " + LastHeightY);
-
-        //Debug.Log("Times Hited the Ground: " + TimesHitGround);
-
-        if (time <= 0)
-        {
-            if (!_animator.IsInTransition(0))
-            {
-                if (_animator.GetInteger("Idle") == 0)
-                    _animator.SetInteger("Idle", 2);
-                else
-                    _animator.SetInteger("Idle", 0);
-
-                time = Random.Range(3, 10);
-            }
-        }
     }
 
     void LateUpdate()
     {
-        if (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2)
-            StartCoroutine(WaitAndEndGame(0.7f));
-
-
-        if (TimesHitGround > 0 && velocityDirection != -3)
-        {
-            Debug.Log("Go In IDLE STATE");
-            velocityDirection = -3;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
-        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
-        {
-            Debug.Log("Leveledddddddddd");
-            this.velocityDirection = 0;
-            _animator.SetInteger("VelocityDirection", this.velocityDirection);
-        }
-        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0 && velocityDirection != 1)
-        {
-            Debug.Log("Uppppppp");
-            velocityDirection = 1;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
-        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0 && velocityDirection != -1)
-        {
-            Debug.Log("Downnnnnnn");
-            velocityDirection = -1;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
-
-        LastHeightY = transform.localPosition.y;
+        ExecuteAnimations();
+        if ((rigidbody.isKinematic == true) || (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2))
+            StartCoroutine(WaitAndEndGame(2.0f));        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -170,13 +108,7 @@ public class Player : MonoBehaviour
         {
             _isFlying = false;
             TimesHitGround++;
-            _animator.SetBool("Fly", false);
-
-            // here we set the animation to "hit the ground and in pain"
-            //if (this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic)
-            //{
-            //    rigidbody.isKinematic = true;
-            //}
+            // todo:  here we set the animation to "hit the ground and in pain"
         }
         else
         {
@@ -191,24 +123,62 @@ public class Player : MonoBehaviour
     {
         _isFlying = true;
         hasBeenKicked++;
-        _animator.SetBool("Fly", true);
 		gameObject.collider.material = initialMaterial;
     }
 
-    IEnumerator WaitAndEndGame(float waitTime)
+    private void ExecuteAnimations() 
+    {
+        if (time <= 0)
+        {
+            if (!_animator.IsInTransition(0) && velocityDirection != (int)RabbitAnimationState.Idle)
+            {
+                if (_animator.GetInteger("Idle") == 0)
+                    _animator.SetInteger("Idle", 2);
+                else
+                    _animator.SetInteger("Idle", 0);
+
+                time = Random.Range(3, 10);
+            }
+        }
+
+        _animator.SetBool("Fly", _isFlying);
+        if (gm.isGameOver && velocityDirection != (int)RabbitAnimationState.Idle)
+        {
+            velocityDirection = (int)RabbitAnimationState.Idle;
+        }
+
+        if (TimesHitGround > 0 && velocityDirection != (int)RabbitAnimationState.Idle)
+            velocityDirection = (int)RabbitAnimationState.Idle;
+            // for leveled fly animation
+        //else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
+        //{
+        //    this.velocityDirection = 0;
+        //    _animator.SetInteger("VelocityDirection", this.velocityDirection);
+        //}
+        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp)
+            velocityDirection = (int)RabbitAnimationState.FlyUp;
+        else if (_isFlying && LastHeightY > transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyDown)
+            velocityDirection = (int)RabbitAnimationState.FlyDown;
+
+        if (_isFlying && fartBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpFart)
+            velocityDirection = (int)RabbitAnimationState.PowerUpFart;
+
+        if (_isFlying && wingsBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpWings)
+            velocityDirection = (int)RabbitAnimationState.PowerUpWings;
+
+        _animator.SetInteger("VelocityDirection", velocityDirection);
+
+        LastHeightY = transform.localPosition.y;
+    }
+
+    public IEnumerator WaitAndEndGame(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         
-        if ((int)this.Speed == 0 && hasBeenKicked > 0 && transform.position.y <= 0.40f)
+        if ((int)this.Speed == 0 && hasBeenKicked > 0)
         {
             rigidbody.isKinematic = true;
-            if (velocityDirection != -3)
-            {
-                _isFlying = false;
-                _animator.SetBool("Fly", _isFlying);
-                velocityDirection = -3;
-                _animator.SetInteger("VelocityDirection", velocityDirection);           
-            }       
+           
             gameObject.SendMessage("EndGame");
         }
     }
@@ -223,7 +193,7 @@ public class Player : MonoBehaviour
 
     public void UseFart()
     {
-        Debug.Log("use farttttttt");
+       
     }
 
     #endregion
@@ -246,4 +216,16 @@ public class Player : MonoBehaviour
 
     #endregion
 
+}
+
+public enum RabbitAnimationState 
+{
+    Idle = 0,
+    FlyUp = -1,
+    FlyLeveled = -2,
+    FlyDown = -3,
+
+    PowerUpFart = 4,
+    PowerUpWings = 5,
+    PowerUpBubbleGum = 6
 }
