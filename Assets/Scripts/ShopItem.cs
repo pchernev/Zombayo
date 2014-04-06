@@ -21,4 +21,5 @@ public class ShopItem
     }
     public int[] Prices { get; set; }
     public float[] Values { get; set; }
+    public float[] TimeValues { get; set; }
 }

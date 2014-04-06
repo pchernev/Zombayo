@@ -44,6 +44,7 @@ public class Carrot : BaseItem {
 			_rigidbody.angularVelocity = Vector3.zero;
 			_rigidbody.useGravity = true;
 			_rigidbody.drag = 10f;
+            _player.GetComponent<Player>().rigidbody.isKinematic = true;
         }
         else if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount > 0)
         {
@@ -60,7 +61,7 @@ public class Carrot : BaseItem {
 	public void AddForceCarrot()
 	{
 		_player.transform.parent = _playerParent;
-		_rigidbody.isKinematic = false;
+		//_rigidbody.isKinematic = false;
 		_rigidbody.AddForce( force );
 	}
 	public override List<BaseItem> Spawn( GameObject wp )

@@ -7,7 +7,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	public GameObject target;
 	public UILabel label;
 	//private UISlider slider = target.GetComponent<UISlider> ();
-	private bool use;
+	public bool use;
 	public float speedOfuse ;
 	private bool available = false;
 	GameObject _player;
