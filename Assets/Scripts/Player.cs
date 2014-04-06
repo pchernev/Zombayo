@@ -56,51 +56,17 @@ public class Player : MonoBehaviour
         wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
     }
 
-    // Use for initialization
     void Start()
     {
         _animator = GetComponent<Animator>();
         _isFlying = false;
-
         prevPos = new List<Vector3>();
         prevPos.Add(transform.position);
         Speed = 0;
-
-        //_btnRestart = GameObject.FindWithTag( "RestartButton" ).guiTexture;
-        //_btnRestart.enabled = false;	
-
         startPos = transform.position;
         startRotation = transform.rotation;
     }
-    void LateUpdate() 
-    {
-        if (TimesHitGround > 0 && velocityDirection != -3)
-        {
-            Debug.Log("Go In IDLE STATE");
-            velocityDirection = -3;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
-        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
-        {
-            Debug.Log("Leveledddddddddd");
-            this.velocityDirection = 0;
-            _animator.SetInteger("VelocityDirection", this.velocityDirection);
-        }
-        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0 && velocityDirection != 1)
-        {
-            Debug.Log("Uppppppp");
-            velocityDirection = 1;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
-        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0 && velocityDirection != -1)
-        {
-            Debug.Log("Downnnnnnn");
-            velocityDirection = -1;
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-        }
 
-        LastHeightY = transform.localPosition.y;
-    }
     void Update()
     {
        
@@ -126,17 +92,6 @@ public class Player : MonoBehaviour
 
             //			if( Speed < 0.1F )
             //				rigidbody.isKinematic = true;
-        }
-
-        if (!gm.isGamePaused)
-        {
-           
-            StartCoroutine(WaitAndEndGame(0.7f));
-        }
-
-        if (this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic)
-        {
-            rigidbody.isKinematic = true;
         }
     }
 
@@ -175,10 +130,42 @@ public class Player : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        if (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2)
+            StartCoroutine(WaitAndEndGame(0.7f));
+
+
+        if (TimesHitGround > 0 && velocityDirection != -3)
+        {
+            Debug.Log("Go In IDLE STATE");
+            velocityDirection = -3;
+            _animator.SetInteger("VelocityDirection", velocityDirection);
+        }
+        else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
+        {
+            Debug.Log("Leveledddddddddd");
+            this.velocityDirection = 0;
+            _animator.SetInteger("VelocityDirection", this.velocityDirection);
+        }
+        else if (_isFlying && LastHeightY < transform.position.y && TimesHitGround == 0 && velocityDirection != 1)
+        {
+            Debug.Log("Uppppppp");
+            velocityDirection = 1;
+            _animator.SetInteger("VelocityDirection", velocityDirection);
+        }
+        else if (_isFlying && LastHeightY > transform.position.y && TimesHitGround == 0 && velocityDirection != -1)
+        {
+            Debug.Log("Downnnnnnn");
+            velocityDirection = -1;
+            _animator.SetInteger("VelocityDirection", velocityDirection);
+        }
+
+        LastHeightY = transform.localPosition.y;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-
-			
         if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
         {
             _isFlying = false;
@@ -186,11 +173,9 @@ public class Player : MonoBehaviour
             _animator.SetBool("Fly", false);
 
             // here we set the animation to "hit the ground and in pain"
-
-
-            //if (Speed > 0.1F)
+            //if (this.Speed < 0.1f && hasBeenKicked >= 2 && !rigidbody.isKinematic)
             //{
-            //    this.rigidbody.AddForce(bounceForce);
+            //    rigidbody.isKinematic = true;
             //}
         }
         else
@@ -213,16 +198,17 @@ public class Player : MonoBehaviour
     IEnumerator WaitAndEndGame(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        if (this.Speed == 0 && hasBeenKicked > 0)
+        
+        if ((int)this.Speed == 0 && hasBeenKicked > 0 && transform.position.y <= 0.40f)
         {
+            rigidbody.isKinematic = true;
             if (velocityDirection != -3)
             {
                 _isFlying = false;
                 _animator.SetBool("Fly", _isFlying);
                 velocityDirection = -3;
                 _animator.SetInteger("VelocityDirection", velocityDirection);           
-            }
-          
+            }       
             gameObject.SendMessage("EndGame");
         }
     }
