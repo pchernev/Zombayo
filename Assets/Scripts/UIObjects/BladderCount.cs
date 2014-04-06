@@ -31,7 +31,7 @@ public class BladderCount : MonoBehaviour {
 
         if (itemUpgrades == 0)
         {
-            label.text = "Disabled";
+            label.text = "";
             widget.color = this.color;
         }
 	}
