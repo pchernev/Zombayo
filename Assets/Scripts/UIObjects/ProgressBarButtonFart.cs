@@ -55,14 +55,15 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	{
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Fart");
 		if (item.UpgradesCount == 0) {
-			
+			gameObject.GetComponent<UIButton>().isEnabled = false;
+			var colorr = gameObject.GetComponent<UIButton>().disabledColor;
 			var children = gameObject.GetComponentsInChildren<UISprite>();
-
+			
 			
 			foreach (UISprite child in children) {
 				var c = child.GetComponent<UIWidget>();
-				c.color = this.color;
-			
+				c.color = colorr;
+				
 			}
 		}
 	}
