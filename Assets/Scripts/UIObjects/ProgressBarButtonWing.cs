@@ -48,7 +48,7 @@ public class ProgressBarButtonWing : MonoBehaviour {
 						var tmp = _player.transform.position;
 						if (use == true) {
 				var item =_player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
-				target.GetComponent<UISlider> ().value -= item.Values[item.UpgradesCount];
+				target.GetComponent<UISlider> ().value -= Time.deltaTime/item.Values[item.UpgradesCount];
 				_player.transform.rotation = Quaternion.Euler (0, 0, 0);
 								
 				if(_animator.GetBool("Fly")==true){

@@ -59,7 +59,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 		_player.transform.rotation = rot;
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		if(usedFart == true){
 			_player = GameObject.FindWithTag ("Player");
 			
@@ -83,7 +83,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 
 								}
 				var item = _player.GetComponent<Player> ().gameData.ShopItems.FirstOrDefault (x => x.Name == "Fart");
-				target.GetComponent<UISlider> ().value -= item.Values [item.UpgradesCount];
+				target.GetComponent<UISlider> ().value -= Time.deltaTime/item.Values[item.UpgradesCount];
 						}
 			else{
 				_animator.SetBool("Fart",false);
