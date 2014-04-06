@@ -21,7 +21,7 @@ public class ArmorCount : MonoBehaviour {
 		
 		if (item.UpgradesCount == 0) {
 			widget.color = this.color;
-			label.text = "Disabled";
+			label.text = "";
 		}
 
 		
@@ -35,7 +35,9 @@ public class ArmorCount : MonoBehaviour {
 		_player = GameObject.FindWithTag("Player");
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Armor");
 		UILabel label = GetComponent<UILabel> ();
-		label.text = _player.GetComponent<Player> ().ArmorCount.ToString ();
+		if (item.UpgradesCount != 0) {
+						label.text = _player.GetComponent<Player> ().ArmorCount.ToString ();
+				}
 		
 
 		

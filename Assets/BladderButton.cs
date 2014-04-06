@@ -11,12 +11,18 @@ public class BladderButton : MonoBehaviour
     private Quaternion rot;
     public int timesToUse = 0;
     private ShopItem item;
+	public Color color;
+
 
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Bladder");
         timesToUse = item.UpgradesCount;
+
+
+
+
     }
 
     void ResetRotation()
@@ -27,6 +33,17 @@ public class BladderButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (item.UpgradesCount == 0) {
+			
+			var children = gameObject.GetComponentsInChildren<UISprite>();
+			Debug.Log ("Children: "+children.Length);
+			
+			foreach (UISprite child in children) {
+				var c = child.GetComponent<UIWidget>();
+				c.color = this.color;
+				Debug.Log("change color"+c.color);
+			}
+		}
         if (usedBubbleGum == true)
         {
             _player = GameObject.FindWithTag("Player");
