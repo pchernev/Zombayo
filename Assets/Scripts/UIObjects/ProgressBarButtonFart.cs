@@ -12,7 +12,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	private bool available = false;
 	GameObject _player;
 	Animator _animator;
-	public Color color;
+
 	private bool usedFart;
 	private Quaternion rot;
 	public Vector3 force;
@@ -38,7 +38,6 @@ public class ProgressBarButtonFart : MonoBehaviour {
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Fart");
 		if (item.UpgradesCount == 0) {
 						label.text = "Disabled";
-			widget.color = this.color;
 
 
 				} 
@@ -53,6 +52,12 @@ public class ProgressBarButtonFart : MonoBehaviour {
 
 	void Update()
 	{
+		if (_animator.GetBool ("Fly") == false || target.GetComponent<UISlider> ().value == 0) {
+						gameObject.GetComponent<UIButton> ().isEnabled = false;
+			
+		} 
+		else {gameObject.GetComponent<UIButton> ().isEnabled = true;
+				}
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Fart");
 		if (item.UpgradesCount == 0) {
 			gameObject.GetComponent<UIButton>().isEnabled = false;
@@ -75,6 +80,7 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+
 		if(usedFart == true){
 			_player = GameObject.FindWithTag ("Player");
 			
