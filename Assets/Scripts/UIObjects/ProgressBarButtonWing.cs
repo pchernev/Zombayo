@@ -43,6 +43,8 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
+
+
 		if (available == true) {
 			_animator = _player.GetComponent<Animator>();
 						var tmp = _player.transform.position;
