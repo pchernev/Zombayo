@@ -33,8 +33,7 @@ public class Carrot : BaseItem {
 	void OnTriggerEnter( Collider collision )
 	{
 		if (collision.gameObject.tag.CompareTo ("Player") == 0 && _player.GetComponent<Player>().ArmorCount <= 0) 
-        {
-		    
+        {		    
 			wasHit = true;			
 		    _rigidbody.drag = 0.1f;
 			gameObject.audio.Play ();
@@ -50,7 +49,6 @@ public class Carrot : BaseItem {
         {
 
             _player.GetComponent<Player>().ArmorCount--;
-            Debug.Log("ARMOR COUNT: " + _player.GetComponent<Player>().ArmorCount);
             collider.enabled = false;
             wasHit = true;
             gameObject.audio.Play();
