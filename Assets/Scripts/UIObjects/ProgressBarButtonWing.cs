@@ -43,13 +43,26 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
+		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
+		if (item.UpgradesCount == 0) {
+			gameObject.GetComponent<UIButton>().isEnabled = false;
+			var colorr = gameObject.GetComponent<UIButton>().disabledColor;
+			var children = gameObject.GetComponentsInChildren<UISprite>();
+			
+			
+			foreach (UISprite child in children) {
+				var c = child.GetComponent<UIWidget>();
+				c.color = colorr;
+				
+			}
+		}
 
 
 		if (available == true) {
 			_animator = _player.GetComponent<Animator>();
 						var tmp = _player.transform.position;
 						if (use == true) {
-				var item =_player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
+				item =_player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
 				target.GetComponent<UISlider> ().value -= Time.deltaTime/item.Values[item.UpgradesCount];
 				_player.transform.rotation = Quaternion.Euler (0, 0, 0);
 								
