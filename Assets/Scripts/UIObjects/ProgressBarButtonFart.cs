@@ -53,10 +53,11 @@ public class ProgressBarButtonFart : MonoBehaviour {
 	void Update()
 	{
 		if (_animator.GetBool ("Fly") == false || target.GetComponent<UISlider> ().value == 0) {
-						gameObject.GetComponent<UIButton> ().isEnabled = false;
+						gameObject.collider.enabled = false;
 			
 		} 
-		else {gameObject.GetComponent<UIButton> ().isEnabled = true;
+		else {gameObject.collider.enabled= true;
+
 				}
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Fart");
 		if (item.UpgradesCount == 0) {

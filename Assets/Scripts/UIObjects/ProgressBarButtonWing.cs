@@ -44,25 +44,27 @@ public class ProgressBarButtonWing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		if (_animator.GetBool ("Fly") == false || target.GetComponent<UISlider> ().value == 0) {
-			gameObject.GetComponent<UIButton> ().isEnabled = false;
+		if (_animator.GetBool ("Fly") == false || target.GetComponent<UISlider> ().value <= 0) {
+			gameObject.collider.enabled = false;
 			
 		} 
-		else {gameObject.GetComponent<UIButton> ().isEnabled = true;
+		else {gameObject.collider.enabled = true;
 		}
 		var item = _player.GetComponent<Player>().gameData.ShopItems.FirstOrDefault(x => x.Name == "Wings");
-		if (item.UpgradesCount == 0) {
-			gameObject.GetComponent<UIButton>().isEnabled = false;
-			var colorr = gameObject.GetComponent<UIButton>().disabledColor;
-			var children = gameObject.GetComponentsInChildren<UISprite>();
+		if (item.UpgradesCount <= 0) {
+						gameObject.GetComponent<UIButton> ().isEnabled = false;
+						var colorr = gameObject.GetComponent<UIButton> ().disabledColor;
+						var children = gameObject.GetComponentsInChildren<UISprite> ();
 			
 			
-			foreach (UISprite child in children) {
-				var c = child.GetComponent<UIWidget>();
-				c.color = colorr;
+						foreach (UISprite child in children) {
+								var c = child.GetComponent<UIWidget> ();
+								c.color = colorr;
 				
-			}
-		}
+						}
+				} 
+			
+
 
 
 		if (available == true) {
