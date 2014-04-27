@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public int TimesHitGround = 0;
     ProgressBarButtonWing wingsBtn;
     ProgressBarButtonFart fartBtn;
+    BladderButton bladderBtn;
 
     #endregion
 
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
 
         wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
         fartBtn = GameObject.Find("Ingame Button Fart").GetComponent<ProgressBarButtonFart>();
+        bladderBtn = GameObject.Find("Ingame Button BubbleGum").GetComponent<BladderButton>();
     }
 
     void Update()
@@ -101,10 +103,25 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.CompareTo("Ground") == 0)
+        if (collision.gameObject.name == "_TerrainPlane")
         {
             TimesHitGround++;
-            // todo:  here we set the animation to "hit the ground and in pain"
+            Debug.Log("GROUNDDDDDDDDD");
+            if (hasBeenKicked >= 1)
+            {
+                _animator.SetBool("IsInHurt", true);
+                switch (TimesHitGround)
+                {
+                    case 1: _animator.SetFloat("HurtState", 0.0f);
+                        break;
+                    case 2: _animator.SetFloat("HurtState", 1.0f);
+                        break;
+                    default:
+                        break;
+                }
+            }
+           
+           
         }
         else
         {
@@ -124,16 +141,24 @@ public class Player : MonoBehaviour
 
     private void ExecuteAnimations()
     {
-        if (fartBtn.use || wingsBtn.use)
+        if (fartBtn.use || wingsBtn.use || bladderBtn.usedBubbleGum)
+        {
             _animator.SetBool("IsInUpgrade", true);
+            _animator.SetBool("IsInHurt", false);
+            TimesHitGround = 0;
+        }
         else
             _animator.SetBool("IsInUpgrade", false);
 
-        if (fartBtn.use)
+        if (bladderBtn.usedBubbleGum)
+        {
+            _animator.SetFloat("UpdateState", 0.0f);
+        }
+        else if (fartBtn.use)
             _animator.SetFloat("UpdateState", 0.5f);
-        else if(wingsBtn.use)
+        else if (wingsBtn.use)
             _animator.SetFloat("UpdateState", 1.0f);
-
+       
         if (!_animator.GetBool("IsInUpgrade") && LastHeightY < transform.position.y)
         {
             // flyuppp
