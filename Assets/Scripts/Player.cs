@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public float ArmorCount = 0;
     public float timeToReach;
 
-    bool fooBar = true;
 
     public Vector3 bounceForce;
     public GameObject explosion;
@@ -30,9 +29,6 @@ public class Player : MonoBehaviour
 
     #region AnimationVariables
 
-    private int velocityDirection = -999;
-    // private int lastVelocityDirection = -999;
-    bool _isFlying;
     public int hasBeenKicked = 0;
     [HideInInspector]
     public float LastHeightY;
@@ -40,6 +36,7 @@ public class Player : MonoBehaviour
     public int TimesHitGround = 0;
     ProgressBarButtonWing wingsBtn;
     ProgressBarButtonFart fartBtn;
+
     #endregion
 
     #region Base player logic
@@ -58,7 +55,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _isFlying = false;
         prevPos = new List<Vector3>();
         prevPos.Add(transform.position);
         Speed = 0;
@@ -92,21 +88,21 @@ public class Player : MonoBehaviour
     float time = 3;
     void FixedUpdate()
     {
+        ExecuteAnimations();
         time -= Time.deltaTime;
     }
 
     void LateUpdate()
     {
-        ExecuteAnimations();
+
         if ((rigidbody.isKinematic == true) || (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2))
             StartCoroutine(WaitAndEndGame(2.0f));
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.CompareTo("Ground") == 0 && _isFlying)
+        if (collision.gameObject.tag.CompareTo("Ground") == 0)
         {
-            _isFlying = false;
             TimesHitGround++;
             // todo:  here we set the animation to "hit the ground and in pain"
         }
@@ -121,82 +117,33 @@ public class Player : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        _isFlying = true;
         hasBeenKicked++;
         gameObject.collider.material = initialMaterial;
+        _animator.SetBool("IsInIdle", false);
     }
 
     private void ExecuteAnimations()
     {
-        if (_animator.GetBool("FooBar"))
+        if (fartBtn.use || wingsBtn.use)
+            _animator.SetBool("IsInUpgrade", true);
+        else
+            _animator.SetBool("IsInUpgrade", false);
+
+        if (fartBtn.use)
+            _animator.SetFloat("UpdateState", 0.5f);
+        else if(wingsBtn.use)
+            _animator.SetFloat("UpdateState", 1.0f);
+
+        if (!_animator.GetBool("IsInUpgrade") && LastHeightY < transform.position.y)
         {
-            _animator.SetBool("FooBar", true);
-            _animator.SetInteger("VelocityDirection", velocityDirection);
-            _animator.SetBool("FooBar", false);
+            // flyuppp
+            _animator.SetFloat("FlyingState", 0.0f);
         }
-
-        _animator.SetBool("Fly", _isFlying);
-
-        if (!gm.isGameOver && _animator.GetInteger("Idle") != 1)
+        else if (!_animator.GetBool("IsInUpgrade") && LastHeightY > transform.position.y)
         {
-            velocityDirection = (int)RabbitAnimationState.Idle;
-            _animator.SetBool("FooBar", true);
-            _animator.SetInteger("Idle", 1);
-            _animator.SetBool("Fly", false);
+            // flydownnn
+            _animator.SetFloat("FlyingState", 1.0f);
         }
-        else if (gm.isGameOver && _animator.GetInteger("Idle") != 0)
-        {
-            velocityDirection = (int)RabbitAnimationState.Idle;
-            _animator.SetBool("FooBar", true);
-            _animator.SetInteger("Idle", 0);
-            _animator.SetBool("Fly", false);
-        }
-
-        if (TimesHitGround > 0 && velocityDirection != (int)RabbitAnimationState.Idle)
-        {
-            Debug.Log("Third IF");
-            velocityDirection = (int)RabbitAnimationState.Idle; Debug.Log("Third IF");
-            _animator.SetBool("FooBar", true);
-        }
-        // for leveled fly animation
-        //else if (_isFlying && LastHeightY <= 18f && LastHeightY >= 15f && TimesHitGround == 0 && this.velocityDirection != 0)
-        //{
-        //    this.velocityDirection = 0;
-        //    _animator.SetInteger("VelocityDirection", this.velocityDirection);
-        //}
-        else if (_isFlying && LastHeightY < transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyUp)
-        {
-            velocityDirection = (int)RabbitAnimationState.FlyUp; Debug.Log("Fourth IF");
-            _animator.SetBool("FooBar", true);
-        }
-        else if (_isFlying && LastHeightY > transform.position.y && velocityDirection != (int)RabbitAnimationState.FlyDown)
-        {
-            velocityDirection = (int)RabbitAnimationState.FlyDown; Debug.Log("Fivth IF");
-            _animator.SetBool("FooBar", true);
-        }
-
-        if (_isFlying && fartBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpFart)
-        {
-            velocityDirection = (int)RabbitAnimationState.PowerUpFart; Debug.Log("Sixth IF");
-            _animator.SetBool("FooBar", true);
-        }
-
-        if (_isFlying && wingsBtn.use && velocityDirection != (int)RabbitAnimationState.PowerUpWings)
-        {
-            velocityDirection = (int)RabbitAnimationState.PowerUpWings; Debug.Log("Seventh IF");
-            _animator.SetBool("FooBar", true);
-        }
-
-
-
-        //if (velocityDirection != -999)
-        //{
-        // Debug.Log("LastVelocity: " + lastVelocityDirection + " VelocityDirection: " + velocityDirection);
-
-
-
-        //}
-
         LastHeightY = transform.localPosition.y;
     }
 
@@ -208,7 +155,9 @@ public class Player : MonoBehaviour
         if ((int)this.Speed == 0 && hasBeenKicked > 0)
         {
             rigidbody.isKinematic = true;
-
+            _animator.SetBool("IsInUpgrade", false);
+            _animator.SetBool("IsGameOver", true);
+            _animator.SetBool("IsInIdle", true);
             gameObject.SendMessage("EndGame");
         }
     }
@@ -219,6 +168,9 @@ public class Player : MonoBehaviour
         transform.rotation = startRotation;
         hasBeenKicked = 0;
         rigidbody.isKinematic = false;
+        _animator.SetBool("IsInUpgrade", false);
+        _animator.SetBool("IsGameOver", false);
+        _animator.SetBool("IsInIdle", true);
     }
 
     public void UseFart()
@@ -247,14 +199,14 @@ public class Player : MonoBehaviour
 
 }
 
-public enum RabbitAnimationState
-{
-    Idle = 0,
-    FlyUp = -1,
-    FlyLeveled = -2,
-    FlyDown = -3,
+//public enum RabbitAnimationState
+//{
+//    Idle = 0,
+//    FlyUp = -1,
+//    FlyLeveled = -2,
+//    FlyDown = -3,
 
-    PowerUpFart = 4,
-    PowerUpWings = 5,
-    PowerUpBubbleGum = 6
-}
+//    PowerUpFart = 4,
+//    PowerUpWings = 5,
+//    PowerUpBubbleGum = 6
+//}

@@ -24,7 +24,7 @@ public class Coin : BaseItem {
         if (item.UpgradesCount > 0)
         {
             magnetPower = (int)item.Values[item.UpgradesCount - 1];
-            Debug.Log("MAGNET POWER: " + (int)item.Values[item.UpgradesCount]);
+
         }
 	}
 
