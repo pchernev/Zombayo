@@ -1,109 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using UnityEngine;
+using System;
 
-    public class GameData
-    {
-        public Statistics PlayerStats { get; set; }
+public class GameData : MonoBehaviour
+{
+  [HideInInspector]
+  public UpgradeLevel.Specs specs;
 
-        public ShopItem[] ShopItems;// shop upgrades
+  public int coinCount;
+  public float bubbleGumLife;
+  public float fartTime;
+  public Vector3 fartDirection;
+  public float glideTime;
+  public Vector3 glideDirection;
 
-        public GameData()
-        {
-            // for the xml serializer we have to add empty ctor
-        }
+  public float maxKickPower;
+  public Vector3 kickDirection;
+  public float kickEfficiency;
+  public Vector3 KickForce { get { return kickEfficiency * maxKickPower * kickDirection; } }
 
-        public GameData(bool initNewGameData)
-        {
-            if (initNewGameData)
-            {
-                this.PlayerStats = new Statistics { Coins = 0, Points = 0, Distance = 0 };
-                ShopItems = new ShopItem[ShopConfig.ShopItemsCount]; // for now we have 3 upg
+    [HideInInspector]
+  public int[] levels;
 
-                for (int i = 0; i < ShopItems.Length; i++)
-                {
-                    ShopItems[i] = new ShopItem();
-                    ShopItems[i].Name = ShopConfig.ShopItemNames[i];
-                    ShopItems[i].Prices = ShopConfig.ItemsConfigPrices[i];
-                    ShopItems[i].Values = ShopConfig.ItemsConfigValues[i];
-                    ShopItems[i].TimeValues = ShopConfig.ItemsConfigValues[i];
-                    ShopItems[i].UpgradesCount = 0;
-                }
-            }
-        }
+  public float FartPercentage { get { return fartTime / specs.fartCapacity; } }
+  public float GlidePercentage { get { return glideTime / specs.glideCapacity; } }
+
+  void Awake()
+  {
+    ensureDataConsistency();
+  }
+  
+  void Start ()
+  {
+    setFromLevels();
+  }
+
+  public void setFromUpgradeSpecs(UpgradeLevel.Specs specs, bool setTimeToCapacity = true)
+  {
+    this.specs = specs;
+    if (setTimeToCapacity) {
+      fartTime = specs.fartCapacity;
+      glideTime = specs.glideCapacity;
     }
+  }
 
-    public static class ShopConfig
-    {
-        public const int ShopItemsCount = 5;
-        public static string[] ShopItemNames = new string[ShopItemsCount] { "Bladder", "Magnet", "Armor", "Fart", "Wings" };
+  public void setFromLevels()
+  {
+    var newSpecs = GameLogic.Instance != null ? GameLogic.Instance.upgradeData.getSpecs(levels) : GetComponent<UpgradeData>().getSpecs(levels);
+    setFromUpgradeSpecs(newSpecs);
+  }
 
-        public static List<float[]> ItemsConfigValues
-        {
-            get
-            {
-                itemsConfigValues = new List<float[]>();
-                itemsConfigValues.Add(BladderValues);
-                itemsConfigValues.Add(MagnetValues);
-                itemsConfigValues.Add(ArmorValues);
-                itemsConfigValues.Add(FartValues);
-                itemsConfigValues.Add(WingValues);
-                return itemsConfigValues;
-            }
-            set { }
-        }
-        public static List<int[]> ItemsConfigPrices
-        {
-            get
-            {
-                itemsConfigPrices = new List<int[]>();
-                itemsConfigPrices.Add(BladderPrices);
-                itemsConfigPrices.Add(MagnetPrices);
-                itemsConfigPrices.Add(ArmorPrices);
-                itemsConfigPrices.Add(FartPrices);
-                itemsConfigPrices.Add(WingPrices);
-                return itemsConfigPrices;
-            }
-            set { }
-        }
-        public static List<float[]> ItemsConfigTimes
-        {
-            get
-            {
-                itemsConfigTimes = new List<float[]>();
-                itemsConfigTimes.Add(BladderTimes);
-                itemsConfigTimes.Add(MagnetTimes);
-                itemsConfigTimes.Add(ArmorTimes);
-                itemsConfigTimes.Add(FartTimes);
-                itemsConfigTimes.Add(WingTimes);
-                return itemsConfigTimes;
-            }
-            set { }
-        }
-
-        private static List<float[]> itemsConfigTimes;
-        private static List<int[]> itemsConfigPrices;
-        private static List<float[]> itemsConfigValues;
-
-        private static float[] BladderValues = { 0, 0.7f, 1, 2, 2.5f, 4 };
-        private static float[] BladderTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
-        private static int[] BladderPrices = { 0, 250, 650, 1500, 3700, 6800 };
-
-        private static float[] MagnetValues = { 0, 1.5f, 2.8f, 5, 7.5f, 10 };
-        private static float[] MagnetTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
-        private static int[] MagnetPrices = {0, 250, 650, 1500, 3700, 6800 };
-
-        private static float[] ArmorValues = { 0, 1, 2, 3, 4, 5 };
-        private static float[] ArmorTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
-        private static int[] ArmorPrices = { 0, 250, 650, 1500, 3700, 6800 };
-
-        private static float[] FartValues = { 0, 10, 20, 30, 40, 50 };
-        private static float[] FartTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
-        private static int[] FartPrices = { 0, 250, 650, 1500, 3700, 6800 };
-
-        private static float[] WingValues = { 0, 0.5f, 1, 2, 2.5f, 3 };
-        private static float[] WingTimes = { 0, 0.250f, 0.500f, 0.750f, 1f, 2f };
-        private static int[] WingPrices = { 0, 250, 650, 1500, 3700, 6800 };
-    }
-   
-
+  public void ensureDataConsistency()
+  {
+    if (levels == null)
+      levels = new int[UpgradeLevel.NumLevels];
+    else if (levels.Length != UpgradeLevel.NumLevels)
+      Array.Resize(ref levels, UpgradeLevel.NumLevels);
+  }
+}

@@ -11,81 +11,81 @@ namespace Assets.Scripts
 {
     public static class SaveLoadGame
     {
-        static readonly string PasswordHash = "1co,Pl@men,k1ci,c3c0";
-        static readonly string salt = "z0Mb@!Oz0Mb@!O";
-        static readonly string VIKey = "@1B2c3D4e5F6g7H8";
-        static readonly string _fullPath =  Path.Combine(Application.dataPath, "game-data.dat");
-        public static void SaveData(GameData gameData)
-        {
-            using (var stream = new MemoryStream())
-            {
-                XmlSerializer xs = new XmlSerializer(gameData.GetType());
-                xs.Serialize(stream, gameData);
-                var bytes = stream.GetBuffer();
-                string str = Encoding.UTF8.GetString(bytes);
-                var sb = new StringBuilder(str); // change to: var sb = new StringBuilder(Encrypt(str));
-                File.WriteAllText(_fullPath, sb.ToString());
-            }
-            Debug.Log("File saved...");
-        }
+        //static readonly string PasswordHash = "1co,Pl@men,k1ci,c3c0";
+        //static readonly string salt = "z0Mb@!Oz0Mb@!O";
+        //static readonly string VIKey = "@1B2c3D4e5F6g7H8";
+        //static readonly string _fullPath =  Path.Combine(Application.dataPath, "game-gameData.dat");
+        //public static void SaveData(GameData gameData)
+        //{
+        //    using (var stream = new MemoryStream())
+        //    {
+        //        XmlSerializer xs = new XmlSerializer(gameData.GetType());
+        //        xs.Serialize(stream, gameData);
+        //        var bytes = stream.GetBuffer();
+        //        string str = Encoding.UTF8.GetString(bytes);
+        //        var sb = new StringBuilder(str); // change to: var sb = new StringBuilder(Encrypt(str));
+        //        File.WriteAllText(_fullPath, sb.ToString());
+        //    }
+        //    Debug.Log("File saved...");
+        //}
 
-        public static GameData LoadData()
-        {
-            if (File.Exists(_fullPath))
-            {
-                string str = File.ReadAllText(_fullPath);
-                var sb = new StringBuilder(str); // change to var sb = new StringBuilder(Decrypt(str));
-                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString())))
-                {
-                    XmlSerializer xs = new XmlSerializer(typeof(GameData));
-                    Debug.Log("File loaded ...");
-                    return (GameData)xs.Deserialize(ms);
-                }
-            }
-            var gameData = new GameData(true);
-            SaveData(gameData);
-            return gameData;
-        }
+        //public static GameData LoadData()
+        //{
+        //    if (File.Exists(_fullPath))
+        //    {
+        //        string str = File.ReadAllText(_fullPath);
+        //        var sb = new StringBuilder(str); // change to var sb = new StringBuilder(Decrypt(str));
+        //        using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString())))
+        //        {
+        //            XmlSerializer xs = new XmlSerializer(typeof(GameData));
+        //            Debug.Log("File loaded ...");
+        //            return (GameData)xs.Deserialize(ms);
+        //        }
+        //    }
+        //    var gameData = new GameData(true);
+        //    SaveData(gameData);
+        //    return gameData;
+        //}
 
-        private static string Encrypt(string plainText)
-        {
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+        //private static string Encrypt(string plainText)
+        //{
+        //    byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
 
-            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(salt)).GetBytes(256 / 8);
-            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.Zeros };
-            var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
+        //    byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(salt)).GetBytes(256 / 8);
+        //    var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.Zeros };
+        //    var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
 
-            byte[] cipherTextBytes;
+        //    byte[] cipherTextBytes;
 
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                {
-                    cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-                    cryptoStream.FlushFinalBlock();
-                    cipherTextBytes = memoryStream.ToArray();
-                    cryptoStream.Close();
-                }
-                memoryStream.Close();
-            }
-            return Convert.ToBase64String(cipherTextBytes);
-        }
+        //    using (var memoryStream = new MemoryStream())
+        //    {
+        //        using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+        //        {
+        //            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+        //            cryptoStream.FlushFinalBlock();
+        //            cipherTextBytes = memoryStream.ToArray();
+        //            cryptoStream.Close();
+        //        }
+        //        memoryStream.Close();
+        //    }
+        //    return Convert.ToBase64String(cipherTextBytes);
+        //}
 
-        private static string Decrypt(string encryptedText)
-        {
-            byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);
-            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(salt)).GetBytes(256 / 8);
-            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.None };
+        //private static string Decrypt(string encryptedText)
+        //{
+        //    byte[] cipherTextBytes = Convert.FromBase64String(encryptedText);
+        //    byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(salt)).GetBytes(256 / 8);
+        //    var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.None };
 
-            var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
-            var memoryStream = new MemoryStream(cipherTextBytes);
-            var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+        //    var decryptor = symmetricKey.CreateDecryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
+        //    var memoryStream = new MemoryStream(cipherTextBytes);
+        //    var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+        //    byte[] plainTextBytes = new byte[cipherTextBytes.Length];
 
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-            memoryStream.Close();
-            cryptoStream.Close();
-            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
-        }
+        //    int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+        //    memoryStream.Close();
+        //    cryptoStream.Close();
+        //    return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount).TrimEnd("\0".ToCharArray());
+        //}
     }
 }

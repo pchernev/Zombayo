@@ -142,19 +142,21 @@ ModelImporter:
     4300040: Base HumanRPalm
     4300042: Base HumanNeck
     4300044: Base HumanHead
-    7400000: Idle
-    7400002: Finger
-    7400004: Ass Shake
-    7400006: Turn Back
-    7400008: Flight
-    7400010: Fly 01 Up
-    7400012: Fly 02 Leveled
-    7400014: Fly 03 Down
-    7400016: Ground Drag
-    7400018: Powerup Glide
-    7400020: Powerup Fart
-    7400022: Powerup Bladder
-    7400024: Hurt 01
+    7400000: Player Idle
+    7400002: Player Finger
+    7400004: Player Ass Shake
+    7400006: Player Turn Back
+    7400008: Player Flight
+    7400010: Player Fly 01 Up
+    7400012: Player Fly 02 Leveled
+    7400014: Player Fly 03 Down
+    7400016: Player Ground Drag
+    7400018: Player Powerup Glide
+    7400020: Player Powerup Fart
+    7400022: Player Powerup Bubblegun
+    7400024: Player Hurt 02
+    7400026: Player Hurt 03
+    7400028: Player Hurt 01
     9500000: //RootNode
     13700000: mainChar_Zombayo
   materials:
@@ -165,7 +167,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -173,7 +175,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Player Idle
       takeName: Take 001
       firstFrame: 0
       lastFrame: 129
@@ -183,23 +185,51 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      curves:
+      - name: KickEfficiency
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: .488423347
+            value: .201334119
+            inSlope: -.0204933509
+            outSlope: -.0204933509
+            tangentMode: 0
+          - time: 1
+            value: 0
+            inSlope: -.115416117
+            outSlope: .00443232618
+            tangentMode: 1
+          preInfinity: 1
+          postInfinity: 2
+      events:
+      - time: .918673813
+        functionName: OnIdleFinishing
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Finger
+      name: Player Finger
       takeName: Take 001
       firstFrame: 131
       lastFrame: 227
@@ -208,8 +238,8 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
@@ -219,13 +249,51 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      curves:
+      - name: KickEfficiency
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: .089348875
+            value: .301041961
+            inSlope: 4.08798456
+            outSlope: 4.08798456
+            tangentMode: 0
+          - time: .199999988
+            value: 1
+            inSlope: .0279829185
+            outSlope: .0279829185
+            tangentMode: 0
+          - time: .434835672
+            value: .188660368
+            inSlope: -3.96534801
+            outSlope: -1.32885027
+            tangentMode: 1
+          - time: 1
+            value: 0
+            inSlope: -.643528104
+            outSlope: -.643528104
+            tangentMode: 0
+          preInfinity: 2
+          postInfinity: 2
+      events:
+      - time: .921658993
+        functionName: OnIdleFinishing
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Ass Shake
+      name: Player Ass Shake
       takeName: Take 001
       firstFrame: 225
       lastFrame: 345
@@ -234,8 +302,8 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
@@ -245,13 +313,46 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      curves:
+      - name: KickEfficiency
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: .200000003
+            value: 1
+            inSlope: .00847922079
+            outSlope: .00847922079
+            tangentMode: 0
+          - time: .5
+            value: .150000006
+            inSlope: -.00234510214
+            outSlope: -.00234510214
+            tangentMode: 0
+          - time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 2
+          postInfinity: 2
+      events:
+      - time: .921659052
+        functionName: OnIdleFinishing
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Turn Back
+      name: Player Turn Back
       takeName: Take 001
       firstFrame: 347
       lastFrame: 423
@@ -260,8 +361,8 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
@@ -271,13 +372,46 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
+      curves:
+      - name: KickEfficiency
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: .300000012
+            value: 1
+            inSlope: .00233239541
+            outSlope: .00233239541
+            tangentMode: 0
+          - time: .519999981
+            value: .150000006
+            inSlope: -.393517107
+            outSlope: -.393517107
+            tangentMode: 0
+          - time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 2
+          postInfinity: 2
+      events:
+      - time: .917050719
+        functionName: OnIdleFinishing
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Flight
+      name: Player Flight
       takeName: Take 001
       firstFrame: 430
       lastFrame: 450
@@ -303,7 +437,7 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Fly 01 Up
+      name: Player Fly 01 Up
       takeName: Take 001
       firstFrame: 460
       lastFrame: 490
@@ -314,10 +448,10 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -329,11 +463,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -386,10 +518,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -398,10 +530,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -415,13 +547,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Fly 02 Leveled
+      name: Player Fly 02 Leveled
       takeName: Take 001
       firstFrame: 500
       lastFrame: 530
@@ -435,7 +565,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -447,11 +577,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -504,10 +632,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -516,10 +644,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -533,13 +661,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Fly 03 Down
+      name: Player Fly 03 Down
       takeName: Take 001
       firstFrame: 540
       lastFrame: 570
@@ -553,7 +679,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -581,11 +707,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -638,10 +762,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -650,10 +774,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -667,13 +791,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Ground Drag
+      name: Player Ground Drag
       takeName: Take 001
       firstFrame: 580
       lastFrame: 610
@@ -687,7 +809,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -699,11 +821,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -756,10 +876,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -768,10 +888,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -785,13 +905,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Powerup Glide
+      name: Player Powerup Glide
       takeName: Take 001
       firstFrame: 620
       lastFrame: 650
@@ -805,9 +923,9 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -817,11 +935,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -874,10 +990,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -886,10 +1002,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -903,13 +1019,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Powerup Fart
+      name: Player Powerup Fart
       takeName: Take 001
       firstFrame: 660
       lastFrame: 690
@@ -919,10 +1033,10 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
@@ -935,11 +1049,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -992,10 +1104,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -1004,10 +1116,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -1021,13 +1133,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Powerup Bladder
+      name: Player Powerup Bubblegun
       takeName: Take 001
       firstFrame: 700
       lastFrame: 730
@@ -1038,10 +1148,10 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -1053,11 +1163,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
-      - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -1110,10 +1218,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -1122,10 +1230,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -1139,13 +1247,11 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
-      - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Hurt 01
+      name: Player Hurt 01
       takeName: Take 001
       firstFrame: 740
       lastFrame: 770
@@ -1156,10 +1262,10 @@ ModelImporter:
       loop: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -1171,11 +1277,11 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Base Human
-        weight: 0
+        weight: 1
       - path: Base Human/mainChar_Zombayo
-        weight: 0
+        weight: 1
       - path: Base HumanLPlatform
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -1228,10 +1334,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01
         weight: 1
@@ -1240,10 +1346,10 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
-        weight: 0
+        weight: 1
       - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
           HumanRCollarbone
         weight: 1
@@ -1257,9 +1363,245 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
-        weight: 0
+        weight: 1
       - path: Base HumanRPlatform
-        weight: 0
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Player Hurt 02
+      takeName: Take 001
+      firstFrame: 780
+      lastFrame: 810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
+        weight: 1
+      - path: Base HumanPelvis
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf/Base HumanLFoot
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf/Base HumanLFoot/Base
+          HumanLDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf/Base HumanRFoot
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf/Base HumanRFoot/Base
+          HumanRDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm/Base HumanLForearm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm/Base HumanLForearm/Base HumanLPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
+        weight: 1
+      - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Player Hurt 03
+      takeName: Take 001
+      firstFrame: 820
+      lastFrame: 850
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base Human
+        weight: 1
+      - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
+        weight: 1
+      - path: Base HumanPelvis
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf/Base HumanLFoot
+        weight: 1
+      - path: Base HumanPelvis/Base HumanLThigh/Base HumanLCalf/Base HumanLFoot/Base
+          HumanLDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf/Base HumanRFoot
+        weight: 1
+      - path: Base HumanPelvis/Base HumanRThigh/Base HumanRCalf/Base HumanRFoot/Base
+          HumanRDigit11
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm/Base HumanLForearm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanLCollarbone/Base HumanLUpperarm/Base HumanLForearm/Base HumanLPalm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02/EarL03
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarL01/EarL02/EarL03/EarL04
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02/EarR03
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanNeck/Base HumanHead/EarR01/EarR02/EarR03/EarR04
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm
+        weight: 1
+      - path: Base HumanPelvis/Base HumanSpine1/Base HumanSpine2/Base HumanRibcage/Base
+          HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
+        weight: 1
+      - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     isReadable: 1
@@ -1286,352 +1628,8 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    human:
-    - boneName: Base HumanPelvis
-      humanName: Hips
-      limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: .0786374956, y: 0, z: .0393187478}
-        length: .0982969031
-        modified: 1
-    - boneName: Base HumanLThigh
-      humanName: LeftUpperLeg
-      limit:
-        min: {x: -60.0000038, y: -60.0000038, z: -90}
-        max: {x: 60.0000038, y: 60.0000038, z: 50}
-        value: {x: .110158272, y: 0, z: .055079136}
-        length: .137697875
-        modified: 1
-    - boneName: Base HumanRThigh
-      humanName: RightUpperLeg
-      limit:
-        min: {x: -60.0000038, y: -60.0000038, z: -90}
-        max: {x: 60.0000038, y: 60.0000038, z: 50}
-        value: {x: .110158429, y: 0, z: .0550792143}
-        length: .137698069
-        modified: 1
-    - boneName: Base HumanLCalf
-      humanName: LeftLowerLeg
-      limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: .165662095, y: 0, z: .0828310475}
-        length: .207077697
-        modified: 1
-    - boneName: Base HumanRCalf
-      humanName: RightLowerLeg
-      limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: .165656596, y: 0, z: .0828282982}
-        length: .207070813
-        modified: 1
-    - boneName: Base HumanLFoot
-      humanName: LeftFoot
-      limit:
-        min: {x: 0, y: -30.0000019, z: -50}
-        max: {x: 0, y: 30.0000019, z: 50}
-        value: {x: .0110838022, y: 0, z: .0055419011}
-        length: .013854757
-        modified: 1
-    - boneName: Base HumanRFoot
-      humanName: RightFoot
-      limit:
-        min: {x: 0, y: -30.0000019, z: -50}
-        max: {x: 0, y: 30.0000019, z: 50}
-        value: {x: .0110877836, y: 0, z: .00554389181}
-        length: .0138597339
-        modified: 1
-    - boneName: Base HumanSpine2
-      humanName: Spine
-      limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: .111105405, y: 0, z: .0555527024}
-        length: .138881788
-        modified: 1
-    - boneName: Base HumanRibcage
-      humanName: Chest
-      limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: .0277286824, y: 0, z: .0138643412}
-        length: .0346608609
-        modified: 1
-    - boneName: Base HumanNeck
-      humanName: Neck
-      limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: .125010416, y: 0, z: .062505208}
-        length: .156263083
-        modified: 1
-    - boneName: Base HumanHead
-      humanName: Head
-      limit:
-        min: {x: -40, y: -40, z: -40}
-        max: {x: 40, y: 40, z: 40}
-        value: {x: .125010416, y: 0, z: .062505208}
-        length: .156263083
-        modified: 1
-    - boneName: Base HumanLCollarbone
-      humanName: LeftShoulder
-      limit:
-        min: {x: 0, y: -15.000001, z: -15.000001}
-        max: {x: 0, y: 15.000001, z: 30.0000019}
-        value: {x: .0456414856, y: 0, z: .0228207428}
-        length: .0570518747
-        modified: 1
-    - boneName: Base HumanRCollarbone
-      humanName: RightShoulder
-      limit:
-        min: {x: 0, y: -15.000001, z: -15.000001}
-        max: {x: 0, y: 15.000001, z: 30.0000019}
-        value: {x: .0456413738, y: 0, z: .0228206869}
-        length: .0570517331
-        modified: 1
-    - boneName: Base HumanLUpperarm
-      humanName: LeftUpperArm
-      limit:
-        min: {x: -90, y: -100, z: -60.0000038}
-        max: {x: 90, y: 100, z: 100}
-        value: {x: .0984816626, y: 0, z: .0492408313}
-        length: .123102114
-        modified: 1
-    - boneName: Base HumanRUpperarm
-      humanName: RightUpperArm
-      limit:
-        min: {x: -90, y: -100, z: -60.0000038}
-        max: {x: 90, y: 100, z: 100}
-        value: {x: .0984806865, y: 0, z: .0492403433}
-        length: .123100892
-        modified: 1
-    - boneName: Base HumanLForearm
-      humanName: LeftLowerArm
-      limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: .0912750065, y: 0, z: .0456375033}
-        length: .114093795
-        modified: 1
-    - boneName: Base HumanRForearm
-      humanName: RightLowerArm
-      limit:
-        min: {x: -90, y: 0, z: -80}
-        max: {x: 90, y: 0, z: 80}
-        value: {x: .0912693441, y: 0, z: .045634672}
-        length: .114086717
-        modified: 1
-    - boneName: Base HumanLPalm
-      humanName: LeftHand
-      limit:
-        min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 80}
-        value: {x: .0456375033, y: 0, z: .0228187516}
-        length: .0570468977
-        modified: 1
-    - boneName: Base HumanRPalm
-      humanName: RightHand
-      limit:
-        min: {x: 0, y: -40, z: -80}
-        max: {x: 0, y: 40, z: 80}
-        value: {x: .045634672, y: 0, z: .022817336}
-        length: .0570433587
-        modified: 1
-    - boneName: Base HumanLDigit11
-      humanName: LeftToes
-      limit:
-        min: {x: 0, y: 0, z: -50}
-        max: {x: 0, y: 0, z: 50}
-        value: {x: .0901534781, y: 0, z: .045076739}
-        length: .112691887
-        modified: 1
-    - boneName: Base HumanRDigit11
-      humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: -50}
-        max: {x: 0, y: 0, z: 50}
-        value: {x: .0901529416, y: 0, z: .0450764708}
-        length: .112691216
-        modified: 1
-    - boneName: EarL02
-      humanName: LeftEye
-      limit:
-        min: {x: 0, y: -20, z: -10}
-        max: {x: 0, y: 20, z: 15.000001}
-        value: {x: .0799999759, y: 0, z: .0399999879}
-        length: .100000001
-        modified: 1
-    - boneName: EarR02
-      humanName: RightEye
-      limit:
-        min: {x: 0, y: -20, z: -10}
-        max: {x: 0, y: 20, z: 15.000001}
-        value: {x: .0799999759, y: 0, z: .0399999879}
-        length: .100000001
-        modified: 1
-    skeleton:
-    - name: Zombayo02
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: .99999994}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: Base HumanPelvis
-      position: {x: -1.3708059e-07, y: .33560735, z: -.066177614}
-      rotation: {x: .499126732, y: -.500871062, z: -.499127269, w: .500871778}
-      scale: {x: 1.00000048, y: 1.00000048, z: 1}
-      transformModified: 1
-    - name: Base HumanLThigh
-      position: {x: -.00293049868, y: .0205275007, z: .0961140767}
-      rotation: {x: -.0227004811, y: .763878584, z: -.636217654, w: .105835393}
-      scale: {x: 1.00000024, y: 1.00000012, z: 1.00000012}
-      transformModified: 1
-    - name: Base HumanLCalf
-      position: {x: -.137697771, y: -8.30739737e-07, z: -1.42306089e-06}
-      rotation: {x: -.651650131, y: -.200931683, z: .215662211, w: -.69890511}
-      scale: {x: 1.0000006, y: .999998331, z: 1.00000179}
-      transformModified: 1
-    - name: Base HumanLFoot
-      position: {x: -.207077473, y: 2.23517418e-08, z: 5.0291419e-08}
-      rotation: {x: .55332005, y: .829001606, z: .0671867877, w: .0455970578}
-      scale: {x: .99999845, y: 1, z: .999999702}
-      transformModified: 1
-    - name: Base HumanLDigit11
-      position: {x: -.225328326, y: -.003766587, z: .00329020992}
-      rotation: {x: .0385668278, y: .000245512958, z: -.00106986158, w: .999255419}
-      scale: {x: .99999994, y: 1, z: .999999881}
-      transformModified: 1
-    - name: Base HumanRThigh
-      position: {x: -.00293055782, y: .0205276031, z: -.0961140692}
-      rotation: {x: -.0226573963, y: .763726532, z: .636401176, w: -.105838656}
-      scale: {x: 1.00000083, y: 1, z: .999999821}
-      transformModified: 1
-    - name: Base HumanRCalf
-      position: {x: -.137697905, y: -1.64657831e-06, z: 2.81259418e-06}
-      rotation: {x: -.651005208, y: -.200991854, z: -.215587363, w: .699511647}
-      scale: {x: 1.00000036, y: .999999404, z: 1.00000036}
-      transformModified: 1
-    - name: Base HumanRFoot
-      position: {x: -.20707047, y: -3.7252903e-08, z: 3.18512321e-07}
-      rotation: {x: .553369403, y: .828945279, z: -.0677569956, w: -.0451754481}
-      scale: {x: 1.00000203, y: 1.00000036, z: .999997437}
-      transformModified: 1
-    - name: Base HumanRDigit11
-      position: {x: -.225325987, y: -.00377276354, z: -.00328919291}
-      rotation: {x: -.0385677665, y: -.000215381602, z: -.00108897581, w: .999255359}
-      scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
-    - name: Base HumanSpine1
-      position: {x: -.0308960062, y: .0453059524, z: -9.95122917e-09}
-      rotation: {x: 9.83476411e-07, y: -1.49011594e-08, z: .0387139246, w: .999250293}
-      scale: {x: 1.00000048, y: 1.0000006, z: 1.00000012}
-      transformModified: 1
-    - name: Base HumanSpine2
-      position: {x: -.0587266646, y: 4.3772161e-08, z: -2.0140245e-08}
-      rotation: {x: -6.85453244e-07, y: 8.94069458e-08, z: .0435794033, w: .999049902}
-      scale: {x: 1.00000012, y: .999999762, z: 1}
-      transformModified: 1
-    - name: Base HumanRibcage
-      position: {x: -.138881683, y: -5.0291419e-08, z: -4.40448886e-08}
-      rotation: {x: -2.68220873e-07, y: -2.98023206e-08, z: -.0839623734, w: .996468902}
-      scale: {x: 1.00000012, y: 1.00000012, z: .999999881}
-      transformModified: 1
-    - name: Base HumanLCollarbone
-      position: {x: -.0483892635, y: .0210240074, z: .0222083088}
-      rotation: {x: -.0342399068, y: .775514662, z: .162763804, w: .609025896}
-      scale: {x: .999999285, y: 1.00000095, z: 1.0000006}
-      transformModified: 1
-    - name: Base HumanLUpperarm
-      position: {x: -.0570518523, y: -1.3038516e-08, z: -5.76488674e-07}
-      rotation: {x: .190323219, y: -.153826267, z: -.100357264, w: .964387298}
-      scale: {x: 1.00000215, y: .999997616, z: 1.00000131}
-      transformModified: 1
-    - name: Base HumanLForearm
-      position: {x: -.123101838, y: -5.12227416e-07, z: -1.94832683e-06}
-      rotation: {x: .0112821264, y: .0362681039, z: -.00778440572, w: .999248028}
-      scale: {x: .999996305, y: .999997139, z: 1.00000489}
-      transformModified: 1
-    - name: Base HumanLPalm
-      position: {x: -.1140939, y: 2.40735244e-06, z: 2.41268426e-05}
-      rotation: {x: -.353650481, y: .226893902, z: .310378283, w: .852710783}
-      scale: {x: 1.00001788, y: 1.00003183, z: .9999488}
-      transformModified: 1
-    - name: Base HumanNeck
-      position: {x: -.0335950926, y: .00852883887, z: -2.56500989e-08}
-      rotation: {x: -4.47034751e-07, y: 2.98023171e-08, z: .0332030579, w: -.999448597}
-      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000012}
-      transformModified: 1
-    - name: Base HumanHead
-      position: {x: -.15626286, y: -4.47034836e-08, z: -2.23110685e-08}
-      rotation: {x: 4.47034779e-07, y: -8.9406953e-08, z: -.0332031026, w: -.999448597}
-      scale: {x: 1, y: .999999762, z: .999999762}
-      transformModified: 1
-    - name: EarL01
-      position: {x: -.238037691, y: -.0442091413, z: .0714199021}
-      rotation: {x: -.210743099, y: .595327139, z: -.769545794, w: -.0947211161}
-      scale: {x: -1, y: -1, z: -1.00000036}
-      transformModified: 1
-    - name: EarL02
-      position: {x: -.0993403643, y: -9.68575478e-08, z: -7.72997453e-08}
-      rotation: {x: .124914184, y: -.0882151127, z: -.146830827, w: .977269232}
-      scale: {x: 1.00000048, y: .999999225, z: 1}
-      transformModified: 1
-    - name: EarL03
-      position: {x: -.0966173708, y: -2.49128789e-08, z: 1.06170774e-07}
-      rotation: {x: -.0186319575, y: .1838018, z: .0242702868, w: .982486904}
-      scale: {x: .999999881, y: 1.00000048, z: 1}
-      transformModified: 1
-    - name: EarL04
-      position: {x: -.0945317149, y: 1.20489858e-08, z: 7.4505806e-08}
-      rotation: {x: .0249411799, y: .000969007146, z: .0123018268, w: .999612689}
-      scale: {x: .999999642, y: .999999642, z: .999999881}
-      transformModified: 1
-    - name: EarR01
-      position: {x: -.238037944, y: -.0442091636, z: -.0714176074}
-      rotation: {x: -.59532702, y: -.210743323, z: -.0947211236, w: .769545794}
-      scale: {x: 1.00000012, y: 1, z: .999999821}
-      transformModified: 1
-    - name: EarR02
-      position: {x: -.0993404537, y: 8.24220479e-08, z: -3.53902578e-08}
-      rotation: {x: -.124914043, y: .0882150531, z: .146830603, w: -.977269292}
-      scale: {x: .999999404, y: 1, z: .99999994}
-      transformModified: 1
-    - name: EarR03
-      position: {x: -.0966170952, y: -3.60887498e-08, z: -2.23517418e-07}
-      rotation: {x: -.018632181, y: .18380177, z: .0242703315, w: .982486904}
-      scale: {x: 1, y: 1.00000012, z: 1.00000083}
-      transformModified: 1
-    - name: EarR04
-      position: {x: -.0945316926, y: -8.34697857e-08, z: 5.96046448e-08}
-      rotation: {x: .0249412637, y: .000968992012, z: .012301757, w: .999612689}
-      scale: {x: .999999642, y: .999999762, z: 1.00000012}
-      transformModified: 1
-    - name: Base HumanRCollarbone
-      position: {x: -.0483895689, y: .0210240055, z: -.0222083777}
-      rotation: {x: -.0342393927, y: .775515556, z: -.162763059, w: -.609024882}
-      scale: {x: .99999851, y: 1.00000024, z: 1.00000119}
-      transformModified: 1
-    - name: Base HumanRUpperarm
-      position: {x: -.0570517555, y: -3.53902578e-08, z: 7.41332769e-07}
-      rotation: {x: -.190321028, y: .153863773, z: -.10035947, w: .964381516}
-      scale: {x: .999997497, y: 1.00000048, z: 1.00000286}
-      transformModified: 1
-    - name: Base HumanRForearm
-      position: {x: -.123101234, y: 1.72108412e-06, z: -7.01099634e-06}
-      rotation: {x: -.0112711713, y: -.0363558047, z: -.00779252499, w: .999244869}
-      scale: {x: .999966025, y: 1.00005066, z: .999983907}
-      transformModified: 1
-    - name: Base HumanRPalm
-      position: {x: -.114090905, y: 1.23947393e-06, z: -1.17849559e-05}
-      rotation: {x: .353652477, y: -.226893708, z: .310379535, w: .852709532}
-      scale: {x: 1.00008881, y: .999970913, z: .999939799}
-      transformModified: 1
-    - name: Tail01
-      position: {x: -.0222119447, y: -.0920312256, z: .0161543321}
-      rotation: {x: .708339214, y: .705872178, z: -5.96046448e-08, w: -4.76837158e-07}
-      scale: {x: 1.00000012, y: 1.00000024, z: .999999881}
-      transformModified: 1
+    human: []
+    skeleton: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -1639,7 +1637,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Base HumanPelvis
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 3
+  animationType: 2
   userData: 

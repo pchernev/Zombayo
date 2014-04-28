@@ -2853,11 +2853,11 @@ public class FGTextEditor
 	//		caretRect.x += 4f + scrollViewRect.x - scrollPosition.x;
 	//		caretRect.y += 4f + scrollViewRect.y - scrollPosition.y;
 
-	//		List<string> data = new List<string>();
-	//		//data.AddRange(textBuffer.PreprocessorDirectives);
-	//		data.AddRange(textBuffer.Keywords);
-	//		data.AddRange(textBuffer.BuiltInTypes);
-	//		autocompleteWindow = FGListPopup.Create(caretRect, data.ToArray());
+	//		List<string> gameData = new List<string>();
+	//		//gameData.AddRange(textBuffer.PreprocessorDirectives);
+	//		gameData.AddRange(textBuffer.Keywords);
+	//		gameData.AddRange(textBuffer.BuiltInTypes);
+	//		autocompleteWindow = FGListPopup.Create(caretRect, gameData.ToArray());
 	//	}
 	//}
 

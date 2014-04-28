@@ -1,7 +1,11 @@
 Library
 Temp
-
+obj
+_ReSharper.Zombayo-csharp
 
 *.userprefs
 *.sln
+*.suo
 *.csproj
+*.unityproj
+*.user

@@ -1,237 +1,229 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts;
-using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector]
-    public float Speed;
-    [HideInInspector]
-    public float ArmorCount = 0;
-    public float timeToReach;
+  private enum AnimDesc {
+    Idle,
+    Fly,
+    Hurt,
+    Drag,
+    PowerUp,
+    Count
+  }
+
+  private static readonly string[] animDescriptions;
+  private string[] getDescriptionTexts() { return animDescriptions; }
+
+  public enum PowerUpState
+  {
+    None,
+    BubbleGum,
+    Fart,
+    Glide
+  }
+
+  public CoinMagnet magnet;
+  public int startIdleIndex;
+  [HideInInspector]
+  public AnimatorUtils ai;
+
+  private Vector3 startPos;
+  private Quaternion startRot;
+  private bool isKicked;
+  private Animator animator;
+  private int idleIndex;
+  private Vector3 lastPos;
+  private Vector3 speed;
+  private float bubbleStartTime;
+  private float originalDrag;
+  private float originalBounce;
+
+  private PowerUpState currentPowerUp = PowerUpState.None;
+  public bool IsKicked  { set { isKicked = value; if (animator) animator.SetBool("Kicked", value); } get { return isKicked; } }
+  public bool IsBubbling { get { return currentPowerUp == PowerUpState.BubbleGum; } }
+  public bool IsFarting { get { return currentPowerUp == PowerUpState.Fart; } }
+  public bool IsGliding { get { return currentPowerUp == PowerUpState.Glide; } }
+  public bool IsTooSlow { get { return transform.position.y < 1 && rigidbody.velocity.sqrMagnitude < 5; } }
+  public float CurrentKickEfficiency { get { return animator.GetFloat("KickEfficiency"); } }
+
+  private GameData data;
+
+  static Player()
+  {
+    animDescriptions = new string[(int)AnimDesc.Count];
+    for (int i = 0; i < (int)AnimDesc.Count; ++i)
+      animDescriptions[i] = ((AnimDesc) i).ToString();
+  }
 
 
-    public Vector3 bounceForce;
-    public GameObject explosion;
-    public AudioClip collectCoins;
-    public PhysicMaterial initialMaterial;
-    private Vector3 startPos;
-    private Quaternion startRotation;
-    private List<Vector3> prevPos;
-    private Rigidbody rigidbody;
+  void Awake()
+  {
+    animator = GetComponent<Animator>();
+    idleIndex = 0;
 
-    private Animator _animator;
-    private GameManager gm;
-    public GameData gameData;
+    lastPos = startPos = transform.position;
+    startRot = transform.rotation;
+  }
+
+  void Start()
+  {
+    data = GameLogic.Instance.gameData;
+  }
+
+  void FixedUpdate()
+  {
+    speed = transform.position - lastPos;
+    lastPos = transform.position;
+
+    if (IsKicked) {
+      animator.SetFloat("VerticalSpeed", 2*speed.y);
+
+      if (IsBubbling)
+        if (bubbleStartTime + data.bubbleGumLife < Time.time)
+          enterPowerUpState(PowerUpState.None);
+
+      if (IsFarting)
+        rigidbody.AddForce(data.specs.fartForce * data.fartDirection.normalized);
+
+      if (IsGliding)
+        rigidbody.AddForce(data.specs.glideForce * data.glideDirection.normalized);
+    }
+  }
+
+  void OnCollisionEnter(Collision collision)
+  {
+    if (!IsKicked)
+      return;
+
+    if (collision.gameObject.layer == Layers.Terrain)
+      CollisionLogic.OnGroundHit();
+  }
+
+  void OnMouseUpAsButton()
+  {
+    if (!IsKicked)
+      GameLogic.Instance.initiateKick();
+  }
 
 
-    #region AnimationVariables
+  void OnIdleFinishing()
+  {
+    ai.crossFadeRandomEntry((int)AnimDesc.Idle, 0.1f);
+  }
 
-    public int hasBeenKicked = 0;
-    [HideInInspector]
-    public float LastHeightY;
-    [HideInInspector]
-    public int TimesHitGround = 0;
-    ProgressBarButtonWing wingsBtn;
-    ProgressBarButtonFart fartBtn;
-    BladderButton bladderBtn;
+  public virtual void ensureDataConsistency()
+  {
+    ai = GetComponent<AnimatorUtils>() ?? gameObject.AddComponent<AnimatorUtils>();
+    ai.setTextsDelegate(getDescriptionTexts);
+    ai.DescriptionEditingAllowed = false;
+  }
 
-    #endregion
+  public void prepareForStart()
+  {
+    transform.position = startPos;
+    transform.rotation = startRot;
+    IsKicked = false;
 
-    #region Base player logic
+    rigidbody.isKinematic = false;
+    rigidbody.velocity = Vector3.zero;
+    rigidbody.angularVelocity = Vector3.zero;
+    rigidbody.isKinematic = false;
+    magnet.gameObject.SetActive(false);
+    ai.playEntry((int)AnimDesc.Idle, startIdleIndex);
+  }
 
-    void Awake()
-    {
-        gm = gameObject.GetComponent<GameManager>();
-        rigidbody = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
-        this.gameData = SaveLoadGame.LoadData();
-        var armorItem = this.gameData.ShopItems.FirstOrDefault(x => x.Name == "Armor");
-        int armorUpgCount = armorItem.UpgradesCount;
-        this.ArmorCount = armorItem.Values[armorUpgCount];
+  public void kickRabbit(Vector3 kickForce)
+  {
+    IsKicked = true;
+    enterPowerUpState(PowerUpState.None);
+    magnet.gameObject.SetActive(true);
+    rigidbody.AddForce(kickForce);
+  }
+
+  public void enterHurtState()
+  {
+    ai.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.1f);
+    setRotationZConstraint(false);
+  }
+
+  public void enterDragState()
+  {
+    ai.crossFadeRandomEntry((int)AnimDesc.Drag, 0.1f);
+    iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
+    setRotationZConstraint(true);
+  }
+
+  public void enterPowerUpState(PowerUpState state)
+  {
+    exitCurrentPowerUpState();
+
+    switch (state) {
+      case PowerUpState.None:
+        ai.crossFadeRandomEntry((int)AnimDesc.Fly, 0.1f);
+        break;
+
+      case PowerUpState.BubbleGum:
+        originalDrag = rigidbody.drag;
+        originalBounce = collider.material.bounciness;
+        rigidbody.drag = 0;
+        collider.material.bounciness = 1;
+        ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.1f);
+        bubbleStartTime = Time.time;
+        break;
+
+      case PowerUpState.Glide:
+        ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.1f);
+        setPositionYConstraint(true);
+        break;
+
+      case PowerUpState.Fart:
+        ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.1f);
+			if (rigidbody.velocity.y < 0) 
+				rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+		
+        break;
     }
 
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-        prevPos = new List<Vector3>();
-        prevPos.Add(transform.position);
-        Speed = 0;
-        startPos = transform.position;
-        startRotation = transform.rotation;
+    currentPowerUp = state;
+    iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
+    setRotationZConstraint(true);
+    animator.SetInteger("PowerUp", (int)currentPowerUp);
+  }
 
-        wingsBtn = GameObject.Find("Ingame Button Glide").GetComponent<ProgressBarButtonWing>();
-        fartBtn = GameObject.Find("Ingame Button Fart").GetComponent<ProgressBarButtonFart>();
-        bladderBtn = GameObject.Find("Ingame Button BubbleGum").GetComponent<BladderButton>();
+  private void exitCurrentPowerUpState()
+  {
+    switch (currentPowerUp) {
+      case PowerUpState.None:
+        break;
+
+      case PowerUpState.BubbleGum:
+        rigidbody.drag = originalDrag;
+        collider.material.bounciness = originalBounce;
+        break;
+
+      case PowerUpState.Glide:
+        setPositionYConstraint(false);
+        break;
+
+      case PowerUpState.Fart:
+        break;
     }
+  }
 
-    void Update()
-    {
-        Vector3 newPos = transform.position;
-        prevPos.Insert(0, newPos);
-        const int maxSize = 40;
-        Speed = 0F;
+  private void setRotationZConstraint(bool freeze)
+  {
+    if (freeze)
+      rigidbody.constraints |= RigidbodyConstraints.FreezeRotationZ;
+    else
+      rigidbody.constraints &= ~RigidbodyConstraints.FreezeRotationZ;
+  }
 
-        for (int i = 0; i < prevPos.Count - 1; i++)
-        {
-            var p1 = prevPos[i];
-            var p2 = prevPos[i + 1];
-            var s = Mathf.Abs(Vector3.Distance(p1, p2));
-            if (s > Speed)
-                Speed = s;
-        }
-
-        if (prevPos.Count > maxSize)
-            prevPos.RemoveAt(maxSize);
-    }
-
-    float time = 3;
-    void FixedUpdate()
-    {
-        ExecuteAnimations();
-        time -= Time.deltaTime;
-    }
-
-    void LateUpdate()
-    {
-
-        if ((rigidbody.isKinematic == true) || (this.Speed <= 0.15f && transform.position.y <= 0.40f && !gm.isGamePaused && hasBeenKicked >= 2))
-            StartCoroutine(WaitAndEndGame(2.0f));
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "_TerrainPlane")
-        {
-            TimesHitGround++;
-            Debug.Log("GROUNDDDDDDDDD");
-            if (hasBeenKicked >= 1)
-            {
-                _animator.SetBool("IsInHurt", true);
-                switch (TimesHitGround)
-                {
-                    case 1: _animator.SetFloat("HurtState", 0.0f);
-                        break;
-                    case 2: _animator.SetFloat("HurtState", 1.0f);
-                        break;
-                    default:
-                        break;
-                }
-            }
-           
-           
-        }
-        else
-        {
-            if (this.gameData != null)
-            {
-                this.gameData.PlayerStats.Points += 1;
-            }
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        hasBeenKicked++;
-        gameObject.collider.material = initialMaterial;
-        _animator.SetBool("IsInIdle", false);
-    }
-
-    private void ExecuteAnimations()
-    {
-        if (fartBtn.use || wingsBtn.use || bladderBtn.usedBubbleGum)
-        {
-            _animator.SetBool("IsInUpgrade", true);
-            _animator.SetBool("IsInHurt", false);
-            TimesHitGround = 0;
-        }
-        else
-            _animator.SetBool("IsInUpgrade", false);
-
-        if (bladderBtn.usedBubbleGum)
-        {
-            _animator.SetFloat("UpdateState", 0.0f);
-        }
-        else if (fartBtn.use)
-            _animator.SetFloat("UpdateState", 0.5f);
-        else if (wingsBtn.use)
-            _animator.SetFloat("UpdateState", 1.0f);
-       
-        if (!_animator.GetBool("IsInUpgrade") && LastHeightY < transform.position.y)
-        {
-            // flyuppp
-            _animator.SetFloat("FlyingState", 0.0f);
-        }
-        else if (!_animator.GetBool("IsInUpgrade") && LastHeightY > transform.position.y)
-        {
-            // flydownnn
-            _animator.SetFloat("FlyingState", 1.0f);
-        }
-        LastHeightY = transform.localPosition.y;
-    }
-
-    public IEnumerator WaitAndEndGame(float waitTime)
-    {
-
-        yield return new WaitForSeconds(waitTime);
-
-        if ((int)this.Speed == 0 && hasBeenKicked > 0)
-        {
-            rigidbody.isKinematic = true;
-            _animator.SetBool("IsInUpgrade", false);
-            _animator.SetBool("IsGameOver", true);
-            _animator.SetBool("IsInIdle", true);
-            gameObject.SendMessage("EndGame");
-        }
-    }
-
-    public void Reset()
-    {
-        transform.position = startPos;
-        transform.rotation = startRotation;
-        hasBeenKicked = 0;
-        rigidbody.isKinematic = false;
-        _animator.SetBool("IsInUpgrade", false);
-        _animator.SetBool("IsGameOver", false);
-        _animator.SetBool("IsInIdle", true);
-    }
-
-    public void UseFart()
-    {
-
-    }
-
-    #endregion
-
-    #region NPC collisions
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.CompareTag("Coin"))
-        {
-            var explosion1 = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
-            explosion1.transform.parent = gameObject.transform;
-
-            AudioSource.PlayClipAtPoint(collectCoins, transform.position);
-            Destroy(collider.gameObject);
-            Destroy(explosion1, 2.0f);
-        }
-    }
-
-    #endregion
-
+  private void setPositionYConstraint(bool freeze)
+  {
+    if (freeze)
+      rigidbody.constraints |= RigidbodyConstraints.FreezePositionY;
+    else
+      rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+  }
 }
-
-//public enum RabbitAnimationState
-//{
-//    Idle = 0,
-//    FlyUp = -1,
-//    FlyLeveled = -2,
-//    FlyDown = -3,
-
-//    PowerUpFart = 4,
-//    PowerUpWings = 5,
-//    PowerUpBubbleGum = 6
-//}
