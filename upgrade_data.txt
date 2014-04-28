@@ -1,0 +1,12 @@
+Magnet Value 1 1.5 2 2.5 3 3.5
+Magnet Price 300 800 1200 3500 6000
+CarrotSpray Value 0 1 2 3 4 5
+CarrotSpray Price 250 650 1500 3700 6800
+BubbleGum Value 0 1 2 3 4 5
+BubbleGum Price 150 600 1800 4000 7500
+PowerUpFart Capacity Value 0 2 3 4 4.5 5
+PowerUpFart Force Value 0 15 20 25 30 35
+PowerUpFart Price 250 1000 2500 4500 8000
+PowerUpGlide Capacity Value 0 3 5 7 9 12
+PowerUpGlide Force Value 0 15 15 15 15 15
+PowerUpGlide Price 200 700 2000 3500 5000
