@@ -13,10 +13,11 @@ public class GameData : MonoBehaviour
   public float glideTime;
   public Vector3 glideDirection;
 
+  public float minKickPower;
   public float maxKickPower;
   public Vector3 kickDirection;
   public float kickEfficiency;
-  public Vector3 KickForce { get { return kickEfficiency * maxKickPower * kickDirection; } }
+  public Vector3 KickForce { get { return Mathf.Max(minKickPower, kickEfficiency * maxKickPower) * kickDirection; } }
 
     [HideInInspector]
   public int[] levels;
