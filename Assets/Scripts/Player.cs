@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
   private Vector3 startPos;
   private Quaternion startRot;
   private bool isKicked;
+  private bool isHurt;
+  private bool isDragging;
   private Animator animator;
   private int idleIndex;
   private Vector3 lastPos;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
   public bool IsFarting { get { return currentPowerUp == PowerUpState.Fart; } }
   public bool IsGliding { get { return currentPowerUp == PowerUpState.Glide; } }
   public bool IsTooSlow { get { return transform.position.y < 1 && rigidbody.velocity.sqrMagnitude < 5; } }
+  public bool IsAboveDragThreshold { get { return rigidbody.velocity.y > data.dragThreshold; } }
   public float CurrentKickEfficiency { get { return animator.GetFloat("KickEfficiency"); } }
 
   private GameData data;
@@ -88,6 +91,9 @@ public class Player : MonoBehaviour
 
       if (IsGliding)
         rigidbody.AddForce(data.specs.glideForce * data.glideDirection.normalized);
+
+      if (isDragging)
+        rigidbody.AddForce(data.dragForce * Vector3.left);
     }
   }
 
@@ -145,6 +151,8 @@ public class Player : MonoBehaviour
   {
     ai.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.1f);
     setRotationZConstraint(false);
+
+    isHurt = true;
   }
 
   public void enterDragState()
@@ -152,6 +160,9 @@ public class Player : MonoBehaviour
     ai.crossFadeRandomEntry((int)AnimDesc.Drag, 0.1f);
     iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
     setRotationZConstraint(true);
+    setPositionYConstraint(true);
+
+    isDragging = true;
   }
 
   public void enterPowerUpState(PowerUpState state)
@@ -193,22 +204,11 @@ public class Player : MonoBehaviour
 
   private void exitCurrentPowerUpState()
   {
-    switch (currentPowerUp) {
-      case PowerUpState.None:
-        break;
-
-      case PowerUpState.BubbleGum:
-        rigidbody.drag = originalDrag;
-        collider.material.bounciness = originalBounce;
-        break;
-
-      case PowerUpState.Glide:
-        setPositionYConstraint(false);
-        break;
-
-      case PowerUpState.Fart:
-        break;
-    }
+    isHurt = isDragging = false;
+    rigidbody.drag = originalDrag;
+    collider.material.bounciness = originalBounce;
+    setPositionYConstraint(false);
+    setRotationZConstraint(false);
   }
 
   private void setRotationZConstraint(bool freeze)

@@ -12,8 +12,6 @@ public class GameLogic : MonoBehaviour
   public CameraFollow cameraFollow;
 
   public Player player;
-  public float dragThreshold;
-  public bool IsPlayerAboveDragThreshold { get { return player.rigidbody.velocity.y > dragThreshold; } }
   public bool IsPlayerActive { get { return player.IsKicked && !gameOver; } }
   public bool IsSwiping { get { return isSwiping; } }
 

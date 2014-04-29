@@ -18,6 +18,8 @@ public class GameData : MonoBehaviour
   public Vector3 kickDirection;
   public float kickEfficiency;
   public Vector3 KickForce { get { return Mathf.Max(minKickPower, kickEfficiency * maxKickPower) * kickDirection; } }
+  public float dragForce;
+  public float dragThreshold;
 
     [HideInInspector]
   public int[] levels;

@@ -38,7 +38,7 @@ public static class CollisionLogic
   public static void OnGroundHit()
   {
     if (!player.IsBubbling) {
-      if (GameLogic.Instance.IsPlayerAboveDragThreshold)
+      if (GameLogic.Instance.player.IsAboveDragThreshold)
         player.enterHurtState();
       else
         player.enterDragState();
