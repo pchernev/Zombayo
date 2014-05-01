@@ -107,7 +107,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -117,8 +117,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Carrot Idle
       takeName: Take 001
-      firstFrame: 20
-      lastFrame: 50
+      firstFrame: 10
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -194,8 +194,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Carrot Eat
       takeName: Take 001
-      firstFrame: 40
-      lastFrame: 170
+      firstFrame: 50
+      lastFrame: 165
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -271,8 +271,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Carrot Miss
       takeName: Take 001
-      firstFrame: 40
-      lastFrame: 70
+      firstFrame: 180
+      lastFrame: 210
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
