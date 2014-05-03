@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
   }
 
   public CoinMagnet magnet;
-  public int startIdleIndex;
   [HideInInspector]
   public AnimatorUtils animUtils;
 
@@ -35,6 +34,7 @@ public class Player : MonoBehaviour
   private bool isDragging;
   private Animator animator;
   private int idleIndex;
+  private int hurtIndex;
   private Vector3 lastPos;
   private Vector3 speed;
   private float bubbleStartTime;
@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
   void OnIdleFinishing()
   {
-    animUtils.crossFadeRandomEntry((int)AnimDesc.Idle, 0.05f);
+    idleIndex = animUtils.crossFadeRandomEntry((int)AnimDesc.Idle, 0.05f, idleIndex);
   }
 
   public virtual void ensureDataConsistency()
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
     rigidbody.angularVelocity = Vector3.zero;
     rigidbody.isKinematic = false;
     magnet.gameObject.SetActive(false);
-    animUtils.playEntry((int)AnimDesc.Idle, startIdleIndex);
+    animUtils.playEntry((int)AnimDesc.Idle, idleIndex);
   }
 
   public void kickRabbit(Vector3 kickForce)
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 
   public void enterHurtState()
   {
-    animUtils.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f);
+    hurtIndex = animUtils.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f, hurtIndex);
     setRotationZConstraint(false);
 
     isHurt = true;

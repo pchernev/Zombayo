@@ -79,10 +79,15 @@ public class AnimatorUtils : MonoBehaviour
     animator.Play(getEntry(descIdx, pos).animationName);
   }
 
-  public void playRandomEntry(int descIdx)
+  public int playRandomEntry(int descIdx, int exclPos = -1)
   {
-    int pos = Random.Range(0, descEntries[descIdx].array.Length);
+    int pos = exclPos;
+    while (pos == exclPos)
+      pos = Random.Range(0, descEntries[descIdx].array.Length);
+
     animator.Play(getEntry(descIdx, pos).animationName);
+
+    return pos;
   }
 
   public void crossFadeEntry(int descIdx, int pos, float transitionDuration)
@@ -90,10 +95,15 @@ public class AnimatorUtils : MonoBehaviour
     animator.CrossFade(getEntry(descIdx, pos).animationName, transitionDuration);
   }
 
-  public void crossFadeRandomEntry(int descIdx, float transitionDuration)
+  public int crossFadeRandomEntry(int descIdx, float transitionDuration, int exclPos = -1)
   {
-    int pos = Random.Range(0, descEntries[descIdx].array.Length);
+    int pos = exclPos;
+    while (pos == exclPos)
+      pos = Random.Range(0, descEntries[descIdx].array.Length);
+
     animator.CrossFade(getEntry(descIdx, pos).animationName, transitionDuration);
+
+    return pos;
   }
 
   public void setDescCount(int index, int count)
