@@ -15,7 +15,7 @@ public class AnimatorUtilsInspector : Editor
 
   public override void OnInspectorGUI()
   {
-    var tmp = EditorGUILayout.ObjectField(animUtils.animator, typeof(Animator), false) as Animator;
+    var tmp = EditorGUILayout.ObjectField("Animator", animUtils.animator, typeof(Animator), false) as Animator;
     if (tmp != animUtils.animator) {
       animUtils.animator = tmp;
       animUtils.loadAnimationNames();

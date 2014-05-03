@@ -11,6 +11,8 @@ public class GameLogic : MonoBehaviour
   public Animation endGameAnim;
   public CameraFollow cameraFollow;
 
+  public StartPrefabs startPrefabs;
+
   public Player player;
   public bool IsPlayerActive { get { return player.IsKicked && !gameOver; } }
   public bool IsSwiping { get { return isSwiping; } }
@@ -52,6 +54,7 @@ public class GameLogic : MonoBehaviour
 
   public void startGame()
   {
+    startPrefabs.spawn();
     doctor.prepareForStart();
     player.prepareForStart();
     cameraFollow.reset();
