@@ -22,12 +22,12 @@ public class Carrot : NPC
 
   public void miss()
   {
-    ai.playRandomEntry((int)AnimDesc.Miss);
+    animUtils.playRandomEntry((int)AnimDesc.Miss);
   }
 
   public void hit()
   {
-    ai.playRandomEntry((int)AnimDesc.Hit);
+    animUtils.playRandomEntry((int)AnimDesc.Hit);
     //AudioSource.PlayClipAtPoint(contactInfo.sound, transform.position);
   }
 }

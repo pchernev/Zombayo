@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 
 public abstract class NPC : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public abstract class NPC : MonoBehaviour
   [HideInInspector]
   public ImpactInfo impactInfo;
   [HideInInspector]
-  public AnimatorUtils ai;
+  public AnimatorUtils animUtils;
 
   [HideInInspector]
   public bool infoFoldout;
@@ -29,8 +28,8 @@ public abstract class NPC : MonoBehaviour
     if (impactInfo == null)
       impactInfo = new ImpactInfo();
 
-    ai = GetComponent<AnimatorUtils>() ?? gameObject.AddComponent<AnimatorUtils>();
-    ai.setTextsDelegate(getDescriptionTexts);
-    ai.DescriptionEditingAllowed = false;
+    animUtils = GetComponent<AnimatorUtils>() ?? gameObject.AddComponent<AnimatorUtils>();
+    animUtils.setTextsDelegate(getDescriptionTexts);
+    animUtils.DescriptionEditingAllowed = false;
   }
 }

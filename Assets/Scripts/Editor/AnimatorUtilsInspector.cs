@@ -4,55 +4,55 @@ using UnityEngine;
 [CustomEditor(typeof(AnimatorUtils), true)]
 public class AnimatorUtilsInspector : Editor
 {
-  private AnimatorUtils ai;
+  private AnimatorUtils animUtils;
   private int removeIdx;
 
   void OnEnable()
   {
-    ai = target as AnimatorUtils;
-    ai.ensureDataConsistency();
+    animUtils = target as AnimatorUtils;
+    animUtils.ensureDataConsistency();
   }
 
   public override void OnInspectorGUI()
   {
-    var tmp = EditorGUILayout.ObjectField(ai.animator, typeof(Animator), false) as Animator;
-    if (tmp != ai.animator) {
-      ai.animator = tmp;
-      ai.loadAnimationNames();
+    var tmp = EditorGUILayout.ObjectField(animUtils.animator, typeof(Animator), false) as Animator;
+    if (tmp != animUtils.animator) {
+      animUtils.animator = tmp;
+      animUtils.loadAnimationNames();
     }
 
-    ai.namesFoldout = EditorGUILayout.Foldout(ai.namesFoldout, "Animation Names");
-    if (ai.namesFoldout)
-      for (int i = 1; i < ai.AnimationNames.Length; ++i)
-        EditorGUILayout.LabelField(ai.AnimationNames[i]);
+    animUtils.namesFoldout = EditorGUILayout.Foldout(animUtils.namesFoldout, "Animation Names");
+    if (animUtils.namesFoldout)
+      for (int i = 1; i < animUtils.AnimationNames.Length; ++i)
+        EditorGUILayout.LabelField(animUtils.AnimationNames[i]);
 
-    ai.descFoldout = EditorGUILayout.Foldout(ai.descFoldout, "Animation Counts");
-    if (ai.descFoldout) {
-      for (int i = 0; i < ai.DescriptionTexts.Length; ++i) {
+    animUtils.descFoldout = EditorGUILayout.Foldout(animUtils.descFoldout, "Animation Counts");
+    if (animUtils.descFoldout) {
+      for (int i = 0; i < animUtils.DescriptionTexts.Length; ++i) {
         EditorGUILayout.BeginHorizontal();
-        if (ai.DescriptionEditingAllowed)
-          ai.DescriptionTexts[i] = EditorGUILayout.TextField(ai.DescriptionTexts[i]);
+        if (animUtils.DescriptionEditingAllowed)
+          animUtils.DescriptionTexts[i] = EditorGUILayout.TextField(animUtils.DescriptionTexts[i]);
         else
-          EditorGUILayout.LabelField(ai.DescriptionTexts[i]);
-        ai.setDescCount(i, Mathf.Max(1, EditorGUILayout.IntField(ai.descEntries[i].array.Length)));
+          EditorGUILayout.LabelField(animUtils.DescriptionTexts[i]);
+        animUtils.setDescCount(i, Mathf.Max(1, EditorGUILayout.IntField(animUtils.descEntries[i].array.Length)));
         EditorGUILayout.EndHorizontal();
       }
 
-      if (ai.DescriptionEditingAllowed) {
+      if (animUtils.DescriptionEditingAllowed) {
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Add"))
-          ai.addDescription();
+          animUtils.addDescription();
         if (GUILayout.Button("Remove"))
-          ai.removeDescription(removeIdx);
-        removeIdx = EditorGUILayout.Popup(removeIdx, ai.DescriptionTexts);
+          animUtils.removeDescription(removeIdx);
+        removeIdx = EditorGUILayout.Popup(removeIdx, animUtils.DescriptionTexts);
         EditorGUILayout.EndHorizontal();
       }
 
       EditorGUILayout.Space();
     }
 
-    ai.animFoldout = EditorGUILayout.Foldout(ai.animFoldout, "Animations");
-    if (ai.animFoldout)
-      CommonInspectorMethods.drawAnimationDescriptions(this, ai);
+    animUtils.animFoldout = EditorGUILayout.Foldout(animUtils.animFoldout, "Animations");
+    if (animUtils.animFoldout)
+      CommonInspectorMethods.drawAnimationDescriptions(this, animUtils);
   }
 }

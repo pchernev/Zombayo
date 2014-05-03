@@ -47,6 +47,7 @@ public static class CollisionLogic
 
   public static void OnNpcHit(NPC npc)
   {
+    player.enterPowerUpState(Player.PowerUpState.None);
     player.rigidbody.AddForce(npc.impactInfo.force);
 
     if (npc.impactInfo.particles != null) {
@@ -58,8 +59,8 @@ public static class CollisionLogic
     if (npc.impactInfo.sound != null)
       AudioSource.PlayClipAtPoint(npc.impactInfo.sound, npc.transform.position);
 
-    //if (npc.contactInfo.animationName.Length > 0)
-      //npc.animator.Play(npc.contactInfo.animationName);
+    if (npc.impactInfo.animationName.Length > 0)
+      npc.animUtils.animator.Play(npc.impactInfo.animationName);
 
     CustomLogicDelegate logic;
     if (typeToDelegate.TryGetValue(npc.GetType(), out logic))

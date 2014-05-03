@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 public class AnimatorUtils : MonoBehaviour
@@ -49,7 +50,9 @@ public class AnimatorUtils : MonoBehaviour
 
   public virtual void ensureDataConsistency()
   {
+#if UNITY_DEITOR
     loadAnimationNames();
+#endif
 
     if (descriptionEditingAllowed)
       textsDelegate = null;
@@ -104,10 +107,32 @@ public class AnimatorUtils : MonoBehaviour
         descEntries[index].array[i] = new Entry();
   }
 
+#if UNITY_EDITOR
+  public static string[] GetAnimationNames(Animator animator)
+  {
+    UnityEditorInternal.AnimatorController ac = animator.runtimeAnimatorController as UnityEditorInternal.AnimatorController;
+    List<string> names = new List<string>();
+
+    names.Add("None");
+    for (int layer = 0; layer < ac.layerCount; layer++) {
+      UnityEditorInternal.StateMachine sm = ac.GetLayer(layer).stateMachine;
+      for (int i = 0; i < sm.stateCount; i++) {
+        UnityEditorInternal.State state = sm.GetState(i);
+        names.Add(state.uniqueName);
+      }
+    }
+
+    string[] result = new string[names.Count];
+    names.CopyTo(result);
+
+    return result;
+  }
+
   public void loadAnimationNames()
   {
-    _animationNames = animator != null ? animator.GetAnimationNames() : new string[] { "None" };
+    _animationNames = animator != null ? GetAnimationNames(animator) : new string[] { "None" };
   }
+#endif
 
   public void addDescription()
   {

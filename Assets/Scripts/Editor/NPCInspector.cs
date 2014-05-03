@@ -21,7 +21,7 @@ public class NPCInspector : Editor
       npc.impactInfo.force = EditorGUILayout.Vector3Field("Force", npc.impactInfo.force);
       npc.impactInfo.particles = EditorGUILayout.ObjectField("Particles", npc.impactInfo.particles, typeof(GameObject), false) as GameObject;
       npc.impactInfo.sound = EditorGUILayout.ObjectField("Particles", npc.impactInfo.sound, typeof(AudioClip), false) as AudioClip;
-      CommonInspectorMethods.drawAnimPopup("Animation", ref npc.impactInfo.animIndex, npc.ai.AnimationNames, ref npc.impactInfo.animationName);
+      CommonInspectorMethods.drawAnimPopup("Animation", ref npc.impactInfo.animIndex, npc.animUtils.AnimationNames, ref npc.impactInfo.animationName);
     }
   }
 }
