@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
   public CoinMagnet magnet;
   public int startIdleIndex;
   [HideInInspector]
-  public AnimatorUtils ai;
+  public AnimatorUtils animUtils;
 
   private Vector3 startPos;
   private Quaternion startRot;
@@ -115,14 +115,14 @@ public class Player : MonoBehaviour
 
   void OnIdleFinishing()
   {
-    ai.crossFadeRandomEntry((int)AnimDesc.Idle, 0.05f);
+    animUtils.crossFadeRandomEntry((int)AnimDesc.Idle, 0.05f);
   }
 
   public virtual void ensureDataConsistency()
   {
-    ai = GetComponent<AnimatorUtils>() ?? gameObject.AddComponent<AnimatorUtils>();
-    ai.setTextsDelegate(getDescriptionTexts);
-    ai.DescriptionEditingAllowed = false;
+    animUtils = GetComponent<AnimatorUtils>() ?? gameObject.AddComponent<AnimatorUtils>();
+    animUtils.setTextsDelegate(getDescriptionTexts);
+    animUtils.DescriptionEditingAllowed = false;
   }
 
   public void prepareForStart()
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
     rigidbody.angularVelocity = Vector3.zero;
     rigidbody.isKinematic = false;
     magnet.gameObject.SetActive(false);
-    ai.playEntry((int)AnimDesc.Idle, startIdleIndex);
+    animUtils.playEntry((int)AnimDesc.Idle, startIdleIndex);
   }
 
   public void kickRabbit(Vector3 kickForce)
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 
   public void enterHurtState()
   {
-    ai.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f);
+    animUtils.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f);
     setRotationZConstraint(false);
 
     isHurt = true;
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
   public void enterDragState()
   {
-    ai.crossFadeRandomEntry((int)AnimDesc.Drag, 0.05f);
+    animUtils.crossFadeRandomEntry((int)AnimDesc.Drag, 0.05f);
     iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
     setRotationZConstraint(true);
     setPositionYConstraint(true);
@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
 
     switch (state) {
       case PowerUpState.None:
-        ai.crossFadeRandomEntry((int)AnimDesc.Fly, 0.05f);
+        animUtils.crossFadeRandomEntry((int)AnimDesc.Fly, 0.05f);
         break;
 
       case PowerUpState.BubbleGum:
@@ -179,17 +179,17 @@ public class Player : MonoBehaviour
         originalBounce = collider.material.bounciness;
         rigidbody.drag = 0;
         collider.material.bounciness = 1;
-        ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
+        animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
         bubbleStartTime = Time.time;
         break;
 
       case PowerUpState.Glide:
-		ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
+		animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
         setPositionYConstraint(true);
         break;
 
       case PowerUpState.Fart:
-			ai.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
+			animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
 			if (rigidbody.velocity.y < 0) 
 				rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
 		

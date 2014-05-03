@@ -48,14 +48,14 @@ public static class CommonInspectorMethods
     EditorGUILayout.Space();
   }
 
-  public static void drawAnimationDescriptions(Editor editor, AnimatorUtils ai)
+  public static void drawAnimationDescriptions(Editor editor, AnimatorUtils animUtils)
   {
-    for (int descIdx = 0; descIdx < ai.DescriptionTexts.Length; ++descIdx)
-      if (ai.descEntries[descIdx].array.Length == 1)
-        drawAnimPopup(ai.DescriptionTexts[descIdx], ref ai.descEntries[descIdx].array[0].index, ai.AnimationNames, ref ai.descEntries[descIdx].array[0].animationName);
+    for (int descIdx = 0; descIdx < animUtils.DescriptionTexts.Length; ++descIdx)
+      if (animUtils.descEntries[descIdx].array.Length == 1)
+        drawAnimPopup(animUtils.DescriptionTexts[descIdx], ref animUtils.descEntries[descIdx].array[0].index, animUtils.AnimationNames, ref animUtils.descEntries[descIdx].array[0].animationName);
       else
-        for (int i = 0; i < ai.descEntries[descIdx].array.Length; ++i)
-          drawAnimPopup(ai.DescriptionTexts[descIdx] + " " + (i + 1), ref ai.descEntries[descIdx].array[i].index, ai.AnimationNames, ref ai.descEntries[descIdx].array[i].animationName);
+        for (int i = 0; i < animUtils.descEntries[descIdx].array.Length; ++i)
+          drawAnimPopup(animUtils.DescriptionTexts[descIdx] + " " + (i + 1), ref animUtils.descEntries[descIdx].array[i].index, animUtils.AnimationNames, ref animUtils.descEntries[descIdx].array[i].animationName);
   }
 
   public static void drawUpgradeInfoInt(Editor editor, string caption, ref int value)

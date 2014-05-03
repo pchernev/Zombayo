@@ -26,7 +26,8 @@ public class AnimatorUtils : MonoBehaviour
 
   public Animator animator;
 
-  private static string[] _animationNames;
+  [SerializeField]
+  private string[] _animationNames;
   public string[] AnimationNames { get { return _animationNames; } }
 
   public delegate string[] DescriptionTextsDelegate();
@@ -50,9 +51,7 @@ public class AnimatorUtils : MonoBehaviour
 
   public virtual void ensureDataConsistency()
   {
-#if UNITY_DEITOR
     loadAnimationNames();
-#endif
 
     if (descriptionEditingAllowed)
       textsDelegate = null;
