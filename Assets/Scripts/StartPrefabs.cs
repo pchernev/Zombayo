@@ -13,7 +13,7 @@ public class StartPrefabs : MonoBehaviour
   }
 
   public Info[] prefabsInfo;
-  private List<Component> spawnedPrefabs;
+  private List<Component> spawnedPrefabs = new List<Component>();
 
   public void spawn()
   {
@@ -25,5 +25,7 @@ public class StartPrefabs : MonoBehaviour
   {
     foreach (var comp in spawnedPrefabs)
       comp.Recycle();
+
+    spawnedPrefabs.Clear();
   }
 }
