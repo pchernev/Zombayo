@@ -136,12 +136,14 @@ public class AnimatorUtils : MonoBehaviour
 
     return result;
   }
+#endif
 
   public void loadAnimationNames()
   {
+#if UNITY_EDITOR
     _animationNames = animator != null ? GetAnimationNames(animator) : new string[] { "None" };
-  }
 #endif
+  }
 
   public void addDescription()
   {
