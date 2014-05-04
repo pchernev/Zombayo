@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class StartPrefabs : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class StartPrefabs : MonoBehaviour
   }
 
   public Info[] prefabsInfo;
+  private List<Component> spawnedPrefabs;
 
   public void spawn()
   {
     foreach (var info in prefabsInfo)
-      ObjectPool.Spawn(info.prefab, info.position, Quaternion.Euler(info.rotation));
+      spawnedPrefabs.Add(ObjectPool.Spawn(info.prefab, info.position, Quaternion.Euler(info.rotation)));
+  }
+
+  public void recycleOld()
+  {
+    foreach (var comp in spawnedPrefabs)
+      comp.Recycle();
   }
 }

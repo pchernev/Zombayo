@@ -54,6 +54,7 @@ public class GameLogic : MonoBehaviour
 
   public void startGame()
   {
+    startPrefabs.recycleOld();
     startPrefabs.spawn();
     doctor.prepareForStart();
     player.prepareForStart();
