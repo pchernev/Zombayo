@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
   {
     speed = transform.position - lastPos;
     lastPos = transform.position;
+    data.travelledDistance = lastPos.x - startPos.x;
+    data.currentHeight = (int)lastPos.y;
 
     if (IsKicked) {
       animator.SetFloat("VerticalSpeed", 2*speed.y);

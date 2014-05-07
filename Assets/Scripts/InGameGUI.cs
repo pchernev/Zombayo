@@ -5,10 +5,12 @@ public class InGameGUI : MonoBehaviour
   public UISlider fartSlider;
   public UISlider glideSlider;
   public UISlider kickForceSlider;
+  public UISlider distanceSlider;
 
   public UILabel bubbleGumCounter;
   public UILabel carrotSprayCounter;
   public UILabel coinCounter;
+  public UILabel heightIndicator;
 
   public UILabel fartDisabledLabel;
   public UILabel glideDisabledLabel;
@@ -46,10 +48,12 @@ public class InGameGUI : MonoBehaviour
     glideSlider.value = data.GlidePercentage;
     kickForceSlider.value = data.kickEfficiency;
     kickForceSlider.gameObject.SetActive(!GameLogic.Instance.IsSwiping);
+    distanceSlider.value = data.travelledDistance / data.distanceToFinish;
 
     setCounter(coinCounter, data.coinCount);
     setCounter(carrotSprayCounter, data.specs.carrotSprayCount);
     setCounter(bubbleGumCounter, data.specs.bubbleGumCount);
+    setCounter(heightIndicator, data.currentHeight);
 
     setSpriteColor(carrotSpraySprite, data.specs.carrotSprayCount > 0);
     setSpriteColor(bubbleGumSprite, data.specs.bubbleGumCount > 0);
