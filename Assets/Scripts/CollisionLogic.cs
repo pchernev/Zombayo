@@ -35,6 +35,13 @@ public static class CollisionLogic
     coin.explode();
   }
 
+  public static void OnPowerUpHit(PowerUp powerUp)
+  {
+    data.fartTime = Mathf.Min(data.fartTime + powerUp.fartTime, data.specs.fartCapacity);
+    data.glideTime = Mathf.Min(data.glideTime + powerUp.glideTime, data.specs.glideCapacity);
+    powerUp.explode();
+  }
+
   public static void OnGroundHit()
   {
     if (!player.IsBubbling) {
@@ -66,7 +73,6 @@ public static class CollisionLogic
     if (typeToDelegate.TryGetValue(npc.GetType(), out logic))
       logic(npc);
   }
-
 
   // Custom Logic
 
