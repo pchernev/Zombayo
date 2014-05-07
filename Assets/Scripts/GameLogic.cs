@@ -43,6 +43,7 @@ public class GameLogic : MonoBehaviour
   {
     if (!gameOver) {
       if (player.IsKicked) {
+        checkForLevelComplete();
         updatePlayerState();
         checkForLowSpeedGameOver();
       }
@@ -99,6 +100,11 @@ public class GameLogic : MonoBehaviour
     StartCoroutine(EndGameRoutine(delay));
   }
 
+  public void finishLevel()
+  {
+    endGame();
+  }
+
 
   public void onSwipeStart()
   {
@@ -142,6 +148,12 @@ public class GameLogic : MonoBehaviour
   {
     if (kickTime + 0.1f < Time.time && player.IsTooSlow)
       endGame();
+  }
+
+  private void checkForLevelComplete()
+  {
+    if (gameData.travelledDistance >= gameData.distanceToFinish)
+      finishLevel();
   }
 
   private void checkIfFartUsedUp()
