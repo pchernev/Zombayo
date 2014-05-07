@@ -93,6 +93,8 @@ public class GameLogic : MonoBehaviour
 
     inGameGUIPanel.gameObject.SetActive(false);
     endGameAnim.gameObject.SetActive(true);
+
+    gameData.coinCount += (int) (0.001f * gameData.travelledDistance * (float)gameData.coinsPerKm);
   }
 
   public void delayedEndGame(float delay)

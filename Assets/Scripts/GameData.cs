@@ -12,8 +12,6 @@ public class GameData : MonoBehaviour
   public Vector3 fartDirection;
   public float glideTime;
   public Vector3 glideDirection;
-  public int currentHeight;
-  public float travelledDistance;
 
   public float minKickPower;
   public float maxKickPower;
@@ -23,6 +21,9 @@ public class GameData : MonoBehaviour
   public float dragForce;
   public float dragThreshold;
   public float distanceToFinish;
+  public int coinsPerKm;
+  public int currentHeight;
+  public float travelledDistance;
 
     [HideInInspector]
   public int[] levels;
