@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 132d162def471b84ab80e6788a92b4c8
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: Base Human
     100002: Base HumanHead
@@ -188,9 +188,9 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -244,7 +244,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -308,7 +308,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -367,7 +367,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -426,7 +426,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -452,7 +452,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -465,6 +465,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -547,6 +549,8 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -566,7 +570,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -579,6 +583,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -662,6 +668,8 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Tail01
         weight: 1
+      - path: Base HumanRPlatform
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
@@ -680,7 +688,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -710,6 +718,8 @@ ModelImporter:
         weight: 1
       - path: Base Human/mainChar_Zombayo
         weight: 1
+      - path: Base HumanLPlatform
+        weight: 1
       - path: Base HumanPelvis
         weight: 1
       - path: Base HumanPelvis/Base HumanLThigh
@@ -791,6 +801,8 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -810,7 +822,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -823,6 +835,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -905,6 +919,8 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -924,7 +940,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
@@ -937,6 +953,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -1019,6 +1037,8 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -1038,7 +1058,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -1051,6 +1071,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -1133,6 +1155,8 @@ ModelImporter:
           HumanRCollarbone/Base HumanRUpperarm/Base HumanRForearm/Base HumanRPalm
         weight: 1
       - path: Base HumanPelvis/Tail01
+        weight: 1
+      - path: Base HumanRPlatform
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -1152,7 +1176,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -1165,6 +1189,8 @@ ModelImporter:
       - path: Base Human
         weight: 1
       - path: Base Human/mainChar_Zombayo
+        weight: 1
+      - path: Base HumanLPlatform
         weight: 1
       - path: Base HumanPelvis
         weight: 1
@@ -1248,6 +1274,8 @@ ModelImporter:
         weight: 1
       - path: Base HumanPelvis/Tail01
         weight: 1
+      - path: Base HumanRPlatform
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
@@ -1266,7 +1294,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -1384,7 +1412,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -1502,7 +1530,7 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 0
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
@@ -1640,4 +1668,5 @@ ModelImporter:
     rootMotionBoneName: Base HumanPelvis
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  additionalBone: 0
   userData: 
