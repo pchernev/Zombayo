@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     lastPos = transform.position;
     data.travelledDistance = lastPos.x - startPos.x;
     data.currentHeight = (int)lastPos.y;
+    data.kickEfficiency = CurrentKickEfficiency;
 
     if (IsKicked) {
       animator.SetFloat("VerticalSpeed", 2*speed.y);
@@ -129,6 +130,9 @@ public class Player : MonoBehaviour
 
   public void prepareForStart()
   {
+    Debug.Log("start pos: " + startPos);
+    Debug.Log("start rot: " + startRot);
+
     transform.position = startPos;
     transform.rotation = startRot;
     IsKicked = false;

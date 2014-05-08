@@ -7,6 +7,7 @@ public class InputLogic : MonoBehaviour
   public PauseMenu pauseMenu;
   public EndGameMenu endGameMenu;
   public ShopMenu shopMenu;
+  public MainMenu mainMenu;
 
   private GameData gameData;
   private UpgradeData upgradeData;
@@ -22,6 +23,7 @@ public class InputLogic : MonoBehaviour
     setPauseMenuDelegates();
     setEndGameMenuDelegates();
     setShopMenuDelegates();
+    setMainMenuDelegates();
 	}
 	
 	void Update () {
@@ -57,7 +59,6 @@ public class InputLogic : MonoBehaviour
   {
     if (endGameMenu != null) {
       endGameMenu.restartButton.GetComponent<UIEventListener>().onClick = OnRestartButtonClicked;
-      endGameMenu.shopButton.GetComponent<UIEventListener>().onClick = OnShopButtonClicked;
     }
     else {
       Debug.LogError("EndGameMenu variable not set!");
@@ -75,6 +76,17 @@ public class InputLogic : MonoBehaviour
     }
     else {
       Debug.LogError("ShopMenu variable not set!");
+    }
+  }
+
+  private void setMainMenuDelegates()
+  {
+    if (mainMenu != null) {
+      mainMenu.newGameButton.GetComponent<UIEventListener>().onClick = OnNewGameButtonClicked;
+      mainMenu.continueButton.GetComponent<UIEventListener>().onClick = OnContinueButtonClicked;
+    }
+    else {
+      Debug.LogError("EndGameMenu variable not set!");
     }
   }
 
@@ -117,17 +129,27 @@ public class InputLogic : MonoBehaviour
     StartCoroutine(ResumeGameRoutine(Time.realtimeSinceStartup, 1));
   }
 
-  public void OnShopButtonClicked(GameObject go)
-  {
-  }
-
   public void OnBuyUpgradeButtonClicked(GameObject go)
   {
     ShopItemInfo info = go.GetComponent<ShopItemInfo>();
 
     int level = ++gameData.levels[(int)info.type];
     gameData.coinCount -= upgradeData.upgradeLevels[level].prices[(int)info.type] / ShopMenu.CoinValue;
-    GameLogic.Instance.coinsOnStart = gameData.coinCount;
+    gameData.coinsOnStart = gameData.coinCount;
+  }
+
+  public void OnNewGameButtonClicked(GameObject go)
+  {
+    Debug.Log("New Game!");
+    GameLogic.Instance.resetProgress();
+    GameLogic.Instance.startGame();
+  }
+
+  public void OnContinueButtonClicked(GameObject go)
+  {
+    Debug.Log("Continue!");
+    GameLogic.Instance.resetProgress();
+    GameLogic.Instance.startGame();
   }
 
   private IEnumerator ResumeGameRoutine(float startTime, float delay)

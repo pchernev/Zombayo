@@ -6,6 +6,7 @@ public class GameData : MonoBehaviour
   [HideInInspector]
   public UpgradeLevel.Specs specs;
 
+  public int coinsOnStart;
   public int coinCount;
   public float bubbleGumLife;
   public float fartTime;
@@ -25,8 +26,10 @@ public class GameData : MonoBehaviour
   public int currentHeight;
   public float travelledDistance;
 
-    [HideInInspector]
+  [HideInInspector]
   public int[] levels;
+  [HideInInspector]
+  public bool isSwiping;
 
   public float FartPercentage { get { return fartTime / specs.fartCapacity; } }
   public float GlidePercentage { get { return glideTime / specs.glideCapacity; } }

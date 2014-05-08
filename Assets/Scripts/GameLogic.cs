@@ -8,63 +8,71 @@ public class GameLogic : MonoBehaviour
   public GameData gameData;
   public UpgradeData upgradeData;
   public UIPanel inGameGUIPanel;
+  public UIPanel mainMenuPanel;
   public Animation endGameAnim;
   public CameraFollow cameraFollow;
 
   public StartPrefabs startPrefabs;
 
+  public GameObject mainChars;
+  [HideInInspector]
+  public DrFishhead doctor;
+  [HideInInspector]
   public Player player;
   public bool IsPlayerActive { get { return player.IsKicked && !gameOver; } }
-  public bool IsSwiping { get { return isSwiping; } }
 
-  public DrFishhead doctor;
   public KickSwipe swipe;
 
-  [HideInInspector]
-  public int coinsOnStart;
-  private bool isSwiping;
   private bool gameOver;
   private float kickTime;
 
   void Awake()
   {
     Instance = this;
+
+    player = mainChars.GetComponentInChildren<Player>();
+    doctor = mainChars.GetComponentInChildren<DrFishhead>();
   }
     
 	void Start()
 	{
-    inGameGUIPanel.gameObject.SetActive(false);
-    coinsOnStart = gameData.coinCount;
+    gameData.isSwiping = false;
+    mainChars.SetActive(false);
+
+    inGameGUIPanel.enabled = false;
+    //mainMenuPanel.enabled = true;
 
     startGame();
   }
 	
 	void Update()
   {
-    if (!gameOver) {
-      if (player.IsKicked) {
-        checkForLevelComplete();
-        updatePlayerState();
-        checkForLowSpeedGameOver();
-      }
-      else if (!isSwiping)
-        gameData.kickEfficiency = player.CurrentKickEfficiency;
+    if (!gameOver && player.IsKicked) {
+      checkForLevelComplete();
+      updatePlayerState();
+      checkForLowSpeedGameOver();
     }
   }
 
+
+  public void showMainMenu()
+  {
+    mainChars.SetActive(false);
+  }
 
   public void startGame()
   {
     startPrefabs.recycleOld();
     startPrefabs.spawn();
+    mainChars.SetActive(true);
     doctor.prepareForStart();
     player.prepareForStart();
     cameraFollow.reset();
     gameData.setFromLevels();
-    gameData.coinCount = coinsOnStart;
-    isSwiping = gameOver = false;
+    gameData.coinCount = gameData.coinsOnStart;
+    gameOver = false;
 
-    inGameGUIPanel.gameObject.SetActive(true);
+    inGameGUIPanel.enabled = true;
     endGameAnim.gameObject.SetActive(false);
     endGameAnim["igm_show"].time = 0;
 
@@ -76,7 +84,6 @@ public class GameLogic : MonoBehaviour
   public void pauseGame()
   {
     Time.timeScale = 0;
-    isSwiping = false;
     swipe.gameObject.SetActive(false);
   }
 
@@ -91,7 +98,7 @@ public class GameLogic : MonoBehaviour
     player.rigidbody.isKinematic = true;
     gameOver = true;
 
-    inGameGUIPanel.gameObject.SetActive(false);
+    inGameGUIPanel.enabled = false;
     endGameAnim.gameObject.SetActive(true);
 
     gameData.coinCount += (int) (0.001f * gameData.travelledDistance * (float)gameData.coinsPerKm);
@@ -110,7 +117,7 @@ public class GameLogic : MonoBehaviour
 
   public void onSwipeStart()
   {
-    isSwiping = true;
+    gameData.isSwiping = true;
   }
 
   public void initiateKick()
@@ -131,6 +138,13 @@ public class GameLogic : MonoBehaviour
     kickTime = Time.time;
 
     cameraFollow.doTransition = true;
+  }
+
+  public void resetProgress()
+  {
+    gameData.coinCount = 0;
+    for (int i = 0; i < gameData.levels.Length; ++i)
+      gameData.levels[i] = 0;
   }
 
 

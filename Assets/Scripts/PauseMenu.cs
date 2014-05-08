@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
   public UIImageButton mainMenuButton;
   public UIImageButton backButton;
 
-  void Start()
+  void Awake()
   {
     if (restartButton.GetComponent<UIEventListener>() == null)
       restartButton.gameObject.AddComponent<UIEventListener>();

@@ -22,11 +22,8 @@ public class ShopMenu : MonoBehaviour
   private UpgradeData upgradeData;
   private ShopItemInfo[] stars;
 
-  void Start()
+  void Awake()
   {
-    gameData = GameLogic.Instance.gameData;
-    upgradeData = GameLogic.Instance.upgradeData;
-
     if (backButton.GetComponent<UIEventListener>() == null)
       backButton.gameObject.AddComponent<UIEventListener>();
     if (magnetButton.GetComponent<UIEventListener>() == null)
@@ -46,6 +43,12 @@ public class ShopMenu : MonoBehaviour
     buttons[(int)UpgradeLevel.Type.BubbleGum] = bubbleGumButton;
     buttons[(int)UpgradeLevel.Type.PowerUpFart] = fartButton;
     buttons[(int)UpgradeLevel.Type.PowerUpGlide] = glideButton;
+  }
+
+  void Start()
+  {
+    gameData = GameLogic.Instance.gameData;
+    upgradeData = GameLogic.Instance.upgradeData;
 
     connectShopItemInfos();
   }

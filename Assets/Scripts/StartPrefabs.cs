@@ -24,7 +24,8 @@ public class StartPrefabs : MonoBehaviour
   public void recycleOld()
   {
     foreach (var comp in spawnedPrefabs)
-      comp.Recycle();
+      if (comp != null)
+        comp.Recycle();
 
     spawnedPrefabs.Clear();
   }

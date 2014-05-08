@@ -25,10 +25,8 @@ public class InGameGUI : MonoBehaviour
 
   private GameData data;
 
-  void Start()
+  void Awake()
   {
-    data = GameLogic.Instance.gameData;
-
     if (fartButton.GetComponent<UIEventListener>() == null)
       fartButton.gameObject.AddComponent<UIEventListener>();
     if (glideButton.GetComponent<UIEventListener>() == null)
@@ -37,6 +35,11 @@ public class InGameGUI : MonoBehaviour
       bubbleButton.gameObject.AddComponent<UIEventListener>();
     if (pauseButton.GetComponent<UIEventListener>() == null)
       pauseButton.gameObject.AddComponent<UIEventListener>();
+  }
+
+  void Start()
+  {
+    data = GameLogic.Instance.gameData;
 
     fartDisabledLabel.gameObject.SetActive(data.specs.fartCapacity <= 0);
     glideDisabledLabel.gameObject.SetActive(data.specs.glideCapacity <= 0);
@@ -47,7 +50,7 @@ public class InGameGUI : MonoBehaviour
     fartSlider.value = data.FartPercentage;
     glideSlider.value = data.GlidePercentage;
     kickForceSlider.value = data.kickEfficiency;
-    kickForceSlider.gameObject.SetActive(!GameLogic.Instance.IsSwiping);
+    kickForceSlider.gameObject.SetActive(!data.isSwiping);
     distanceSlider.value = data.travelledDistance / data.distanceToFinish;
 
     setCounter(coinCounter, data.coinCount);

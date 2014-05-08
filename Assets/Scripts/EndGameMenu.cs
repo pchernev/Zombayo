@@ -6,7 +6,7 @@ public class EndGameMenu : MonoBehaviour
   public UIButton restartButton;
   public UIButton shopButton;
 
-  void Start()
+  void Awake()
   {
     if (restartButton.GetComponent<UIEventListener>() == null)
       restartButton.gameObject.AddComponent<UIEventListener>();
