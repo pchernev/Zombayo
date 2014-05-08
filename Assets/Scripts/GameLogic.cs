@@ -40,9 +40,7 @@ public class GameLogic : MonoBehaviour
     mainChars.SetActive(false);
 
     inGameGUIPanel.enabled = false;
-    //mainMenuPanel.enabled = true;
-
-    startGame();
+    mainMenuPanel.enabled = true;
   }
 	
 	void Update()

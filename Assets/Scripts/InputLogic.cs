@@ -140,15 +140,12 @@ public class InputLogic : MonoBehaviour
 
   public void OnNewGameButtonClicked(GameObject go)
   {
-    Debug.Log("New Game!");
     GameLogic.Instance.resetProgress();
     GameLogic.Instance.startGame();
   }
 
   public void OnContinueButtonClicked(GameObject go)
   {
-    Debug.Log("Continue!");
-    GameLogic.Instance.resetProgress();
     GameLogic.Instance.startGame();
   }
 

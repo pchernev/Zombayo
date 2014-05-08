@@ -43,6 +43,8 @@ public class InGameGUI : MonoBehaviour
 
     fartDisabledLabel.gameObject.SetActive(data.specs.fartCapacity <= 0);
     glideDisabledLabel.gameObject.SetActive(data.specs.glideCapacity <= 0);
+
+    fartButton.isEnabled = glideButton.isEnabled = bubbleButton.isEnabled = false;
   }
 
   void Update()
@@ -61,6 +63,11 @@ public class InGameGUI : MonoBehaviour
     setSpriteColor(carrotSpraySprite, data.specs.carrotSprayCount > 0);
     setSpriteColor(bubbleGumSprite, data.specs.bubbleGumCount > 0);
 
+    updateButtonStates();
+  }
+
+  private void updateButtonStates()
+  {
     bool buttonsActive = GameLogic.Instance.IsPlayerActive;
     fartButton.isEnabled = buttonsActive && data.fartTime > 0;
     glideButton.isEnabled = buttonsActive && data.glideTime > 0;
