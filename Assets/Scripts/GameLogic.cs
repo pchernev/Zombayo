@@ -71,7 +71,6 @@ public class GameLogic : MonoBehaviour
     doctor.prepareForStart();
     player.prepareForStart();
     gameData.setFromLevels();
-    gameData.coinCount = gameData.coinsOnStart;
     gameOver = false;
 
     inGameGUIPanel.enabled = true;
@@ -107,6 +106,7 @@ public class GameLogic : MonoBehaviour
     endGameAnim.gameObject.SetActive(true);
 
     gameData.coinCount += (int) (0.001f * gameData.travelledDistance * (float)gameData.coinsPerKm);
+    saveGame();
   }
 
   public void delayedEndGame(float delay)
@@ -126,7 +126,7 @@ public class GameLogic : MonoBehaviour
     endGame();
   }
 
-  private void saveGame()
+  public void saveGame()
   {
     string levels = "";
     for (int i = 0; i < (int)UpgradeLevel.Type.Count; ++i)
@@ -136,7 +136,7 @@ public class GameLogic : MonoBehaviour
     PlayerPrefs.SetInt("coins", gameData.coinCount);
   }
 
-  private bool loadGame()
+  public bool loadGame()
   {
     string levels = PlayerPrefs.GetString("levels");
     if (levels.Length == (int)UpgradeLevel.Type.Count)

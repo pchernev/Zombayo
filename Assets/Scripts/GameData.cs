@@ -8,7 +8,6 @@ public class GameData : MonoBehaviour
   [HideInInspector]
   public UpgradeLevel.Specs specs;
 
-  public int coinsOnStart;
   public int coinCount;
   public float bubbleGumLife;
   public float fartTime;

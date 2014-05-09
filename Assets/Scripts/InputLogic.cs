@@ -136,7 +136,7 @@ public class InputLogic : MonoBehaviour
 
     int level = ++gameData.levels[(int)info.type];
     gameData.coinCount -= upgradeData.upgradeLevels[level].prices[(int)info.type] / ShopMenu.CoinValue;
-    gameData.coinsOnStart = gameData.coinCount;
+    GameLogic.Instance.saveGame();
   }
 
   public void OnNewGameButtonClicked(GameObject go)
