@@ -31,8 +31,6 @@ public class KickSwipe : MonoBehaviour
 
     startPos = e.Finger.Position;
     transform.position = Camera.main.ScreenToWorldPoint(new Vector3(e.Finger.Position.x, e.Finger.Position.y, 1));
-
-    GameLogic.Instance.onSwipeStart();
   }
 
   void OnFingerMove(FingerMotionEvent e)

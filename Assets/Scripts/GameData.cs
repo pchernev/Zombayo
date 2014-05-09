@@ -29,14 +29,16 @@ public class GameData : MonoBehaviour
   [HideInInspector]
   public int[] levels;
   [HideInInspector]
-  public bool isSwiping;
+  public float kickTime;
 
   public float FartPercentage { get { return fartTime / specs.fartCapacity; } }
   public float GlidePercentage { get { return glideTime / specs.glideCapacity; } }
+  public bool IsPlayerKicked{ get { return kickTime >= 0; } }
 
   void Awake()
   {
     ensureDataConsistency();
+    kickTime = -1;
   }
   
   void Start ()

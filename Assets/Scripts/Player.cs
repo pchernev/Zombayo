@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
   private float originalBounce;
 
   private PowerUpState currentPowerUp = PowerUpState.None;
-  public bool IsKicked  { set { isKicked = value; if (animator) animator.SetBool("Kicked", value); } get { return isKicked; } }
   public bool IsBubbling { get { return currentPowerUp == PowerUpState.BubbleGum; } }
   public bool IsFarting { get { return currentPowerUp == PowerUpState.Fart; } }
   public bool IsGliding { get { return currentPowerUp == PowerUpState.Glide; } }
@@ -82,7 +81,7 @@ public class Player : MonoBehaviour
     data.currentHeight = (int)lastPos.y;
     data.kickEfficiency = CurrentKickEfficiency;
 
-    if (IsKicked) {
+    if (data.IsPlayerKicked) {
       animator.SetFloat("VerticalSpeed", 2*speed.y);
 
       if (IsBubbling)
@@ -102,7 +101,7 @@ public class Player : MonoBehaviour
 
   void OnCollisionEnter(Collision collision)
   {
-    if (!IsKicked)
+    if (!data.IsPlayerKicked)
       return;
 
     if (collision.gameObject.layer == Layers.Terrain)
@@ -111,7 +110,7 @@ public class Player : MonoBehaviour
 
   void OnMouseUpAsButton()
   {
-    if (!IsKicked)
+    if (!data.IsPlayerKicked)
       GameLogic.Instance.initiateKick();
   }
 
@@ -130,12 +129,8 @@ public class Player : MonoBehaviour
 
   public void prepareForStart()
   {
-    Debug.Log("start pos: " + startPos);
-    Debug.Log("start rot: " + startRot);
-
     transform.position = startPos;
     transform.rotation = startRot;
-    IsKicked = false;
 
     rigidbody.isKinematic = false;
     rigidbody.velocity = Vector3.zero;
@@ -147,7 +142,6 @@ public class Player : MonoBehaviour
 
   public void kickRabbit(Vector3 kickForce)
   {
-    IsKicked = true;
     enterPowerUpState(PowerUpState.None);
     magnet.gameObject.SetActive(true);
     rigidbody.AddForce(kickForce);

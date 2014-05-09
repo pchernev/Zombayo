@@ -19,12 +19,11 @@ public class GameLogic : MonoBehaviour
   public DrFishhead doctor;
   [HideInInspector]
   public Player player;
-  public bool IsPlayerActive { get { return player.IsKicked && !gameOver; } }
+  public bool IsPlayerActive { get { return gameData.IsPlayerKicked && !gameOver; } }
 
   public KickSwipe swipe;
 
   private bool gameOver;
-  private float kickTime;
 
   void Awake()
   {
@@ -36,7 +35,6 @@ public class GameLogic : MonoBehaviour
     
 	void Start()
 	{
-    gameData.isSwiping = false;
     mainChars.SetActive(false);
 
     inGameGUIPanel.enabled = false;
@@ -45,7 +43,7 @@ public class GameLogic : MonoBehaviour
 	
 	void Update()
   {
-    if (!gameOver && player.IsKicked) {
+    if (!gameOver && gameData.IsPlayerKicked) {
       checkForLevelComplete();
       updatePlayerState();
       checkForLowSpeedGameOver();
@@ -76,6 +74,7 @@ public class GameLogic : MonoBehaviour
 
     swipe.gameObject.SetActive(true);
 
+    gameData.kickTime = -1;
     Time.timeScale = 1;
   }
 
@@ -88,7 +87,7 @@ public class GameLogic : MonoBehaviour
   public void resumeGame()
   {
     Time.timeScale = 1;
-    swipe.gameObject.SetActive(!player.IsKicked);
+    swipe.gameObject.SetActive(!gameData.IsPlayerKicked);
   }
 
   public void endGame()
@@ -113,11 +112,6 @@ public class GameLogic : MonoBehaviour
   }
 
 
-  public void onSwipeStart()
-  {
-    gameData.isSwiping = true;
-  }
-
   public void initiateKick()
   {
     doctor.playRunAndKickSequence();
@@ -133,7 +127,7 @@ public class GameLogic : MonoBehaviour
   {
     doctor.rigidbody.isKinematic = true;
     player.kickRabbit(gameData.KickForce);
-    kickTime = Time.time;
+    gameData.kickTime = Time.time;
 
     cameraFollow.doTransition = true;
   }
@@ -160,7 +154,7 @@ public class GameLogic : MonoBehaviour
 
   private void checkForLowSpeedGameOver()
   {
-    if (kickTime + 0.1f < Time.time && player.IsTooSlow)
+    if (gameData.kickTime + 0.1f < Time.time && player.IsTooSlow)
       endGame();
   }
 
