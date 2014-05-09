@@ -57,6 +57,7 @@ public class GameLogic : MonoBehaviour
 
   public void showStartScene()
   {
+    player.moveToStartSpot();
     mainChars.SetActive(false);
     startPrefabs.recycleOld();
     startPrefabs.spawn();

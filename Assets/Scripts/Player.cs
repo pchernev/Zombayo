@@ -132,9 +132,7 @@ public class Player : MonoBehaviour
 
   public void prepareForStart()
   {
-    transform.position = startPos;
-    transform.rotation = startRot;
-
+    moveToStartSpot();
     rigidbody.isKinematic = false;
     rigidbody.velocity = Vector3.zero;
     rigidbody.angularVelocity = Vector3.zero;
@@ -142,6 +140,12 @@ public class Player : MonoBehaviour
     magnet.gameObject.SetActive(false);
     animUtils.playEntry((int)AnimDesc.Idle, idleIndex);
     UpdateKickEfficiency = true;
+  }
+
+  public void moveToStartSpot()
+  {
+    transform.position = startPos;
+    transform.rotation = startRot;
   }
 
   public void kickRabbit(Vector3 kickForce)

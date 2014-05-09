@@ -40,13 +40,18 @@ public class DrFishhead : MonoBehaviour
 
   public void prepareForStart()
   {
-    transform.position = startPos;
-    transform.rotation = startRot;
+    moveToStartSpot();
     kickTransition = false;
 
     animator.Play(idleAnimationName);
 
     rigidbody.isKinematic = false;
     rigidbody.velocity = Vector3.zero;
+  }
+
+  public void moveToStartSpot()
+  {
+    transform.position = startPos;
+    transform.rotation = startRot;
   }
 }
