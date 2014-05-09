@@ -12,4 +12,9 @@ public class MainMenu : MonoBehaviour
     if (continueButton.GetComponent<UIEventListener>() == null)
       continueButton.gameObject.AddComponent<UIEventListener>();
   }
+
+  void Update()
+  {
+    continueButton.gameObject.SetActive(!GameLogic.Instance.gameData.ZeroProgress);
+  }
 }

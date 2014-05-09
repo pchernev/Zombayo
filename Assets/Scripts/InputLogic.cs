@@ -122,6 +122,7 @@ public class InputLogic : MonoBehaviour
 
   public void OnMainMenuButtonClicked(GameObject go)
   {
+    GameLogic.Instance.goToMainMenu();
   }
 
   public void OnBackButtonClicked(GameObject go)

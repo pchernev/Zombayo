@@ -3,6 +3,8 @@ using System;
 
 public class GameData : MonoBehaviour
 {
+  private static string zeroLevelsString = "00000";
+
   [HideInInspector]
   public UpgradeLevel.Specs specs;
 
@@ -33,7 +35,8 @@ public class GameData : MonoBehaviour
 
   public float FartPercentage { get { return fartTime / specs.fartCapacity; } }
   public float GlidePercentage { get { return glideTime / specs.glideCapacity; } }
-  public bool IsPlayerKicked{ get { return kickTime >= 0; } }
+  public bool IsPlayerKicked { get { return kickTime >= 0; } }
+  public bool ZeroProgress { get { return string.Join("", Array.ConvertAll(levels, x => x.ToString())) == zeroLevelsString && coinCount == 0; } }
 
   void Awake()
   {
@@ -64,8 +67,8 @@ public class GameData : MonoBehaviour
   public void ensureDataConsistency()
   {
     if (levels == null)
-      levels = new int[UpgradeLevel.NumLevels];
-    else if (levels.Length != UpgradeLevel.NumLevels)
-      Array.Resize(ref levels, UpgradeLevel.NumLevels);
+      levels = new int[(int)UpgradeLevel.Type.Count];
+    else if (levels.Length != (int)UpgradeLevel.Type.Count)
+      Array.Resize(ref levels, (int)UpgradeLevel.Type.Count);
   }
 }

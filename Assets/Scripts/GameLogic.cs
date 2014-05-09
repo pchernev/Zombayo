@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class GameLogic : MonoBehaviour
@@ -8,7 +9,7 @@ public class GameLogic : MonoBehaviour
   public GameData gameData;
   public UpgradeData upgradeData;
   public UIPanel inGameGUIPanel;
-  public UIPanel mainMenuPanel;
+  public Animation mainMenuAnim;
   public Animation endGameAnim;
   public CameraFollow cameraFollow;
 
@@ -31,14 +32,17 @@ public class GameLogic : MonoBehaviour
 
     player = mainChars.GetComponentInChildren<Player>();
     doctor = mainChars.GetComponentInChildren<DrFishhead>();
+
+    if (gameData.ZeroProgress || !loadGame())
+      resetProgress();
   }
     
 	void Start()
 	{
-    mainChars.SetActive(false);
+    showStartScene();
 
     inGameGUIPanel.enabled = false;
-    mainMenuPanel.enabled = true;
+    mainMenuAnim.gameObject.SetActive(true);
   }
 	
 	void Update()
@@ -51,24 +55,28 @@ public class GameLogic : MonoBehaviour
   }
 
 
-  public void showMainMenu()
+  public void showStartScene()
   {
     mainChars.SetActive(false);
+    startPrefabs.recycleOld();
+    startPrefabs.spawn();
+    cameraFollow.reset();
   }
 
   public void startGame()
   {
-    startPrefabs.recycleOld();
-    startPrefabs.spawn();
+    showStartScene();
+    loadGame();
     mainChars.SetActive(true);
     doctor.prepareForStart();
     player.prepareForStart();
-    cameraFollow.reset();
     gameData.setFromLevels();
     gameData.coinCount = gameData.coinsOnStart;
     gameOver = false;
 
     inGameGUIPanel.enabled = true;
+    mainMenuAnim.gameObject.SetActive(false);
+    mainMenuAnim["igm_show"].time = 0;
     endGameAnim.gameObject.SetActive(false);
     endGameAnim["igm_show"].time = 0;
 
@@ -106,9 +114,40 @@ public class GameLogic : MonoBehaviour
     StartCoroutine(EndGameRoutine(delay));
   }
 
+  public void goToMainMenu()
+  {
+    inGameGUIPanel.enabled = false;
+    mainMenuAnim.gameObject.SetActive(true);
+    showStartScene();
+  }
+
   public void finishLevel()
   {
     endGame();
+  }
+
+  private void saveGame()
+  {
+    string levels = "";
+    for (int i = 0; i < (int)UpgradeLevel.Type.Count; ++i)
+      levels += (char)gameData.levels[i];
+
+    PlayerPrefs.SetString("levels", levels);
+    PlayerPrefs.SetInt("coins", gameData.coinCount);
+  }
+
+  private bool loadGame()
+  {
+    string levels = PlayerPrefs.GetString("levels");
+    if (levels.Length == (int)UpgradeLevel.Type.Count)
+      for (int i = 0; i < (int)UpgradeLevel.Type.Count; ++i)
+        gameData.levels[i] = (int)levels[i];
+    else
+      return false;
+
+    gameData.coinCount = PlayerPrefs.GetInt("coins");
+
+    return true;
   }
 
 
@@ -137,6 +176,8 @@ public class GameLogic : MonoBehaviour
     gameData.coinCount = 0;
     for (int i = 0; i < gameData.levels.Length; ++i)
       gameData.levels[i] = 0;
+    
+    saveGame();
   }
 
 
