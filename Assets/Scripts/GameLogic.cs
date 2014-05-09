@@ -153,6 +153,7 @@ public class GameLogic : MonoBehaviour
 
   public void initiateKick()
   {
+    player.UpdateKickEfficiency = false;
     doctor.playRunAndKickSequence();
   }
 

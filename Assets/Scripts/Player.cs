@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
   public bool IsTooSlow { get { return transform.position.y < 1 && rigidbody.velocity.sqrMagnitude < 5; } }
   public bool IsAboveDragThreshold { get { return rigidbody.velocity.y > data.dragThreshold; } }
   public float CurrentKickEfficiency { get { return animator.GetFloat("KickEfficiency"); } }
+  [HideInInspector]
+  public bool UpdateKickEfficiency;
 
   private GameData data;
 
@@ -79,7 +81,8 @@ public class Player : MonoBehaviour
     lastPos = transform.position;
     data.travelledDistance = lastPos.x - startPos.x;
     data.currentHeight = (int)lastPos.y;
-    data.kickEfficiency = CurrentKickEfficiency;
+    if (UpdateKickEfficiency)
+      data.kickEfficiency = CurrentKickEfficiency;
 
     if (data.IsPlayerKicked) {
       animator.SetFloat("VerticalSpeed", 2*speed.y);
@@ -138,6 +141,7 @@ public class Player : MonoBehaviour
     rigidbody.isKinematic = false;
     magnet.gameObject.SetActive(false);
     animUtils.playEntry((int)AnimDesc.Idle, idleIndex);
+    UpdateKickEfficiency = true;
   }
 
   public void kickRabbit(Vector3 kickForce)
