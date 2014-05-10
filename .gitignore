@@ -2,6 +2,7 @@ Library
 Temp
 obj
 _ReSharper.Zombayo-csharp
+Builds
 
 *.userprefs
 *.sln
