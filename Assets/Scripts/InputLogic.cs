@@ -135,7 +135,7 @@ public class InputLogic : MonoBehaviour
     ShopItemInfo info = go.GetComponent<ShopItemInfo>();
 
     int level = ++gameData.levels[(int)info.type];
-    gameData.coinCount -= upgradeData.upgradeLevels[level].prices[(int)info.type] / ShopMenu.CoinValue;
+    gameData.coinCount -= upgradeData.upgradeLevels[level].prices[(int)info.type];
     GameLogic.Instance.saveGame();
   }
 

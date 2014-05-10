@@ -76,7 +76,7 @@ public class InGameGUI : MonoBehaviour
 
   private void setCounter(UILabel counter, int value)
   {
-    counter.text = value > 0 ? value.ToString() : "";
+    counter.text = value >= 0 ? value.ToString() : "";
   }
 
   private void setSpriteColor(UISprite sprite, bool isActive)

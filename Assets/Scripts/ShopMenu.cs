@@ -2,8 +2,6 @@
 
 public class ShopMenu : MonoBehaviour
 {
-  public const int CoinValue = 10;
-
   public UILabel coinCount;
 
   public UIButton backButton;
@@ -55,20 +53,20 @@ public class ShopMenu : MonoBehaviour
 
   void Update()
   {
-    setCounter(coinCount, gameData.coinCount * CoinValue);
+    setCounter(coinCount, gameData.coinCount);
     for (int upgIdx = 0; upgIdx < (int)UpgradeLevel.Type.Count; ++upgIdx) {
       int level = gameData.levels[upgIdx];
       bool isFull = level == UpgradeLevel.NumLevels - 1;
 
       stars[upgIdx].level = level;
       stars[upgIdx].priceNextLevel = isFull ? 0 : upgradeData.upgradeLevels[level+1].prices[upgIdx];
-      buttons[upgIdx].isEnabled = (!isFull && stars[upgIdx].priceNextLevel <= gameData.coinCount * CoinValue);
+      buttons[upgIdx].isEnabled = (!isFull && stars[upgIdx].priceNextLevel <= gameData.coinCount);
     }
   }
 
   private void setCounter(UILabel counter, int value)
   {
-    counter.text = value > 0 ? value.ToString() : "";
+    counter.text = value >= 0 ? value.ToString() : "";
   }
 
   private void connectShopItemInfos()
