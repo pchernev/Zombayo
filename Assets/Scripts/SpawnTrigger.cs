@@ -13,6 +13,11 @@ public class SpawnTrigger : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
+    trigger();
+  }
+
+  public void trigger()
+  {
     var spawnPoints = spawnPointsRoot.GetComponentsInChildren<SpawnPoint>();
     foreach (var point in spawnPoints)
       point.activate();

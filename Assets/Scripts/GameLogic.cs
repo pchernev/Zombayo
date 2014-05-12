@@ -13,7 +13,8 @@ public class GameLogic : MonoBehaviour
   public Animation endGameAnim;
   public CameraFollow cameraFollow;
 
-  public StartPrefabs startPrefabs;
+  public SpawnTrigger spawnOnStart;
+  public Transform spawnRoot;
 
   public GameObject mainChars;
   [HideInInspector]
@@ -59,8 +60,8 @@ public class GameLogic : MonoBehaviour
   {
     player.moveToStartSpot();
     mainChars.SetActive(false);
-    startPrefabs.recycleOld();
-    startPrefabs.spawn();
+    recycleSpawned();
+    spawnStartObjects();
     cameraFollow.reset();
   }
 
@@ -221,6 +222,19 @@ public class GameLogic : MonoBehaviour
       gameData.glideTime = 0;
       player.enterPowerUpState(Player.PowerUpState.None);
     }
+  }
+
+  private void spawnStartObjects()
+  {
+    spawnOnStart.trigger();
+  }
+
+  private void recycleSpawned()
+  {
+    var spawnedObjects = spawnRoot.GetComponentsInChildren<Transform>();
+    foreach (var obj in spawnedObjects)
+      if (obj.parent == spawnRoot)
+        obj.Recycle();
   }
 
 
