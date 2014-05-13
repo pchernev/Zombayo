@@ -1,81 +1,166 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class CameraFollow : MonoBehaviour
 {
-  public GameObject playerTarget;
-  public Vector3 offsetBeforeKick;
-  public Vector3 rotationBeforeKick;
-  public Vector3 offsetAfterKick;
-  public Vector3 rotationAfterKick;
+	public enum CameraFollowState {
+		Initial, 
+		KickInProgress,
+		InGame
+	};
 
-  private Vector3 cameraOffset;
-  private Vector3 cameraRotaion;
-  private Vector3 nextOffset;
-  private Vector3 nextRotaion;
+	public GameObject playerTarget;
 
-  public bool doTransition;
-  public float transitionTime;
+	// initial camera
+	public Vector3 initialOffset;
+	public Vector3 initialRotation;
 
-  private bool transitionInProgress;
-  private float transitionStartTime;
-  private Vector3 offsetChangeRate;
-  private Vector3 rotationChangeRate;
+	// kick in progress camera last position
+	public Vector3 kickInProgressOffset;
+	public Vector3 kickInProgressRotation;
+
+	// in game camera position
+	public Vector3 inGameOffset;
+	public Vector3 inGameRotation;
 
 
-  void Update()
-  {
-    if (doTransition) {
-      startTransition();
-      doTransition = false;
-    }
+	private Vector3 cameraOffset;
+	private Vector3 cameraRotaion;
+	private Vector3 nextOffset;
+	private Vector3 nextRotaion;
+	public float transitionTime;
 
-    if (transitionInProgress)
-      updateTransition();
+	private bool transitionInProgress;
+	private float transitionStartTime;
+	private Vector3 offsetChangeRate;
+	private Vector3 rotationChangeRate;
 
-    follow();
-  }
+	private float startTime;
 
-  public void reset()
-  {
-    cameraOffset = offsetBeforeKick;
-    cameraRotaion = rotationBeforeKick;
-    follow();
-  }
+//	[HideInInspector]
+	public CameraFollowState State {
+		get {
+			if( Application.isPlaying )
+			{
+				if( transitionInProgress ) 
+					_state = CameraFollowState.KickInProgress;
+			}
 
-  private void follow()
-  {
-    var p = playerTarget.transform.position;
-    Camera.main.transform.position = new Vector3(p.x + cameraOffset.x, p.y + cameraOffset.y, p.z + cameraOffset.z);
-    Camera.main.transform.eulerAngles = cameraRotaion;
-  }
+			return _state;
+		}
+		set {
+			_state = value;
 
-  private void startTransition()
-  {
-    nextOffset = offsetAfterKick;
-    nextRotaion = rotationAfterKick;
+			Debug.Log( "Camera Follow State: " + _state.ToString()  );
 
-    offsetChangeRate = (nextOffset - cameraOffset) / transitionTime;
-    rotationChangeRate = (nextRotaion - cameraRotaion) / transitionTime;
-    transitionInProgress = true;
-  }
+			if( Application.isPlaying )
+			{
+				if( _state == CameraFollowState.InGame )
+					startTransition();
+			}
+		}
+	}
+	private CameraFollowState _state = CameraFollowState.Initial;
 
-  private void updateTransition()
-  {
-    if (transitionTime <= 0) {
-      cameraOffset = nextOffset;
-      cameraRotaion = nextRotaion;
+	void Update ()
+	{
+//		if (doTransition) {
+//			startTransition ();
+//			doTransition = false;
+//		}
+//
+//		if (transitionInProgress)
+//			updateTransition ();
+//
+//		follow ();
 
-      transitionTime = 0;
-      transitionInProgress = false;
-    }
-    else {
-      cameraOffset += Time.deltaTime * offsetChangeRate;
-      cameraRotaion += Time.deltaTime * rotationChangeRate;
+		Debug.Log ("camera udate");
+		var state = this.State;
+		switch( state ) {
+			case CameraFollowState.Initial:
+				updateInitialState();
+				break;
 
-      transitionTime -= Time.deltaTime;
-    }
-  }
+			case CameraFollowState.KickInProgress:
+				updateKickInProgressState();
+				break;
+
+			case CameraFollowState.InGame:
+				updateInGameState();
+				break;
+
+			default:
+				throw new UnityException( "Not supported camera follow state: " + (int)state );
+				break;
+		}
+	}
+
+
+
+	public void reset()
+	{
+		cameraOffset = initialOffset;
+		cameraRotaion = initialRotation;
+
+//		Update();
+	}
+
+
+	private void startTransition ()
+	{
+		nextOffset = inGameOffset;
+		nextRotaion = inGameRotation;
+
+		offsetChangeRate = (nextOffset - cameraOffset) / transitionTime;
+		rotationChangeRate = (nextRotaion - cameraRotaion) / transitionTime;
+		transitionInProgress = true;
+	}
+
+	private void updateTransition ()
+	{
+		if (transitionTime <= 0) {
+			cameraOffset = nextOffset;
+			cameraRotaion = nextRotaion;
+
+			transitionTime = 0;
+			transitionInProgress = false;
+		} else {
+			cameraOffset += Time.deltaTime * offsetChangeRate;
+			cameraRotaion += Time.deltaTime * rotationChangeRate;
+
+			transitionTime -= Time.deltaTime;
+		}
+	}
 	
 	// 0.24, 0.98, -3.07
 	// 3.37, 7.89, 0
+
+	void updateInitialState ()
+	{
+		var p = playerTarget.transform.position;
+		Camera.main.transform.position = p + initialOffset;
+		Camera.main.transform.eulerAngles = initialRotation;
+	}
+
+	void updateKickInProgressState ()
+	{
+		var p = playerTarget.transform.position;
+
+		if( Application.isPlaying )
+		{
+//			updateTransition();
+		}
+		else
+		{
+			Camera.main.transform.position = p + kickInProgressOffset;
+			Camera.main.transform.eulerAngles = kickInProgressRotation;
+		} 
+	}
+
+	void updateInGameState ()
+	{
+		var p = playerTarget.transform.position;
+		Camera.main.transform.position = p + inGameOffset;
+		Camera.main.transform.eulerAngles = inGameRotation;
+	}
 }

@@ -27,33 +27,37 @@ public class GameLogic : MonoBehaviour
 
   private bool gameOver;
 
-  void Awake()
-  {
-    Instance = this;
+	void Awake()
+	{
+		Instance = this;
 
-    player = mainChars.GetComponentInChildren<Player>();
-    doctor = mainChars.GetComponentInChildren<DrFishhead>();
+		player = mainChars.GetComponentInChildren<Player>();
+		doctor = mainChars.GetComponentInChildren<DrFishhead>();
 
-    if (gameData.ZeroProgress || !loadGame())
-      resetProgress();
-  }
+		if (gameData.ZeroProgress || !loadGame())
+		resetProgress();
+	}
     
 	void Start()
 	{
-    showStartScene();
+		showStartScene();
 
-    inGameGUIPanel.enabled = false;
-    mainMenuAnim.gameObject.SetActive(true);
-  }
-	
+    	inGameGUIPanel.enabled = false;
+    	mainMenuAnim.gameObject.SetActive(true);
+
+		resetProgress();
+		startGame();
+  	}
+		
 	void Update()
-  {
-    if (!gameOver && gameData.IsPlayerKicked) {
-      checkForLevelComplete();
-      updatePlayerState();
-      checkForLowSpeedGameOver();
-    }
-  }
+	{
+		Debug.Log ("game logic update");
+		if (!gameOver && gameData.IsPlayerKicked) {
+			checkForLevelComplete();
+			updatePlayerState();
+			checkForLowSpeedGameOver();
+		}
+	}
 
 
   public void showStartScene()
@@ -171,7 +175,7 @@ public class GameLogic : MonoBehaviour
     player.kickRabbit(gameData.KickForce);
     gameData.kickTime = Time.time;
 
-    cameraFollow.doTransition = true;
+    cameraFollow.State = CameraFollow.CameraFollowState.InGame;
   }
 
   public void resetProgress()

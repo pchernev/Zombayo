@@ -1,6 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameLogic.cs">
+    <Files>
+      <File FileName="Assets/Scripts/GameLogic.cs" Line="47" Column="3" />
+      <File FileName="Assets/Scripts/InGameGUI.cs" Line="55" Column="26" />
+      <File FileName="Assets/Scripts/CameraFollow.cs" Line="151" Column="25" />
+      <File FileName="Assets/Scripts/DrFishhead.cs" Line="38" Column="23" />
+      <File FileName="Assets/Scripts/KickSwipe.cs" Line="16" Column="31" />
+      <File FileName="Assets/ExternalResources/Tools/iTween/iTween.cs" Line="1350" Column="25" />
+      <File FileName="Assets/Scripts/Player.cs" Line="151" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
