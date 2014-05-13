@@ -8,19 +8,23 @@ public class Player : MonoBehaviour
     Fly,
     Hurt,
     Drag,
-    PowerUp,
+    PowerUpBubble,
+    PowerUpFart,
+    PowerUpGlide,
     Count
   }
 
   private static readonly string[] animDescriptions;
   private string[] getDescriptionTexts() { return animDescriptions; }
 
-  public enum PowerUpState
+  public enum State
   {
     None,
-    BubbleGum,
-    Fart,
-    Glide
+    Hurt,
+    Drag,
+    PowerUpBubble,
+    PowerUpFart,
+    PowerUpGlide
   }
 
   public CoinMagnet magnet;
@@ -30,8 +34,6 @@ public class Player : MonoBehaviour
   private Vector3 startPos;
   private Quaternion startRot;
   private bool isKicked;
-  private bool isHurt;
-  private bool isDragging;
   private Animator animator;
   private int idleIndex;
   private int hurtIndex;
@@ -41,10 +43,11 @@ public class Player : MonoBehaviour
   private float originalDrag;
   private float originalBounce;
 
-  private PowerUpState currentPowerUp = PowerUpState.None;
-  public bool IsBubbling { get { return currentPowerUp == PowerUpState.BubbleGum; } }
-  public bool IsFarting { get { return currentPowerUp == PowerUpState.Fart; } }
-  public bool IsGliding { get { return currentPowerUp == PowerUpState.Glide; } }
+  private State currentState = State.None;
+  public bool IsBubbling { get { return currentState == State.PowerUpBubble; } }
+  public bool IsFarting { get { return currentState == State.PowerUpFart; } }
+  public bool IsGliding { get { return currentState == State.PowerUpGlide; } }
+  public bool CanGlide { get { return currentState != State.Drag; } }
   public bool IsTooSlow { get { return transform.position.y < 1 && rigidbody.velocity.sqrMagnitude < 5; } }
   public bool IsAboveDragThreshold { get { return rigidbody.velocity.y > data.dragThreshold; } }
   public float CurrentKickEfficiency { get { return animator.GetFloat("KickEfficiency"); } }
@@ -87,18 +90,24 @@ public class Player : MonoBehaviour
     if (data.IsPlayerKicked) {
       animator.SetFloat("VerticalSpeed", 2*speed.y);
 
-      if (IsBubbling)
-        if (bubbleStartTime + data.bubbleGumLife < Time.time)
-          enterPowerUpState(PowerUpState.None);
+      switch (currentState) {
+        case State.PowerUpBubble:
+          if (bubbleStartTime + data.bubbleGumLife < Time.time)
+            enterState(State.None);
+          break;
 
-      if (IsFarting)
-        rigidbody.AddForce(data.specs.fartForce * data.fartDirection.normalized);
+        case State.PowerUpFart:
+          rigidbody.AddForce(data.specs.fartForce * data.fartDirection.normalized);
+          break;
 
-      if (IsGliding)
-        rigidbody.AddForce(data.specs.glideForce * data.glideDirection.normalized);
+        case State.PowerUpGlide:
+          rigidbody.AddForce(data.specs.glideForce * data.glideDirection.normalized);
+          break;
 
-      if (isDragging)
-        rigidbody.AddForce(data.dragForce * Vector3.left);
+        case State.Drag:
+          rigidbody.AddForce(data.dragForce * Vector3.left);
+          break;
+      }
     }
   }
 
@@ -150,69 +159,61 @@ public class Player : MonoBehaviour
 
   public void kickRabbit(Vector3 kickForce)
   {
-    enterPowerUpState(PowerUpState.None);
+    enterState(State.None);
     magnet.gameObject.SetActive(true);
     rigidbody.AddForce(kickForce);
   }
 
-  public void enterHurtState()
+  public void enterState(State state)
   {
-    hurtIndex = animUtils.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f, hurtIndex);
-    setRotationZConstraint(false);
-
-    isHurt = true;
-  }
-
-  public void enterDragState()
-  {
-    animUtils.crossFadeRandomEntry((int)AnimDesc.Drag, 0.05f);
-    iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
-    setRotationZConstraint(true);
-    setPositionYConstraint(true);
-
-    isDragging = true;
-  }
-
-  public void enterPowerUpState(PowerUpState state)
-  {
-    exitCurrentPowerUpState();
+    exitCurrentState();
 
     switch (state) {
-      case PowerUpState.None:
+      case State.None:
         animUtils.crossFadeRandomEntry((int)AnimDesc.Fly, 0.05f);
         break;
 
-      case PowerUpState.BubbleGum:
+      case State.Hurt:
+        hurtIndex = animUtils.crossFadeRandomEntry((int)AnimDesc.Hurt, 0.05f, hurtIndex);
+        setRotationZConstraint(false);
+        break;
+
+      case State.Drag:
+        animUtils.crossFadeRandomEntry((int)AnimDesc.Drag, 0.05f);
+        iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
+        setRotationZConstraint(true);
+        setPositionYConstraint(true);
+        break;
+
+      case State.PowerUpBubble:
         originalDrag = rigidbody.drag;
         originalBounce = collider.material.bounciness;
         rigidbody.drag = 0;
         collider.material.bounciness = 1;
-        animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
+        animUtils.crossFadeEntry((int)AnimDesc.PowerUpBubble, 0, 0.05f);
         bubbleStartTime = Time.time;
         break;
 
-      case PowerUpState.Glide:
-		animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
-        setPositionYConstraint(true);
+      case State.PowerUpFart:
+        animUtils.crossFadeEntry((int)AnimDesc.PowerUpFart, 0, 0.05f);
+        if (rigidbody.velocity.y < 0)
+          rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
         break;
 
-      case PowerUpState.Fart:
-			animUtils.crossFadeEntry((int)AnimDesc.PowerUp, (int)state-1, 0.05f);
-			if (rigidbody.velocity.y < 0) 
-				rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
-		
+      case State.PowerUpGlide:
+		    animUtils.crossFadeEntry((int)AnimDesc.PowerUpGlide, 0, 0.05f);
+        setPositionYConstraint(true);
         break;
     }
 
-    currentPowerUp = state;
+    currentState = state;
     iTween.RotateTo(gameObject, Vector3.zero, 0.25f);
     setRotationZConstraint(true);
-    animator.SetInteger("PowerUp", (int)currentPowerUp);
+    animator.SetInteger("PowerUp", (int)currentState);
   }
 
-  private void exitCurrentPowerUpState()
+  private void exitCurrentState()
   {
-    isHurt = isDragging = false;
     rigidbody.drag = originalDrag;
     collider.material.bounciness = originalBounce;
     setPositionYConstraint(false);

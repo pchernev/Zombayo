@@ -46,15 +46,15 @@ public static class CollisionLogic
   {
     if (!player.IsBubbling) {
       if (GameLogic.Instance.player.IsAboveDragThreshold)
-        player.enterHurtState();
+        player.enterState(Player.State.Hurt);
       else
-        player.enterDragState();
+        player.enterState(Player.State.Drag);
     }
   }
 
   public static void OnNpcHit(NPC npc)
   {
-    player.enterPowerUpState(Player.PowerUpState.None);
+    player.enterState(Player.State.None);
     player.rigidbody.AddForce(npc.impactInfo.force);
 
     if (npc.impactInfo.particles != null) {
@@ -81,7 +81,7 @@ public static class CollisionLogic
     Carrot carrot = (Carrot)npc;
 
     if (player.IsBubbling) {
-      player.enterPowerUpState(Player.PowerUpState.None);
+      player.enterState(Player.State.None);
       carrot.miss();
     }
     else if (data.specs.carrotSprayCount > 0) {

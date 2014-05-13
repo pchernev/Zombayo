@@ -94,20 +94,20 @@ public class InputLogic : MonoBehaviour
   {
     if (gameData.specs.bubbleGumCount > 0) {
       --gameData.specs.bubbleGumCount;
-      player.enterPowerUpState(Player.PowerUpState.BubbleGum);
+      player.enterState(Player.State.PowerUpBubble);
     }
   }
 
   public void OnFartButtonPressed(GameObject go, bool pressed)
   {
     if (gameData.fartTime > 0)
-      player.enterPowerUpState(pressed ? Player.PowerUpState.Fart : Player.PowerUpState.None);
+      player.enterState(pressed ? Player.State.PowerUpFart : Player.State.None);
   }
 
   public void OnGlideButtonPressed(GameObject go, bool pressed)
   {
-    if (gameData.glideTime > 0)
-      player.enterPowerUpState(pressed ? Player.PowerUpState.Glide : Player.PowerUpState.None);
+    if (gameData.glideTime > 0 && player.CanGlide)
+      player.enterState(pressed ? Player.State.PowerUpGlide : Player.State.None);
   }
 
   public void OnPauseButtonClicked(GameObject go)

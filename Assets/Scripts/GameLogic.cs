@@ -212,7 +212,7 @@ public class GameLogic : MonoBehaviour
   {
     if (player.IsFarting && gameData.fartTime <= 0) {
       gameData.fartTime = 0;
-      player.enterPowerUpState(Player.PowerUpState.None);
+      player.enterState(Player.State.None);
     }
   }
 
@@ -220,7 +220,7 @@ public class GameLogic : MonoBehaviour
   {
     if (player.IsGliding && gameData.glideTime <= 0) {
       gameData.glideTime = 0;
-      player.enterPowerUpState(Player.PowerUpState.None);
+      player.enterState(Player.State.None);
     }
   }
 
