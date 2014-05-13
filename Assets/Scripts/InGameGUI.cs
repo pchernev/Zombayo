@@ -52,7 +52,7 @@ public class InGameGUI : MonoBehaviour
     fartSlider.value = data.FartPercentage;
     glideSlider.value = data.GlidePercentage;
     kickForceSlider.value = data.kickEfficiency;
-    kickForceSlider.gameObject.SetActive(!data.IsPlayerKicked);
+//    kickForceSlider.gameObject.SetActive(!data.IsPlayerKicked);
     distanceSlider.value = data.travelledDistance / data.distanceToFinish;
 
     setCounter(coinCounter, data.coinCount);
