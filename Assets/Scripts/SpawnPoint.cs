@@ -3,10 +3,12 @@
 public class SpawnPoint : MonoBehaviour
 {
   public Component prefab;
+  public bool isScriptControlled;
 
   void Start()
   {
-    gameObject.layer = Layers.Spawnables;
+    if (!isScriptControlled)
+      gameObject.layer = Layers.Spawnables;
   }
 
   void OnTriggerEnter(Collider other)
@@ -16,7 +18,9 @@ public class SpawnPoint : MonoBehaviour
 
   public void activate()
   {
-    prefab.Spawn(transform.position);
-    Destroy(gameObject);
+    Component comp = prefab.Spawn(transform.position);
+    comp.transform.parent = GameLogic.Instance.spawnRoot;
+    if (!isScriptControlled)
+      Destroy(gameObject);
   }
 }
