@@ -17,8 +17,8 @@ public class MainMenu : MonoBehaviour
 
   void Start()
   {
-    RevMobBanner banner = RevMobUtils.createBanner(adPlaceholder);
-    banner.Show();
+    //RevMobBanner banner = RevMobUtils.createBanner(adPlaceholder);
+    //banner.Show();
   }
 
   void Update()
