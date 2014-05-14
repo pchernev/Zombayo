@@ -23,58 +23,54 @@ public class CameraFollow : MonoBehaviour
 	public Vector3 inGameOffset;
 	public Vector3 inGameRotation;
 
-
-	private Vector3 cameraOffset;
-	private Vector3 cameraRotaion;
-	private Vector3 nextOffset;
-	private Vector3 nextRotaion;
-	public float transitionTime;
-
-	private bool transitionInProgress;
-	private float transitionStartTime;
-	private Vector3 offsetChangeRate;
-	private Vector3 rotationChangeRate;
-
-	private float startTime;
-
-//	[HideInInspector]
+	[SerializeField, HideInInspector]
+	private CameraFollowState _state = CameraFollowState.Initial;
+	[ExposeProperty]
 	public CameraFollowState State {
 		get {
 			if( Application.isPlaying )
 			{
-				if( transitionInProgress ) 
+				if( isTransitionInProgress() ) 
 					_state = CameraFollowState.KickInProgress;
 			}
 
 			return _state;
 		}
 		set {
-			_state = value;
-
-			Debug.Log( "Camera Follow State: " + _state.ToString()  );
-
-			if( Application.isPlaying )
+			if( _state != value )
 			{
-				if( _state == CameraFollowState.InGame )
-					startTransition();
+				_state = value;
+
+				switch( _state )
+				{
+					case CameraFollowState.Initial: moveTransition( initialOffset, initialRotation ); break;
+					case CameraFollowState.KickInProgress: moveTransition( kickInProgressOffset, kickInProgressRotation ); break;
+					case CameraFollowState.InGame: moveTransition( inGameOffset, inGameRotation ); break;
+				}
+					
+				Update();
+
+				Debug.Log( string.Format( "Camera follow state: {0}", _state.ToString() ));
 			}
 		}
 	}
-	private CameraFollowState _state = CameraFollowState.Initial;
-
-	void Update ()
+	
+	public void reset()
 	{
-//		if (doTransition) {
-//			startTransition ();
-//			doTransition = false;
-//		}
-//
-//		if (transitionInProgress)
-//			updateTransition ();
-//
-//		follow ();
+		this.State = CameraFollowState.Initial;
 
-		Debug.Log ("camera udate");
+		// reset instantlly initial position and angle
+		stopTransition();
+		Update();
+	}
+
+	void Awake()
+	{
+		reset();
+	}
+
+	void Update()
+	{
 		var state = this.State;
 		switch( state ) {
 			case CameraFollowState.Initial:
@@ -91,76 +87,108 @@ public class CameraFollow : MonoBehaviour
 
 			default:
 				throw new UnityException( "Not supported camera follow state: " + (int)state );
-				break;
 		}
+
+		var p = playerTarget.transform.position;
+		Camera.main.transform.position = p + _transOffset;
+		Camera.main.transform.eulerAngles = _transAngleOffset;
 	}
-
-
-
-	public void reset()
+	
+	void updateInitialState ()
 	{
-		cameraOffset = initialOffset;
-		cameraRotaion = initialRotation;
-
-//		Update();
+		_transOffset = initialOffset;
+		_transAngleOffset = initialRotation;
 	}
-
-
-	private void startTransition ()
+	
+	void updateKickInProgressState ()
 	{
-		nextOffset = inGameOffset;
-		nextRotaion = inGameRotation;
-
-		offsetChangeRate = (nextOffset - cameraOffset) / transitionTime;
-		rotationChangeRate = (nextRotaion - cameraRotaion) / transitionTime;
-		transitionInProgress = true;
+		if( isTransitionInProgress() )
+		{
+			updateTransition();
+		}
+		else
+		{
+			_transOffset = kickInProgressOffset;
+			_transAngleOffset = kickInProgressRotation;
+		} 
+	}
+	
+	void updateInGameState ()
+	{
+		_transOffset = inGameOffset;
+		_transAngleOffset = inGameRotation;
 	}
 
+	#region Transition methods
+
+	private const float TransitionTime = 0.8f;
+
+	private float _transitionRamainingTime;
+
+	private Vector3 _transOffset;
+	private Vector3 _transAngleOffset;
+
+	private Vector3 _transStartPos;
+	private Vector3 _transStartAngle;
+	private Vector3 _transEndPos;
+	private Vector3 _transEndAngle;
+
+	private Vector3 _transPosStep;
+	private Vector3 _transAngleStep;
+
+	private bool isTransitionInProgress()
+	{
+		return _transitionRamainingTime > 0;
+	}
+
+	private void moveTransition( Vector3 endOffset, Vector3 endAngle )
+	{
+		startTransition( _transOffset, _transAngleOffset, endOffset, endAngle );
+	}
+
+	private void startTransition( Vector3 startOffset, Vector3 endOffset )
+	{
+		var angle = Camera.main.transform.eulerAngles;
+		startTransition( startOffset, angle, endOffset, angle );
+	}
+
+	private void startTransition( Vector3 startOffset, Vector3 startAngle, Vector3 endOffset, Vector3 endAngle )
+	{
+		_transStartPos = startOffset;
+		_transStartAngle = startAngle;
+		_transEndPos = endOffset;
+		_transEndAngle = endAngle;
+		_transitionRamainingTime = TransitionTime;
+
+		_transOffset = _transStartPos;
+		_transAngleOffset = _transStartAngle;
+		_transPosStep = (_transEndPos - _transStartPos) / _transitionRamainingTime;
+		_transAngleStep = (_transEndAngle - _transStartAngle) / _transitionRamainingTime;
+	}
+	
 	private void updateTransition ()
 	{
-		if (transitionTime <= 0) {
-			cameraOffset = nextOffset;
-			cameraRotaion = nextRotaion;
+		if( !isTransitionInProgress() )
+			return;
 
-			transitionTime = 0;
-			transitionInProgress = false;
-		} else {
-			cameraOffset += Time.deltaTime * offsetChangeRate;
-			cameraRotaion += Time.deltaTime * rotationChangeRate;
+		var dt = Time.deltaTime;
+		if( dt <= 0 ) 
+			dt = _transitionRamainingTime;
 
-			transitionTime -= Time.deltaTime;
-		}
+		_transOffset += _transPosStep * dt;
+		_transAngleOffset += _transAngleStep * dt;
+
+		_transitionRamainingTime -= dt;
 	}
+
+	private void stopTransition()
+	{
+		_transitionRamainingTime = 0F;
+	}
+
+	#endregion
 	
 	// 0.24, 0.98, -3.07
 	// 3.37, 7.89, 0
 
-	void updateInitialState ()
-	{
-		var p = playerTarget.transform.position;
-		Camera.main.transform.position = p + initialOffset;
-		Camera.main.transform.eulerAngles = initialRotation;
-	}
-
-	void updateKickInProgressState ()
-	{
-		var p = playerTarget.transform.position;
-
-		if( Application.isPlaying )
-		{
-//			updateTransition();
-		}
-		else
-		{
-			Camera.main.transform.position = p + kickInProgressOffset;
-			Camera.main.transform.eulerAngles = kickInProgressRotation;
-		} 
-	}
-
-	void updateInGameState ()
-	{
-		var p = playerTarget.transform.position;
-		Camera.main.transform.position = p + inGameOffset;
-		Camera.main.transform.eulerAngles = inGameRotation;
-	}
 }
