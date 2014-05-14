@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
   public bool IsBubbling { get { return currentState == State.PowerUpBubble; } }
   public bool IsFarting { get { return currentState == State.PowerUpFart; } }
   public bool IsGliding { get { return currentState == State.PowerUpGlide; } }
-  public bool CanGlide { get { return currentState != State.Drag; } }
+  public bool IsDragging { get { return currentState == State.Drag; } }
   public bool IsTooSlow { get { return transform.position.y < 1 && rigidbody.velocity.sqrMagnitude < 5; } }
   public bool IsAboveDragThreshold { get { return rigidbody.velocity.y > data.dragThreshold; } }
   public float CurrentKickEfficiency { get { return animator.GetFloat("KickEfficiency"); } }

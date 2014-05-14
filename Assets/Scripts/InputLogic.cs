@@ -92,7 +92,7 @@ public class InputLogic : MonoBehaviour
 
   public void OnBubbleButtonClicked(GameObject go)
   {
-    if (gameData.specs.bubbleGumCount > 0) {
+    if (gameData.specs.bubbleGumCount > 0 && !player.IsDragging) {
       --gameData.specs.bubbleGumCount;
       player.enterState(Player.State.PowerUpBubble);
     }
@@ -106,7 +106,7 @@ public class InputLogic : MonoBehaviour
 
   public void OnGlideButtonPressed(GameObject go, bool pressed)
   {
-    if (gameData.glideTime > 0 && player.CanGlide)
+    if (gameData.glideTime > 0 && !player.IsDragging)
       player.enterState(pressed ? Player.State.PowerUpGlide : Player.State.None);
   }
 
