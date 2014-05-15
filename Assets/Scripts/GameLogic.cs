@@ -51,7 +51,6 @@ public class GameLogic : MonoBehaviour
 		
 	void Update()
 	{
-		Debug.Log ("game logic update");
 		if (!gameOver && gameData.IsPlayerKicked) {
 			checkForLevelComplete();
 			updatePlayerState();
@@ -157,26 +156,29 @@ public class GameLogic : MonoBehaviour
   }
 
 
-  public void initiateKick()
-  {
-    player.UpdateKickEfficiency = false;
-    doctor.playRunAndKickSequence();
-  }
+	public void initiateKick()
+	{
+		player.UpdateKickEfficiency = false;
+		doctor.playRunAndKickSequence();
 
-  public void initiateKickInCustomDirection(Vector3 direction)
-  {
-    gameData.kickDirection = direction;
-    initiateKick();
-  }
+		if( cameraFollow.State == CameraFollow.CameraFollowState.Initial )
+			cameraFollow.State = CameraFollow.CameraFollowState.KickInProgress;
+	}
 
-  public void launchRabbit()
-  {
-    doctor.rigidbody.isKinematic = true;
-    player.kickRabbit(gameData.KickForce);
-    gameData.kickTime = Time.time;
+	public void initiateKickInCustomDirection(Vector3 direction)
+	{
+		gameData.kickDirection = direction;
+		initiateKick();
+	}
 
-    cameraFollow.State = CameraFollow.CameraFollowState.InGame;
-  }
+	public void launchRabbit()
+	{
+		doctor.rigidbody.isKinematic = true;
+		player.kickRabbit(gameData.KickForce);
+		gameData.kickTime = Time.time;
+
+		cameraFollow.State = CameraFollow.CameraFollowState.InGame;
+	}
 
   public void resetProgress()
   {

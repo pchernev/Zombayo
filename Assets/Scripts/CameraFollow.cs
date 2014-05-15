@@ -23,23 +23,23 @@ public class CameraFollow : MonoBehaviour
 	public Vector3 inGameOffset;
 	public Vector3 inGameRotation;
 
+
+	private Vector3 _offset;
+	private Vector3 _angleOffset;
+
 	[SerializeField, HideInInspector]
 	private CameraFollowState _state = CameraFollowState.Initial;
 	[ExposeProperty]
 	public CameraFollowState State {
 		get {
-			if( Application.isPlaying )
-			{
-				if( isTransitionInProgress() ) 
-					_state = CameraFollowState.KickInProgress;
-			}
-
 			return _state;
 		}
 		set {
 			if( _state != value )
 			{
 				_state = value;
+
+//				Debug.Log( string.Format( "Set Camera follow state: {0}", _state.ToString() ));
 
 				switch( _state )
 				{
@@ -49,8 +49,6 @@ public class CameraFollow : MonoBehaviour
 				}
 					
 				Update();
-
-				Debug.Log( string.Format( "Camera follow state: {0}", _state.ToString() ));
 			}
 		}
 	}
@@ -90,14 +88,14 @@ public class CameraFollow : MonoBehaviour
 		}
 
 		var p = playerTarget.transform.position;
-		Camera.main.transform.position = p + _transOffset;
-		Camera.main.transform.eulerAngles = _transAngleOffset;
+		Camera.main.transform.position = p + _offset;
+		Camera.main.transform.eulerAngles = _angleOffset;
 	}
 	
 	void updateInitialState ()
 	{
-		_transOffset = initialOffset;
-		_transAngleOffset = initialRotation;
+		_offset = initialOffset;
+		_angleOffset = initialRotation;
 	}
 	
 	void updateKickInProgressState ()
@@ -108,15 +106,22 @@ public class CameraFollow : MonoBehaviour
 		}
 		else
 		{
-			_transOffset = kickInProgressOffset;
-			_transAngleOffset = kickInProgressRotation;
+			_offset = kickInProgressOffset;
+			_angleOffset = kickInProgressRotation;
 		} 
 	}
 	
 	void updateInGameState ()
 	{
-		_transOffset = inGameOffset;
-		_transAngleOffset = inGameRotation;
+		if( isTransitionInProgress() )
+		{
+			updateTransition();
+		}
+		else
+		{
+			_offset = inGameOffset;
+			_angleOffset = inGameRotation;
+		}
 	}
 
 	#region Transition methods
@@ -124,9 +129,6 @@ public class CameraFollow : MonoBehaviour
 	private const float TransitionTime = 0.8f;
 
 	private float _transitionRamainingTime;
-
-	private Vector3 _transOffset;
-	private Vector3 _transAngleOffset;
 
 	private Vector3 _transStartPos;
 	private Vector3 _transStartAngle;
@@ -143,7 +145,7 @@ public class CameraFollow : MonoBehaviour
 
 	private void moveTransition( Vector3 endOffset, Vector3 endAngle )
 	{
-		startTransition( _transOffset, _transAngleOffset, endOffset, endAngle );
+		startTransition( _offset, _angleOffset, endOffset, endAngle );
 	}
 
 	private void startTransition( Vector3 startOffset, Vector3 endOffset )
@@ -154,14 +156,17 @@ public class CameraFollow : MonoBehaviour
 
 	private void startTransition( Vector3 startOffset, Vector3 startAngle, Vector3 endOffset, Vector3 endAngle )
 	{
+		if( isTransitionInProgress() )
+			stopTransition();
+
 		_transStartPos = startOffset;
 		_transStartAngle = startAngle;
 		_transEndPos = endOffset;
 		_transEndAngle = endAngle;
 		_transitionRamainingTime = TransitionTime;
 
-		_transOffset = _transStartPos;
-		_transAngleOffset = _transStartAngle;
+		_offset = _transStartPos;
+		_angleOffset = _transStartAngle;
 		_transPosStep = (_transEndPos - _transStartPos) / _transitionRamainingTime;
 		_transAngleStep = (_transEndAngle - _transStartAngle) / _transitionRamainingTime;
 	}
@@ -175,8 +180,8 @@ public class CameraFollow : MonoBehaviour
 		if( dt <= 0 ) 
 			dt = _transitionRamainingTime;
 
-		_transOffset += _transPosStep * dt;
-		_transAngleOffset += _transAngleStep * dt;
+		_offset += _transPosStep * dt;
+		_angleOffset += _transAngleStep * dt;
 
 		_transitionRamainingTime -= dt;
 	}
@@ -187,8 +192,4 @@ public class CameraFollow : MonoBehaviour
 	}
 
 	#endregion
-	
-	// 0.24, 0.98, -3.07
-	// 3.37, 7.89, 0
-
 }
