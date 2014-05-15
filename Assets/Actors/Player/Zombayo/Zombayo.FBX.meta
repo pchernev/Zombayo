@@ -39,6 +39,10 @@ ModelImporter:
     100066: mainChar_Zombayo
     100068: Tail01
     100070: //RootNode
+    100072: Bubblegum_01
+    100074: Bubblegum_02
+    100076: Bubblegum_03
+    100078: Bubblegum_04
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanLCalf
@@ -75,6 +79,10 @@ ModelImporter:
     400066: mainChar_Zombayo
     400068: Tail01
     400070: //RootNode
+    400072: Bubblegum_01
+    400074: Bubblegum_02
+    400076: Bubblegum_03
+    400078: Bubblegum_04
     2300000: Base HumanHead
     2300002: Base HumanLCalf
     2300004: Base HumanLCollarbone
@@ -97,6 +105,10 @@ ModelImporter:
     2300038: Base HumanRUpperarm
     2300040: Base HumanSpine1
     2300042: Base HumanSpine2
+    2300044: Bubblegum_01
+    2300046: Bubblegum_02
+    2300048: Bubblegum_03
+    2300050: Bubblegum_04
     3300000: Base HumanHead
     3300002: Base HumanLCalf
     3300004: Base HumanLCollarbone
@@ -119,6 +131,10 @@ ModelImporter:
     3300038: Base HumanRUpperarm
     3300040: Base HumanSpine1
     3300042: Base HumanSpine2
+    3300044: Bubblegum_01
+    3300046: Bubblegum_02
+    3300048: Bubblegum_03
+    3300050: Bubblegum_04
     4300000: mainChar_Zombayo
     4300002: Base HumanPelvis
     4300004: Base HumanLThigh
@@ -142,6 +158,10 @@ ModelImporter:
     4300040: Base HumanRPalm
     4300042: Base HumanNeck
     4300044: Base HumanHead
+    4300046: Bubblegum_04
+    4300048: Bubblegum_01
+    4300050: Bubblegum_02
+    4300052: Bubblegum_03
     7400000: Player Idle
     7400002: Player Finger
     7400004: Player Ass Shake
